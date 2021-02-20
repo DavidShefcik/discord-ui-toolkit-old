@@ -1,4 +1,3 @@
-import { MouseEvent } from 'react';
 /**
  * Modules
  */
@@ -22,11 +21,4 @@ declare type ThemedComponent = {
 declare type HoverableComponent = {
   hoverable: boolean;
   hoverText: string;
-};
-// Inputs
-declare type ButtonTypes = 'blurple' | 'greyple' | 'green' | 'red_filled' | 'red_empty';
-declare type ButtonProps = {
-  text: string;
-  onClick(event: MouseEvent<HTMLButtonElement>): void;
-  type: ButtonTypes;
 };
