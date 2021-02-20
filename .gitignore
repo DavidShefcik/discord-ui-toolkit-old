@@ -1,0 +1,5 @@
+.storybook
+.env
+.vscode
+node_modules/
+*.log
