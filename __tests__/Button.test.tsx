@@ -1,16 +1,34 @@
 import React from 'react';
-import { screen, render, cleanup } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
-import Button from '../src/components/inputs/Button';
+import { Button } from '../src/components';
 
 describe('<Button />', () => {
-  afterEach(cleanup);
   const mockClick = jest.fn();
   it('should render', () => {
-    render(<Button />);
+    render(<Button text="Button" type="blurple" onClick={mockClick} />);
 
-    expect(screen.getByText('Button')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Button/i })).toBeInTheDocument();
   });
+
+  it('should fire the mockClick function on click', () => {
+    render(<Button text="Button" type="blurple" onClick={mockClick} />);
+
+    userEvent.click(screen.getByRole('button', { name: /Button/i }));
+
+    expect(mockClick).toHaveBeenCalled();
+  });
+
+  it('should be disabled if the disabled prop is true', () => {
+    render(<Button text="Button" type="blurple" onClick={mockClick} disabled />);
+
+    expect(screen.getByRole('button', { name: /Button/i })).toBeDisabled();
+  })
+  it('should be disabled if the loading prop is true', () => {
+    render(<Button text="Button" type="blurple" onClick={mockClick} loading />);
+
+    expect(screen.getByRole('button', { name: /Button/i })).toBeDisabled();
+  })
 });

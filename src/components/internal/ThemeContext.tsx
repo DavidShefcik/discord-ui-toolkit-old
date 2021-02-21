@@ -1,3 +1,3 @@
 import { createContext } from 'react';
 
-const themeContext = createContext<ThemeContextValues>(null);
+export default createContext<ThemeContextValues>(null);

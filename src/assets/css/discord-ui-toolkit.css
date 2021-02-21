@@ -10,9 +10,22 @@
   font-family: "discord-bold";
   src: url("../fonts/bold.woff")
 }
-
-:root {
-  --blurple: #7289DA;
+.discord-container {
+  width: 100%;
+  height: 100%;
+  font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+.discord-base {
+  --blurple: #7289da;
+  --blurple-dark: #677bc4;
+  --greyple: #747f8d;
+  --greyple-dark: #68727f;
+  --green: #43b581;
+  --green-dark: #3ca374;
+  --red: #f04747;
+  --red-dark: #d84040;
+}
+.discord-dark {
   --header-primary: #fff;
   --header-secondary: #b9bbbe;
   --text-normal: #dcddde;
@@ -68,7 +81,7 @@
   --deprecated-text-input-border-disabled: #202225;
   --deprecated-text-input-prefix: #dcddde;
 }
-[data-theme="light"] {
+.discord-light {
   --header-primary: #060607;
   --header-secondary: #4f5660;
   --text-normal: #2e3338;

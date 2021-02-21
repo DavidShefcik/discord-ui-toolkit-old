@@ -15,6 +15,7 @@ module.exports = {
   // extended assertions to Jest
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
+    './setupTests.ts',
   ],
 
   // Test spec file resolution pattern
@@ -25,4 +26,7 @@ module.exports = {
 
   // Module file extensions for importing
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  moduleNameMapper: {
+    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.ts',
+  },
 };

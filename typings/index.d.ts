@@ -1,4 +1,9 @@
 /**
+ * File types
+ */
+declare module '*.css';
+
+/**
  * Modules
  */
 

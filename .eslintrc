@@ -16,6 +16,10 @@
     "es6": true,
     "jest": true
   },
+  "plugins": [
+    "testing-library",
+    "jest-dom"
+  ],
   "rules": {
     "no-console": ["off"],
     "import/prefer-default-export": ["off"],
