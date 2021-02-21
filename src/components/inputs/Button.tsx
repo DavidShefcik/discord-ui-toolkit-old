@@ -3,13 +3,7 @@ import { StyleSheet, css, CSSProperties } from 'aphrodite';
 import { Button as ReakitButton } from 'reakit/Button';
 import { PulseLoader } from 'react-spinners';
 
-type ButtonTypes =
-  | 'blurple'
-  | 'greyple'
-  | 'green'
-  | 'red_filled'
-  | 'red_empty'
-  | 'only_text';
+type ButtonTypes = 'blurple' | 'greyple' | 'green' | 'red_filled' | 'red_empty' | 'only_text';
 type ButtonProps = {
   text: string;
   onClick(event: MouseEvent<HTMLButtonElement>): void;
@@ -161,9 +155,7 @@ export default function Button({
       className={css([styles.buttonBase, buttonType])}
       style={{ width, height }}
     >
-      {
-        loading ? <PulseLoader loading={loading} color={type === 'red_empty' ? '#f04747' : 'white'} size={8} /> : text
-      }
+      {loading ? <PulseLoader loading={loading} color={type === 'red_empty' ? '#f04747' : 'white'} size={8} /> : text}
     </ReakitButton>
   );
 }

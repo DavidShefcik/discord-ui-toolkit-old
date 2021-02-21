@@ -7,11 +7,4 @@ import ThemeProvider, { ThemeProviderProps } from './layout/ThemeProvider';
 // Constants
 import Constants from './Constants';
 
-export {
-  Button,
-  ButtonProps,
-  ButtonTypes,
-  ThemeProvider,
-  ThemeProviderProps,
-  Constants,
-};
+export { Button, ButtonProps, ButtonTypes, ThemeProvider, ThemeProviderProps, Constants };

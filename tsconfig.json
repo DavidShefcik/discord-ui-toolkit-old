@@ -1,5 +1,5 @@
 {
-	"compilerOptions": {
+  "compilerOptions": {
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
@@ -14,5 +14,13 @@
     "jsx": "react",
     "typeRoots": ["./typings", "./node_modules/@types"]
   },
-  "include": ["./src/**/*", "stories/**/*", "./typings/**/*", "./*.js", "./__tests__/**/*", "./__mocks__/**/*", "./setupTests.ts"],
+  "include": [
+    "./src/**/*",
+    "stories/**/*",
+    "./typings/**/*",
+    "./*.js",
+    "./__tests__/**/*",
+    "./__mocks__/**/*",
+    "./setupTests.ts"
+  ]
 }

@@ -13,10 +13,7 @@ module.exports = {
   // Runs special logic, such as cleaning up components
   // when using React Testing Library and adds special
   // extended assertions to Jest
-  setupFilesAfterEnv: [
-    '@testing-library/jest-dom/extend-expect',
-    './setupTests.ts',
-  ],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './setupTests.ts'],
 
   // Test spec file resolution pattern
   // Matches parent folder `__tests__` and filename

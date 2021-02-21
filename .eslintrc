@@ -8,18 +8,13 @@
       "jsx": true
     }
   },
-  "extends": [
-    "airbnb-typescript",
-  ],
+  "extends": ["airbnb-typescript"],
   "env": {
     "browser": true,
     "es6": true,
     "jest": true
   },
-  "plugins": [
-    "testing-library",
-    "jest-dom"
-  ],
+  "plugins": ["testing-library", "jest-dom"],
   "rules": {
     "no-console": ["off"],
     "import/prefer-default-export": ["off"],

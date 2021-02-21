@@ -1,8 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import {
-  Button, ButtonTypes, ButtonProps, ThemeProvider,
-} from '../src/components';
+import { Button, ButtonTypes, ButtonProps, ThemeProvider } from '../src/components';
 
 export default {
   component: Button,
@@ -20,14 +18,7 @@ export default {
       description: 'The button type.',
       control: {
         type: 'inline-radio',
-        options: [
-          'blurple',
-          'greyple',
-          'green',
-          'red_filled',
-          'red_empty',
-          'only_text',
-        ] as ButtonTypes[],
+        options: ['blurple', 'greyple', 'green', 'red_filled', 'red_empty', 'only_text'] as ButtonTypes[],
       },
     },
     disabled: {
