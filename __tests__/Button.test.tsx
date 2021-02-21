@@ -7,12 +7,12 @@ import { Button } from '../src/components';
 
 describe('<Button />', () => {
   const mockClick = jest.fn();
+  
   it('should render', () => {
     render(<Button text="Button" type="blurple" onClick={mockClick} />);
 
     expect(screen.getByRole('button', { name: /Button/i })).toBeInTheDocument();
   });
-
   it('should fire the mockClick function on click', () => {
     render(<Button text="Button" type="blurple" onClick={mockClick} />);
 
@@ -20,7 +20,6 @@ describe('<Button />', () => {
 
     expect(mockClick).toHaveBeenCalled();
   });
-
   it('should be disabled if the disabled prop is true', () => {
     render(<Button text="Button" type="blurple" onClick={mockClick} disabled />);
 
