@@ -10,7 +10,7 @@ describe('<Tooltip />', () => {
     render(
       <Tooltip text="Tooltip">
         <p>Text</p>
-      </Tooltip>,
+      </Tooltip>
     );
 
     userEvent.hover(screen.getByText(/text/i));
@@ -21,7 +21,7 @@ describe('<Tooltip />', () => {
     render(
       <Tooltip text="Tooltip">
         <p>Text</p>
-      </Tooltip>,
+      </Tooltip>
     );
 
     userEvent.hover(screen.getByText(/text/i));
