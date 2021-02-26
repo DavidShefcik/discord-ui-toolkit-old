@@ -11,23 +11,23 @@ describe('<Button />', () => {
   it('should render', () => {
     render(<Button text="Button" type="blurple" onClick={mockClick} />);
 
-    expect(screen.getByRole('button', { name: /Button/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /button/i })).toBeInTheDocument();
   });
   it('should fire the mockClick function on click', () => {
     render(<Button text="Button" type="blurple" onClick={mockClick} />);
 
-    userEvent.click(screen.getByRole('button', { name: /Button/i }));
+    userEvent.click(screen.getByRole('button', { name: /button/i }));
 
     expect(mockClick).toHaveBeenCalled();
   });
   it('should be disabled if the disabled prop is true', () => {
     render(<Button text="Button" type="blurple" onClick={mockClick} disabled />);
 
-    expect(screen.getByRole('button', { name: /Button/i })).toBeDisabled();
+    expect(screen.getByRole('button', { name: /button/i })).toBeDisabled();
   });
   it('should be disabled if the loading prop is true', () => {
     render(<Button text="Button" type="blurple" onClick={mockClick} loading />);
 
-    expect(screen.getByRole('button', { name: /Button/i })).toBeDisabled();
+    expect(screen.getByRole('button')).toBeDisabled();
   });
 });

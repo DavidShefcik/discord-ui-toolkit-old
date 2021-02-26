@@ -149,7 +149,6 @@ export default function Button({
   }
   return (
     <ReakitButton
-      title={text}
       onClick={onClick}
       disabled={disabled || loading}
       className={css([styles.buttonBase, buttonType])}

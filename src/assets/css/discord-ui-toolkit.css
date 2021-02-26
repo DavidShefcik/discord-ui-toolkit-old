@@ -24,6 +24,8 @@
   --green-dark: #3ca374;
   --red: #f04747;
   --red-dark: #d84040;
+  --dark-not-black: #2c2f33;
+  --not-quite-black: #23272A;
 }
 .discord-dark {
   --header-primary: #fff;
