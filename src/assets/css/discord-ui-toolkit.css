@@ -82,6 +82,8 @@
   --deprecated-text-input-border-hover: #040405;
   --deprecated-text-input-border-disabled: #202225;
   --deprecated-text-input-prefix: #dcddde;
+  --checkbox-border: #72767d;
+  --checkbox-hover: #3b3d44;
 }
 .discord-light {
   --header-primary: #060607;
@@ -138,4 +140,6 @@
   --deprecated-text-input-border-hover: #b9bbbe;
   --deprecated-text-input-border-disabled: #dcddde;
   --deprecated-text-input-prefix: #b9bbbe;
+  --checkbox-border: #b9bbbe;
+  --checkbox-hover: #f4f5f6;
 }
