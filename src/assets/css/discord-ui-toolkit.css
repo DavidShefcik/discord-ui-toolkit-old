@@ -13,7 +13,7 @@
 .discord-container {
   width: 100%;
   height: 100%;
-  font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Arial;
 }
 .discord-base {
   --blurple: #7289da;

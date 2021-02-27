@@ -1,9 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { StyleSheet, css } from 'aphrodite';
-import {
-  Divider, DividerProps, ThemeProvider, ThemeProviderProps,
-} from '../../src/components';
+import { Divider, DividerProps, ThemeProvider, ThemeProviderProps } from '../../src/components';
 
 const styles = StyleSheet.create({
   container: {

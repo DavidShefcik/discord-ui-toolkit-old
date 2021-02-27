@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { Checkbox as ReakitCheckBox, useCheckboxState } from 'reakit/Checkbox';
 import { StyleSheet, css } from 'aphrodite';
 
