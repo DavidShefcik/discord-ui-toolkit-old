@@ -10,8 +10,6 @@ type SwitchProps = {
   onChange?(event: ChangeEvent<HTMLInputElement>): void;
 };
 
-// TODO: Utilize Discord font
-
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
@@ -32,6 +30,7 @@ const styles = StyleSheet.create({
     display: 'block',
     overflow: 'hidden',
     color: 'var(--header-primary)',
+    fontFamily: 'discord-normal',
     lineHeight: '24px',
     fontSize: '16px',
     fontWeight: 500,
@@ -40,6 +39,7 @@ const styles = StyleSheet.create({
   bottomLabelText: {
     fontSize: '14px',
     fontWeight: 400,
+    fontFamily: 'discord-normal',
     color: 'var(--header-secondary)',
     marginTop: '8px',
     marginBottom: 0,

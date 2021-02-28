@@ -31,7 +31,7 @@ const baseNormalStyle: CSSProperties = {
 };
 const styles = StyleSheet.create({
   buttonBase: {
-    fontFamily: 'Arial',
+    fontFamily: 'discord-normal',
     transition: 'background-color .17s ease,color .17s ease',
     border: 'none',
     borderRadius: '3px',
