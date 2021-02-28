@@ -2,6 +2,7 @@
 import Button, { ButtonProps, ButtonTypes } from './inputs/Button';
 import CheckBox, { CheckBoxProps } from './inputs/CheckBox';
 import Switch, { SwitchProps } from './inputs/Switch';
+import Radio, { RadioProps, RadioItem } from './inputs/Radio';
 
 // Layout
 import ThemeProvider, { ThemeProviderProps } from './layout/ThemeProvider';
@@ -12,6 +13,7 @@ import Divider, { DividerProps } from './layout/Divider';
 import Constants from './Constants';
 
 export {
+  // Inputs
   Button,
   ButtonProps,
   ButtonTypes,
@@ -19,6 +21,10 @@ export {
   CheckBoxProps,
   Switch,
   SwitchProps,
+  Radio,
+  RadioProps,
+  RadioItem,
+  // Layout
   ThemeProvider,
   ThemeProviderProps,
   Tooltip,
@@ -26,5 +32,6 @@ export {
   TooltipDirection,
   Divider,
   DividerProps,
+  // Constants
   Constants,
 };

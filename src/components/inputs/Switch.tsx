@@ -10,6 +10,8 @@ type SwitchProps = {
   onChange?(event: ChangeEvent<HTMLInputElement>): void;
 };
 
+// TODO: Utilize Discord font
+
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
