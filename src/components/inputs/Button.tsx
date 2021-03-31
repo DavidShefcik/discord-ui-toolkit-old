@@ -3,7 +3,7 @@ import { StyleSheet, css, CSSProperties } from 'aphrodite';
 import { Button as ReakitButton } from 'reakit/Button';
 import { PulseLoader } from 'react-spinners';
 
-type ButtonTypes = 'blurple' | 'greyple' | 'green' | 'red_filled' | 'red_empty' | 'only_text';
+type ButtonTypes = 'blurple' | 'greyple' | 'green' | 'red_filled' | 'red_empty' | 'white_empty' | 'only_text';
 type ButtonProps = {
   text: string;
   onClick(event: MouseEvent<HTMLButtonElement>): void;
@@ -113,6 +113,16 @@ const styles = StyleSheet.create({
       color: 'var(--red-dark)',
     },
   },
+  whiteEmpty: {
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: 'white',
+    color: 'white',
+    backgroundColor: 'transparent',
+    ':active': {
+      backgroundColor: 'hsla(0, 0%, 100%, 0.1)',
+    },
+  },
   onlyText: {
     ...baseNormalStyle,
     backgroundColor: 'transparent',
@@ -150,6 +160,8 @@ export default function Button({
     buttonType = styles.redFilled;
   } else if (type === 'red_empty') {
     buttonType = styles.redEmpty;
+  } else if (type === 'white_empty') {
+    buttonType = styles.whiteEmpty;
   } else if (type === 'only_text') {
     buttonType = styles.onlyText;
   }

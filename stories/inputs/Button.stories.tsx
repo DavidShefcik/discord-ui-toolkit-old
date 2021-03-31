@@ -18,7 +18,15 @@ export default {
       description: 'The button type.',
       control: {
         type: 'inline-radio',
-        options: ['blurple', 'greyple', 'green', 'red_filled', 'red_empty', 'only_text'] as ButtonTypes[],
+        options: [
+          'blurple',
+          'greyple',
+          'green',
+          'red_filled',
+          'red_empty',
+          'white_empty',
+          'only_text',
+        ] as ButtonTypes[],
       },
     },
     disabled: {
