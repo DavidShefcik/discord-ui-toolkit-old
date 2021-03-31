@@ -84,6 +84,11 @@
   --deprecated-text-input-prefix: #dcddde;
   --checkbox-border: #72767d;
   --checkbox-hover: #3b3d44;
+  --select-background: #313339;
+  --select-border: #292a2e;
+  --select-border-hover: #141517;
+  --select-chevron: #b9bbbe;
+  --select-item-hover: #26272b;
 }
 .discord-light {
   --header-primary: #060607;
@@ -142,4 +147,10 @@
   --deprecated-text-input-prefix: #b9bbbe;
   --checkbox-border: #b9bbbe;
   --checkbox-hover: #f4f5f6;
+  --select-background: #fcfcfc;
+  --select-border: #c8c9cc;
+  --select-border-hover: #c8c9cc;
+  --select-chevron: #4f5660;
+  --select-chevron-hover: #2e3338;
+  --select-item-hover: #c2c2c4;
 }

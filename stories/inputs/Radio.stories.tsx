@@ -1,8 +1,6 @@
-import React, { FormEvent, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import {
-  Radio, ThemeProvider, ThemeProviderProps, RadioProps, RadioItem,
-} from '../../src/components';
+import { Radio, ThemeProvider, ThemeProviderProps, RadioProps, RadioItem } from '../../src/components';
 
 export default {
   component: Radio,

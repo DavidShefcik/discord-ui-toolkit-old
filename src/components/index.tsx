@@ -3,6 +3,7 @@ import Button, { ButtonProps, ButtonTypes } from './inputs/Button';
 import CheckBox, { CheckBoxProps } from './inputs/CheckBox';
 import Switch, { SwitchProps } from './inputs/Switch';
 import Radio, { RadioProps, RadioItem } from './inputs/Radio';
+import Select, { SelectItemProps, SelectProps } from './inputs/Select';
 
 // Layout
 import ThemeProvider, { ThemeProviderProps } from './layout/ThemeProvider';
@@ -24,6 +25,9 @@ export {
   Radio,
   RadioProps,
   RadioItem,
+  Select,
+  SelectProps,
+  SelectItemProps,
   // Layout
   ThemeProvider,
   ThemeProviderProps,

@@ -43,6 +43,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    // Disable text highlight select
+    '-webkit-touch-callout': 'none',
+    '-webkit-user-select': 'none',
+    '-moz-user-select': 'none',
+    '-ms-user-select': 'none',
+    'user-select': 'none',
     ':disabled': {
       cursor: 'not-allowed',
       opacity: 0.5,

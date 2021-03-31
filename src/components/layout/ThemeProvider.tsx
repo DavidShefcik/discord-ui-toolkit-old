@@ -1,4 +1,4 @@
-import React, { ReactChild, useState } from 'react';
+import React, { ReactChild, useState, useEffect } from 'react';
 
 import ThemeContext from '../internal/ThemeContext';
 
@@ -11,6 +11,10 @@ type ThemeProviderProps = {
 
 export default function ThemeProvider({ children, theme = 'dark' }: ThemeProviderProps) {
   const [globalTheme, setGlobalTheme] = useState<Theme>(theme);
+
+  useEffect(() => {
+    setGlobalTheme(theme);
+  }, [theme]);
 
   return (
     <ThemeContext.Provider

@@ -6,7 +6,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { Tooltip } from '../src/components';
 
 describe('<Tooltip />', () => {
-  it('render', () => {
+  it('should render', () => {
     render(
       <Tooltip text="Tooltip">
         <p>Text</p>

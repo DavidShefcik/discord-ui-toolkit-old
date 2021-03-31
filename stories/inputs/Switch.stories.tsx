@@ -1,8 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import { Story, Meta } from '@storybook/react';
-import {
-  Switch, SwitchProps, ThemeProvider, ThemeProviderProps,
-} from '../../src/components';
+import { Switch, SwitchProps, ThemeProvider, ThemeProviderProps } from '../../src/components';
 
 export default {
   component: Switch,

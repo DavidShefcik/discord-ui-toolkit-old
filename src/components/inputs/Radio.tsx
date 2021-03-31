@@ -56,6 +56,12 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     margin: 0,
     fontFamily: 'discord-bold',
+    // Disable text highlight select
+    '-webkit-touch-callout': 'none',
+    '-webkit-user-select': 'none',
+    '-moz-user-select': 'none',
+    '-ms-user-select': 'none',
+    'user-select': 'none',
   },
   titleBottomMargin: {
     marginBottom: '4px',
@@ -65,6 +71,12 @@ const styles = StyleSheet.create({
     lineHeight: '18px',
     margin: 0,
     fontFamily: 'discord-normal',
+    // Disable text highlight select
+    '-webkit-touch-callout': 'none',
+    '-webkit-user-select': 'none',
+    '-moz-user-select': 'none',
+    '-ms-user-select': 'none',
+    'user-select': 'none',
   },
   radioContainer: {
     width: '24px',
@@ -75,19 +87,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Radio({
-  items, onChange, value = null, containerWidth,
-}: RadioProps) {
+export default function Radio({ items, onChange, value = null, containerWidth }: RadioProps) {
   return (
     <div style={{ width: containerWidth, display: 'inline-block' }}>
-      <div
-        className={css(styles.container)}
-        role="radiogroup"
-      >
+      <div className={css(styles.container)} role="radiogroup">
         {items.map((item) => {
-          const {
-            id, title, description, borderLeftColor,
-          } = item;
+          const { id, title, description, borderLeftColor } = item;
 
           const titleVisible = title && title.length > 0;
           const descriptionVisible = description && description.length > 0;
@@ -124,11 +129,7 @@ export default function Radio({
               </div>
               <div className={css(styles.textContainer)}>
                 {titleVisible && (
-                  <p
-                    className={css([styles.title, descriptionVisible && styles.titleBottomMargin])}
-                  >
-                    {title}
-                  </p>
+                  <p className={css([styles.title, descriptionVisible && styles.titleBottomMargin])}>{title}</p>
                 )}
                 {descriptionVisible && <p className={css(styles.description)}>{description}</p>}
               </div>

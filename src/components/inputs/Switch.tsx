@@ -35,6 +35,12 @@ const styles = StyleSheet.create({
     fontSize: '16px',
     fontWeight: 500,
     margin: 0,
+    // Disable text highlight select
+    '-webkit-touch-callout': 'none',
+    '-webkit-user-select': 'none',
+    '-moz-user-select': 'none',
+    '-ms-user-select': 'none',
+    'user-select': 'none',
   },
   bottomLabelText: {
     fontSize: '14px',
@@ -43,6 +49,12 @@ const styles = StyleSheet.create({
     color: 'var(--header-secondary)',
     marginTop: '8px',
     marginBottom: 0,
+    // Disable text highlight select
+    '-webkit-touch-callout': 'none',
+    '-webkit-user-select': 'none',
+    '-moz-user-select': 'none',
+    '-ms-user-select': 'none',
+    'user-select': 'none',
   },
   baseCheckbox: {
     borderRadius: '14px',

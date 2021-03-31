@@ -1,12 +1,5 @@
 import React, { ReactChild } from 'react';
-import {
-  useTooltipState,
-  Tooltip as ReakitTooltip,
-  TooltipActions,
-  TooltipReference,
-  TooltipState,
-  TooltipArrow,
-} from 'reakit/Tooltip';
+import { useTooltipState, Tooltip as ReakitTooltip, TooltipReference, TooltipArrow } from 'reakit/Tooltip';
 import { css, StyleSheet } from 'aphrodite';
 
 type TooltipDirection =
@@ -44,7 +37,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const transformMap = {
+const transformMap: {
+  top: string;
+  right: string;
+  bottom: string;
+  left: string;
+  [index: string]: string;
+} = {
   top: 'rotateZ(180deg)',
   right: 'rotateZ(-90deg)',
   bottom: 'rotateZ(360deg)',
