@@ -9,6 +9,7 @@ import Select, { SelectItemProps, SelectProps } from './inputs/Select';
 import ThemeProvider, { ThemeProviderProps } from './layout/ThemeProvider';
 import Tooltip, { TooltipProps, TooltipDirection } from './layout/Tooltip';
 import Divider, { DividerProps } from './layout/Divider';
+import Emoji, { EmojiProps } from './layout/Emoji';
 
 // Constants
 import Constants from './Constants';
@@ -36,6 +37,8 @@ export {
   TooltipDirection,
   Divider,
   DividerProps,
+  Emoji,
+  EmojiProps,
   // Constants
   Constants,
 };
