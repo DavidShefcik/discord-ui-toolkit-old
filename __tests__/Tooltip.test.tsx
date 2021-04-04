@@ -1,7 +1,6 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom/extend-expect';
 
 import { Tooltip } from '../src/components';
 
@@ -10,7 +9,7 @@ describe('<Tooltip />', () => {
     render(
       <Tooltip text="Tooltip">
         <p>Text</p>
-      </Tooltip>
+      </Tooltip>,
     );
 
     userEvent.hover(screen.getByText(/text/i));
@@ -21,7 +20,7 @@ describe('<Tooltip />', () => {
     render(
       <Tooltip text="Tooltip">
         <p>Text</p>
-      </Tooltip>
+      </Tooltip>,
     );
 
     userEvent.hover(screen.getByText(/text/i));

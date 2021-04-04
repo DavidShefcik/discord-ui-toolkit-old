@@ -2,7 +2,6 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom/extend-expect';
 
 import { Select, SelectItemProps } from '../src/components';
 
@@ -69,7 +68,7 @@ describe('<Select />', () => {
   it('should change value on click', () => {
     let selectedItem = null;
     render(
-      <Select items={items} value={selectedItem} onChange={(value: string | number | null) => (selectedItem = value)} />
+      <Select items={items} value={selectedItem} onChange={(value: string | number | null) => (selectedItem = value)} />,
     );
     expect(selectedItem).toBeNull();
     userEvent.click(screen.getByText(/first item/i));
@@ -100,7 +99,7 @@ describe('<Select />', () => {
         onChange={jest.fn()}
         unselectedLabel="Unselected Label"
         unselectedAsOption
-      />
+      />,
     );
 
     expect(screen.getByText(/first item/i)).toBeInTheDocument();
