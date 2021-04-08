@@ -10,6 +10,7 @@ import ThemeProvider, { ThemeProviderProps } from './layout/ThemeProvider';
 import Tooltip, { TooltipProps, TooltipDirection } from './layout/Tooltip';
 import Divider, { DividerProps } from './layout/Divider';
 import Emoji, { EmojiProps } from './layout/Emoji';
+import Icon, { IconProps } from './layout/Icon';
 
 // Constants
 import Constants from './Constants';
@@ -39,6 +40,8 @@ export {
   DividerProps,
   Emoji,
   EmojiProps,
+  Icon,
+  IconProps,
   // Constants
   Constants,
 };

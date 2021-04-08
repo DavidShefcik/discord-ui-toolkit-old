@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef, ReactChild } from 'react';
+import React, {
+  useState, useEffect, useRef, ReactChild,
+} from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import useOutsideClickAlerter from '../internal/hooks/useOutsideClickAlerter';
 
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     transition: 'border-color 0.15s ease 0s',
     boxSizing: 'border-box',
-    outline: '0',
+    outline: 0,
     // Disable text highlight select
     '-webkit-touch-callout': 'none',
     '-webkit-user-select': 'none',
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
     boxSizing: 'border-box',
     height: '40px',
     backgroundColor: 'transparent',
-    outline: '0',
+    outline: 0,
   },
   selectItemContent: {
     maxWidth: 'calc(100% - 8px)',
@@ -199,7 +201,9 @@ function Chevron() {
   );
 }
 
-function SelectItem({ id, label, heplerText, onClick }: SelectItemProps & InternalSelectItemProps) {
+function SelectItem({
+  id, label, heplerText, onClick,
+}: SelectItemProps & InternalSelectItemProps) {
   const helperTextVisible = heplerText && heplerText.length > 0;
 
   return (

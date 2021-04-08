@@ -2,20 +2,20 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Emoji } from '../src/components';
+import { Icon } from '../src/components';
 
-describe('<Emoji />', () => {
+describe('<Icon />', () => {
   const mockClick = jest.fn();
 
   it('should render', () => {
-    render(<Emoji emoji="😀" />);
+    render(<Icon icon="discord" />);
 
-    expect(screen.getByAltText(/😀/i)).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
   });
   it('should fire the mockClick function on click', () => {
-    render(<Emoji emoji="😀" onClick={mockClick} />);
+    render(<Icon icon="discord" onClick={mockClick} />);
 
-    userEvent.click(screen.getByAltText(/😀/i));
+    userEvent.click(screen.getByRole('button'));
 
     expect(mockClick).toHaveBeenCalled();
   });
