@@ -82,4 +82,4 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<IconProps> = (props) => <IconComponent {...props} />;
+export const Template: Story<IconProps> = (props) => <IconComponent {...props} onClick={(icon) => console.log(icon)} />;
