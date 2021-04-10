@@ -9,13 +9,7 @@ const icons: IconsListItem[] = [
   {
     name: 'discord',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 28 20"
-        color="currentColor"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 20" color="currentColor" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M20.6644 20C20.6644 20 19.8014 18.9762 19.0822 18.0714C22.2226 17.1905 23.4212 15.2381 23.4212 15.2381C22.4384 15.881 21.5034 16.3334 20.6644 16.6429C19.4658 17.1429 18.3151 17.4762 17.1884 17.6667C14.887 18.0953 12.7774 17.9762 10.9795 17.6429C9.61301 17.381 8.43836 17 7.45548 16.6191C6.90411 16.4048 6.30479 16.1429 5.70548 15.8096C5.63356 15.7619 5.56164 15.7381 5.48973 15.6905C5.44178 15.6667 5.41781 15.6429 5.39384 15.6191C4.96233 15.381 4.7226 15.2143 4.7226 15.2143C4.7226 15.2143 5.87329 17.1191 8.91781 18.0238C8.19863 18.9286 7.31164 20 7.31164 20C2.0137 19.8333 0 16.381 0 16.381C0 8.7144 3.45205 2.50017 3.45205 2.50017C6.90411 -0.07123 10.1884 0.000197861 10.1884 0.000197861L10.4281 0.285909C6.11301 1.52399 4.12329 3.40493 4.12329 3.40493C4.12329 3.40493 4.65068 3.11921 5.53767 2.71446C8.10274 1.59542 10.1404 1.2859 10.9795 1.21447C11.1233 1.19066 11.2432 1.16685 11.387 1.16685C12.8493 0.976379 14.5034 0.92876 16.2295 1.11923C18.5068 1.38114 20.9521 2.0478 23.4452 3.40493C23.4452 3.40493 21.5514 1.61923 17.476 0.381146L17.8116 0.000197861C17.8116 0.000197861 21.0959 -0.07123 24.5479 2.50017C24.5479 2.50017 28 8.7144 28 16.381C28 16.381 25.9623 19.8333 20.6644 20ZM9.51712 8.88106C8.15068 8.88106 7.07192 10.0715 7.07192 11.5239C7.07192 12.9763 8.17466 14.1667 9.51712 14.1667C10.8836 14.1667 11.9623 12.9763 11.9623 11.5239C11.9863 10.0715 10.8836 8.88106 9.51712 8.88106ZM18.2671 8.88106C16.9007 8.88106 15.8219 10.0715 15.8219 11.5239C15.8219 12.9763 16.9247 14.1667 18.2671 14.1667C19.6336 14.1667 20.7123 12.9763 20.7123 11.5239C20.7123 10.0715 19.6336 8.88106 18.2671 8.88106Z"
@@ -26,13 +20,7 @@ const icons: IconsListItem[] = [
   {
     name: 'folder',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        color="currentColor"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" color="currentColor" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M20 7H12L10.553 5.106C10.214 4.428 9.521 4 8.764 4H3C2.447 4 2 4.447 2 5V19C2 20.104 2.895 21 4 21H20C21.104 21 22 20.104 22 19V9C22 7.896 21.104 7 20 7Z"
@@ -43,13 +31,7 @@ const icons: IconsListItem[] = [
   {
     name: 'thin_plus',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        overflow="visible"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" overflow="visible" width="100%" height="100%">
         <foreignObject mask="url(#835a5794-6082-49c7-b546-a3abf2f96721)" x="0" y="0" width="24" height="24">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path
@@ -64,14 +46,7 @@ const icons: IconsListItem[] = [
   {
     name: 'thick_plus',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="0"
-        y="0"
-        viewBox="0 0 18 18"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 18 18" width="100%" height="100%">
         <polygon
           fillRule="nonzero"
           fill="currentColor"
@@ -83,12 +58,7 @@ const icons: IconsListItem[] = [
   {
     name: 'compass',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M12 10.9C11.39 10.9 10.9 11.39 10.9 12C10.9 12.61 11.39 13.1 12 13.1C12.61 13.1 13.1 12.61 13.1 12C13.1 11.39 12.61 10.9 12 10.9ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM14.19 14.19L6 18L9.81 9.81L18 6L14.19 14.19Z"
@@ -99,12 +69,7 @@ const icons: IconsListItem[] = [
   {
     name: 'download',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -117,12 +82,7 @@ const icons: IconsListItem[] = [
   {
     name: 'person_waving',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <g fill="none" fillRule="evenodd">
           <path
             fill="currentColor"
@@ -138,12 +98,7 @@ const icons: IconsListItem[] = [
   {
     name: 'nitro',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M2.98966977,9.35789159 C2.98966977,9.77582472 2.63442946,10.1240466 2.20807287,10.1240466 L1.78171628,10.1240466 C1.35535969,10.1240466 0.999948837,9.77582472 0.999948837,9.35789159 C0.999948837,8.93995846 1.35535969,8.59173658 1.78171628,8.59173658 L2.20807287,8.59173658 C2.63442946,8.59173658 2.98966977,8.93995846 2.98966977,9.35789159 Z M22.2467643,9.14892503 C24.0942527,12.9800344 22.3888264,17.5772989 18.3384388,19.3882867 C14.4302837,21.1297305 9.74036124,19.457998 7.9638186,15.6268886 C7.60857829,14.8607335 7.3954,14.0248673 7.32428372,13.189001 L5.76091938,13.189001 C5.33456279,13.189001 4.97932248,12.840612 4.97932248,12.4226788 C4.97932248,12.0047457 5.33456279,11.6565238 5.76091938,11.6565238 L8.03493488,11.6565238 C8.46129147,11.6565238 8.81653178,11.3083019 8.81653178,10.8903688 C8.81653178,10.4724357 8.46129147,10.1240466 8.03493488,10.1240466 L4.41090388,10.1240466 C3.98454729,10.1240466 3.62913643,9.77582472 3.62913643,9.35789159 C3.62913643,8.93995846 3.98454729,8.59173658 4.41090388,8.59173658 L9.45606667,8.59173658 C9.88242326,8.59173658 10.2376636,8.24334752 10.2376636,7.82541439 C10.2376636,7.40748126 9.88242326,7.05925937 9.45606667,7.05925937 L7.3954,7.05925937 C6.75586512,7.05925937 6.18727597,6.57161499 6.18727597,5.87517123 C6.18727597,5.24827153 6.68474884,4.69091591 7.3954,4.69091591 L15.4250589,4.69091591 C18.267493,4.8303384 20.9676946,6.43235968 22.2467643,9.14892503 Z M13.2662961,8.38056332 C11.0193969,9.3919615 10.0341721,11.9973566 11.065955,14.1998642 C12.097738,16.4023718 14.755645,17.3681317 17.0025442,16.3567335 C19.249614,15.3453354 20.2346682,12.7399402 19.2028853,10.5374326 C18.1711023,8.33492503 15.5131953,7.36916515 13.2662961,8.38056332 Z M16.8462589,9.84548582 L18.2673907,12.2138293 C18.338507,12.3530846 18.338507,12.4227958 18.2673907,12.5620512 L16.8462589,14.9303946 C16.7751426,15.0696499 16.6330806,15.0696499 16.5619643,15.0696499 L13.7906465,15.0696499 C13.6485845,15.0696499 13.5774682,14.9999387 13.5065225,14.9303946 L12.0852202,12.5620512 C12.0142744,12.4227958 12.0142744,12.3530846 12.0852202,12.2138293 L13.5065225,9.84548582 C13.5774682,9.7062305 13.7197008,9.7062305 13.7906465,9.7062305 L16.5619643,9.7062305 C16.7041969,9.63651925 16.7751426,9.7062305 16.8462589,9.84548582 Z"
@@ -154,12 +109,7 @@ const icons: IconsListItem[] = [
   {
     name: 'close',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"
@@ -170,14 +120,7 @@ const icons: IconsListItem[] = [
   {
     name: 'idle_status',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="14.5"
-        y="17"
-        viewBox="0 0 25 15"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="14.5" y="17" viewBox="0 0 25 15" width="100%" height="100%">
         <mask id="ada26ccd-2666-4b5f-ad61-d6ee140012d9">
           <rect x="7.5" y="5" width="10" height="10" rx="5" ry="5" fill="white" />
           <rect x="6.25" y="3.75" width="7.5" height="7.5" rx="3.75" ry="3.75" fill="black" />
@@ -196,14 +139,7 @@ const icons: IconsListItem[] = [
   {
     name: 'online_status',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="14.5"
-        y="17"
-        viewBox="0 0 25 15"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="14.5" y="17" viewBox="0 0 25 15" width="100%" height="100%">
         <mask id="a36b2ca0-7aee-4622-8a29-ffe97fbcfaff">
           <rect x="7.5" y="5" width="10" height="10" rx="5" ry="5" fill="white" />
         </mask>
@@ -233,14 +169,7 @@ const icons: IconsListItem[] = [
   {
     name: 'dnd_status',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="14.5"
-        y="17"
-        viewBox="0 0 25 15"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="14.5" y="17" viewBox="0 0 25 15" width="100%" height="100%">
         <mask id="a36b2ca0-7aee-4622-8a29-ffe97fbcfaff">
           <rect x="7.5" y="5" width="10" height="10" rx="5" ry="5" fill="white" />
           <rect x="8.75" y="8.75" width="7.5" height="2.5" rx="1.25" ry="1.25" fill="black" />
@@ -259,12 +188,7 @@ const icons: IconsListItem[] = [
   {
     name: 'muted',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path d="M6.7 11H5C5 12.19 5.34 13.3 5.9 14.28L7.13 13.05C6.86 12.43 6.7 11.74 6.7 11Z" fill="currentColor" />
         <path
           d="M9.01 11.085C9.015 11.1125 9.02 11.14 9.02 11.17L15 5.18V5C15 3.34 13.66 2 12 2C10.34 2 9 3.34 9 5V11C9 11.03 9.005 11.0575 9.01 11.085Z"
@@ -284,12 +208,7 @@ const icons: IconsListItem[] = [
   {
     name: 'unmuted',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -324,12 +243,7 @@ const icons: IconsListItem[] = [
   {
     name: 'undeafened',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <svg width="24" height="24" viewBox="0 0 24 24">
           <path
             d="M12 2.00305C6.486 2.00305 2 6.48805 2 12.0031V20.0031C2 21.1071 2.895 22.0031 4 22.0031H6C7.104 22.0031 8 21.1071 8 20.0031V17.0031C8 15.8991 7.104 15.0031 6 15.0031H4V12.0031C4 7.59105 7.589 4.00305 12 4.00305C16.411 4.00305 20 7.59105 20 12.0031V15.0031H18C16.896 15.0031 16 15.8991 16 17.0031V20.0031C16 21.1071 16.896 22.0031 18 22.0031H20C21.104 22.0031 22 21.1071 22 20.0031V12.0031C22 6.48805 17.514 2.00305 12 2.00305Z"
@@ -342,12 +256,7 @@ const icons: IconsListItem[] = [
   {
     name: 'settings',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -360,13 +269,7 @@ const icons: IconsListItem[] = [
   {
     name: 'text_bubble',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M4.79805 3C3.80445 3 2.99805 3.8055 2.99805 4.8V15.6C2.99805 16.5936 3.80445 17.4 4.79805 17.4H7.49805V21L11.098 17.4H19.198C20.1925 17.4 20.998 16.5936 20.998 15.6V4.8C20.998 3.8055 20.1925 3 19.198 3H4.79805Z"
@@ -377,14 +280,7 @@ const icons: IconsListItem[] = [
   {
     name: 'text_bubble_plus',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="0"
-        y="0"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -397,15 +293,7 @@ const icons: IconsListItem[] = [
   {
     name: 'inbox',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="0"
-        y="0"
-        viewBox="0 0 24 24"
-        fill="none"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24" fill="none" width="100%" height="100%">
         <path
           d="M19 3H4.99C3.88 3 3.01 3.89 3.01 5L3 19C3 20.1 3.88 21 4.99 21H19C20.1 21 21 20.1 21 19V5C21 3.89 20.1 3 19 3ZM19 15H15C15 16.66 13.65 18 12 18C10.35 18 9 16.66 9 15H4.99V5H19V15Z"
           fill="currentColor"
@@ -416,14 +304,7 @@ const icons: IconsListItem[] = [
   {
     name: 'help',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="0"
-        y="0"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M12 2C6.486 2 2 6.487 2 12C2 17.515 6.486 22 12 22C17.514 22 22 17.515 22 12C22 6.487 17.514 2 12 2ZM12 18.25C11.31 18.25 10.75 17.691 10.75 17C10.75 16.31 11.31 15.75 12 15.75C12.69 15.75 13.25 16.31 13.25 17C13.25 17.691 12.69 18.25 12 18.25ZM13 13.875V15H11V12H12C13.104 12 14 11.103 14 10C14 8.896 13.104 8 12 8C10.896 8 10 8.896 10 10H8C8 7.795 9.795 6 12 6C14.205 6 16 7.795 16 10C16 11.861 14.723 13.429 13 13.875Z"
@@ -434,12 +315,7 @@ const icons: IconsListItem[] = [
   {
     name: 'three_dots_vertical',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <g fill="none" fillRule="evenodd">
           <path d="M24 0v24H0V0z" />
           <path
@@ -453,12 +329,7 @@ const icons: IconsListItem[] = [
   {
     name: 'three_dots_horizontal',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -471,12 +342,7 @@ const icons: IconsListItem[] = [
   {
     name: 'badge',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 15.2"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15.2" width="100%" height="100%">
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -488,12 +354,7 @@ const icons: IconsListItem[] = [
   {
     name: 'boosting_empty',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 6 11"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 11" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M3 0.625244L0 3.62524V7.62524L3 10.6252L6 7.62524V3.62524L3 0.625244ZM5 7.24524L3 9.24524L1 7.24524V4.04524L3 2.04524L5 4.04524V7.24524Z"
@@ -504,12 +365,7 @@ const icons: IconsListItem[] = [
   {
     name: 'boosting_filled',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 8 12"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 12" width="100%" height="100%">
         <path d="M4 0L0 4V8L4 12L8 8V4L4 0ZM7 7.59L4 10.59L1 7.59V4.41L4 1.41L7 4.41V7.59Z" fill="currentColor" />
         <path d="M2 4.83V7.17L4 9.17L6 7.17V4.83L4 2.83L2 4.83Z" fill="currentColor" />
       </svg>
@@ -531,12 +387,7 @@ const icons: IconsListItem[] = [
   {
     name: 'person_add',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 16"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
         <path fill="currentColor" d="M14 2H16V3H14V5H13V3H11V2H13V0H14V2Z" />
         <path
           fill="currentColor"
@@ -552,12 +403,7 @@ const icons: IconsListItem[] = [
   {
     name: 'face_add',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -571,12 +417,7 @@ const icons: IconsListItem[] = [
   {
     name: 'speaker',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -651,15 +492,7 @@ const icons: IconsListItem[] = [
   {
     name: 'bell',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="0"
-        y="0"
-        viewBox="0 0 24 24"
-        fill="none"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24" fill="none" width="100%" height="100%">
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -672,14 +505,7 @@ const icons: IconsListItem[] = [
   {
     name: 'pin',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="0"
-        y="0"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M22 12L12.101 2.10101L10.686 3.51401L12.101 4.92901L7.15096 9.87801V9.88001L5.73596 8.46501L4.32196 9.88001L8.56496 14.122L2.90796 19.778L4.32196 21.192L9.97896 15.536L14.222 19.778L15.636 18.364L14.222 16.95L19.171 12H19.172L20.586 13.414L22 12Z"
@@ -690,14 +516,7 @@ const icons: IconsListItem[] = [
   {
     name: 'person_multiple',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="0"
-        y="0"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           fillRule="evenodd"
@@ -724,12 +543,7 @@ const icons: IconsListItem[] = [
   {
     name: 'search',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M21.707 20.293L16.314 14.9C17.403 13.504 18 11.799 18 10C18 7.863 17.167 5.854 15.656 4.344C14.146 2.832 12.137 2 10 2C7.863 2 5.854 2.832 4.344 4.344C2.833 5.854 2 7.863 2 10C2 12.137 2.833 14.146 4.344 15.656C5.854 17.168 7.863 18 10 18C11.799 18 13.504 17.404 14.9 16.314L20.293 21.706L21.707 20.293ZM10 16C8.397 16 6.891 15.376 5.758 14.243C4.624 13.11 4 11.603 4 10C4 8.398 4.624 6.891 5.758 5.758C6.891 4.624 8.397 4 10 4C11.603 4 13.109 4.624 14.242 5.758C15.376 6.891 16 8.398 16 10C16 11.603 15.376 13.11 14.242 14.243C13.109 15.376 11.603 16 10 16Z"
@@ -740,12 +554,7 @@ const icons: IconsListItem[] = [
   {
     name: 'checkmark',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 15.2"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15.2" width="100%" height="100%">
         <path d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z" fill="currentColor" />
       </svg>
     ),
@@ -753,12 +562,7 @@ const icons: IconsListItem[] = [
   {
     name: 'rich_status',
     icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 16"
-        width="100%"
-        height="100%"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100%" height="100%">
         <path
           fill="currentColor"
           d="M6,7 L2,7 L2,6 L6,6 L6,7 Z M8,5 L2,5 L2,4 L8,4 L8,5 Z M8,3 L2,3 L2,2 L8,2 L8,3 Z M8.88888889,0 L1.11111111,0 C0.494444444,0 0,0.494444444 0,1.11111111 L0,8.88888889 C0,9.50253861 0.497461389,10 1.11111111,10 L8.88888889,10 C9.50253861,10 10,9.50253861 10,8.88888889 L10,1.11111111 C10,0.494444444 9.5,0 8.88888889,0 Z"

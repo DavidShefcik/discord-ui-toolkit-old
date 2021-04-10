@@ -28,6 +28,8 @@
       {
         "controlComponents": ["ReakitCheckBox", "SwitchComponent"]
       }
-    ]
+    ],
+    "comma-dangle": "off",
+    "@typescript-eslint/comma-dangle": ["off"]
   }
 }

@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prettier-check": "prettier --check .",
-    "prettier-format": "prettier --write ."
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prettier:check": "prettier --config ./.prettierrc --check .",
+    "prettier:format": "prettier --write ."
   },
   "keywords": [],
   "author": "",

@@ -1,6 +1,4 @@
-import React, {
-  useState, useEffect, useRef, ReactChild,
-} from 'react';
+import React, { useState, useEffect, useRef, ReactChild } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import useOutsideClickAlerter from '../internal/hooks/useOutsideClickAlerter';
 
@@ -201,9 +199,7 @@ function Chevron() {
   );
 }
 
-function SelectItem({
-  id, label, heplerText, onClick,
-}: SelectItemProps & InternalSelectItemProps) {
+function SelectItem({ id, label, heplerText, onClick }: SelectItemProps & InternalSelectItemProps) {
   const helperTextVisible = heplerText && heplerText.length > 0;
 
   return (

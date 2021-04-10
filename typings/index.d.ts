@@ -29,7 +29,7 @@ declare type HoverableComponent = {
 };
 
 declare type Icon =
-  'discord'
+  | 'discord'
   | 'folder'
   | 'thin_plus'
   | 'thick_plus'

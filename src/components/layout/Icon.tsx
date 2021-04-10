@@ -19,7 +19,11 @@ const styles = StyleSheet.create({
 });
 
 export default function IconComponent({
-  icon, iconColor = '#ffffff', iconHoverColor = iconColor, size = 72, onClick,
+  icon,
+  iconColor = '#ffffff',
+  iconHoverColor = iconColor,
+  size = 72,
+  onClick,
 }: IconProps) {
   const [hovered, setHovered] = useState(false);
 
@@ -34,7 +38,10 @@ export default function IconComponent({
     <div
       className={css(styles.container)}
       style={{
-        color: (hovered && hoverable) ? iconHoverColor : iconColor, cursor: (hovered && hoverable) ? 'pointer' : 'default', width: `${size}px`, height: `${size}px`,
+        color: hovered && hoverable ? iconHoverColor : iconColor,
+        cursor: hovered && hoverable ? 'pointer' : 'default',
+        width: `${size}px`,
+        height: `${size}px`,
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
