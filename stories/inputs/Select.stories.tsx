@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Select, ThemeProvider, ThemeProviderProps, SelectProps, SelectItemProps } from '../../src/components';
+import {
+  Select,
+  ThemeProvider,
+  ThemeProviderProps,
+  SelectProps,
+  SelectItemProps,
+  Icon,
+  Emoji,
+} from '../../src/components';
 
 export default {
   component: Select,
@@ -66,10 +74,12 @@ export const Template: Story<SelectProps & ThemeProviderProps> = (props) => {
     {
       id: '0',
       label: 'First',
+      emoji: '😀',
     },
     {
       id: '1',
       label: 'Second',
+      icon: 'discord',
     },
     {
       id: '2',

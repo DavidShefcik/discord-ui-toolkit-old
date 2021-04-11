@@ -36,6 +36,8 @@
       {
         "code": 120
       }
-    ]
+    ],
+    "object-curly-newline": ["off"],
+    "no-nested-ternary": ["off"]
   }
 }

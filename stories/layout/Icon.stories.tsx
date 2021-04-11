@@ -1,50 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Icon as IconComponent, IconProps } from '../../src/components';
-
-const icons: Icon[] = [
-  'discord',
-  'folder',
-  'thin_plus',
-  'thick_plus',
-  'compass',
-  'download',
-  'person_waving',
-  'nitro',
-  'close',
-  'idle_status',
-  'online_status',
-  'offline_status',
-  'dnd_status',
-  'muted',
-  'unmuted',
-  'deafened',
-  'undeafened',
-  'settings',
-  'text_bubble',
-  'text_bubble_plus',
-  'inbox',
-  'help',
-  'three_dots_vertical',
-  'three_dots_horizontal',
-  'badge',
-  'boosting_empty',
-  'boosting_filled',
-  'down_chevron',
-  'hashtag',
-  'person_add',
-  'face_add',
-  'speaker',
-  'locked_speaker',
-  'locked_hashtag',
-  'warning_hashtag',
-  'bell',
-  'pin',
-  'person_multiple',
-  'search',
-  'checkmark',
-  'rich_status',
-];
+import { iconNames } from '../../src/components/internal/values/icons';
 
 export default {
   component: IconComponent,
@@ -55,7 +12,7 @@ export default {
       description: 'The name of the icon.',
       control: {
         type: 'inline-radio',
-        options: icons,
+        options: iconNames,
       },
     },
     iconColor: {

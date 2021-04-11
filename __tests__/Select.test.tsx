@@ -14,11 +14,17 @@ describe('<Select />', () => {
     {
       id: '1',
       label: 'Second Item',
+      icon: 'hashtag',
     },
     {
       id: '2',
       label: 'Third Item',
       heplerText: 'Helper Text',
+    },
+    {
+      id: '3',
+      label: 'Fourth Item',
+      emoji: '😀',
     },
   ];
 
@@ -106,5 +112,30 @@ describe('<Select />', () => {
     expect(screen.queryByText(/unselected label/i)).not.toBeInTheDocument();
     userEvent.click(screen.getByText(/first item/i));
     expect(screen.getByText(/unselected label/i)).toBeInTheDocument();
+  });
+  it('should throw an error if both an icon and emoji are on an item', () => {
+    const brokenItems: SelectItemProps[] = [
+      {
+        id: '0',
+        label: 'Item',
+        emoji: '😀',
+        icon: 'hashtag',
+      },
+    ];
+
+    // Prevent console from being flooded with the thrown error
+    jest.spyOn(console, 'error');
+    console.error.mockImplementation(() => {});
+
+    expect(() => {
+      render(<Select items={brokenItems} value={items[0]} onChange={jest.fn()} />);
+    }).toThrowError();
+
+    console.error.mockRestore();
+  });
+  it('should show an emoji if one is passed on the currently selected item', () => {
+    render(<Select items={items} value={items[3]} onChange={jest.fn()} />);
+
+    expect(screen.getByAltText(/😀/)).toBeInTheDocument();
   });
 });
