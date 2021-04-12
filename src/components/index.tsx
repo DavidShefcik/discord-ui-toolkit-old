@@ -4,6 +4,7 @@ import CheckBox, { CheckBoxProps } from './inputs/CheckBox';
 import Switch, { SwitchProps } from './inputs/Switch';
 import Radio, { RadioProps, RadioItem } from './inputs/Radio';
 import Select, { SelectItemProps, SelectProps } from './inputs/Select';
+import Slider, { SliderProps, SliderInterval } from './inputs/Slider';
 
 // Layout
 import ThemeProvider, { ThemeProviderProps } from './layout/ThemeProvider';
@@ -30,6 +31,9 @@ export {
   Select,
   SelectProps,
   SelectItemProps,
+  Slider,
+  SliderProps,
+  SliderInterval,
   // Layout
   ThemeProvider,
   ThemeProviderProps,

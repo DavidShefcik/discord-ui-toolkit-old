@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import {
-  Select,
-  ThemeProvider,
-  ThemeProviderProps,
-  SelectProps,
-  SelectItemProps,
-  Icon,
-  Emoji,
-} from '../../src/components';
+import { Select, ThemeProvider, ThemeProviderProps, SelectProps, SelectItemProps } from '../../src/components';
 
 export default {
   component: Select,
@@ -24,7 +16,7 @@ export default {
     },
     containerWidth: {
       defaultValue: '100%',
-      description: 'The width of the radio items container.',
+      description: 'The width of the select items container.',
       control: {
         type: 'text',
       },

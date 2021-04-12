@@ -46,8 +46,8 @@ export default function IconComponent({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       role="button"
-      onClick={() => onClick && onClick(icon)}
       tabIndex={0}
+      onClick={() => onClick && onClick(icon)}
       onKeyPress={() => {}}
     >
       {iconSvg}
