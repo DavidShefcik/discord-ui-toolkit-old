@@ -1,16 +1,20 @@
-import React, { useState, useEffect, ChangeEvent, DragEventHandler } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 type SliderInterval = {
   value: number;
-  label?: string;
+  label: string;
 };
 type SliderProps = {
   value: number;
-  values: SliderInterval[];
   onChange(value: number): void;
   containerWidth?: string;
   defaultValue?: number;
+  max?: number;
+  min?: number;
+  stickToMarkers?: boolean;
+  values?: SliderInterval[];
+  disabled?: boolean;
   units?: string;
 };
 
@@ -19,6 +23,9 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: '100%',
     height: '40px',
+  },
+  disabled: {
+    opacity: 0.6,
   },
   track: {
     position: 'absolute',
@@ -38,7 +45,7 @@ const styles = StyleSheet.create({
   },
   barFill: {
     backgroundColor: 'var(--blurple)',
-    height: '100%',
+    height: '40px',
   },
   grabber: {
     position: 'absolute',
@@ -51,8 +58,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     border: '1px solid #dcddde',
     boxShadow: '0 3px 1px 0 rgba(0, 0, 0, .05), 0 2px 2px 0 rgba(0, 0, 0, .1), 0 3px 3px 0 rgba(0, 0, 0, .05)',
-    cursor: 'ew-resize',
     outline: 0,
+  },
+  grabberNormal: {
+    cursor: 'ew-resize',
+  },
+  grabberDisabled: {
+    cursor: 'not-allowed',
   },
   mark: {
     position: 'absolute',
@@ -62,7 +74,6 @@ const styles = StyleSheet.create({
     width: '24px',
     marginLeft: '-12px',
     top: '-8px',
-    userFocus: 'none',
   },
   markLabel: {
     fontFamily: 'discord-bold',
@@ -71,6 +82,7 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     fontSize: '10px',
     marginBottom: '4px',
+    'user-select': 'none',
   },
   defaultMarkLabel: {
     color: 'var(--green)',
@@ -95,10 +107,16 @@ export default function Slider({
   onChange,
   containerWidth = '100%',
   defaultValue,
+  max,
+  min,
+  stickToMarkers = false,
+  disabled = false,
   units = '',
 }: SliderProps) {
-  const [grabbed, setGrabbed] = useState(false);
   const [filledWidth, setFilledWidth] = useState('0%');
+
+  const trackRef = useRef<HTMLDivElement>();
+  const grabberRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
     const nearestValue = findNearestValue(value, values);
@@ -110,13 +128,10 @@ export default function Slider({
     throw new Error('Value cannot be less than 0 or greater than 100.');
   }
 
-  const grabberDrag = (event) => {
-    event.preventDefault();
-  };
-
   return (
     <div style={{ display: 'inline-block', width: containerWidth }}>
-      <div className={css(styles.container)}>
+      <div className={css([styles.container, disabled && styles.disabled])}>
+        <input type="number" readOnly value={value} style={{ display: 'none' }} />
         <div className={css(styles.track)}>
           {values.map((val) => (
             <div key={val.value} className={css(styles.mark)} style={{ left: `${calcValueWidth(val.value)}%` }}>
@@ -131,8 +146,21 @@ export default function Slider({
         <div className={css(styles.bar)}>
           <div className={css(styles.barFill)} style={{ width: filledWidth }} />
         </div>
-        <div className={css(styles.track)}>
-          <div className={css(styles.grabber)} onDragStart={grabberDrag} draggable style={{ left: filledWidth }} />
+        <div className={css(styles.track)} ref={trackRef}>
+          <div
+            className={css([styles.grabber, disabled ? styles.grabberDisabled : styles.grabberNormal])}
+            ref={grabberRef}
+            style={{ left: filledWidth }}
+            role="slider"
+            tabIndex={0}
+            onKeyPress={() => {}}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={value}
+            aria-disabled={disabled}
+          >
+            <span />
+          </div>
         </div>
       </div>
     </div>

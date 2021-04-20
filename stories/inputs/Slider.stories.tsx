@@ -28,6 +28,34 @@ export default {
         type: 'number',
       },
     },
+    disabled: {
+      defaultValue: false,
+      description: 'Should the slider be disabled.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    max: {
+      defaultValue: 100,
+      description: 'The maximum value of the slider.',
+      control: {
+        type: 'number',
+      },
+    },
+    min: {
+      defaultValue: 0,
+      description: 'The minimum value of the slider.',
+      control: {
+        type: 'number',
+      },
+    },
+    stickToMarkers: {
+      defaultValue: true,
+      description: 'If the value should only be values specified in the markers.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 } as Meta;
 
