@@ -5,6 +5,7 @@ import Switch, { SwitchProps } from './inputs/Switch';
 import Radio, { RadioProps, RadioItem } from './inputs/Radio';
 import Select, { SelectItemProps, SelectProps } from './inputs/Select';
 import Slider, { SliderProps, SliderInterval } from './inputs/Slider';
+import TextInput, { TextInputProps } from './inputs/TextInput';
 
 // Layout
 import ThemeProvider, { ThemeProviderProps } from './layout/ThemeProvider';
@@ -34,6 +35,8 @@ export {
   Slider,
   SliderProps,
   SliderInterval,
+  TextInput,
+  TextInputProps,
   // Layout
   ThemeProvider,
   ThemeProviderProps,

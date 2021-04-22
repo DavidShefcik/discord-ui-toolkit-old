@@ -91,6 +91,7 @@
   --select-item-hover: #26272b;
   --slider-bar-background: #4f545c;
   --slider-label-color: #72767d;
+  --text-input-background: #323339;
 }
 .discord-light {
   --header-primary: #060607;
@@ -157,4 +158,5 @@
   --select-item-hover: #c2c2c4;
   --slider-bar-background: #dcddde;
   --slider-label-color: #b9bbbe;
+  --text-input-background: #fcfcfc;
 }
