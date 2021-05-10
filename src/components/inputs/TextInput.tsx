@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     outline: 0,
     borderWidth: '1px',
     borderStyle: 'solid',
-    transition: 'border-color 0.2s ease-in-out',
+    transition: 'border-color .2s ease-in-out',
   },
   disabled: {
     cursor: 'not-allowed',

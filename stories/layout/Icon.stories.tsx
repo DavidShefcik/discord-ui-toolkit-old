@@ -36,6 +36,13 @@ export default {
         type: 'number',
       },
     },
+    animated: {
+      defaultValue: false,
+      description: 'If the icon hover color change should be animated.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 } as Meta;
 

@@ -112,7 +112,7 @@ export const Template: Story<TextInputProps & ThemeProviderProps> = (props) => {
 
   return (
     <ThemeProvider theme={themeValue}>
-      <TextInput value={inputValue} onChange={(val: string) => setInputValue(val)} {...props} />
+      <TextInput value={inputValue} onChange={(val) => setInputValue(val)} {...props} />
     </ThemeProvider>
   );
 };

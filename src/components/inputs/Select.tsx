@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: '4px',
     height: '40px',
     position: 'relative',
-    transition: 'border-color 0.15s ease 0s',
+    transition: 'border-color .15s ease 0s',
     boxSizing: 'border-box',
     outline: 0,
     // Disable text highlight select

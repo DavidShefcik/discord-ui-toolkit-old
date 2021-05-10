@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: '40px',
     height: '24px',
-    transition: 'all ease 0.17s',
+    transition: 'all ease .17s',
   },
   enabled: {
     opacity: 1,

@@ -69,4 +69,7 @@ declare type Icon =
   | 'person_multiple'
   | 'search'
   | 'checkmark'
-  | 'rich_status';
+  | 'rich_status'
+  | 'gift'
+  | 'gif'
+  | 'attach';

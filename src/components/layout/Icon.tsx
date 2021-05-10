@@ -8,12 +8,12 @@ type IconProps = {
   iconColor?: string;
   iconHoverColor?: string;
   size?: number;
+  animated?: boolean;
   onClick?(icon?: Icon): void;
 };
 
 const styles = StyleSheet.create({
   container: {
-    transition: 'all .17s ease',
     outline: 0,
   },
 });
@@ -23,6 +23,7 @@ export default function IconComponent({
   iconColor = '#ffffff',
   iconHoverColor = iconColor,
   size = 72,
+  animated = true,
   onClick,
 }: IconProps) {
   const [hovered, setHovered] = useState(false);
@@ -42,6 +43,7 @@ export default function IconComponent({
         cursor: hovered && hoverable ? 'pointer' : 'default',
         width: `${size}px`,
         height: `${size}px`,
+        transition: animated && 'all .17s ease',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

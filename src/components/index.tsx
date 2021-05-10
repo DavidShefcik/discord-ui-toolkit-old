@@ -6,6 +6,7 @@ import Radio, { RadioProps, RadioItem } from './inputs/Radio';
 import Select, { SelectItemProps, SelectProps } from './inputs/Select';
 import Slider, { SliderProps, SliderInterval } from './inputs/Slider';
 import TextInput, { TextInputProps } from './inputs/TextInput';
+import MessageInput, { MessageInputProps, MessageInputSideItemProps } from './inputs/MessageInput';
 
 // Layout
 import ThemeProvider, { ThemeProviderProps } from './layout/ThemeProvider';
@@ -13,6 +14,7 @@ import Tooltip, { TooltipProps, TooltipDirection } from './layout/Tooltip';
 import Divider, { DividerProps } from './layout/Divider';
 import Emoji, { EmojiProps } from './layout/Emoji';
 import Icon, { IconProps } from './layout/Icon';
+import icons, { iconNames, IconsListItem } from './internal/values/icons';
 
 // Constants
 import Constants from './Constants';
@@ -37,6 +39,9 @@ export {
   SliderInterval,
   TextInput,
   TextInputProps,
+  MessageInput,
+  MessageInputProps,
+  MessageInputSideItemProps,
   // Layout
   ThemeProvider,
   ThemeProviderProps,
@@ -49,6 +54,9 @@ export {
   EmojiProps,
   Icon,
   IconProps,
+  icons,
+  iconNames,
+  IconsListItem,
   // Constants
   Constants,
 };
