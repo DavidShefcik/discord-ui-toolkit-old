@@ -49,6 +49,7 @@ const iconNames: Icon[] = [
   'rich_status',
   'gift',
   'gif',
+  'attach',
 ];
 
 const icons: IconsListItem[] = [

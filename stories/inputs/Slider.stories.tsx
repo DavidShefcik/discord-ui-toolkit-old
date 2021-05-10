@@ -118,6 +118,7 @@ export const Template: Story<SliderProps & ThemeProviderProps> = (props) => {
   useEffect(() => {
     setThemeValue(theme);
   }, [theme]);
+
   useEffect(() => {
     setSliderValue(value);
   }, [value]);
