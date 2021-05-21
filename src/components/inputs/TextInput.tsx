@@ -14,23 +14,37 @@ type TextInputProps = {
   fontSize?: string;
   autoComplete?: boolean;
   spellcheck?: boolean;
+  prefix?: string;
 };
 
 const styles = StyleSheet.create({
-  input: {
-    width: '100%',
-    height: '100%',
-    lineHeight: '100%',
-    padding: '10px',
-    boxSizing: 'border-box',
-    borderRadius: '3px',
+  inputBase: {
     backgroundColor: 'var(--text-input-background)',
     color: 'var(--text-normal)',
+    fontFamily: 'discord-normal',
     fontWeight: 400,
     outline: 0,
+  },
+  inputContainer: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    borderRadius: '3px',
     borderWidth: '1px',
     borderStyle: 'solid',
     transition: 'border-color .2s ease-in-out',
+    boxSizing: 'border-box',
+    padding: '0 10px',
+    overflow: 'hidden',
+  },
+  input: {
+    border: 0,
+    height: '100%',
+    flex: 1,
+    padding: '0',
   },
   disabled: {
     cursor: 'not-allowed',
@@ -65,25 +79,33 @@ export default function TextInput({
   fontSize = '16px',
   autoComplete = false,
   spellcheck = false,
+  prefix,
 }: TextInputProps) {
   return (
     <div style={{ display: 'inline-block', width, height }}>
-      <input
+      <div
         className={css([
-          styles.input,
+          styles.inputBase,
+          styles.inputContainer,
           disabled && styles.disabled,
           borderColor === 'dark' ? [styles.borderDark, !disabled && styles.borderDarkPsuedos] : styles.borderRed,
         ])}
         style={{ fontSize }}
-        type={htmlType}
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        placeholder={placeholder}
-        maxLength={maxLength}
-        disabled={disabled}
-        autoComplete={autoComplete ? 'on' : 'off'}
-        spellCheck={spellcheck}
-      />
+      >
+        {prefix && prefix.length > 0 && <span>{prefix}</span>}
+        <input
+          className={css([styles.inputBase, styles.input])}
+          type={htmlType}
+          value={value}
+          onChange={(event) => onChange(event.target.value.replace(new RegExp(`^${prefix}$`), ''))}
+          placeholder={placeholder}
+          maxLength={maxLength}
+          disabled={disabled}
+          autoComplete={autoComplete ? 'on' : 'off'}
+          spellCheck={spellcheck}
+          style={{ fontSize }}
+        />
+      </div>
     </div>
   );
 }

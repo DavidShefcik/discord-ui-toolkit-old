@@ -7,6 +7,7 @@ import Select, { SelectItemProps, SelectProps } from './inputs/Select';
 import Slider, { SliderProps, SliderInterval } from './inputs/Slider';
 import TextInput, { TextInputProps } from './inputs/TextInput';
 import MessageInput, { MessageInputProps, MessageInputSideItemProps } from './inputs/MessageInput';
+import ColorPicker, { ColorPickerProps } from './inputs/ColorPicker';
 
 // Layout
 import ThemeProvider, { ThemeProviderProps } from './layout/ThemeProvider';
@@ -42,6 +43,8 @@ export {
   MessageInput,
   MessageInputProps,
   MessageInputSideItemProps,
+  ColorPicker,
+  ColorPickerProps,
   // Layout
   ThemeProvider,
   ThemeProviderProps,

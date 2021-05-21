@@ -49,4 +49,27 @@ describe('<TextInput />', () => {
 
     expect(screen.getByPlaceholderText(/placeholder/i)).toHaveValue('');
   });
+  it('should show the prefix if one is set', () => {
+    render(<TextInput value="Value" prefix="Prefix" onChange={mockChange} placeholder="Placeholder" />);
+
+    expect(screen.getByText(/prefix/i)).toBeInTheDocument();
+  });
+  it('should remove the first letter if it is the same as the prefix', () => {
+    let value = '';
+    const lockMockChange = jest.fn().mockImplementation((val: string) => {
+      value += val;
+    });
+
+    const { rerender } = render(
+      <TextInput value={value} onChange={lockMockChange} prefix="#" placeholder="Placeholder" />
+    );
+
+    expect(screen.getByPlaceholderText(/placeholder/i)).toHaveValue('');
+    expect(screen.getByText(/#/)).toBeInTheDocument();
+
+    userEvent.type(screen.getByPlaceholderText(/placeholder/i), '#value');
+    rerender(<TextInput value={value} onChange={mockChange} prefix="#" placeholder="Placeholder" />);
+
+    expect(screen.getByPlaceholderText(/placeholder/i)).toHaveValue('value');
+  });
 });

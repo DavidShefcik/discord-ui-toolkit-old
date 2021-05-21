@@ -93,6 +93,13 @@ export default {
         type: 'boolean',
       },
     },
+    prefix: {
+      defaultValue: '',
+      description: 'Text to prefix the text input value with.',
+      control: {
+        type: 'text',
+      },
+    },
   },
 } as Meta;
 
@@ -112,7 +119,7 @@ export const Template: Story<TextInputProps & ThemeProviderProps> = (props) => {
 
   return (
     <ThemeProvider theme={themeValue}>
-      <TextInput value={inputValue} onChange={(val) => setInputValue(val)} {...props} />
+      <TextInput {...props} value={inputValue} onChange={(val) => setInputValue(val)} />
     </ThemeProvider>
   );
 };
