@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Radio, RadioItem } from '../src/components';
+import { Radio, RadioItem } from 'discord-ui-toolkit';
 
 describe('<Radio />', () => {
   let currentSelectedId: string | number = 0;

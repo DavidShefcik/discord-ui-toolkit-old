@@ -2,7 +2,7 @@
  * Hook is from: https://codesandbox.io/s/outside-alerter-hooks-lmr2y?module=/src/OutsideAlerter.js&file=/src/OutsideAlerter.js:421-427
  */
 
-import React, { useEffect, RefObject } from 'react';
+import { useEffect, RefObject } from 'react';
 
 type Props = {
   ref: RefObject<HTMLDivElement>;

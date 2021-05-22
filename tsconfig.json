@@ -9,7 +9,14 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "*": ["node_modules/*"]
+      "*": ["node_modules/*"],
+      "discord-ui-toolkit": ["./src/index"],
+      "@inputs/*": ["./src/components/inputs/*"],
+      "@internal/*": ["./src/components/internal/*"],
+      "@layout/*": ["./src/components/layout/*"],
+      "@lists/*": ["./src/components/lists/*"],
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"]
     },
     "jsx": "react",
     "typeRoots": ["./typings", "./node_modules/@types"]

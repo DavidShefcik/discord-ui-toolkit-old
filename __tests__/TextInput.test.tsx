@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { TextInput } from '../src/components';
+import { TextInput } from 'discord-ui-toolkit';
 
 describe('<TextInput />', () => {
   const mockChange = jest.fn();

@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { MessageInput, MessageInputSideItemProps } from '../src/components';
+import { MessageInput } from 'discord-ui-toolkit';
 
 describe('<MessageInput />', () => {
   it('should render', () => {

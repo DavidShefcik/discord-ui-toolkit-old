@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Icon } from '../src/components';
+import { Icon } from 'discord-ui-toolkit';
 
 describe('<Icon />', () => {
   const mockClick = jest.fn();

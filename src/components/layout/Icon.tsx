@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-import iconsList from '../internal/values/icons';
+import iconsList from '@internal/values/icons';
 
 type IconProps = {
   icon: Icon;

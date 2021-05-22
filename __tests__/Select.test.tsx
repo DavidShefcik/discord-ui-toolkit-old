@@ -3,7 +3,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Select, SelectItemProps } from '../src/components';
+import { Select, SelectItemProps } from 'discord-ui-toolkit';
 
 describe('<Select />', () => {
   const items: SelectItemProps[] = [

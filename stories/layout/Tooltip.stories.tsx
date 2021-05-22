@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { StyleSheet, css } from 'aphrodite';
-import { Tooltip, TooltipProps, TooltipDirection, ThemeProvider } from '../../src/components';
+import { Tooltip, TooltipProps, TooltipDirection, ThemeProvider } from 'discord-ui-toolkit';
 
 const styles = StyleSheet.create({
   container: {

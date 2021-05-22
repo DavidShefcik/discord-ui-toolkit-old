@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Tooltip } from '../src/components';
+import { Tooltip } from 'discord-ui-toolkit';
 
 describe('<Tooltip />', () => {
   it('should render', () => {

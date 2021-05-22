@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import IconComponent from '../layout/Icon';
+import IconComponent from '@layout/Icon';
 
 type MessageInputSideItemProps = {
   id: string;

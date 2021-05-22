@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { CheckBox } from '../src/components';
+import { CheckBox } from 'discord-ui-toolkit';
 
 describe('<CheckBox />', () => {
   it('should render', () => {

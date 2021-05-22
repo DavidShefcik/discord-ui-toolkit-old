@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Emoji, EmojiProps } from '../../src/components';
+import { Emoji, EmojiProps } from 'discord-ui-toolkit';
 
 export default {
   component: Emoji,

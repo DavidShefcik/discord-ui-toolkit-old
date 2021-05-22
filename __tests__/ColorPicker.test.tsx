@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
 
-import { ColorPicker } from '../src/components';
+import { ColorPicker } from 'discord-ui-toolkit';
 
 describe('<ColorPicker />', () => {
   it('should render', () => {

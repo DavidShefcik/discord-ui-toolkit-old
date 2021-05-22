@@ -6,7 +6,7 @@ import {
   MessageInputSideItemProps,
   ThemeProvider,
   ThemeProviderProps,
-} from '../../src/components';
+} from 'discord-ui-toolkit';
 
 export default {
   component: MessageInput,

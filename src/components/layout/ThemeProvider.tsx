@@ -1,9 +1,9 @@
 import React, { ReactChild, useState, useEffect } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-import ThemeContext from '../internal/ThemeContext';
+import ThemeContext from '@internal/ThemeContext';
 
-import '../../assets/css/discord-ui-toolkit.css';
+import '@assets/css/discord-ui-toolkit.css';
 
 type ThemeProviderProps = {
   children: ReactChild;

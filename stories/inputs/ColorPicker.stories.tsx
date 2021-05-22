@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ColorPicker, ColorPickerProps, ThemeProvider, ThemeProviderProps } from '../../src/components';
+import { ColorPicker, ColorPickerProps, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
 
 export default {
   component: ColorPicker,

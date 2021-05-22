@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Slider, SliderProps, SliderInterval, ThemeProvider, ThemeProviderProps } from '../../src/components';
+import { Slider, SliderProps, SliderInterval, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
 
 export default {
   component: Slider,

@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Emoji } from '../src/components';
+import { Emoji } from 'discord-ui-toolkit';
 
 describe('<Emoji />', () => {
   const mockClick = jest.fn();

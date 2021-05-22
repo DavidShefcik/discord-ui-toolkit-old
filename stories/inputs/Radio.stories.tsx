@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Radio, ThemeProvider, ThemeProviderProps, RadioProps, RadioItem } from '../../src/components';
+import { Radio, ThemeProvider, ThemeProviderProps, RadioProps, RadioItem } from 'discord-ui-toolkit';
 
 export default {
   component: Radio,

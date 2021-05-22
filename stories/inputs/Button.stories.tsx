@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Button, ButtonTypes, ButtonProps, ThemeProvider } from '../../src/components';
+import { Button, ButtonTypes, ButtonProps, ThemeProvider } from 'discord-ui-toolkit';
 
 export default {
   component: Button,

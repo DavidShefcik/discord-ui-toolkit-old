@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Switch } from '../src/components';
+import { Switch } from 'discord-ui-toolkit';
 
 describe('<Switch />', () => {
   let checked = false;

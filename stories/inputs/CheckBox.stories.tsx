@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { CheckBox, ThemeProvider, ThemeProviderProps, CheckBoxProps } from '../../src/components';
+import { CheckBox, ThemeProvider, ThemeProviderProps, CheckBoxProps } from 'discord-ui-toolkit';
 
 export default {
   component: CheckBox,

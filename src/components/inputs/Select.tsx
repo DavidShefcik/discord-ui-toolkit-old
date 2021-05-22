@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, ReactChild } from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import useOutsideClickAlerter from '../internal/hooks/useOutsideClickAlerter';
-import Emoji from '../layout/Emoji';
-import IconComponent from '../layout/Icon';
+import useOutsideClickAlerter from '@internal/hooks/useOutsideClickAlerter';
+import Emoji from '@layout/Emoji';
+import IconComponent from '@layout/Icon';
 
 type SelectItemProps = {
   id: string | null;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Icon as IconComponent, IconProps } from '../../src/components';
-import { iconNames } from '../../src/components/internal/values/icons';
+import { iconNames } from '@internal/values/icons';
+import { Icon as IconComponent, IconProps } from 'discord-ui-toolkit';
 
 export default {
   component: IconComponent,

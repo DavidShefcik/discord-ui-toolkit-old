@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Select, ThemeProvider, ThemeProviderProps, SelectProps, SelectItemProps } from '../../src/components';
+import { Select, ThemeProvider, ThemeProviderProps, SelectProps, SelectItemProps } from 'discord-ui-toolkit';
 
 export default {
   component: Select,
