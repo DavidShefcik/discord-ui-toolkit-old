@@ -16,16 +16,24 @@
   font-family: Arial;
 }
 .discord-base {
-  --blurple: #7289da;
-  --blurple-dark: #677bc4;
   --greyple: #747f8d;
   --greyple-dark: #68727f;
-  --green: #43b581;
-  --green-dark: #3ca374;
   --red: #f04747;
   --red-dark: #d84040;
   --dark-not-black: #2c2f33;
   --not-quite-black: #23272a;
+}
+.discord-new-colors {
+  --green: #3ba55c;
+  --green-dark: #359553;
+  --blurple: #5865f2;
+  --blurple-dark: #4752c4;
+}
+.discord-old-colors {
+  --green: #43b581;
+  --green-dark: #3ca374;
+  --blurple: #7289da;
+  --blurple-dark: #677bc4;
 }
 .discord-dark {
   --header-primary: #fff;

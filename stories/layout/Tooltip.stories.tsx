@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { StyleSheet, css } from 'aphrodite';
-import { Tooltip, TooltipProps, TooltipDirection, ThemeProvider } from 'discord-ui-toolkit';
+import { Tooltip, TooltipProps, TooltipDirection, ThemeProvider, ThemeProviderProps, Button } from 'discord-ui-toolkit';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,6 +17,21 @@ export default {
   component: Tooltip,
   title: 'Discord UI Toolkit/Layout/Tooltip',
   argTypes: {
+    theme: {
+      defaultValue: 'dark',
+      description: 'The UI toolkit theme.',
+      control: {
+        type: 'inline-radio',
+        options: ['dark', 'light'],
+      },
+    },
+    newMarketingColors: {
+      defaultValue: false,
+      description: "Use the new colors from Discord's 2021 rebranding.",
+      control: {
+        type: 'boolean',
+      },
+    },
     text: {
       defaultValue: 'Tooltip',
       description: 'The text of the tooltip.',
@@ -49,11 +64,11 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<TooltipProps> = (props) => (
-  <ThemeProvider>
+export const Template: Story<TooltipProps & ThemeProviderProps> = (props) => (
+  <ThemeProvider {...props}>
     <div className={css(styles.container)}>
       <Tooltip {...props}>
-        <button type="button">Hover over me!</button>
+        <Button text="Hover over me!" type="green" onClick={() => console.log('Click')} width="150px" />
       </Tooltip>
     </div>
   </ThemeProvider>

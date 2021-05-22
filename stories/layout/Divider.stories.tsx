@@ -25,6 +25,13 @@ export default {
         options: ['dark', 'light'],
       },
     },
+    newMarketingColors: {
+      defaultValue: false,
+      description: "Use the new colors from Discord's 2021 rebranding.",
+      control: {
+        type: 'boolean',
+      },
+    },
     width: {
       defaultValue: '100%',
       description: 'Width of the divider.',
@@ -35,13 +42,10 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<DividerProps & ThemeProviderProps> = (props) => {
-  const { theme } = props;
-  return (
-    <ThemeProvider theme={theme}>
-      <div className={css(styles.container)}>
-        <Divider {...props} />
-      </div>
-    </ThemeProvider>
-  );
-};
+export const Template: Story<DividerProps & ThemeProviderProps> = (props) => (
+  <ThemeProvider {...props}>
+    <div className={css(styles.container)}>
+      <Divider {...props} />
+    </div>
+  </ThemeProvider>
+);

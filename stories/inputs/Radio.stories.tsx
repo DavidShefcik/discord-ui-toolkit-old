@@ -14,6 +14,13 @@ export default {
         options: ['dark', 'light'],
       },
     },
+    newMarketingColors: {
+      defaultValue: false,
+      description: "Use the new colors from Discord's 2021 rebranding.",
+      control: {
+        type: 'boolean',
+      },
+    },
     value: {
       defaultValue: '0',
       description: 'The value of the radio selection.',
@@ -33,7 +40,7 @@ export default {
 } as Meta;
 
 export const Template: Story<RadioProps & ThemeProviderProps> = (props) => {
-  const { theme, value } = props;
+  const { value } = props;
   const items: RadioItem[] = [
     {
       id: '0',
@@ -54,21 +61,17 @@ export const Template: Story<RadioProps & ThemeProviderProps> = (props) => {
   ];
 
   const [radioValue, setRadioValue] = useState(value);
-  const [themeValue, setThemeValue] = useState(theme);
 
   useEffect(() => {
     setRadioValue(value);
   }, [value]);
-  useEffect(() => {
-    setThemeValue(theme);
-  }, [theme]);
 
   const onChange = (newValue: string | number) => {
     setRadioValue(newValue);
   };
 
   return (
-    <ThemeProvider theme={themeValue}>
+    <ThemeProvider {...props}>
       <Radio {...props} value={radioValue} items={items} onChange={onChange} />
     </ThemeProvider>
   );

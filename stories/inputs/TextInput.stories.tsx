@@ -14,6 +14,13 @@ export default {
         options: ['dark', 'light'],
       },
     },
+    newMarketingColors: {
+      defaultValue: false,
+      description: "Use the new colors from Discord's 2021 rebranding.",
+      control: {
+        type: 'boolean',
+      },
+    },
     value: {
       defaultValue: '',
       description: 'The value of the input.',
@@ -104,21 +111,16 @@ export default {
 } as Meta;
 
 export const Template: Story<TextInputProps & ThemeProviderProps> = (props) => {
-  const { theme, value } = props;
+  const { value } = props;
 
   const [inputValue, setInputValue] = useState('');
-  const [themeValue, setThemeValue] = useState(theme);
-
-  useEffect(() => {
-    setThemeValue(theme);
-  }, [theme]);
 
   useEffect(() => {
     setInputValue(value);
   }, [value]);
 
   return (
-    <ThemeProvider theme={themeValue}>
+    <ThemeProvider {...props}>
       <TextInput {...props} value={inputValue} onChange={(val) => setInputValue(val)} />
     </ThemeProvider>
   );

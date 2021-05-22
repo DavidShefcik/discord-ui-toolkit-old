@@ -14,6 +14,13 @@ export default {
         options: ['dark', 'light'],
       },
     },
+    newMarketingColors: {
+      defaultValue: false,
+      description: "Use the new colors from Discord's 2021 rebranding.",
+      control: {
+        type: 'boolean',
+      },
+    },
     value: {
       defaultValue: false,
       description: 'The value of the switch.',
@@ -53,7 +60,7 @@ export default {
 } as Meta;
 
 export const Template: Story<SwitchProps & ThemeProviderProps> = (props) => {
-  const { theme, value } = props;
+  const { value } = props;
   const [currentValue, setCurrentValue] = useState(value);
 
   const click = (event: ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +68,7 @@ export const Template: Story<SwitchProps & ThemeProviderProps> = (props) => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider {...props}>
       <Switch {...props} value={currentValue} onChange={click} />
     </ThemeProvider>
   );

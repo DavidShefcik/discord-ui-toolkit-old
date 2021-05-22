@@ -14,6 +14,13 @@ export default {
         options: ['dark', 'light'],
       },
     },
+    newMarketingColors: {
+      defaultValue: false,
+      description: "Use the new colors from Discord's 2021 rebranding.",
+      control: {
+        type: 'boolean',
+      },
+    },
     value: {
       defaultValue: false,
       description: 'The value of the checkbox.',
@@ -57,11 +64,8 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<CheckBoxProps & ThemeProviderProps> = (props) => {
-  const { theme } = props;
-  return (
-    <ThemeProvider theme={theme}>
-      <CheckBox {...props} />
-    </ThemeProvider>
-  );
-};
+export const Template: Story<CheckBoxProps & ThemeProviderProps> = (props) => (
+  <ThemeProvider {...props}>
+    <CheckBox {...props} />
+  </ThemeProvider>
+);

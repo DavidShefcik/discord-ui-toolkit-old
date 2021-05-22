@@ -1,11 +1,18 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Button, ButtonTypes, ButtonProps, ThemeProvider } from 'discord-ui-toolkit';
+import { Button, ButtonTypes, ButtonProps, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
 
 export default {
   component: Button,
   title: 'Discord UI Toolkit/Inputs/Button',
   argTypes: {
+    newMarketingColors: {
+      defaultValue: false,
+      description: "Use the new colors from Discord's 2021 rebranding.",
+      control: {
+        type: 'boolean',
+      },
+    },
     text: {
       defaultValue: 'Button',
       description: 'The text of the button.',
@@ -58,11 +65,13 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<ButtonProps> = (props) => {
+export const Template: Story<ButtonProps & ThemeProviderProps> = (props) => {
+  const { newMarketingColors } = props;
+
   const click = () => console.log('Button click');
 
   return (
-    <ThemeProvider>
+    <ThemeProvider newMarketingColors={newMarketingColors}>
       <Button {...props} onClick={click} />
     </ThemeProvider>
   );

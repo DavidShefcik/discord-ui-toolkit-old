@@ -14,6 +14,13 @@ export default {
         options: ['dark', 'light'],
       },
     },
+    newMarketingColors: {
+      defaultValue: false,
+      description: "Use the new colors from Discord's 2021 rebranding.",
+      control: {
+        type: 'boolean',
+      },
+    },
     value: {
       defaultValue: '000000',
       description: 'The value of the color picker.',
@@ -32,21 +39,16 @@ export default {
 } as Meta;
 
 export const Template: Story<ColorPickerProps & ThemeProviderProps> = (props) => {
-  const { theme, value } = props;
+  const { value } = props;
 
   const [colorValue, setColorValue] = useState('');
-  const [themeValue, setThemeValue] = useState(theme);
-
-  useEffect(() => {
-    setThemeValue(theme);
-  }, [theme]);
 
   useEffect(() => {
     setColorValue(value);
   }, [value]);
 
   return (
-    <ThemeProvider theme={themeValue}>
+    <ThemeProvider {...props}>
       <ColorPicker {...props} value={colorValue} onChange={(val) => setColorValue(val)} />
     </ThemeProvider>
   );

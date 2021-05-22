@@ -14,6 +14,13 @@ export default {
         options: ['dark', 'light'],
       },
     },
+    newMarketingColors: {
+      defaultValue: false,
+      description: "Use the new colors from Discord's 2021 rebranding.",
+      control: {
+        type: 'boolean',
+      },
+    },
     containerWidth: {
       defaultValue: '100%',
       description: 'The width of the select items container.',
@@ -61,7 +68,7 @@ export default {
 } as Meta;
 
 export const Template: Story<SelectProps & ThemeProviderProps> = (props) => {
-  const { theme, value } = props;
+  const { value } = props;
   const items: SelectItemProps[] = [
     {
       id: '0',
@@ -81,11 +88,6 @@ export const Template: Story<SelectProps & ThemeProviderProps> = (props) => {
   ];
 
   const [selectValue, setSelectValue] = useState<string | number | null | SelectItemProps>('2');
-  const [themeValue, setThemeValue] = useState(theme);
-
-  useEffect(() => {
-    setThemeValue(theme);
-  }, [theme]);
 
   useEffect(() => {
     setSelectValue(value);
@@ -96,7 +98,7 @@ export const Template: Story<SelectProps & ThemeProviderProps> = (props) => {
   };
 
   return (
-    <ThemeProvider theme={themeValue}>
+    <ThemeProvider {...props}>
       <Select {...props} value={selectValue} onChange={onChange} items={items} />
     </ThemeProvider>
   );

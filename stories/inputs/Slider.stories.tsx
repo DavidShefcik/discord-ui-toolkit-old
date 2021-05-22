@@ -14,6 +14,13 @@ export default {
         options: ['dark', 'light'],
       },
     },
+    newMarketingColors: {
+      defaultValue: false,
+      description: "Use the new colors from Discord's 2021 rebranding.",
+      control: {
+        type: 'boolean',
+      },
+    },
     containerWidth: {
       defaultValue: '100%',
       description: 'The width of the slider container.',
@@ -60,7 +67,7 @@ export default {
 } as Meta;
 
 export const Template: Story<SliderProps & ThemeProviderProps> = (props) => {
-  const { theme, value } = props;
+  const { value } = props;
   const sliderValues: SliderInterval[] = [
     {
       value: 0,
@@ -113,11 +120,6 @@ export const Template: Story<SliderProps & ThemeProviderProps> = (props) => {
   ];
 
   const [sliderValue, setSliderValue] = useState(10);
-  const [themeValue, setThemeValue] = useState(theme);
-
-  useEffect(() => {
-    setThemeValue(theme);
-  }, [theme]);
 
   useEffect(() => {
     setSliderValue(value);
@@ -128,7 +130,7 @@ export const Template: Story<SliderProps & ThemeProviderProps> = (props) => {
   };
 
   return (
-    <ThemeProvider theme={themeValue}>
+    <ThemeProvider {...props}>
       <Slider {...props} values={sliderValues} value={sliderValue} onChange={onChange} />
     </ThemeProvider>
   );

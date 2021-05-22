@@ -8,6 +8,7 @@ import '@assets/css/discord-ui-toolkit.css';
 type ThemeProviderProps = {
   children: ReactChild;
   theme?: Theme;
+  newMarketingColors?: boolean;
 };
 
 const styles = StyleSheet.create({
@@ -32,24 +33,30 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ThemeProvider({ children, theme = 'dark' }: ThemeProviderProps) {
+export default function ThemeProvider({ children, theme = 'dark', newMarketingColors = false }: ThemeProviderProps) {
   const [globalTheme, setGlobalTheme] = useState<Theme>(theme);
+  const [globalNewMarketingColors, setGlobalNewMarketingColors] = useState(newMarketingColors);
 
   useEffect(() => {
     setGlobalTheme(theme);
   }, [theme]);
+
+  useEffect(() => {
+    setGlobalNewMarketingColors(newMarketingColors);
+  }, [newMarketingColors]);
 
   return (
     <ThemeContext.Provider
       value={{
         theme: globalTheme,
         setTheme: setGlobalTheme,
+        newMarketingColors: globalNewMarketingColors,
       }}
     >
       <div
-        className={`discord-container discord-base ${globalTheme === 'dark' ? 'discord-dark' : 'discord-light'} ${css(
-          styles.container
-        )}`}
+        className={`discord-container discord-base ${
+          newMarketingColors ? 'discord-new-colors' : 'discord-old-colors'
+        } ${globalTheme === 'dark' ? 'discord-dark' : 'discord-light'} ${css(styles.container)}`}
       >
         {children}
       </div>
