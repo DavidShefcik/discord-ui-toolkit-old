@@ -272,22 +272,3 @@ export default function MessageInput({
 }
 
 export { MessageInputProps, MessageInputSideItemProps };
-
-/**
- *
-    width: '100%',
-    minHeight: '44px',
-    lineHeight: '1.375rem',
-    outline: 0,
-    boxSizing: 'border-box',
-    padding: '11px 10px 11px 0',
-    right: '10px',
-    textAlign: 'left',
-    fontSize: '16px',
-    fontFamily: 'discord-normal',
-    'caret-color': 'var(--text-normal)',
-    color: 'var(--text-normal)',
-    whiteSpace: 'pre-wrap',
-    wordBreak: 'break-word',
-    'overflow-wrap': 'break-word',
- */
