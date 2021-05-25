@@ -34,6 +34,7 @@
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.30",
     "@types/react": "^17.0.0",
+    "@types/react-datepicker": "^3.1.8",
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
@@ -59,6 +60,7 @@
   "dependencies": {
     "react": "^17.0.1",
     "react-color": "^2.19.3",
+    "react-datepicker": "^3.8.0",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.15.2",
     "react-spinners": "^0.10.6",

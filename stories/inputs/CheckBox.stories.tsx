@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { CheckBox, ThemeProvider, ThemeProviderProps, CheckBoxProps } from 'discord-ui-toolkit';
+import { CheckBox, CheckBoxProps, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
 
 export default {
   component: CheckBox,
@@ -49,7 +49,7 @@ export default {
     },
     containerWidth: {
       defaultValue: '100%',
-      description: 'The width of the checkbox container',
+      description: 'The width of the checkbox container.',
       control: {
         type: 'text',
       },

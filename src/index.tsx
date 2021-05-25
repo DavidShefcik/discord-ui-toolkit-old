@@ -8,6 +8,7 @@ import Slider, { SliderProps, SliderInterval } from '@inputs/Slider';
 import TextInput, { TextInputProps } from '@inputs/TextInput';
 import MessageInput, { MessageInputProps, MessageInputSideItemProps } from '@inputs/MessageInput';
 import ColorPicker, { ColorPickerProps } from '@inputs/ColorPicker';
+import DatePicker, { DatePickerProps } from '@inputs/DatePicker';
 
 // Layout
 import ThemeProvider, { ThemeProviderProps } from '@layout/ThemeProvider';
@@ -16,9 +17,6 @@ import Divider, { DividerProps } from '@layout/Divider';
 import Emoji, { EmojiProps } from '@layout/Emoji';
 import Icon, { IconProps } from '@layout/Icon';
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
-
-// Constants
-import Constants from '@components/Constants';
 
 export {
   // Inputs
@@ -45,6 +43,8 @@ export {
   MessageInputSideItemProps,
   ColorPicker,
   ColorPickerProps,
+  DatePicker,
+  DatePickerProps,
   // Layout
   ThemeProvider,
   ThemeProviderProps,
@@ -60,6 +60,4 @@ export {
   icons,
   iconNames,
   IconsListItem,
-  // Constants
-  Constants,
 };

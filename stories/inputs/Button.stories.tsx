@@ -36,6 +36,14 @@ export default {
         ] as ButtonTypes[],
       },
     },
+    size: {
+      defaultValue: 'normal',
+      description: 'The size of the button.',
+      control: {
+        type: 'inline-radio',
+        options: ['normal', 'large'],
+      },
+    },
     disabled: {
       defaultValue: false,
       description: 'Is the button disabled.',

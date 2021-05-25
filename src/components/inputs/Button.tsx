@@ -10,8 +10,7 @@ type ButtonProps = {
   type: ButtonTypes;
   disabled?: boolean;
   loading?: boolean;
-  width?: string;
-  height?: string;
+  size?: 'normal' | 'large';
 };
 
 const baseNormalStyle: CSSProperties = {
@@ -142,15 +141,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Button({
-  text,
-  onClick,
-  type,
-  disabled,
-  loading,
-  width = '96px',
-  height = '38px',
-}: ButtonProps) {
+export default function Button({ text, onClick, type, disabled, loading, size = 'normal' }: ButtonProps) {
+  const style = size === 'normal' ? { minWidth: '96px', height: '38px' } : { minWidth: '130px', height: '38px' };
+
   let buttonType = styles.blurple;
   if (type === 'green') {
     buttonType = styles.green;
@@ -170,7 +163,7 @@ export default function Button({
       onClick={onClick}
       disabled={disabled || loading}
       className={css([styles.buttonBase, buttonType])}
-      style={{ width, height }}
+      style={style}
     >
       {loading ? <PulseLoader loading={loading} color={type === 'red_empty' ? '#f04747' : 'white'} size={8} /> : text}
     </ReakitButton>
