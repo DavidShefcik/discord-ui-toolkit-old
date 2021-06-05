@@ -6,7 +6,7 @@ export default {
   component: Button,
   title: 'Discord UI Toolkit/Inputs/Button',
   argTypes: {
-    newMarketingColors: {
+    newMarketingLayout: {
       defaultValue: false,
       description: "Use the new colors from Discord's 2021 rebranding.",
       control: {
@@ -74,12 +74,12 @@ export default {
 } as Meta;
 
 export const Template: Story<ButtonProps & DiscordProviderProps> = (props) => {
-  const { newMarketingColors } = props;
+  const { newMarketingLayout } = props;
 
   const click = () => console.log('Button click');
 
   return (
-    <DiscordProvider newMarketingColors={newMarketingColors}>
+    <DiscordProvider newMarketingLayout={newMarketingLayout}>
       <Button {...props} onClick={click} />
     </DiscordProvider>
   );

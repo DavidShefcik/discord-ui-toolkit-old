@@ -29,7 +29,7 @@ type OnClickContextMenuItem = Extract<ContextMenuItem, { type: 'item' }>;
 type DiscordProviderProps = {
   children: ReactChild;
   theme?: Theme;
-  newMarketingColors?: boolean;
+  newMarketingLayout?: boolean;
   enableCustomContextMenu?: boolean;
   contextMenuItems?: ContextMenuItem[];
 };
@@ -199,12 +199,12 @@ function RightClickMenu({ visible, setVisible, top, left, items }: ContextMenuPr
 export default function DiscordProvider({
   children,
   theme = 'dark',
-  newMarketingColors = false,
+  newMarketingLayout = false,
   enableCustomContextMenu = false,
   contextMenuItems = [],
 }: DiscordProviderProps) {
   const [globalTheme, setGlobalTheme] = useState<Theme>(theme);
-  const [globalNewMarketingColors, setGlobalNewMarketingColors] = useState(newMarketingColors);
+  const [globalnewMarketingLayout, setGlobalnewMarketingLayout] = useState(newMarketingLayout);
   const [customRightClickMenuVisible, setCustomRightClickMenuVisible] = useState(false);
   const [customRightClickMenuCords, setCustomRightClickMenuCords] = useState<{ x: string; y: string }>({
     x: '0px',
@@ -241,20 +241,20 @@ export default function DiscordProvider({
   }, [theme]);
 
   useEffect(() => {
-    setGlobalNewMarketingColors(newMarketingColors);
-  }, [newMarketingColors]);
+    setGlobalnewMarketingLayout(newMarketingLayout);
+  }, [newMarketingLayout]);
 
   return (
     <ThemeContext.Provider
       value={{
         theme: globalTheme,
         setTheme: setGlobalTheme,
-        newMarketingColors: globalNewMarketingColors,
+        newMarketingLayout: globalnewMarketingLayout,
       }}
     >
       <div
         className={`discord-container discord-base ${
-          newMarketingColors ? 'discord-new-colors' : 'discord-old-colors'
+          newMarketingLayout ? 'discord-new-colors' : 'discord-old-colors'
         } ${globalTheme === 'dark' ? 'discord-dark' : 'discord-light'} ${css(styles.container)}`}
       >
         {enableCustomContextMenu && (

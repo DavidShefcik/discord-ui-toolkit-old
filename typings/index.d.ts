@@ -13,7 +13,7 @@ declare module '*.css';
 declare type ThemeContextValues = {
   theme: Theme;
   setTheme(theme: Theme): void;
-  newMarketingColors: boolean;
+  newMarketingLayout: boolean;
 };
 
 /**
