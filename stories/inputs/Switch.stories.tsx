@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Switch, SwitchProps, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
+import { Switch, SwitchProps, DiscordProvider, DiscordProviderProps } from 'discord-ui-toolkit';
 
 export default {
   component: Switch,
@@ -59,7 +59,7 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<SwitchProps & ThemeProviderProps> = (props) => {
+export const Template: Story<SwitchProps & DiscordProviderProps> = (props) => {
   const { value } = props;
   const [currentValue, setCurrentValue] = useState(value);
 
@@ -68,8 +68,8 @@ export const Template: Story<SwitchProps & ThemeProviderProps> = (props) => {
   };
 
   return (
-    <ThemeProvider {...props}>
+    <DiscordProvider {...props}>
       <Switch {...props} value={currentValue} onChange={click} />
-    </ThemeProvider>
+    </DiscordProvider>
   );
 };

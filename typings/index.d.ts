@@ -24,10 +24,6 @@ declare type Theme = 'dark' | 'light';
 declare type ThemedComponent = {
   theme: Theme;
 };
-declare type HoverableComponent = {
-  hoverable: boolean;
-  hoverText: string;
-};
 
 declare type Icon =
   | 'discord'

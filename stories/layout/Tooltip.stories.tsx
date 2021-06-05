@@ -1,7 +1,14 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { StyleSheet, css } from 'aphrodite';
-import { Tooltip, TooltipProps, TooltipDirection, ThemeProvider, ThemeProviderProps, Button } from 'discord-ui-toolkit';
+import {
+  Tooltip,
+  TooltipProps,
+  TooltipDirection,
+  DiscordProvider,
+  DiscordProviderProps,
+  Button,
+} from 'discord-ui-toolkit';
 
 const styles = StyleSheet.create({
   container: {
@@ -64,12 +71,12 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<TooltipProps & ThemeProviderProps> = (props) => (
-  <ThemeProvider {...props}>
+export const Template: Story<TooltipProps & DiscordProviderProps> = (props) => (
+  <DiscordProvider {...props}>
     <div className={css(styles.container)}>
       <Tooltip {...props}>
         <Button text="Hover over me!" type="green" onClick={() => console.log('Click')} width="150px" />
       </Tooltip>
     </div>
-  </ThemeProvider>
+  </DiscordProvider>
 );

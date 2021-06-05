@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Slider, SliderProps, SliderInterval, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
+import { Slider, SliderProps, SliderInterval, DiscordProvider, DiscordProviderProps } from 'discord-ui-toolkit';
 
 export default {
   component: Slider,
@@ -66,7 +66,7 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<SliderProps & ThemeProviderProps> = (props) => {
+export const Template: Story<SliderProps & DiscordProviderProps> = (props) => {
   const { value } = props;
   const sliderValues: SliderInterval[] = [
     {
@@ -130,8 +130,8 @@ export const Template: Story<SliderProps & ThemeProviderProps> = (props) => {
   };
 
   return (
-    <ThemeProvider {...props}>
+    <DiscordProvider {...props}>
       <Slider {...props} values={sliderValues} value={sliderValue} onChange={onChange} />
-    </ThemeProvider>
+    </DiscordProvider>
   );
 };

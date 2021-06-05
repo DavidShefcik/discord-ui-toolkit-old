@@ -16,9 +16,9 @@ type Props = {
  */
 export default function useOutsideClickAlerter({ ref, onOutsideClick }: Props) {
   useEffect(() => {
-    function handleClickOutside(event: Event) {
+    function handleClickOutside(event: MouseEvent) {
       // On outside click
-      if (ref.current && !ref.current.contains(event.target as Node)) {
+      if (ref.current && !ref.current.contains(event.target as Node) && event.button === 0) {
         onOutsideClick();
       }
     }

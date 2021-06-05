@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { StyleSheet, css } from 'aphrodite';
-import { Divider, DividerProps, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
+import { Divider, DividerProps, DiscordProvider, DiscordProviderProps } from 'discord-ui-toolkit';
 
 const styles = StyleSheet.create({
   container: {
@@ -42,10 +42,10 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<DividerProps & ThemeProviderProps> = (props) => (
-  <ThemeProvider {...props}>
+export const Template: Story<DividerProps & DiscordProviderProps> = (props) => (
+  <DiscordProvider {...props}>
     <div className={css(styles.container)}>
       <Divider {...props} />
     </div>
-  </ThemeProvider>
+  </DiscordProvider>
 );

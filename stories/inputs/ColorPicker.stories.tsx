@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ColorPicker, ColorPickerProps, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
+import { ColorPicker, ColorPickerProps, DiscordProvider, DiscordProviderProps } from 'discord-ui-toolkit';
 
 export default {
   component: ColorPicker,
@@ -38,7 +38,7 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<ColorPickerProps & ThemeProviderProps> = (props) => {
+export const Template: Story<ColorPickerProps & DiscordProviderProps> = (props) => {
   const { value } = props;
 
   const [colorValue, setColorValue] = useState('');
@@ -48,8 +48,8 @@ export const Template: Story<ColorPickerProps & ThemeProviderProps> = (props) =>
   }, [value]);
 
   return (
-    <ThemeProvider {...props}>
+    <DiscordProvider {...props}>
       <ColorPicker {...props} value={colorValue} onChange={(val) => setColorValue(val)} />
-    </ThemeProvider>
+    </DiscordProvider>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Select, ThemeProvider, ThemeProviderProps, SelectProps, SelectItemProps } from 'discord-ui-toolkit';
+import { Select, DiscordProvider, DiscordProviderProps, SelectProps, SelectItemProps } from 'discord-ui-toolkit';
 
 export default {
   component: Select,
@@ -67,7 +67,7 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<SelectProps & ThemeProviderProps> = (props) => {
+export const Template: Story<SelectProps & DiscordProviderProps> = (props) => {
   const { value } = props;
   const items: SelectItemProps[] = [
     {
@@ -98,8 +98,8 @@ export const Template: Story<SelectProps & ThemeProviderProps> = (props) => {
   };
 
   return (
-    <ThemeProvider {...props}>
+    <DiscordProvider {...props}>
       <Select {...props} value={selectValue} onChange={onChange} items={items} />
-    </ThemeProvider>
+    </DiscordProvider>
   );
 };

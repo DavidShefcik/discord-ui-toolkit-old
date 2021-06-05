@@ -11,7 +11,11 @@ import ColorPicker, { ColorPickerProps } from '@inputs/ColorPicker';
 import DatePicker, { DatePickerProps } from '@inputs/DatePicker';
 
 // Layout
-import ThemeProvider, { ThemeProviderProps } from '@layout/ThemeProvider';
+import DiscordProvider, {
+  DiscordProviderProps,
+  ContextMenuItem,
+  OnClickContextMenuItem,
+} from '@layout/DiscordProvider';
 import Tooltip, { TooltipProps, TooltipDirection } from '@layout/Tooltip';
 import Divider, { DividerProps } from '@layout/Divider';
 import Emoji, { EmojiProps } from '@layout/Emoji';
@@ -46,8 +50,10 @@ export {
   DatePicker,
   DatePickerProps,
   // Layout
-  ThemeProvider,
-  ThemeProviderProps,
+  DiscordProvider,
+  DiscordProviderProps,
+  ContextMenuItem,
+  OnClickContextMenuItem,
   Tooltip,
   TooltipProps,
   TooltipDirection,

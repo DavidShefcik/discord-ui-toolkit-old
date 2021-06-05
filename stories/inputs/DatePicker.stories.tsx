@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ThemeProvider, ThemeProviderProps, DatePicker, DatePickerProps } from 'discord-ui-toolkit';
+import { DiscordProvider, DiscordProviderProps, DatePicker, DatePickerProps } from 'discord-ui-toolkit';
 
 export default {
   component: DatePicker,
@@ -45,7 +45,7 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<DatePickerProps & ThemeProviderProps> = (props) => {
+export const Template: Story<DatePickerProps & DiscordProviderProps> = (props) => {
   const { value } = props;
 
   const [dateValue, setDateValue] = useState(null);
@@ -55,8 +55,8 @@ export const Template: Story<DatePickerProps & ThemeProviderProps> = (props) => 
   }, [value]);
 
   return (
-    <ThemeProvider {...props}>
+    <DiscordProvider {...props}>
       <DatePicker {...props} value={dateValue} onChange={(val: Date) => setDateValue(val)} />
-    </ThemeProvider>
+    </DiscordProvider>
   );
 };

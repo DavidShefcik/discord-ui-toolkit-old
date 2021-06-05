@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { TextInput, TextInputProps, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
+import { TextInput, TextInputProps, DiscordProvider, DiscordProviderProps } from 'discord-ui-toolkit';
 
 export default {
   component: TextInput,
@@ -110,7 +110,7 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<TextInputProps & ThemeProviderProps> = (props) => {
+export const Template: Story<TextInputProps & DiscordProviderProps> = (props) => {
   const { value } = props;
 
   const [inputValue, setInputValue] = useState('');
@@ -120,8 +120,8 @@ export const Template: Story<TextInputProps & ThemeProviderProps> = (props) => {
   }, [value]);
 
   return (
-    <ThemeProvider {...props}>
+    <DiscordProvider {...props}>
       <TextInput {...props} value={inputValue} onChange={(val) => setInputValue(val)} />
-    </ThemeProvider>
+    </DiscordProvider>
   );
 };

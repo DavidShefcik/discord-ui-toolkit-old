@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Radio, ThemeProvider, ThemeProviderProps, RadioProps, RadioItem } from 'discord-ui-toolkit';
+import { Radio, DiscordProvider, DiscordProviderProps, RadioProps, RadioItem } from 'discord-ui-toolkit';
 
 export default {
   component: Radio,
@@ -39,7 +39,7 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<RadioProps & ThemeProviderProps> = (props) => {
+export const Template: Story<RadioProps & DiscordProviderProps> = (props) => {
   const { value } = props;
   const items: RadioItem[] = [
     {
@@ -71,8 +71,8 @@ export const Template: Story<RadioProps & ThemeProviderProps> = (props) => {
   };
 
   return (
-    <ThemeProvider {...props}>
+    <DiscordProvider {...props}>
       <Radio {...props} value={radioValue} items={items} onChange={onChange} />
-    </ThemeProvider>
+    </DiscordProvider>
   );
 };

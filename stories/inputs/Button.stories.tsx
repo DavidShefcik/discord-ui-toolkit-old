@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Button, ButtonTypes, ButtonProps, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
+import { Button, ButtonTypes, ButtonProps, DiscordProvider, DiscordProviderProps } from 'discord-ui-toolkit';
 
 export default {
   component: Button,
@@ -73,14 +73,14 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<ButtonProps & ThemeProviderProps> = (props) => {
+export const Template: Story<ButtonProps & DiscordProviderProps> = (props) => {
   const { newMarketingColors } = props;
 
   const click = () => console.log('Button click');
 
   return (
-    <ThemeProvider newMarketingColors={newMarketingColors}>
+    <DiscordProvider newMarketingColors={newMarketingColors}>
       <Button {...props} onClick={click} />
-    </ThemeProvider>
+    </DiscordProvider>
   );
 };

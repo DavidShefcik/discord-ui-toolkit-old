@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { CheckBox, CheckBoxProps, ThemeProvider, ThemeProviderProps } from 'discord-ui-toolkit';
+import { CheckBox, CheckBoxProps, DiscordProvider, DiscordProviderProps } from 'discord-ui-toolkit';
 
 export default {
   component: CheckBox,
@@ -64,8 +64,8 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<CheckBoxProps & ThemeProviderProps> = (props) => (
-  <ThemeProvider {...props}>
+export const Template: Story<CheckBoxProps & DiscordProviderProps> = (props) => (
+  <DiscordProvider {...props}>
     <CheckBox {...props} />
-  </ThemeProvider>
+  </DiscordProvider>
 );

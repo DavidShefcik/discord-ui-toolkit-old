@@ -14,6 +14,7 @@
   width: 100%;
   height: 100%;
   font-family: Arial;
+  position: relative;
 }
 .discord-base {
   --greyple: #747f8d;

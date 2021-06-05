@@ -189,7 +189,6 @@ export default function MessageInput({
   aboveInputOnClick,
   underInputText,
 }: MessageInputProps) {
-  const inputRef = useRef<HTMLDivElement>();
   const defaultValue = useRef(value);
 
   const onKeyDownEvent = (event: KeyboardEvent) => {
@@ -246,7 +245,6 @@ export default function MessageInput({
               tabIndex={0}
               contentEditable={!disabled}
               autoCorrect="off"
-              ref={inputRef}
               spellCheck={spellcheck}
               onKeyDown={onKeyDownEvent}
               onInput={onInputEvent}

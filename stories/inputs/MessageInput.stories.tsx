@@ -4,8 +4,8 @@ import {
   MessageInput,
   MessageInputProps,
   MessageInputSideItemProps,
-  ThemeProvider,
-  ThemeProviderProps,
+  DiscordProvider,
+  DiscordProviderProps,
 } from 'discord-ui-toolkit';
 
 export default {
@@ -94,7 +94,7 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<MessageInputProps & ThemeProviderProps> = (props) => {
+export const Template: Story<MessageInputProps & DiscordProviderProps> = (props) => {
   const { value } = props;
 
   const [messageInputValue, setMessageInputValue] = useState('');
@@ -124,7 +124,7 @@ export const Template: Story<MessageInputProps & ThemeProviderProps> = (props) =
   ];
 
   return (
-    <ThemeProvider {...props}>
+    <DiscordProvider {...props}>
       <div style={{ marginTop: '20px' }}>
         <MessageInput
           {...props}
@@ -136,6 +136,6 @@ export const Template: Story<MessageInputProps & ThemeProviderProps> = (props) =
           aboveInputOnClick={() => console.log('Above input click')}
         />
       </div>
-    </ThemeProvider>
+    </DiscordProvider>
   );
 };
