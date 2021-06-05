@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 type TextInputProps = {
@@ -57,9 +57,9 @@ const styles = StyleSheet.create({
     ':hover': {
       borderColor: 'var(--deprecated-text-input-border-hover)',
     },
-    ':focus': {
-      borderColor: 'var(--blurple)',
-    },
+  },
+  borderDarkFocused: {
+    borderColor: 'var(--text-link)',
   },
   borderRed: {
     borderColor: 'var(--red)',
@@ -81,6 +81,8 @@ export default function TextInput({
   spellcheck = false,
   prefix,
 }: TextInputProps) {
+  const [focused, setFocused] = useState(false);
+
   return (
     <div style={{ display: 'inline-block', width, height }}>
       <div
@@ -88,7 +90,13 @@ export default function TextInput({
           styles.inputBase,
           styles.inputContainer,
           disabled && styles.disabled,
-          borderColor === 'dark' ? [styles.borderDark, !disabled && styles.borderDarkPsuedos] : styles.borderRed,
+          borderColor === 'dark'
+            ? [
+                styles.borderDark,
+                !disabled && !focused && styles.borderDarkPsuedos,
+                focused && styles.borderDarkFocused,
+              ]
+            : styles.borderRed,
         ])}
         style={{ fontSize }}
       >
@@ -98,6 +106,8 @@ export default function TextInput({
           type={htmlType}
           value={value}
           onChange={(event) => onChange(event.target.value.replace(new RegExp(`^${prefix}$`), ''))}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
           placeholder={placeholder}
           maxLength={maxLength}
           disabled={disabled}

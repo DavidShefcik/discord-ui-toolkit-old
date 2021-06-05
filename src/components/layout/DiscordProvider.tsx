@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import React, { ReactChild, useState, useEffect, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
