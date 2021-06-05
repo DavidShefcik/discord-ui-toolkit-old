@@ -32,7 +32,7 @@ export default {
         options: ['dark', 'light'],
       },
     },
-    newMarketingLayout: {
+    newMarketingColors: {
       defaultValue: false,
       description: "Use the new colors from Discord's 2021 rebranding.",
       control: {
@@ -75,7 +75,7 @@ export const Template: Story<TooltipProps & DiscordProviderProps> = (props) => (
   <DiscordProvider {...props}>
     <div className={css(styles.container)}>
       <Tooltip {...props}>
-        <Button text="Hover over me!" type="green" onClick={() => console.log('Click')} width="150px" />
+        <Button text="Hover over me!" type="green" onClick={() => console.log('Click')} size="normal" />
       </Tooltip>
     </div>
   </DiscordProvider>

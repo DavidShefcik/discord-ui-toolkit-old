@@ -1,4 +1,4 @@
-import React, { ReactChild, useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { useTooltipState, Tooltip as ReakitTooltip, TooltipReference, TooltipArrow } from 'reakit/Tooltip';
 import { css, StyleSheet } from 'aphrodite';
 
@@ -19,7 +19,7 @@ type TooltipDirection =
   | 'left'
   | 'left-start';
 type TooltipProps = {
-  children: ReactChild;
+  children: ReactNode;
   text: string;
   direction?: TooltipDirection;
   backgroundColor?: string;

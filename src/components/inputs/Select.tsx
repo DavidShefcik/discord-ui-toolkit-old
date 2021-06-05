@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactChild } from 'react';
+import React, { useState, useEffect, useRef, ReactNode } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import useOutsideClickAlerter from '@internal/hooks/useOutsideClickAlerter';
 import Emoji from '@layout/Emoji';
@@ -15,7 +15,7 @@ type InternalSelectItemProps = {
   onClick?(clickedId: string | number | null): void;
 };
 type DropdownItemProps = {
-  children: ReactChild;
+  children: ReactNode;
   selected: boolean;
 };
 type SelectProps = {

@@ -1,4 +1,4 @@
-import React, { ReactChild, useState, useEffect, useRef } from 'react';
+import React, { ReactNode, useState, useEffect, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import ThemeContext from '@internal/ThemeContext';
@@ -26,7 +26,7 @@ type ContextMenuItem = { id: number } & (
 type OnClickContextMenuItem = Extract<ContextMenuItem, { type: 'item' }>;
 
 type DiscordProviderProps = {
-  children: ReactChild;
+  children: ReactNode;
   theme?: Theme;
   newMarketingLayout?: boolean;
   enableCustomContextMenu?: boolean;
