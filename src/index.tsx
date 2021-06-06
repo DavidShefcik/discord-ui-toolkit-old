@@ -20,6 +20,9 @@ import Tooltip, { TooltipProps, TooltipDirection } from '@layout/Tooltip';
 import Divider, { DividerProps } from '@layout/Divider';
 import Emoji, { EmojiProps } from '@layout/Emoji';
 import Icon, { IconProps } from '@layout/Icon';
+import FormItem, { FormItemProps } from '@layout/FormItem';
+
+// Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
 
 export {
@@ -63,6 +66,9 @@ export {
   EmojiProps,
   Icon,
   IconProps,
+  FormItem,
+  FormItemProps,
+  // Values
   icons,
   iconNames,
   IconsListItem,

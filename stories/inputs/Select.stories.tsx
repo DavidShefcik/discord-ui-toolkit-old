@@ -64,6 +64,13 @@ export default {
         options: [null, '0', '1', '2'],
       },
     },
+    error: {
+      defaultValue: false,
+      description: 'Does the select have an error.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 } as Meta;
 

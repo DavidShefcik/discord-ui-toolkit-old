@@ -5,7 +5,7 @@ type TextInputProps = {
   value: string;
   onChange(value: string): void;
   htmlType?: 'text' | 'password' | 'email' | 'phone' | 'email';
-  borderColor?: 'dark' | 'red';
+  error?: boolean;
   placeholder?: string;
   maxLength?: number;
   disabled?: boolean;
@@ -70,7 +70,7 @@ export default function TextInput({
   value,
   onChange,
   htmlType = 'text',
-  borderColor = 'dark',
+  error = false,
   placeholder,
   maxLength,
   disabled = false,
@@ -90,13 +90,13 @@ export default function TextInput({
           styles.inputBase,
           styles.inputContainer,
           disabled && styles.disabled,
-          borderColor === 'dark'
-            ? [
+          error
+            ? styles.borderRed
+            : [
                 styles.borderDark,
                 !disabled && !focused && styles.borderDarkPsuedos,
                 focused && styles.borderDarkFocused,
-              ]
-            : styles.borderRed,
+              ],
         ])}
         style={{ fontSize }}
       >

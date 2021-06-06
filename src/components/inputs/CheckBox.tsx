@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     maxWidth: '100%',
     cursor: 'pointer',
     display: 'flex',
-    postion: 'relative',
+    position: 'relative',
     alignItems: 'center',
     // Disable text highlight select
     '-webkit-touch-callout': 'none',

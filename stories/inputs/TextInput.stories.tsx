@@ -36,12 +36,11 @@ export default {
         options: ['text', 'password', 'email', 'phone', 'email'],
       },
     },
-    borderColor: {
-      defaultValue: 'dark',
-      description: 'The input border color.',
+    error: {
+      defaultValue: false,
+      description: 'Does the input have an error.',
       control: {
-        type: 'inline-radio',
-        options: ['dark', 'red'],
+        type: 'boolean',
       },
     },
     placeholder: {

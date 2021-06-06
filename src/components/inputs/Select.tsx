@@ -27,6 +27,7 @@ type SelectProps = {
   unselectedHelperText?: string;
   containerWidth?: string;
   disabled?: boolean;
+  error?: boolean;
 };
 
 const styles = StyleSheet.create({
@@ -69,6 +70,9 @@ const styles = StyleSheet.create({
     cursor: 'not-allowed',
     borderColor: 'var(--select-border)',
     opacity: 0.5,
+  },
+  selectError: {
+    borderColor: 'var(--red)',
   },
   selectItem: {
     display: 'flex',
@@ -257,6 +261,7 @@ export default function Select({
   unselectedHelperText,
   containerWidth = '100%',
   disabled = false,
+  error = false,
 }: SelectProps) {
   const [open, setOpen] = useState(false);
   const [currentId, setCurrentId] = useState<string | number>(null);
@@ -274,6 +279,9 @@ export default function Select({
   }
   if (disabled) {
     selectStyle = styles.selectDisabled;
+  }
+  if (error) {
+    selectStyle = styles.selectError;
   }
 
   useEffect(() => {
