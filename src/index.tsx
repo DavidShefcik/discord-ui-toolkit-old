@@ -22,6 +22,7 @@ import Emoji, { EmojiProps } from '@layout/Emoji';
 import Icon, { IconProps } from '@layout/Icon';
 import FormItem, { FormItemProps } from '@layout/FormItem';
 import DiscordLoadingAnimation, { DiscordLoadingAnimationProps } from '@layout/DiscordLoadingAnimation';
+import Text, { TextVariants, TextProps } from '@layout/Text';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
@@ -71,6 +72,9 @@ export {
   FormItemProps,
   DiscordLoadingAnimation,
   DiscordLoadingAnimationProps,
+  Text,
+  TextVariants,
+  TextProps,
   // Values
   icons,
   iconNames,

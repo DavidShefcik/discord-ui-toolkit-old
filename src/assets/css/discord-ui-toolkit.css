@@ -10,6 +10,18 @@
   font-family: 'discord-bold';
   src: url('../fonts/bold.woff');
 }
+@font-face {
+  font-family: 'discord-fun-thin';
+  src: url('../fonts/fun_thin.woff');
+}
+@font-face {
+  font-family: 'discord-fun-normal';
+  src: url('../fonts/fun_normal.woff');
+}
+@font-face {
+  font-family: 'discord-fun-bold';
+  src: url('../fonts/fun_bold.woff');
+}
 .discord-container {
   width: 100%;
   height: 100%;

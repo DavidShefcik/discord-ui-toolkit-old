@@ -27,6 +27,7 @@ module.exports = {
   // moduleDirectories: ['node_modules'],
   moduleNameMapper: {
     '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.ts',
+    '\\.(png|webm)$': '<rootDir>/__mocks__/fileMock.ts',
     'discord-ui-toolkit': '<rootDir>/src/index.tsx',
     '^@components(.*)$': '<rootDir>/src/components$1',
     '^@inputs(.*)$': '<rootDir>/src/components/inputs$1',
