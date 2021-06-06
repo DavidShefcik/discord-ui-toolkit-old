@@ -21,6 +21,7 @@ import Divider, { DividerProps } from '@layout/Divider';
 import Emoji, { EmojiProps } from '@layout/Emoji';
 import Icon, { IconProps } from '@layout/Icon';
 import FormItem, { FormItemProps } from '@layout/FormItem';
+import DiscordLoadingAnimation, { DiscordLoadingAnimationProps } from '@layout/DiscordLoadingAnimation';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
@@ -68,6 +69,8 @@ export {
   IconProps,
   FormItem,
   FormItemProps,
+  DiscordLoadingAnimation,
+  DiscordLoadingAnimationProps,
   // Values
   icons,
   iconNames,

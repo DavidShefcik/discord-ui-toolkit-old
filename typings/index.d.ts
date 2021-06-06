@@ -2,6 +2,7 @@
  * File types
  */
 declare module '*.css';
+declare module '*.webm';
 
 /**
  * Modules
