@@ -23,9 +23,29 @@ import Icon, { IconProps } from '@layout/Icon';
 import FormItem, { FormItemProps } from '@layout/FormItem';
 import DiscordLoadingAnimation, { DiscordLoadingAnimationProps } from '@layout/DiscordLoadingAnimation';
 import Text, { TextVariants, TextProps } from '@layout/Text';
+import UserAvatar, { UserAvatarProps } from '@layout/UserAvatar';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
+
+// Images
+import BlueGroupDMIcon from '@assets/images/blue_group_dm_icon.png';
+import BlueNewDefaultAvatar from '@assets/images/blue_new_default_avatar.jpg';
+import BlueOldDefaultAvatar from '@assets/images/blue_old_default_avatar.jpg';
+import GrayNewDefaultAvatar from '@assets/images/gray_new_default_avatar.png';
+import GrayOldDefaultAvatar from '@assets/images/gray_old_default_avatar.jpg';
+import GreenGroupDMIcon from '@assets/images/green_group_dm_icon.png';
+import GreenNewDefaultAvatar from '@assets/images/green_new_default_avatar.png';
+import GreenOldDefaultAvatar from '@assets/images/green_old_default_avatar.jpg';
+import OrangeGroupDMIcon from '@assets/images/orange_group_dm_icon.png';
+import OrangeNewDefaultAvatar from '@assets/images/orange_new_default_avatar.png';
+import OrangeOldDefaultAvatar from '@assets/images/orange_old_default_avatar.jpg';
+import PinkGroupDMIcon from '@assets/images/pink_group_dm_icon.png';
+import PurpleGroupDMIcon from '@assets/images/purple_group_dm_icon.png';
+import RedGroupDMIcon from '@assets/images/red_group_dm_icon.png';
+import RedNewDefaultAvatar from '@assets/images/red_new_default_avatar.png';
+import RedOldDefaultAvatar from '@assets/images/red_old_default_avatar.jpg';
+import YellowGroupDMIcon from '@assets/images/yellow_group_dm_icon.png';
 
 export {
   // Inputs
@@ -75,8 +95,28 @@ export {
   Text,
   TextVariants,
   TextProps,
+  UserAvatar,
+  UserAvatarProps,
   // Values
   icons,
   iconNames,
   IconsListItem,
+  // Images
+  BlueGroupDMIcon,
+  BlueNewDefaultAvatar,
+  BlueOldDefaultAvatar,
+  GrayNewDefaultAvatar,
+  GrayOldDefaultAvatar,
+  GreenGroupDMIcon,
+  GreenNewDefaultAvatar,
+  GreenOldDefaultAvatar,
+  OrangeGroupDMIcon,
+  OrangeNewDefaultAvatar,
+  OrangeOldDefaultAvatar,
+  PinkGroupDMIcon,
+  PurpleGroupDMIcon,
+  RedGroupDMIcon,
+  RedNewDefaultAvatar,
+  RedOldDefaultAvatar,
+  YellowGroupDMIcon,
 };

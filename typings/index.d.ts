@@ -3,6 +3,8 @@
  */
 declare module '*.css';
 declare module '*.webm';
+declare module '*.png';
+declare module '*.jpg';
 
 /**
  * Modules
@@ -27,7 +29,8 @@ declare type ThemedComponent = {
 };
 
 declare type Icon =
-  | 'discord'
+  | 'old_discord'
+  | 'new_discord'
   | 'folder'
   | 'thin_plus'
   | 'thick_plus'

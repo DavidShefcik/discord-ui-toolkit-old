@@ -8,7 +8,7 @@ export default {
   title: 'Discord UI Toolkit/Layout/Icon',
   argTypes: {
     icon: {
-      defaultValue: 'discord',
+      defaultValue: 'old_discord',
       description: 'The name of the icon.',
       control: {
         type: 'inline-radio',

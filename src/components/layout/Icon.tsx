@@ -23,7 +23,7 @@ export default function IconComponent({
   iconColor = '#ffffff',
   iconHoverColor = iconColor,
   size = 72,
-  animated = true,
+  animated = false,
   onClick,
 }: IconProps) {
   const [hovered, setHovered] = useState(false);
@@ -43,7 +43,7 @@ export default function IconComponent({
         cursor: hovered && hoverable ? 'pointer' : 'default',
         width: `${size}px`,
         height: `${size}px`,
-        transition: animated && 'all .17s ease',
+        transition: animated ? 'all .17s ease' : 'all 0s ease',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
