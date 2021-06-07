@@ -102,7 +102,7 @@ describe('<MessageInput />', () => {
         leftItems={[
           {
             id: '0',
-            value: 'discord',
+            value: 'old_discord',
           },
         ]}
       />
@@ -120,7 +120,7 @@ describe('<MessageInput />', () => {
         leftItems={[
           {
             id: '0',
-            value: 'discord',
+            value: 'old_discord',
             onClick: mockIconClick,
           },
         ]}

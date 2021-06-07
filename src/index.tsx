@@ -9,6 +9,7 @@ import TextInput, { TextInputProps } from '@inputs/TextInput';
 import MessageInput, { MessageInputProps, MessageInputSideItemProps } from '@inputs/MessageInput';
 import ColorPicker, { ColorPickerProps } from '@inputs/ColorPicker';
 import DatePicker, { DatePickerProps } from '@inputs/DatePicker';
+import SearchInput, { SearchInputProps } from '@inputs/SearchInput';
 
 // Layout
 import DiscordProvider, {
@@ -74,6 +75,8 @@ export {
   ColorPickerProps,
   DatePicker,
   DatePickerProps,
+  SearchInput,
+  SearchInputProps,
   // Layout
   DiscordProvider,
   DiscordProviderProps,
