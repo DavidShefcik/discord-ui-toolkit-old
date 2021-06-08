@@ -25,6 +25,7 @@ import FormItem, { FormItemProps } from '@layout/FormItem';
 import DiscordLoadingAnimation, { DiscordLoadingAnimationProps } from '@layout/DiscordLoadingAnimation';
 import Text, { TextVariants, TextProps } from '@layout/Text';
 import UserAvatar, { UserAvatarProps } from '@layout/UserAvatar';
+import Toast, { ToastProps } from '@layout/Toast';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
@@ -100,6 +101,8 @@ export {
   TextProps,
   UserAvatar,
   UserAvatarProps,
+  Toast,
+  ToastProps,
   // Values
   icons,
   iconNames,

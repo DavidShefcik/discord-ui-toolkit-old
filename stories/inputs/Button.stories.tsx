@@ -41,7 +41,7 @@ export default {
       description: 'The size of the button.',
       control: {
         type: 'inline-radio',
-        options: ['normal', 'large'],
+        options: ['small', 'normal', 'large', 'full'],
       },
     },
     disabled: {

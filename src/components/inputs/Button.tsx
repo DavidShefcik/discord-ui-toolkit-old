@@ -10,7 +10,7 @@ type ButtonProps = {
   type: ButtonTypes;
   disabled?: boolean;
   loading?: boolean;
-  size?: 'normal' | 'large';
+  size?: 'small' | 'normal' | 'large' | 'full';
 };
 
 const baseNormalStyle: CSSProperties = {
@@ -115,8 +115,8 @@ const styles = StyleSheet.create({
   whiteEmpty: {
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: 'white',
-    color: 'white',
+    borderColor: 'var(--header-primary)',
+    color: 'var(--header-primary)',
     backgroundColor: 'transparent',
     ':active': {
       backgroundColor: 'hsla(0, 0%, 100%, 0.1)',
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   onlyText: {
     ...baseNormalStyle,
     backgroundColor: 'transparent',
-    color: 'white',
+    color: 'var(--header-primary)',
     textDecoration: 'none',
     ':hover': {
       backgroundColor: 'transparent',
@@ -142,7 +142,14 @@ const styles = StyleSheet.create({
 });
 
 export default function Button({ text, onClick, type, disabled, loading, size = 'normal' }: ButtonProps) {
-  const style = size === 'normal' ? { minWidth: '96px', height: '38px' } : { minWidth: '130px', height: '38px' };
+  const style =
+    size === 'small'
+      ? { minWidth: '90px', height: '32px' }
+      : size === 'normal'
+      ? { minWidth: '96px', height: '38px' }
+      : size === 'large'
+      ? { minWidth: '130px', height: '38px' }
+      : { width: '100%', height: '40px' };
 
   let buttonType = styles.blurple;
   if (type === 'green') {

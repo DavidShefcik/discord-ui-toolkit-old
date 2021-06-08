@@ -95,7 +95,7 @@
   --channeltextarea-background: #40444b;
   --activity-card-background: #202225;
   --textbox-markdown-syntax: #8e9297;
-  --deprecated-card-bg: rgba(32, 34, 37, 0.6);
+  --deprecated-card-bg: #232427;
   --deprecated-card-editable-bg: rgba(32, 34, 37, 0.3);
   --deprecated-store-bg: #36393f;
   --deprecated-quickswitcher-input-background: #72767d;
@@ -119,6 +119,7 @@
   --datepicker-disabled-background-color: #2f3136;
   --datepicker-disabled-text-color: rgba(246, 246, 247, 0.3);
   --datepicker-day-name-text-color: rgba(246, 246, 247, 0.6);
+  --toast-text-color: #ffffff;
 }
 .discord-light {
   --header-primary: #060607;
@@ -190,6 +191,7 @@
   --datepicker-disabled-background-color: rgba(0, 0, 0, 0.05);
   --datepicker-disabled-text-color: rgba(0, 0, 0, 0.2);
   --datepicker-day-name-text-color: rgba(79, 84, 92, 0.6);
+  --toast-text-color: #4f545c;
 }
 ::-webkit-scrollbar {
   width: 16px;
