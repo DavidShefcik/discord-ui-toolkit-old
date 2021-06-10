@@ -26,6 +26,7 @@ import DiscordLoadingAnimation, { DiscordLoadingAnimationProps } from '@layout/D
 import Text, { TextVariants, TextProps } from '@layout/Text';
 import UserAvatar, { UserAvatarProps } from '@layout/UserAvatar';
 import Toast, { ToastProps } from '@layout/Toast';
+import InfoBox, { InfoBoxProps } from '@layout/InfoBox';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
@@ -103,6 +104,8 @@ export {
   UserAvatarProps,
   Toast,
   ToastProps,
+  InfoBox,
+  InfoBoxProps,
   // Values
   icons,
   iconNames,
