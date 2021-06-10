@@ -17,7 +17,7 @@ type TextVariants =
 type TextProps = {
   text: string;
   variant: TextVariants;
-  color: string;
+  color?: string;
   onClick?(text: string): void;
 };
 
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
 export default function Text({ text, variant, color, onClick }: TextProps) {
   return (
     <span
-      style={{ cursor: onClick ? 'pointer' : 'default', color }}
+      style={{ cursor: onClick ? 'pointer' : 'default', color: color || undefined }}
       className={css([
         variant === 'fun_thin'
           ? styles.fun_thin
