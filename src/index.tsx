@@ -27,6 +27,7 @@ import Text, { TextVariants, TextProps } from '@layout/Text';
 import UserAvatar, { UserAvatarProps } from '@layout/UserAvatar';
 import Toast, { ToastProps } from '@layout/Toast';
 import InfoBox, { InfoBoxProps } from '@layout/InfoBox';
+import Message, { MessageContent, MessageProps } from '@layout/Message';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
@@ -65,9 +66,9 @@ export {
   Select,
   SelectProps,
   SelectItemProps,
-  Slider,
-  SliderProps,
-  SliderInterval,
+  // Slider,
+  // SliderProps,
+  // SliderInterval,
   TextInput,
   TextInputProps,
   MessageInput,
@@ -106,6 +107,9 @@ export {
   ToastProps,
   InfoBox,
   InfoBoxProps,
+  Message,
+  MessageContent,
+  MessageProps,
   // Values
   icons,
   iconNames,

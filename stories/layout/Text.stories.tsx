@@ -53,6 +53,7 @@ export default {
           'link',
           'small_code_block',
           'large_code_block',
+          'mention',
         ],
       },
     },
