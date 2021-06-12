@@ -29,6 +29,7 @@
         "controlComponents": ["ReakitCheckBox", "SwitchComponent"]
       }
     ],
+    "jsx-a11y/control-has-associated-label": ["off"],
     "comma-dangle": "off",
     "@typescript-eslint/comma-dangle": ["off"],
     "max-len": [
