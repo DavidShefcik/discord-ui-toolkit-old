@@ -28,6 +28,7 @@ import UserAvatar, { UserAvatarProps } from '@layout/UserAvatar';
 import Toast, { ToastProps } from '@layout/Toast';
 import InfoBox, { InfoBoxProps } from '@layout/InfoBox';
 import Message, { MessageContent, MessageProps } from '@layout/Message';
+import ScrollContainer, { ScrollContainerProps } from '@layout/ScrollContainer';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
@@ -110,6 +111,8 @@ export {
   Message,
   MessageContent,
   MessageProps,
+  ScrollContainer,
+  ScrollContainerProps,
   // Values
   icons,
   iconNames,
