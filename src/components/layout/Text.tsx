@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 type TextVariants =
@@ -13,12 +13,14 @@ type TextVariants =
   | 'subtitle'
   | 'link'
   | 'small_code_block'
-  | 'large_code_block';
+  | 'large_code_block'
+  | 'mention';
 type TextProps = {
-  text: string;
-  variant: TextVariants;
+  text?: string;
+  variant?: TextVariants;
   color?: string;
   onClick?(text: string): void;
+  children?: ReactNode;
 };
 
 const styles = StyleSheet.create({
@@ -91,9 +93,15 @@ const styles = StyleSheet.create({
     overflowX: 'hidden',
     padding: '.5rem',
   },
+  mention: {
+    backgroundColor: '#3e404e',
+    color: '#797fc8',
+    padding: '0 4px',
+    fontWeight: 500,
+  },
 });
 
-export default function Text({ text, variant, color, onClick }: TextProps) {
+export default function Text({ text = '', color, variant = 'old_normal', onClick, children }: TextProps) {
   return (
     <span
       style={{ cursor: onClick ? 'pointer' : 'default', color: color || undefined }}
@@ -120,7 +128,9 @@ export default function Text({ text, variant, color, onClick }: TextProps) {
           ? styles.oldThin
           : variant === 'old_normal'
           ? styles.oldNormal
-          : styles.oldBold,
+          : variant === 'old_bold'
+          ? styles.oldBold
+          : styles.mention,
       ])}
       role="button"
       tabIndex={0}
@@ -128,6 +138,7 @@ export default function Text({ text, variant, color, onClick }: TextProps) {
       onClick={() => onClick(text)}
     >
       {text}
+      {children}
     </span>
   );
 }
