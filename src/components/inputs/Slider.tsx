@@ -1,3 +1,7 @@
+/**
+ * This component is disabled for now since it does not work
+ */
+
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
