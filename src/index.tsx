@@ -29,6 +29,7 @@ import Toast, { ToastProps } from '@layout/Toast';
 import InfoBox, { InfoBoxProps } from '@layout/InfoBox';
 import Message, { MessageContent, MessageProps } from '@layout/Message';
 import ScrollContainer, { ScrollContainerProps } from '@layout/ScrollContainer';
+import ModalBase, { ModalBaseProps } from '@layout/ModalBase';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
@@ -113,6 +114,8 @@ export {
   MessageProps,
   ScrollContainer,
   ScrollContainerProps,
+  ModalBase,
+  ModalBaseProps,
   // Values
   icons,
   iconNames,

@@ -36,6 +36,7 @@
   --dark-not-black: #2c2f33;
   --not-quite-black: #23272a;
   --info-warning-foreground: #faa81a;
+  --saturation-factor: 1;
 }
 .discord-new-colors {
   --green: #3ba55c;
