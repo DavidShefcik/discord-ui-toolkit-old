@@ -85,7 +85,7 @@ export const Template: Story<SelectProps & DiscordProviderProps> = (props) => {
     {
       id: '1',
       label: 'Second',
-      icon: 'discord',
+      icon: 'old_discord',
     },
     {
       id: '2',

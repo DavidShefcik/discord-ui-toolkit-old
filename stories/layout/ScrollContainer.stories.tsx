@@ -38,7 +38,7 @@ export default {
       },
     },
     allowYOverflow: {
-      defaultValue: false,
+      defaultValue: true,
       description: 'Allow y overflowing in the scroll container.',
       control: {
         type: 'boolean',

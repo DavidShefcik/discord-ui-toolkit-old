@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 export default function ScrollContainer({
   children,
   allowXOverflow = false,
-  allowYOverflow = false,
+  allowYOverflow = true,
 }: ScrollContainerProps) {
   return (
     <div

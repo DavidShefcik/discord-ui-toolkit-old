@@ -28,6 +28,13 @@ export default {
         type: 'text',
       },
     },
+    minHeight: {
+      defaultValue: '220px',
+      description: 'The min height of the modal.',
+      control: {
+        type: 'text',
+      },
+    },
     visible: {
       defaultValue: true,
       description: 'The visibility of the modal.',

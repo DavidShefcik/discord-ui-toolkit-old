@@ -9,8 +9,58 @@ type ModalBaseProps = {
   setVisible(visible: boolean): void;
   children: ReactNode;
   width?: string;
+  minHeight?: string;
   closeOnOutsideClick?: boolean;
   animated?: boolean;
+};
+
+const backgroundOpenAnimation = {
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 0.85,
+  },
+};
+const backgroundCloseAnimation = {
+  from: {
+    opacity: 0.85,
+  },
+  to: {
+    opacity: 0,
+  },
+};
+const modalOpenAnimation = {
+  from: {
+    opacity: 0,
+    transform: 'scale(0)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'scale(1)',
+  },
+};
+const modalCloseAnimation = {
+  from: {
+    opacity: 1,
+    transform: 'scale(1)',
+  },
+  to: {
+    opacity: 0,
+    transform: 'scale(0)',
+  },
+};
+
+const animationBase = {
+  animationIterationCount: 1,
+};
+const animatedBase = {
+  ...animationBase,
+  animationDuration: '175ms',
+};
+const notAnimatedBase = {
+  ...animationBase,
+  animationDuration: '0',
 };
 
 const styles = StyleSheet.create({
@@ -31,16 +81,25 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     transform: 'translateZ(0)',
-    opacity: 0,
   },
   backgroundAnimated: {
-    transition: 'opacity 175ms ease-in',
+    transition: 'opacity 175ms forwards',
   },
-  backgroundOpen: {
-    opacity: 0.85,
+  backgroundOpenAnimation: {
+    animationName: [backgroundOpenAnimation],
+    ...animatedBase,
   },
-  backgroundClosed: {
-    opacity: 0,
+  backgroundOpenWithoutAnimation: {
+    animationName: [backgroundOpenAnimation],
+    ...notAnimatedBase,
+  },
+  backgroundCloseAnimation: {
+    animationName: [backgroundCloseAnimation],
+    ...animatedBase,
+  },
+  backgroundCloseWithoutAnimation: {
+    animationName: [backgroundCloseAnimation],
+    ...notAnimatedBase,
   },
   content: {
     display: 'flex',
@@ -53,26 +112,31 @@ const styles = StyleSheet.create({
   modal: {
     boxShadow: '0 0 0 1px rgba(32, 34, 37, 0.6), 0 2px 10px 0 rgba(0, 0, 0, 0.2)',
     maxHeight: '660px',
-    minHeight: '200px',
     overflowY: 'hidden',
     overflowX: 'auto',
     borderRadius: '5px',
     margin: '0 auto',
     position: 'relative',
     backgroundColor: 'var(--background-primary)',
-    opacity: 0,
-    transform: 'scale(0)',
   },
   modalAnimated: {
-    transition: 'opacity 175ms ease-in, transform 175ms ease-in',
+    transition: 'opacity 175ms forwards, transform 175ms forwards',
   },
-  modalOpen: {
-    opacity: 1,
-    transform: 'scale(1)',
+  modalOpenAnimation: {
+    animationName: [modalOpenAnimation],
+    ...animatedBase,
   },
-  modalClosed: {
-    opacity: 0,
-    transform: 'scale(0)',
+  modalOpenWithoutAnimation: {
+    animationName: [modalOpenAnimation],
+    ...notAnimatedBase,
+  },
+  modalCloseAnimation: {
+    animationName: [modalCloseAnimation],
+    ...animatedBase,
+  },
+  modalCloseWithoutAnimation: {
+    animationName: [modalCloseAnimation],
+    ...notAnimatedBase,
   },
 });
 
@@ -81,10 +145,11 @@ export default function ModalBase({
   setVisible,
   children,
   width = '440px',
+  minHeight = '200px',
   closeOnOutsideClick = true,
   animated = true,
 }: ModalBaseProps) {
-  const shouldRender = useAnimateMount({ isMounted: visible, timingInMS: animated ? 200 : 0 });
+  const shouldRender = useAnimateMount({ isMounted: visible, timingInMS: animated ? 175 : 0 });
 
   const modalContainerRef = useRef<HTMLDivElement>();
 
@@ -107,17 +172,29 @@ export default function ModalBase({
         className={css([
           styles.background,
           animated && styles.backgroundAnimated,
-          visible ? styles.backgroundOpen : styles.backgroundClosed,
+          visible
+            ? animated
+              ? styles.backgroundOpenAnimation
+              : styles.backgroundOpenWithoutAnimation
+            : animated
+            ? styles.backgroundCloseAnimation
+            : styles.backgroundCloseWithoutAnimation,
         ])}
       />
       <div className={css(styles.content)}>
         <div
           ref={modalContainerRef}
-          style={{ width }}
+          style={{ width, minHeight }}
           className={css([
             styles.modal,
             animated && styles.modalAnimated,
-            visible ? styles.modalOpen : styles.modalClosed,
+            visible
+              ? animated
+                ? styles.modalOpenAnimation
+                : styles.modalOpenWithoutAnimation
+              : animated
+              ? styles.modalCloseAnimation
+              : styles.modalCloseWithoutAnimation,
           ])}
         >
           {children}
