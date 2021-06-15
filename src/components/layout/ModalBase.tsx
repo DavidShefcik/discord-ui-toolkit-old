@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef, useEffect, useState } from 'react';
+import React, { ReactNode, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import useOutsideClickAlerter from '@internal/hooks/useOutsideClickAlerter';
