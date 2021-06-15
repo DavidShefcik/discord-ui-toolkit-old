@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     transform: 'translateZ(0)',
+    opacity: 0.85,
   },
   backgroundAnimated: {
     transition: 'opacity 175ms forwards',
@@ -149,7 +150,7 @@ export default function ModalBase({
   closeOnOutsideClick = true,
   animated = true,
 }: ModalBaseProps) {
-  const shouldRender = useAnimateMount({ isMounted: visible, timingInMS: animated ? 175 : 0 });
+  const shouldRender = useAnimateMount({ isMounted: visible, timingInMS: animated ? 170 : 0 });
 
   const modalContainerRef = useRef<HTMLDivElement>();
 
