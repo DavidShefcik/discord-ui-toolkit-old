@@ -61,6 +61,9 @@ export const Template: Story<QuickSwitcherProps & DiscordProviderProps> = (props
   return (
     <DiscordProvider {...props}>
       <Button text="Open Modal" type="blurple" onClick={() => setModalVisible(true)} />
+      <div style={{ height: '2000px' }}>
+        <p>Height</p>
+      </div>
       <QuickSwitcher
         {...props}
         visible={modalVisible}
@@ -68,7 +71,7 @@ export const Template: Story<QuickSwitcherProps & DiscordProviderProps> = (props
         value={inputValue}
         onChange={(val: string) => setInputValue(val)}
       >
-        Quick Switcher
+        <div>Quick Search</div>
       </QuickSwitcher>
     </DiscordProvider>
   );

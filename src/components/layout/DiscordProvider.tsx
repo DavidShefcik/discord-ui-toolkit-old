@@ -2,6 +2,7 @@ import React, { ReactNode, useState, useEffect, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import ThemeContext from '@internal/context/ThemeContext';
+import ModalContext from '@internal/context/ModalContext';
 
 import '@assets/css/discord-ui-toolkit.css';
 
@@ -59,6 +60,10 @@ const styles = StyleSheet.create({
       backgroundClip: 'padding-box',
       borderRadius: '8px',
     },
+  },
+  modalOpen: {
+    height: '100vh',
+    overflow: 'hidden',
   },
   contextMenuContainer: {
     position: 'absolute',
@@ -203,12 +208,13 @@ export default function DiscordProvider({
   contextMenuItems = [],
 }: DiscordProviderProps) {
   const [globalTheme, setGlobalTheme] = useState<Theme>(theme);
-  const [globalnewMarketingLayout, setGlobalnewMarketingLayout] = useState(newMarketingLayout);
+  const [globalNewMarketingLayout, setGlobalNewMarketingLayout] = useState(newMarketingLayout);
   const [customRightClickMenuVisible, setCustomRightClickMenuVisible] = useState(false);
   const [customRightClickMenuCords, setCustomRightClickMenuCords] = useState<{ x: string; y: string }>({
     x: '0px',
     y: '0px',
   });
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const contextMenuEvent = (event: MouseEvent) => {
@@ -240,7 +246,7 @@ export default function DiscordProvider({
   }, [theme]);
 
   useEffect(() => {
-    setGlobalnewMarketingLayout(newMarketingLayout);
+    setGlobalNewMarketingLayout(newMarketingLayout);
   }, [newMarketingLayout]);
 
   return (
@@ -248,25 +254,30 @@ export default function DiscordProvider({
       value={{
         theme: globalTheme,
         setTheme: setGlobalTheme,
-        newMarketingLayout: globalnewMarketingLayout,
+        newMarketingLayout: globalNewMarketingLayout,
       }}
     >
-      <div
-        className={`discord-container discord-base ${
-          newMarketingLayout ? 'discord-new-colors' : 'discord-old-colors'
-        } ${globalTheme === 'dark' ? 'discord-dark' : 'discord-light'} ${css(styles.container)}`}
-      >
-        {enableCustomContextMenu && (
-          <RightClickMenu
-            visible={customRightClickMenuVisible}
-            items={contextMenuItems}
-            left={customRightClickMenuCords.x}
-            top={customRightClickMenuCords.y}
-            setVisible={(visible) => setCustomRightClickMenuVisible(visible)}
-          />
-        )}
-        {children}
-      </div>
+      <ModalContext.Provider value={{ modalOpen, setModalOpen }}>
+        <div
+          className={`discord-container discord-base ${
+            newMarketingLayout ? 'discord-new-colors' : 'discord-old-colors'
+          } ${globalTheme === 'dark' ? 'discord-dark' : 'discord-light'} ${css([
+            styles.container,
+            modalOpen && styles.modalOpen,
+          ])}`}
+        >
+          {enableCustomContextMenu && (
+            <RightClickMenu
+              visible={customRightClickMenuVisible}
+              items={contextMenuItems}
+              left={customRightClickMenuCords.x}
+              top={customRightClickMenuCords.y}
+              setVisible={(visible) => setCustomRightClickMenuVisible(visible)}
+            />
+          )}
+          {children}
+        </div>
+      </ModalContext.Provider>
     </ThemeContext.Provider>
   );
 }

@@ -1,8 +1,10 @@
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode, useContext, useRef, useEffect } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import useOutsideClickAlerter from '@internal/hooks/useOutsideClickAlerter';
 import useAnimateMount from '@internal/hooks/useAnimateMount';
+
+import ModalContext, { ModalContextType } from '@internal/context/ModalContext';
 
 type ModalBaseProps = {
   visible: boolean;
@@ -65,7 +67,7 @@ const notAnimatedBase = {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
+    position: 'fixed',
     top: 0,
     right: 0,
     bottom: 0,
@@ -155,6 +157,12 @@ export default function ModalBase({
   const shouldRender = useAnimateMount({ isMounted: visible, timingInMS: animated ? 170 : 0 });
 
   const modalContainerRef = useRef<HTMLDivElement>();
+
+  const { setModalOpen } = useContext<ModalContextType>(ModalContext);
+
+  useEffect(() => {
+    setModalOpen(visible);
+  }, [visible]);
 
   useOutsideClickAlerter({
     ref: modalContainerRef,
