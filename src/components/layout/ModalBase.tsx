@@ -119,6 +119,8 @@ const styles = StyleSheet.create({
     margin: '0 auto',
     position: 'relative',
     backgroundColor: 'var(--background-primary)',
+    display: 'flex',
+    flexDirection: 'column',
   },
   modalAnimated: {
     transition: 'opacity 175ms forwards, transform 175ms forwards',
