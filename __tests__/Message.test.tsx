@@ -186,4 +186,32 @@ describe('<Message />', () => {
 
     expect(mockAvatarClick).toBeCalledTimes(1);
   });
+  it('should render the user tag if userTagText is passed', () => {
+    render(
+      <Message
+        content={[
+          {
+            id: 0,
+            text: 'First Message Text',
+            editedText: 'Edited Text',
+          },
+          {
+            id: 1,
+            text: 'Second Message Text',
+          },
+          {
+            id: 2,
+            text: 'Third Message Text',
+          },
+        ]}
+        avatarSource={BlueNewDefaultAvatar}
+        avatarOnClick={mockAvatarClick}
+        username="Username"
+        timeText="Time Text"
+        userTagText="user tag"
+      />
+    );
+
+    expect(screen.getByText(/user tag/i)).toBeInTheDocument();
+  });
 });

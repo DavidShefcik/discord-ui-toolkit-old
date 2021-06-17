@@ -2,7 +2,7 @@ import React, { ReactNode, useState, useEffect } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import Text from './Text';
-import Tooltip from './Tooltip';
+import UserTag from './UserTag';
 
 type MessageContent = {
   id: string | number;
@@ -19,6 +19,8 @@ type MessageProps = {
   usernameOnClick?(username: string): void;
   usernameColor?: string;
   avatarOnClick?(avatarSource: string): void;
+  userTagText?: string;
+  userTagCheckmark?: boolean;
 };
 
 const styles = StyleSheet.create({
@@ -58,7 +60,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     display: 'block',
     position: 'relative',
-    lineHeight: '1.375rem',
     minHeight: '1.375rem',
     color: 'var(--text-muted)',
     'white-space': 'break-spaces',
@@ -82,6 +83,9 @@ const styles = StyleSheet.create({
     ':hover': {
       textDecoration: 'underline',
     },
+  },
+  userTagContainer: {
+    verticalAlign: 'bottom',
   },
   smallText: {
     fontSize: '0.75rem',
@@ -154,6 +158,8 @@ export default function Message({
   usernameOnClick,
   usernameColor = 'var(--header-primary)',
   avatarOnClick,
+  userTagText,
+  userTagCheckmark = false,
 }: MessageProps) {
   const [firstItemHasMention, setFirstItemHasMention] = useState(false);
 
@@ -198,6 +204,11 @@ export default function Message({
               {username}
             </span>
           </span>
+          {userTagText && (
+            <span className={css(styles.userTagContainer)}>
+              <UserTag text={userTagText} checkmark={userTagCheckmark} />
+            </span>
+          )}
           <span className={css(styles.smallText)}>{timeText}</span>
         </div>
         {content.map((contentItem) => (

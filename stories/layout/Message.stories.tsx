@@ -148,6 +148,8 @@ export const Template: Story<
           avatarSource={GreenNewDefaultAvatar}
           avatarOnClick={(avatarSource) => console.log(avatarSource)}
           usernameOnClick={(username) => console.log(username)}
+          userTagText="bot"
+          userTagCheckmark
         />
       </div>
     </DiscordProvider>

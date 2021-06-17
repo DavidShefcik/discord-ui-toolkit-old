@@ -31,6 +31,7 @@ import Message, { MessageContent, MessageProps } from '@layout/Message';
 import ScrollContainer, { ScrollContainerProps } from '@layout/ScrollContainer';
 import ModalBase, { ModalBaseProps } from '@layout/ModalBase';
 import QuickSwitcher, { QuickSwitcherProps } from '@layout/QuickSwitcher';
+import UserTag, { UserTagProps } from '@layout/UserTag';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
@@ -119,6 +120,8 @@ export {
   ModalBaseProps,
   QuickSwitcher,
   QuickSwitcherProps,
+  UserTag,
+  UserTagProps,
   // Values
   icons,
   iconNames,

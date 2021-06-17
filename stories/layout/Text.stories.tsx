@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Text, TextProps, DiscordProvider, DiscordProviderProps } from 'discord-ui-toolkit';
 
