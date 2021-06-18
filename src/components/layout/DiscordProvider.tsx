@@ -2,7 +2,6 @@ import React, { ReactNode, useState, useEffect, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import ThemeContext from '@internal/context/ThemeContext';
-import ModalContext from '@internal/context/ModalContext';
 
 import '@assets/css/discord-ui-toolkit.css';
 
@@ -214,7 +213,6 @@ export default function DiscordProvider({
     x: '0px',
     y: '0px',
   });
-  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const contextMenuEvent = (event: MouseEvent) => {
@@ -257,27 +255,22 @@ export default function DiscordProvider({
         newMarketingLayout: globalNewMarketingLayout,
       }}
     >
-      <ModalContext.Provider value={{ modalOpen, setModalOpen }}>
-        <div
-          className={`discord-container discord-base ${
-            newMarketingLayout ? 'discord-new-colors' : 'discord-old-colors'
-          } ${globalTheme === 'dark' ? 'discord-dark' : 'discord-light'} ${css([
-            styles.container,
-            modalOpen && styles.modalOpen,
-          ])}`}
-        >
-          {enableCustomContextMenu && (
-            <RightClickMenu
-              visible={customRightClickMenuVisible}
-              items={contextMenuItems}
-              left={customRightClickMenuCords.x}
-              top={customRightClickMenuCords.y}
-              setVisible={(visible) => setCustomRightClickMenuVisible(visible)}
-            />
-          )}
-          {children}
-        </div>
-      </ModalContext.Provider>
+      <div
+        className={`discord-container discord-base ${
+          newMarketingLayout ? 'discord-new-colors' : 'discord-old-colors'
+        } ${globalTheme === 'dark' ? 'discord-dark' : 'discord-light'} ${css(styles.container)}`}
+      >
+        {enableCustomContextMenu && (
+          <RightClickMenu
+            visible={customRightClickMenuVisible}
+            items={contextMenuItems}
+            left={customRightClickMenuCords.x}
+            top={customRightClickMenuCords.y}
+            setVisible={(visible) => setCustomRightClickMenuVisible(visible)}
+          />
+        )}
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 }

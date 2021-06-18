@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event';
 import { Modal } from 'discord-ui-toolkit';
 
 import ThemeContext from '@internal/context/ThemeContext';
-import ModalContext from '@internal/context/ModalContext';
 
 describe('<Modal />', () => {
   const mockSubmitClick = jest.fn();
@@ -18,11 +17,9 @@ describe('<Modal />', () => {
   it('should render', () => {
     render(
       <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
-        <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-          <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={jest.fn()}>
-            Modal Contents
-          </Modal>
-        </ModalContext.Provider>
+        <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={jest.fn()}>
+          Modal Contents
+        </Modal>
       </ThemeContext.Provider>
     );
 
@@ -31,11 +28,9 @@ describe('<Modal />', () => {
   it('should render the submit button', () => {
     render(
       <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
-        <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-          <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={jest.fn()} submitText="Submit">
-            Modal Contents
-          </Modal>
-        </ModalContext.Provider>
+        <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={jest.fn()} submitText="Submit">
+          Modal Contents
+        </Modal>
       </ThemeContext.Provider>
     );
 
@@ -44,11 +39,9 @@ describe('<Modal />', () => {
   it('should call the onSubmitClick method when the submit button is clicked', () => {
     render(
       <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
-        <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-          <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={mockSubmitClick} submitText="Submit">
-            Modal Contents
-          </Modal>
-        </ModalContext.Provider>
+        <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={mockSubmitClick} submitText="Submit">
+          Modal Contents
+        </Modal>
       </ThemeContext.Provider>
     );
 
@@ -60,18 +53,16 @@ describe('<Modal />', () => {
   it('should make the submit button disabled if submitButtonDisabled is true', () => {
     render(
       <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
-        <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-          <Modal
-            visible
-            setVisible={jest.fn()}
-            title="Title"
-            onSubmitClick={mockSubmitClick}
-            submitText="Submit"
-            submitButtonDisabled
-          >
-            Modal Contents
-          </Modal>
-        </ModalContext.Provider>
+        <Modal
+          visible
+          setVisible={jest.fn()}
+          title="Title"
+          onSubmitClick={mockSubmitClick}
+          submitText="Submit"
+          submitButtonDisabled
+        >
+          Modal Contents
+        </Modal>
       </ThemeContext.Provider>
     );
 
@@ -80,18 +71,16 @@ describe('<Modal />', () => {
   it('should make the submit button disabled if submitButtonLoading is true', () => {
     render(
       <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
-        <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-          <Modal
-            visible
-            setVisible={jest.fn()}
-            title="Title"
-            onSubmitClick={mockSubmitClick}
-            submitText="Submit"
-            submitButtonLoading
-          >
-            Modal Contents
-          </Modal>
-        </ModalContext.Provider>
+        <Modal
+          visible
+          setVisible={jest.fn()}
+          title="Title"
+          onSubmitClick={mockSubmitClick}
+          submitText="Submit"
+          submitButtonLoading
+        >
+          Modal Contents
+        </Modal>
       </ThemeContext.Provider>
     );
 
@@ -100,11 +89,9 @@ describe('<Modal />', () => {
   it('should render the cancel button if text is passed for cancelText', () => {
     render(
       <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
-        <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-          <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={jest.fn()} cancelText="Cancel">
-            Modal Contents
-          </Modal>
-        </ModalContext.Provider>
+        <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={jest.fn()} cancelText="Cancel">
+          Modal Contents
+        </Modal>
       </ThemeContext.Provider>
     );
 
@@ -113,19 +100,17 @@ describe('<Modal />', () => {
   it('should call the onCancelClick method when the cancel button is clicked', () => {
     render(
       <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
-        <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-          <Modal
-            visible
-            setVisible={jest.fn()}
-            title="Title"
-            onSubmitClick={jest.fn()}
-            submitText="Submit"
-            cancelText="Cancel"
-            onCancelClick={mockCancelClick}
-          >
-            Modal Contents
-          </Modal>
-        </ModalContext.Provider>
+        <Modal
+          visible
+          setVisible={jest.fn()}
+          title="Title"
+          onSubmitClick={jest.fn()}
+          submitText="Submit"
+          cancelText="Cancel"
+          onCancelClick={mockCancelClick}
+        >
+          Modal Contents
+        </Modal>
       </ThemeContext.Provider>
     );
 

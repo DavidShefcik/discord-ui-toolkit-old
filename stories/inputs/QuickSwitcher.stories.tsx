@@ -61,9 +61,6 @@ export const Template: Story<QuickSwitcherProps & DiscordProviderProps> = (props
   return (
     <DiscordProvider {...props}>
       <Button text="Open Modal" type="blurple" onClick={() => setModalVisible(true)} />
-      <div style={{ height: '2000px' }}>
-        <p>Height</p>
-      </div>
       <QuickSwitcher
         {...props}
         visible={modalVisible}

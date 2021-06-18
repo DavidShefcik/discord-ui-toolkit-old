@@ -1,10 +1,8 @@
-import React, { ReactNode, useContext, useRef, useEffect } from 'react';
+import React, { ReactNode, useRef, useEffect } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import useOutsideClickAlerter from '@internal/hooks/useOutsideClickAlerter';
 import useAnimateMount from '@internal/hooks/useAnimateMount';
-
-import ModalContext, { ModalContextType } from '@internal/context/ModalContext';
 
 type ModalBaseProps = {
   visible: boolean;
@@ -158,10 +156,12 @@ export default function ModalBase({
 
   const modalContainerRef = useRef<HTMLDivElement>();
 
-  const { setModalOpen } = useContext<ModalContextType>(ModalContext);
-
   useEffect(() => {
-    setModalOpen(visible);
+    if (visible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
   }, [visible]);
 
   useOutsideClickAlerter({

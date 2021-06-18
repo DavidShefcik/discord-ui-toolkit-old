@@ -4,38 +4,30 @@ import userEvent from '@testing-library/user-event';
 
 import { QuickSwitcher } from 'discord-ui-toolkit';
 
-import ModalContext from '@internal/context/ModalContext';
-
 describe('<QuickSwitcher />', () => {
   it('should render', () => {
     render(
-      <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-        <QuickSwitcher value="" onChange={jest.fn()} visible setVisible={jest.fn()}>
-          Quick Switcher
-        </QuickSwitcher>
-      </ModalContext.Provider>
+      <QuickSwitcher value="" onChange={jest.fn()} visible setVisible={jest.fn()}>
+        Quick Switcher
+      </QuickSwitcher>
     );
 
     expect(screen.getByText(/quick switcher/i)).toBeInTheDocument();
   });
   it('should render children', () => {
     render(
-      <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-        <QuickSwitcher value="" onChange={jest.fn()} visible setVisible={jest.fn()}>
-          Quick Switcher
-        </QuickSwitcher>
-      </ModalContext.Provider>
+      <QuickSwitcher value="" onChange={jest.fn()} visible setVisible={jest.fn()}>
+        Quick Switcher
+      </QuickSwitcher>
     );
 
     expect(screen.getByText(/quick switcher/i)).toBeInTheDocument();
   });
   it('should render the value in the input', () => {
     render(
-      <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-        <QuickSwitcher value="value" onChange={jest.fn()} visible setVisible={jest.fn()} placeholder="Placeholder">
-          Quick Switcher
-        </QuickSwitcher>
-      </ModalContext.Provider>
+      <QuickSwitcher value="value" onChange={jest.fn()} visible setVisible={jest.fn()} placeholder="Placeholder">
+        Quick Switcher
+      </QuickSwitcher>
     );
 
     expect(screen.getByPlaceholderText(/placeholder/i)).toHaveValue('value');
@@ -47,34 +39,18 @@ describe('<QuickSwitcher />', () => {
     });
 
     const { rerender } = render(
-      <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-        <QuickSwitcher
-          value={value}
-          onChange={localMockChange}
-          visible
-          setVisible={jest.fn()}
-          placeholder="Placeholder"
-        >
-          Quick Switcher
-        </QuickSwitcher>
-      </ModalContext.Provider>
+      <QuickSwitcher value={value} onChange={localMockChange} visible setVisible={jest.fn()} placeholder="Placeholder">
+        Quick Switcher
+      </QuickSwitcher>
     );
 
     expect(screen.getByPlaceholderText(/placeholder/i)).toHaveValue('');
 
     userEvent.type(screen.getByPlaceholderText(/placeholder/i), 'hello world');
     rerender(
-      <ModalContext.Provider value={{ modalOpen: true, setModalOpen: jest.fn() }}>
-        <QuickSwitcher
-          value={value}
-          onChange={localMockChange}
-          visible
-          setVisible={jest.fn()}
-          placeholder="Placeholder"
-        >
-          Quick Switcher
-        </QuickSwitcher>
-      </ModalContext.Provider>
+      <QuickSwitcher value={value} onChange={localMockChange} visible setVisible={jest.fn()} placeholder="Placeholder">
+        Quick Switcher
+      </QuickSwitcher>
     );
 
     expect(screen.getByPlaceholderText(/placeholder/i)).toHaveValue('hello world');
