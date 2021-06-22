@@ -35,6 +35,13 @@ export default {
         type: 'boolean',
       },
     },
+    blurple: {
+      defaultValue: true,
+      description: 'Should the background color be blurple.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 } as Meta;
 

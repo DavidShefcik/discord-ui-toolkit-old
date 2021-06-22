@@ -6,11 +6,11 @@ import Icon from './Icon';
 type UserTagProps = {
   text: string;
   checkmark?: boolean;
+  blurple?: boolean;
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'var(--blurple)',
     height: '15px',
     padding: '0 4px',
     marginTop: '1px',
@@ -18,11 +18,16 @@ const styles = StyleSheet.create({
     display: 'inline-flex',
     position: 'relative',
     bottom: '1px',
-    flex: 0,
     textTransform: 'uppercase',
     verticalAlign: 'top',
     alignItems: 'center',
     overflow: 'hidden',
+  },
+  containerBlurple: {
+    backgroundColor: 'var(--blurple)',
+  },
+  containerWhite: {
+    backgroundColor: 'white',
   },
   iconContainer: {
     width: '15px',
@@ -31,22 +36,27 @@ const styles = StyleSheet.create({
     display: 'inline-block',
   },
   text: {
-    color: 'white',
     fontFamily: 'discord-normal',
     fontSize: '10px',
     fontWeight: 500,
   },
+  textBlurple: {
+    color: 'var(--blurple)',
+  },
+  textWhite: {
+    color: 'white',
+  },
 });
 
-export default function UserTag({ text, checkmark = false }: UserTagProps) {
+export default function UserTag({ text, checkmark = false, blurple = true }: UserTagProps) {
   return (
-    <div className={css(styles.container)}>
+    <div className={css([styles.container, blurple ? styles.containerBlurple : styles.containerWhite])}>
       {checkmark && (
         <div className={css(styles.iconContainer)}>
-          <Icon size={16} icon="checkmark" />
+          <Icon size={16} icon="checkmark" iconColor={blurple ? 'white' : 'var(--blurple)'} />
         </div>
       )}
-      <span className={css(styles.text)}>{text}</span>
+      <span className={css([styles.text, blurple ? styles.textWhite : styles.textBlurple])}>{text}</span>
     </div>
   );
 }

@@ -33,6 +33,7 @@ import ModalBase, { ModalBaseProps } from '@layout/ModalBase';
 import QuickSwitcher, { QuickSwitcherProps } from '@layout/QuickSwitcher';
 import UserTag, { UserTagProps } from '@layout/UserTag';
 import Modal, { ModalProps } from '@layout/Modal';
+import SmallUserProfile, { SmallUserProfileSection, SmallUserProfileProps } from '@layout/SmallUserProfile';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
@@ -125,6 +126,9 @@ export {
   UserTagProps,
   Modal,
   ModalProps,
+  SmallUserProfile,
+  SmallUserProfileProps,
+  SmallUserProfileSection,
   // Values
   icons,
   iconNames,
