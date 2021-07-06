@@ -1,7 +1,7 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-import ThemeContext from '@internal/context/ThemeContext';
+import useThemeContext from '@internal/hooks/useThemeContext';
 
 import Button from '@components/inputs/Button';
 import ModalBase from './ModalBase';
@@ -77,7 +77,7 @@ export default function Modal({
   cancelText,
   onCancelClick,
 }: ModalProps) {
-  const { newMarketingLayout } = useContext<ThemeContextValues>(ThemeContext);
+  const { newMarketingLayout } = useThemeContext();
 
   return (
     <ModalBase visible={visible} setVisible={setVisible}>

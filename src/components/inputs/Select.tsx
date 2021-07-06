@@ -4,11 +4,13 @@ import useOutsideClickAlerter from '@internal/hooks/useOutsideClickAlerter';
 import Emoji from '@layout/Emoji';
 import IconComponent from '@layout/Icon';
 
+import { IconNamesType } from '@internal/values/icons';
+
 interface SelectItem {
   id: string | null;
   label: string;
   heplerText?: string;
-  icon?: Icon;
+  icon?: IconNamesType;
   emoji?: string;
 }
 interface InternalSelectItemProps {

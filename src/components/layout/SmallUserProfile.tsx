@@ -1,7 +1,7 @@
-import React, { ReactNode, useState, useContext } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-import ThemeContext from '@internal/context/ThemeContext';
+import useThemeContext from '@internal/hooks/useThemeContext';
 
 import UserAvatar from './UserAvatar';
 import UserTag from './UserTag';
@@ -317,7 +317,7 @@ function NewUserProfile({
 }
 
 export default function SmallUserProfile(props: SmallUserProfileProps) {
-  const { newMarketingLayout } = useContext<ThemeContextValues>(ThemeContext);
+  const { newMarketingLayout } = useThemeContext();
 
   const { sections, children } = props;
 

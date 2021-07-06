@@ -151,20 +151,30 @@ export default function Button({ text, onClick, type, disabled, loading, size = 
       ? { minWidth: '130px', height: '38px' }
       : { width: '100%', height: '40px' };
 
-  let buttonType = styles.blurple;
-  if (type === 'green') {
-    buttonType = styles.green;
-  } else if (type === 'greyple') {
-    buttonType = styles.greyple;
-  } else if (type === 'red_filled') {
-    buttonType = styles.redFilled;
-  } else if (type === 'red_empty') {
-    buttonType = styles.redEmpty;
-  } else if (type === 'white_empty') {
-    buttonType = styles.whiteEmpty;
-  } else if (type === 'only_text') {
-    buttonType = styles.onlyText;
+  let buttonType = null;
+  switch (type) {
+    case 'green':
+      buttonType = styles.green;
+      break;
+    case 'greyple':
+      buttonType = styles.greyple;
+      break;
+    case 'red_filled':
+      buttonType = styles.redFilled;
+      break;
+    case 'red_empty':
+      buttonType = styles.redEmpty;
+      break;
+    case 'white_empty':
+      buttonType = styles.whiteEmpty;
+      break;
+    case 'only_text':
+      buttonType = styles.onlyText;
+      break;
+    default:
+      buttonType = styles.blurple;
   }
+
   return (
     <ReakitButton
       onClick={onClick}

@@ -2,10 +2,12 @@ import React, { useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import IconComponent from '@layout/Icon';
 
+import { IconNamesType } from '@internal/values/icons';
+
 interface MessageInputSideItem {
   id: string;
-  value: Icon;
-  onClick?(icon: Icon): void;
+  value: IconNamesType;
+  onClick?(icon: IconNamesType): void;
 }
 interface MessageInputProps {
   value: string;
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
 function MessageInputSideItemComponent({ value, onClick }: MessageInputSideItem) {
   return (
     <IconComponent
-      icon={value as Icon}
+      icon={value as IconNamesType}
       iconColor="var(--interactive-normal)"
       iconHoverColor="var(--interactive-hover)"
       onClick={(icon) => onClick(icon)}
