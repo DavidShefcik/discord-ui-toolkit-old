@@ -50,10 +50,9 @@ export default {
       },
     },
     disabled: {
-      defaultValue: false,
       description: 'Is the select disabled.',
-      control: {
-        type: 'boolean',
+      table: {
+        disabled: true,
       },
     },
     value: {
@@ -65,34 +64,34 @@ export default {
       },
     },
     error: {
-      defaultValue: false,
       description: 'Does the select have an error.',
-      control: {
-        type: 'boolean',
+      table: {
+        disabled: true,
       },
     },
   },
 } as Meta;
 
-export const Template: Story<SelectProps & DiscordProviderProps> = (props) => {
+const items: SelectItem[] = [
+  {
+    id: '0',
+    label: 'First',
+    emoji: '😀',
+  },
+  {
+    id: '1',
+    label: 'Second',
+    icon: 'old_discord',
+  },
+  {
+    id: '2',
+    label: 'Third',
+    heplerText: 'Helper',
+  },
+];
+
+export const Default: Story<SelectProps & DiscordProviderProps> = (props) => {
   const { value } = props;
-  const items: SelectItem[] = [
-    {
-      id: '0',
-      label: 'First',
-      emoji: '😀',
-    },
-    {
-      id: '1',
-      label: 'Second',
-      icon: 'old_discord',
-    },
-    {
-      id: '2',
-      label: 'Third',
-      heplerText: 'Helper',
-    },
-  ];
 
   const [selectValue, setSelectValue] = useState<string | number | null | SelectItem>('2');
 
@@ -107,6 +106,46 @@ export const Template: Story<SelectProps & DiscordProviderProps> = (props) => {
   return (
     <DiscordProvider {...props}>
       <Select {...props} value={selectValue} onChange={onChange} items={items} />
+    </DiscordProvider>
+  );
+};
+
+export const Disabled: Story<SelectProps & DiscordProviderProps> = (props) => {
+  const { value } = props;
+
+  const [selectValue, setSelectValue] = useState<string | number | null | SelectItem>('2');
+
+  useEffect(() => {
+    setSelectValue(value);
+  }, [value]);
+
+  const onChange = (newValue: string | number | null) => {
+    setSelectValue(newValue);
+  };
+
+  return (
+    <DiscordProvider {...props}>
+      <Select {...props} value={selectValue} onChange={onChange} items={items} disabled />
+    </DiscordProvider>
+  );
+};
+
+export const Error: Story<SelectProps & DiscordProviderProps> = (props) => {
+  const { value } = props;
+
+  const [selectValue, setSelectValue] = useState<string | number | null | SelectItem>('2');
+
+  useEffect(() => {
+    setSelectValue(value);
+  }, [value]);
+
+  const onChange = (newValue: string | number | null) => {
+    setSelectValue(newValue);
+  };
+
+  return (
+    <DiscordProvider {...props}>
+      <Select {...props} value={selectValue} onChange={onChange} items={items} error />
     </DiscordProvider>
   );
 };

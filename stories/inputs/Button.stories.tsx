@@ -45,17 +45,15 @@ export default {
       },
     },
     disabled: {
-      defaultValue: false,
       description: 'Is the button disabled.',
-      control: {
-        type: 'boolean',
+      table: {
+        disabled: true,
       },
     },
     loading: {
-      defaultValue: false,
       description: 'Is the button loading. Shows a loading animation and disables button.',
-      control: {
-        type: 'boolean',
+      table: {
+        disabled: true,
       },
     },
     width: {
@@ -73,7 +71,7 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<ButtonProps & DiscordProviderProps> = (props) => {
+export const Default: Story<ButtonProps & DiscordProviderProps> = (props) => {
   const { newMarketingLayout } = props;
 
   const click = () => console.log('Button click');
@@ -81,6 +79,30 @@ export const Template: Story<ButtonProps & DiscordProviderProps> = (props) => {
   return (
     <DiscordProvider newMarketingLayout={newMarketingLayout}>
       <Button {...props} onClick={click} />
+    </DiscordProvider>
+  );
+};
+
+export const Disabled: Story<ButtonProps & DiscordProviderProps> = (props) => {
+  const { newMarketingLayout } = props;
+
+  const click = () => console.log('Button click');
+
+  return (
+    <DiscordProvider newMarketingLayout={newMarketingLayout}>
+      <Button {...props} onClick={click} disabled />
+    </DiscordProvider>
+  );
+};
+
+export const Loading: Story<ButtonProps & DiscordProviderProps> = (props) => {
+  const { newMarketingLayout } = props;
+
+  const click = () => console.log('Button click');
+
+  return (
+    <DiscordProvider newMarketingLayout={newMarketingLayout}>
+      <Button {...props} onClick={click} loading />
     </DiscordProvider>
   );
 };

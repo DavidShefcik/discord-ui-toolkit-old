@@ -95,42 +95,43 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
-  const sections: SmallUserProfileSection[] = [
-    {
-      label: 'First Section',
-      content: <span>First Section Content</span>,
-    },
-    {
-      label: 'Second Section',
-      content: <span>Second Section Content</span>,
-    },
-  ];
+const sections: SmallUserProfileSection[] = [
+  {
+    label: 'First Section',
+    content: <span>First Section Content</span>,
+  },
+  {
+    label: 'Second Section',
+    content: <span>Second Section Content</span>,
+  },
+];
 
+export const NewMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
   return (
-    <>
-      <DiscordProvider {...props} newMarketingLayout={false}>
-        <SmallUserProfile
-          {...props}
-          avatarSource={GreenOldDefaultAvatar}
-          onAvatarClick={(avatarSource) => console.log(avatarSource)}
-          sections={sections}
-        >
-          <p>Old Marketing Layout</p>
-        </SmallUserProfile>
-      </DiscordProvider>
-      <div style={{ marginTop: '20px' }}>
-        <DiscordProvider {...props} newMarketingLayout>
-          <SmallUserProfile
-            {...props}
-            avatarSource={GreenNewDefaultAvatar}
-            onAvatarClick={(avatarSource) => console.log(avatarSource)}
-            sections={sections}
-          >
-            <p>New Marketing Layout</p>
-          </SmallUserProfile>
-        </DiscordProvider>
-      </div>
-    </>
+    <DiscordProvider {...props} newMarketingLayout={true}>
+      <SmallUserProfile
+        {...props}
+        avatarSource={GreenNewDefaultAvatar}
+        onAvatarClick={(avatarSource) => console.log(avatarSource)}
+        sections={sections}
+      >
+        <p>Old Marketing Layout</p>
+      </SmallUserProfile>
+    </DiscordProvider>
+  );
+};
+
+export const OldMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
+  return (
+    <DiscordProvider {...props} newMarketingLayout={false}>
+      <SmallUserProfile
+        {...props}
+        avatarSource={GreenOldDefaultAvatar}
+        onAvatarClick={(avatarSource) => console.log(avatarSource)}
+        sections={sections}
+      >
+        <p>Old Marketing Layout</p>
+      </SmallUserProfile>
+    </DiscordProvider>
   );
 };

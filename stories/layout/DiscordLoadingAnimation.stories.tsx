@@ -1,39 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import {
-  DiscordLoadingAnimation,
-  DiscordLoadingAnimationProps,
-  DiscordProvider,
-  DiscordProviderProps,
-} from 'discord-ui-toolkit';
+import { DiscordLoadingAnimation, DiscordLoadingAnimationProps } from 'discord-ui-toolkit';
 
 export default {
   component: DiscordLoadingAnimation,
   title: 'Discord UI Toolkit/Layout/DiscordLoadingAnimation',
   argTypes: {
-    theme: {
-      defaultValue: 'dark',
-      description: 'The UI toolkit theme.',
-      control: {
-        type: 'inline-radio',
-        options: ['dark', 'light'],
-      },
-    },
-    newMarketingLayout: {
-      defaultValue: false,
-      description: "Use the new colors from Discord's 2021 rebranding.",
-      control: {
-        type: 'boolean',
-      },
-    },
-    version: {
-      defaultValue: 'old',
-      description: 'The version of the Discord loading animation to use.',
-      control: {
-        type: 'inline-radio',
-        options: ['old', 'new'],
-      },
-    },
     size: {
       defaultValue: '100%',
       description: 'The size of the Discord loading animation video,',
@@ -41,13 +13,22 @@ export default {
         type: 'text',
       },
     },
+    version: {
+      description: 'The version of the Discord loading animation to use.',
+      table: {
+        disable: true,
+      },
+    },
   },
 } as Meta;
 
-export const Template: Story<DiscordLoadingAnimationProps & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <div style={{ width: '250px', height: '250px' }}>
-      <DiscordLoadingAnimation {...props} />
-    </div>
-  </DiscordProvider>
+export const Old: Story<DiscordLoadingAnimationProps> = (props) => (
+  <div style={{ width: '250px', height: '250px' }}>
+    <DiscordLoadingAnimation {...props} version="old" />
+  </div>
+);
+export const New: Story<DiscordLoadingAnimationProps> = (props) => (
+  <div style={{ width: '250px', height: '250px' }}>
+    <DiscordLoadingAnimation {...props} version="new" />
+  </div>
 );

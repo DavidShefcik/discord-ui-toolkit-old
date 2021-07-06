@@ -31,17 +31,15 @@ export default {
       },
     },
     allowXOverflow: {
-      defaultValue: false,
       description: 'Allow x overflowing in the scroll container.',
-      control: {
-        type: 'boolean',
+      table: {
+        disabled: true,
       },
     },
     allowYOverflow: {
-      defaultValue: true,
       description: 'Allow y overflowing in the scroll container.',
-      control: {
-        type: 'boolean',
+      table: {
+        disabled: true,
       },
     },
   },
@@ -65,10 +63,32 @@ for (let count = 0; count < 100; count += 1) {
   );
 }
 
-export const Template: Story<ScrollContainerProps & DiscordProviderProps> = (props) => (
+export const XScroll: Story<ScrollContainerProps & DiscordProviderProps> = (props) => (
   <DiscordProvider {...props}>
     <div style={{ height: '350px', width: '100%' }}>
-      <ScrollContainer {...props}>{messages.map((message) => message)}</ScrollContainer>
+      <ScrollContainer {...props} allowXOverflow allowYOverflow={false}>
+        {messages.map((message) => message)}
+      </ScrollContainer>
+    </div>
+  </DiscordProvider>
+);
+
+export const YScroll: Story<ScrollContainerProps & DiscordProviderProps> = (props) => (
+  <DiscordProvider {...props}>
+    <div style={{ height: '350px', width: '100%' }}>
+      <ScrollContainer {...props} allowYOverflow>
+        {messages.map((message) => message)}
+      </ScrollContainer>
+    </div>
+  </DiscordProvider>
+);
+
+export const XAndYScroll: Story<ScrollContainerProps & DiscordProviderProps> = (props) => (
+  <DiscordProvider {...props}>
+    <div style={{ height: '350px', width: '100%' }}>
+      <ScrollContainer {...props} allowYOverflow allowXOverflow>
+        {messages.map((message) => message)}
+      </ScrollContainer>
     </div>
   </DiscordProvider>
 );

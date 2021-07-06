@@ -37,10 +37,9 @@ export default {
       },
     },
     error: {
-      defaultValue: false,
       description: 'Does the input have an error.',
-      control: {
-        type: 'boolean',
+      table: {
+        disable: true,
       },
     },
     placeholder: {
@@ -58,10 +57,9 @@ export default {
       },
     },
     disabled: {
-      defaultValue: false,
       description: 'If the text input is disabled.',
-      control: {
-        type: 'boolean',
+      table: {
+        disable: true,
       },
     },
     width: {
@@ -109,7 +107,7 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<TextInputProps & DiscordProviderProps> = (props) => {
+export const Default: Story<TextInputProps & DiscordProviderProps> = (props) => {
   const { value } = props;
 
   const [inputValue, setInputValue] = useState('');
@@ -121,6 +119,38 @@ export const Template: Story<TextInputProps & DiscordProviderProps> = (props) =>
   return (
     <DiscordProvider {...props}>
       <TextInput {...props} value={inputValue} onChange={(val) => setInputValue(val)} />
+    </DiscordProvider>
+  );
+};
+
+export const Disabled: Story<TextInputProps & DiscordProviderProps> = (props) => {
+  const { value } = props;
+
+  const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
+  return (
+    <DiscordProvider {...props}>
+      <TextInput {...props} value={inputValue} onChange={(val) => setInputValue(val)} disabled />
+    </DiscordProvider>
+  );
+};
+
+export const Error: Story<TextInputProps & DiscordProviderProps> = (props) => {
+  const { value } = props;
+
+  const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
+  return (
+    <DiscordProvider {...props}>
+      <TextInput {...props} value={inputValue} onChange={(val) => setInputValue(val)} error />
     </DiscordProvider>
   );
 };
