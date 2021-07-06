@@ -106,6 +106,14 @@ const sections: SmallUserProfileSection[] = [
   },
 ];
 
+export const DefaultNewMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
+  return (
+    <DiscordProvider {...props} newMarketingLayout={true}>
+      <SmallUserProfile username="Username" avatarSource={GreenNewDefaultAvatar} />
+    </DiscordProvider>
+  );
+};
+
 export const NewMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
   return (
     <DiscordProvider {...props} newMarketingLayout={true}>
@@ -115,8 +123,16 @@ export const NewMarketingLayout: Story<SmallUserProfileProps & DiscordProviderPr
         onAvatarClick={(avatarSource) => console.log(avatarSource)}
         sections={sections}
       >
-        <p>Old Marketing Layout</p>
+        <p>New Marketing Layout</p>
       </SmallUserProfile>
+    </DiscordProvider>
+  );
+};
+
+export const DefaultOldMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
+  return (
+    <DiscordProvider {...props} newMarketingLayout={false}>
+      <SmallUserProfile username="Username" avatarSource={GreenOldDefaultAvatar} />
     </DiscordProvider>
   );
 };
