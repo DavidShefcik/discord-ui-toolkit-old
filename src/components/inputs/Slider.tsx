@@ -156,8 +156,6 @@ export default function Slider({
             ref={grabberRef}
             style={{ left: filledWidth }}
             role="slider"
-            tabIndex={0}
-            onKeyPress={() => {}}
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={value}

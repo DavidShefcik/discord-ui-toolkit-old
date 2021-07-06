@@ -79,7 +79,6 @@ export default function Tooltip({
           <svg viewBox="0 0 30 30" style={{ transform }}>
             <path
               fill={backgroundColor}
-              /* eslint-disable-next-line */
               d="M23.7,27.1L17,19.9C16.5,19.3,15.8,19,15,19s-1.6,0.3-2.1,0.9l-6.6,7.2C5.3,28.1,3.4,29,2,29h26 C26.7,29,24.6,28.1,23.7,27.1z"
             />
             <path

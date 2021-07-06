@@ -8,39 +8,14 @@
       "jsx": true
     }
   },
-  "extends": ["airbnb-typescript", "prettier/@typescript-eslint"],
   "env": {
     "browser": true,
     "es6": true,
     "jest": true
   },
   "plugins": ["@typescript-eslint", "testing-library", "jest-dom"],
+  "extends": ["plugin:@typescript-eslint/recommended", "prettier/@typescript-eslint"],
   "rules": {
-    "no-console": ["off"],
-    "import/prefer-default-export": ["off"],
-    "import/no-extraneous-dependencies": ["off"],
-    "import/extensions": ["off"],
-    "react/require-default-props": ["off"],
-    "react/jsx-props-no-spreading": ["off"],
-    "react/prop-types": ["off"],
-    "jsx-a11y/label-has-associated-control": [
-      "error",
-      {
-        "controlComponents": ["ReakitCheckBox", "SwitchComponent"]
-      }
-    ],
-    "jsx-a11y/control-has-associated-label": ["off"],
-    "comma-dangle": "off",
-    "@typescript-eslint/comma-dangle": ["off"],
-    "max-len": [
-      "error",
-      {
-        "code": 120
-      }
-    ],
-    "object-curly-newline": ["off"],
-    "no-nested-ternary": ["off"],
-    "linebreak-style": ["off"],
-    "implicit-arrow-linebreak": ["off"]
+    "@typescript-eslint/explicit-module-boundary-types": ["off"]
   }
 }

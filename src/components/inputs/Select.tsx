@@ -220,13 +220,7 @@ function SelectItem({ id, label, heplerText, icon, emoji, onClick }: SelectItemP
   }
 
   return (
-    <div
-      className={css(styles.selectItem)}
-      role="button"
-      tabIndex={0}
-      onKeyPress={() => {}}
-      onClick={() => onClick && onClick(id)}
-    >
+    <div className={css(styles.selectItem)} onClick={() => onClick && onClick(id)}>
       <div className={css(styles.selectItemContent)}>
         <div className={css(styles.labelContainer)}>
           {icon ? (
@@ -297,13 +291,7 @@ export default function Select({
 
   return (
     <div style={{ display: 'inline-block', width: containerWidth, position: 'relative' }} ref={selectContainerRef}>
-      <div
-        className={css([styles.select, selectStyle])}
-        onClick={() => !disabled && setOpen(!open)}
-        role="button"
-        tabIndex={0}
-        onKeyPress={() => {}}
-      >
+      <div className={css([styles.select, selectStyle])} onClick={() => !disabled && setOpen(!open)} role="button">
         {unselectedLabel && !currentId ? (
           <SelectItem id={null} label={unselectedLabel} heplerText={unselectedHelperText} />
         ) : (

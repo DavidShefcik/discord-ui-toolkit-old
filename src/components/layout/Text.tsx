@@ -133,8 +133,6 @@ export default function Text({ text = '', color, variant = 'old_normal', onClick
           : styles.mention,
       ])}
       role="button"
-      tabIndex={0}
-      onKeyPress={() => {}}
       onClick={() => onClick(text)}
     >
       {text}

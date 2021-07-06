@@ -187,8 +187,6 @@ export default function Message({
           src={avatarSource}
           alt="Avatar"
           role="button"
-          tabIndex={0}
-          onKeyPress={() => {}}
           onClick={() => avatarOnClick(avatarSource)}
         />
         <div className={css([styles.header])}>
@@ -197,8 +195,6 @@ export default function Message({
               style={{ color: usernameColor, cursor: usernameOnClick ? 'pointer' : 'default' }}
               className={css([styles.username, usernameOnClick && styles.usernameHover])}
               role="button"
-              tabIndex={0}
-              onKeyPress={() => {}}
               onClick={() => usernameOnClick && usernameOnClick(username)}
             >
               {username}

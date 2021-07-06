@@ -29,8 +29,6 @@ export default function Emoji({ emoji, color = true, size = 72, onClick }: Emoji
       style={{ width: `${size}px`, height: `${size}px`, cursor: onClick ? 'pointer' : 'default' }}
       onClick={() => onClick(emoji)}
       role="button"
-      tabIndex={0}
-      onKeyPress={() => {}}
     >
       <Twemoji
         options={{
