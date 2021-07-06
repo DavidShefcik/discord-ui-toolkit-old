@@ -4,6 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 interface TextInputProps {
   value: string;
   onChange(value: string): void;
+  onEnterPress?(value: string): void;
   htmlType?: 'text' | 'password' | 'email' | 'phone' | 'email';
   error?: boolean;
   placeholder?: string;
@@ -69,6 +70,7 @@ const styles = StyleSheet.create({
 export default function TextInput({
   value,
   onChange,
+  onEnterPress,
   htmlType = 'text',
   error = false,
   placeholder,
@@ -82,6 +84,13 @@ export default function TextInput({
   prefix,
 }: TextInputProps) {
   const [focused, setFocused] = useState(false);
+
+  const onKeyDownEvent = (event: KeyboardEvent) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      onEnterPress(value);
+    }
+  };
 
   return (
     <div style={{ display: 'inline-block', width, height }}>
@@ -106,6 +115,7 @@ export default function TextInput({
           type={htmlType}
           value={value}
           onChange={(event) => onChange(event.target.value.replace(new RegExp(`^${prefix}$`), ''))}
+          onKeyDown={onKeyDownEvent}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           placeholder={placeholder}

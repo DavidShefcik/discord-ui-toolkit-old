@@ -32,6 +32,15 @@ describe('<TextInput />', () => {
 
     expect(screen.getByPlaceholderText(/placeholder/i)).toHaveValue('hello world');
   });
+  it('should fire onEnterPress if enter is pressed and a function for onEnterPress is passed', () => {
+    const mockEnterPress = jest.fn();
+    render(<TextInput value="" onChange={mockChange} placeholder="Placeholder" onEnterPress={mockEnterPress} />);
+
+    expect(mockEnterPress).toHaveBeenCalledTimes(0);
+    userEvent.type(screen.getByPlaceholderText(/placeholder/i), '{enter}');
+
+    expect(mockEnterPress).toHaveBeenCalledTimes(1);
+  });
   it('should not change the value if disabled is true', () => {
     let value = '';
     const lockMockChange = jest.fn().mockImplementation((val: string) => {
