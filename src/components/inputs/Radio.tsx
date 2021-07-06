@@ -1,18 +1,18 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-type RadioItem = {
+interface RadioItem {
   id: string | number;
   title: string;
   description?: string;
   borderLeftColor?: string;
-};
-type RadioProps = {
+}
+interface RadioProps {
   items: RadioItem[];
   onChange(newValue: string | number): void;
   value?: string | number;
   containerWidth?: string;
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -109,8 +109,6 @@ export default function Radio({ items, onChange, value = null, containerWidth }:
               onClick={() => {
                 onChange(id);
               }}
-              tabIndex={0}
-              onKeyDown={() => {}}
             >
               <div className={css(styles.radioContainer)}>
                 <svg aria-hidden="false" width="24" height="24" viewBox="0 0 24 24">

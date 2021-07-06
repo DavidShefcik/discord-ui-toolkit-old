@@ -3,11 +3,11 @@ import { StyleSheet, css } from 'aphrodite';
 
 import Icon from './Icon';
 
-type UserTagProps = {
+interface UserTagProps {
   text: string;
   checkmark?: boolean;
   blurple?: boolean;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

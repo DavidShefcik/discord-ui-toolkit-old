@@ -4,14 +4,14 @@ import { StyleSheet, css } from 'aphrodite';
 import ModalBase from './ModalBase';
 import ScrollContainer from './ScrollContainer';
 
-type QuickSwitcherProps = {
+interface QuickSwitcherProps {
   value: string;
   onChange(value: string): void;
   visible: boolean;
   setVisible(visible: boolean): void;
   children: ReactNode;
   placeholder?: string;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -25,20 +25,20 @@ type ContextMenuItem = { id: number } & (
 );
 type OnClickContextMenuItem = Extract<ContextMenuItem, { type: 'item' }>;
 
-type DiscordProviderProps = {
+interface DiscordProviderProps {
   children: ReactNode;
   theme?: Theme;
   newMarketingLayout?: boolean;
   enableCustomContextMenu?: boolean;
   contextMenuItems?: ContextMenuItem[];
-};
-type ContextMenuProps = {
+}
+interface ContextMenuProps {
   visible: boolean;
   setVisible(visible: boolean): void;
   top: string;
   left: string;
   items: ContextMenuItem[];
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -158,8 +158,6 @@ function ContextMenuButton({
         backgroundColor: hovered ? hoverBackgroundColor : backgroundColor,
       }}
       role="button"
-      tabIndex={0}
-      onKeyDown={() => {}}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

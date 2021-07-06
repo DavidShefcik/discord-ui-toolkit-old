@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-type ScrollContainerProps = {
+interface ScrollContainerProps {
   children: ReactNode;
   allowXOverflow?: boolean;
   allowYOverflow?: boolean;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

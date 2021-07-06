@@ -2,12 +2,12 @@ import React, { useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import IconComponent from '@layout/Icon';
 
-type MessageInputSideItemProps = {
+interface MessageInputSideItem {
   id: string;
   value: Icon;
   onClick?(icon: Icon): void;
-};
-type MessageInputProps = {
+}
+interface MessageInputProps {
   value: string;
   onChange(value: string): void;
   onEnterPress?(value: string): void;
@@ -16,13 +16,13 @@ type MessageInputProps = {
   width?: string;
   autoComplete?: boolean;
   spellcheck?: boolean;
-  leftItems?: MessageInputSideItemProps[];
-  rightItems?: MessageInputSideItemProps[];
+  leftItems?: MessageInputSideItem[];
+  rightItems?: MessageInputSideItem[];
   underInputText?: string;
   aboveInputVariant?: 'error' | 'notice';
   aboveInputText?: string;
   aboveInputOnClick?(): void;
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function MessageInputSideItem({ value, onClick }: MessageInputSideItemProps) {
+function MessageInputSideItemComponent({ value, onClick }: MessageInputSideItem) {
   return (
     <IconComponent
       icon={value as Icon}
@@ -212,8 +212,6 @@ export default function MessageInput({
           ])}
           style={{ cursor: aboveInputOnClick && 'pointer' }}
           role="button"
-          tabIndex={0}
-          onKeyDown={() => {}}
           onClick={aboveInputOnClick}
         >
           <span className={css(styles.aboveInputText)}>{aboveInputText}</span>
@@ -225,7 +223,7 @@ export default function MessageInput({
             <div className={css(styles.iconWrapper)} style={{ padding: '0 16px', marginLeft: '-16px' }}>
               {leftItems.map((item, index) => (
                 <span key={item.id} style={{ paddingRight: leftItems.length - 1 !== index && '8px' }}>
-                  <MessageInputSideItem {...item} />
+                  <MessageInputSideItemComponent {...item} />
                 </span>
               ))}
             </div>
@@ -242,7 +240,6 @@ export default function MessageInput({
               aria-disabled={disabled}
               aria-autocomplete={autoComplete ? 'list' : 'none'}
               aria-label={placeholder}
-              tabIndex={0}
               contentEditable={!disabled}
               autoCorrect="off"
               spellCheck={spellcheck}
@@ -257,7 +254,7 @@ export default function MessageInput({
             <div className={css(styles.iconWrapper)} style={{ paddingRight: '12px' }}>
               {rightItems.map((item, index) => (
                 <span key={item.id} style={{ paddingRight: rightItems.length - 1 !== index && '8px' }}>
-                  <MessageInputSideItem {...item} />
+                  <MessageInputSideItemComponent {...item} />
                 </span>
               ))}
             </div>
@@ -269,4 +266,4 @@ export default function MessageInput({
   );
 }
 
-export { MessageInputProps, MessageInputSideItemProps };
+export { MessageInputProps, MessageInputSideItem };

@@ -4,31 +4,31 @@ import useOutsideClickAlerter from '@internal/hooks/useOutsideClickAlerter';
 import Emoji from '@layout/Emoji';
 import IconComponent from '@layout/Icon';
 
-type SelectItemProps = {
+interface SelectItem {
   id: string | null;
   label: string;
   heplerText?: string;
   icon?: Icon;
   emoji?: string;
-};
-type InternalSelectItemProps = {
+}
+interface InternalSelectItemProps {
   onClick?(clickedId: string | number | null): void;
-};
-type DropdownItemProps = {
+}
+interface DropdownItemProps {
   children: ReactNode;
   selected: boolean;
-};
-type SelectProps = {
-  value: SelectItemProps | string | number | null;
+}
+interface SelectProps {
+  value: SelectItem | string | number | null;
   onChange(value: string | number | null): void;
-  items: SelectItemProps[];
+  items: SelectItem[];
   unselectedAsOption?: boolean;
   unselectedLabel?: string;
   unselectedHelperText?: string;
   containerWidth?: string;
   disabled?: boolean;
   error?: boolean;
-};
+}
 
 const styles = StyleSheet.create({
   select: {
@@ -191,8 +191,8 @@ const styles = StyleSheet.create({
   },
 });
 
-function isSelectItem(item: SelectItemProps | string | number | null): item is SelectItemProps {
-  return (item as SelectItemProps)?.id !== undefined;
+function isSelectItem(item: SelectItem | string | number | null): item is SelectItem {
+  return (item as SelectItem)?.id !== undefined;
 }
 
 function Chevron() {
@@ -212,7 +212,7 @@ function Chevron() {
   );
 }
 
-function SelectItem({ id, label, heplerText, icon, emoji, onClick }: SelectItemProps & InternalSelectItemProps) {
+function SelectItemComponent({ id, label, heplerText, icon, emoji, onClick }: SelectItem & InternalSelectItemProps) {
   const helperTextVisible = heplerText && heplerText.length > 0;
 
   if (icon && emoji) {
@@ -293,9 +293,9 @@ export default function Select({
     <div style={{ display: 'inline-block', width: containerWidth, position: 'relative' }} ref={selectContainerRef}>
       <div className={css([styles.select, selectStyle])} onClick={() => !disabled && setOpen(!open)} role="button">
         {unselectedLabel && !currentId ? (
-          <SelectItem id={null} label={unselectedLabel} heplerText={unselectedHelperText} />
+          <SelectItemComponent id={null} label={unselectedLabel} heplerText={unselectedHelperText} />
         ) : (
-          <SelectItem {...items.find((item) => item.id === currentId)} />
+          <SelectItemComponent {...items.find((item) => item.id === currentId)} />
         )}
         <Chevron />
       </div>
@@ -304,7 +304,7 @@ export default function Select({
           <div className={css(styles.dropdownContent)}>
             {unselectedLabel && unselectedAsOption && (
               <DropdownItem selected={currentId === null}>
-                <SelectItem
+                <SelectItemComponent
                   onClick={() => {
                     setCurrentId(null);
                     onChange(null);
@@ -318,7 +318,7 @@ export default function Select({
             )}
             {items.map((item) => (
               <DropdownItem selected={currentId === item.id} key={item.id}>
-                <SelectItem
+                <SelectItemComponent
                   onClick={(clickedId: string | number) => {
                     setCurrentId(clickedId);
                     onChange(clickedId);
@@ -335,4 +335,4 @@ export default function Select({
   );
 }
 
-export { SelectItemProps, SelectProps };
+export { SelectItem, SelectProps };

@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-type UserAvatarProps = {
+interface UserAvatarProps {
   avatarSource: string;
   size: 'small' | 'large';
-};
+}
 
 const styles = StyleSheet.create({
   small: {

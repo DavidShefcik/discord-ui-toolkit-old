@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 import useOutsideClickAlerter from '@internal/hooks/useOutsideClickAlerter';
 import useAnimateMount from '@internal/hooks/useAnimateMount';
 
-type ModalBaseProps = {
+interface ModalBaseProps {
   visible: boolean;
   setVisible(visible: boolean): void;
   children: ReactNode;
@@ -12,7 +12,7 @@ type ModalBaseProps = {
   minHeight?: string;
   closeOnOutsideClick?: boolean;
   animated?: boolean;
-};
+}
 
 const backgroundOpenAnimation = {
   from: {

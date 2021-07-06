@@ -1,14 +1,14 @@
 import React, { ChangeEvent } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-type SwitchProps = {
+interface SwitchProps {
   value: boolean;
   label?: string;
   subLabel?: string;
   containerWidth?: string;
   disabled?: boolean;
   onChange?(event: ChangeEvent<HTMLInputElement>): void;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -6,11 +6,11 @@ import ThemeContext from '@internal/context/ThemeContext';
 import UserAvatar from './UserAvatar';
 import UserTag from './UserTag';
 
-type SmallUserProfileSection = {
+interface SmallUserProfileSection {
   label: string;
   content: ReactNode;
-};
-type SmallUserProfileProps = {
+}
+interface SmallUserProfileProps {
   avatarSource: string;
   username: string;
   discriminator?: string;
@@ -26,7 +26,7 @@ type SmallUserProfileProps = {
   activitySubtitle?: string;
   sections?: SmallUserProfileSection[];
   children?: ReactNode;
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -201,8 +201,6 @@ function Avatar({
       className={css(styles.avatarBase)}
       style={{ cursor: onAvatarClick && 'pointer' }}
       role="button"
-      tabIndex={0}
-      onKeyDown={() => {}}
       onClick={() => onAvatarClick && onAvatarClick(avatarSource)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

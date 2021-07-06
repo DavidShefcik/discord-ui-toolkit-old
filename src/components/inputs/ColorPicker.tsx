@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
   },
 });
 
-type ColorPickerProps = {
+interface ColorPickerProps {
   value: string;
   onChange(value: string): void;
   width?: string;
-};
+}
 
 function HuePointer() {
   return (

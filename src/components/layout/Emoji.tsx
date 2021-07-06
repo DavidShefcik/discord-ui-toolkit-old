@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import Twemoji from 'react-twemoji';
 
-type EmojiProps = {
+interface EmojiProps {
   emoji: string;
   color?: boolean;
   size?: number;
   onClick?(emoji?: string): void;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-type InfoBoxProps = {
+interface InfoBoxProps {
   children: ReactNode;
   variant?: 'normal' | 'error' | 'warning' | 'notice';
   width?: string;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -6,7 +6,7 @@ import ThemeContext from '@internal/context/ThemeContext';
 import Button from '@components/inputs/Button';
 import ModalBase from './ModalBase';
 
-type ModalProps = {
+interface ModalProps {
   visible: boolean;
   setVisible(visible: boolean): void;
   title: string;
@@ -19,7 +19,7 @@ type ModalProps = {
   onSubmitClick(): void;
   cancelText?: string;
   onCancelClick?(): void;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

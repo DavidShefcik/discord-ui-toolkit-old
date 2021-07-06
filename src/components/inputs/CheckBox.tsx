@@ -2,14 +2,14 @@ import React from 'react';
 import { Checkbox as ReakitCheckBox, useCheckboxState } from 'reakit/Checkbox';
 import { StyleSheet, css } from 'aphrodite';
 
-type CheckBoxProps = {
+interface CheckBoxProps {
   value: boolean;
   label?: string;
   labelSide?: 'left' | 'right';
   backgroundTransparent?: boolean;
   containerWidth?: string;
   disabled?: boolean;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

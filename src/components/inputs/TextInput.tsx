@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-type TextInputProps = {
+interface TextInputProps {
   value: string;
   onChange(value: string): void;
   htmlType?: 'text' | 'password' | 'email' | 'phone' | 'email';
@@ -15,7 +15,7 @@ type TextInputProps = {
   autoComplete?: boolean;
   spellcheck?: boolean;
   prefix?: string;
-};
+}
 
 const styles = StyleSheet.create({
   inputBase: {

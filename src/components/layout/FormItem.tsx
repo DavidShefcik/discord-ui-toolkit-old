@@ -1,14 +1,14 @@
 import React, { ReactChild } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-type FormItemProps = {
+interface FormItemProps {
   label: string;
   children: ReactChild;
   containerWidth?: string;
   error?: boolean;
   errorMessage?: string;
   requiredIndicator?: boolean;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -3,14 +3,14 @@ import { StyleSheet, css } from 'aphrodite';
 
 import iconsList from '@internal/values/icons';
 
-type IconProps = {
+interface IconProps {
   icon: Icon;
   iconColor?: string;
   iconHoverColor?: string;
   size?: number;
   animated?: boolean;
   onClick?(icon?: Icon): void;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

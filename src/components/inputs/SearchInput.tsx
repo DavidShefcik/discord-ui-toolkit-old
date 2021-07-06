@@ -3,13 +3,13 @@ import { StyleSheet, css } from 'aphrodite';
 
 import IconComponent from '@layout/Icon';
 
-type SearchInputProps = {
+interface SearchInputProps {
   value: string;
   onChange(value: string): void;
   placeholder?: string;
   width?: string;
   widenOnValue?: boolean;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

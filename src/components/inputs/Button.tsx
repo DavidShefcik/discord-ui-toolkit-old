@@ -4,14 +4,14 @@ import { Button as ReakitButton } from 'reakit/Button';
 import { PulseLoader } from 'react-spinners';
 
 type ButtonTypes = 'blurple' | 'greyple' | 'green' | 'red_filled' | 'red_empty' | 'white_empty' | 'only_text';
-type ButtonProps = {
+interface ButtonProps {
   text: string;
   onClick(event: MouseEvent<HTMLButtonElement>): void;
   type: ButtonTypes;
   disabled?: boolean;
   loading?: boolean;
   size?: 'small' | 'normal' | 'large' | 'full';
-};
+}
 
 const baseNormalStyle: CSSProperties = {
   borderWidth: 0,

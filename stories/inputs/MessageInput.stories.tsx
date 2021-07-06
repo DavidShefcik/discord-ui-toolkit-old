@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import {
   MessageInput,
   MessageInputProps,
-  MessageInputSideItemProps,
+  MessageInputSideItem,
   DiscordProvider,
   DiscordProviderProps,
 } from 'discord-ui-toolkit';
@@ -102,7 +102,7 @@ export const Template: Story<MessageInputProps & DiscordProviderProps> = (props)
     setMessageInputValue(value);
   }, [value]);
 
-  const leftItems: MessageInputSideItemProps[] = [
+  const leftItems: MessageInputSideItem[] = [
     {
       id: '0',
       value: 'attach',
@@ -110,7 +110,7 @@ export const Template: Story<MessageInputProps & DiscordProviderProps> = (props)
     },
   ];
 
-  const rightItems: MessageInputSideItemProps[] = [
+  const rightItems: MessageInputSideItem[] = [
     {
       id: '1',
       value: 'gift',

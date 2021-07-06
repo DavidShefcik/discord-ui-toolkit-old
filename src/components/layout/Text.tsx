@@ -15,13 +15,13 @@ type TextVariants =
   | 'small_code_block'
   | 'large_code_block'
   | 'mention';
-type TextProps = {
+interface TextProps {
   text?: string;
   variant?: TextVariants;
   color?: string;
   onClick?(text: string): void;
   children?: ReactNode;
-};
+}
 
 const styles = StyleSheet.create({
   fun_thin: {

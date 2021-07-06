@@ -5,11 +5,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-type SliderInterval = {
+interface SliderInterval {
   value: number;
   label: string;
-};
-type SliderProps = {
+}
+interface SliderProps {
   value: number;
   onChange(value: number): void;
   containerWidth?: string;
@@ -20,7 +20,7 @@ type SliderProps = {
   values?: SliderInterval[];
   disabled?: boolean;
   units?: string;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

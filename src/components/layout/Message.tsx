@@ -4,13 +4,13 @@ import { StyleSheet, css } from 'aphrodite';
 import Text from './Text';
 import UserTag from './UserTag';
 
-type MessageContent = {
+interface MessageContent {
   id: string | number;
   text: string | ReactNode;
   mentioned?: boolean;
   editedText?: string;
-};
-type MessageProps = {
+}
+interface MessageProps {
   username: string;
   avatarSource: string;
   timeText: string;
@@ -21,7 +21,7 @@ type MessageProps = {
   avatarOnClick?(avatarSource: string): void;
   userTagText?: string;
   userTagCheckmark?: boolean;
-};
+}
 
 const styles = StyleSheet.create({
   container: {

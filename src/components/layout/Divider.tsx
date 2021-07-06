@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-type DividerProps = {
+interface DividerProps {
   width?: string;
-};
+}
 
 const styles = StyleSheet.create({
   divider: {

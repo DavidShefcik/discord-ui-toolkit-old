@@ -3,10 +3,10 @@ import Button, { ButtonProps, ButtonTypes } from '@inputs/Button';
 import CheckBox, { CheckBoxProps } from '@inputs/CheckBox';
 import Switch, { SwitchProps } from '@inputs/Switch';
 import Radio, { RadioProps, RadioItem } from '@inputs/Radio';
-import Select, { SelectItemProps, SelectProps } from '@inputs/Select';
+import Select, { SelectItem, SelectProps } from '@inputs/Select';
 import Slider, { SliderProps, SliderInterval } from '@inputs/Slider';
 import TextInput, { TextInputProps } from '@inputs/TextInput';
-import MessageInput, { MessageInputProps, MessageInputSideItemProps } from '@inputs/MessageInput';
+import MessageInput, { MessageInputProps, MessageInputSideItem } from '@inputs/MessageInput';
 import ColorPicker, { ColorPickerProps } from '@inputs/ColorPicker';
 import DatePicker, { DatePickerProps } from '@inputs/DatePicker';
 import SearchInput, { SearchInputProps } from '@inputs/SearchInput';
@@ -72,7 +72,7 @@ export {
   RadioItem,
   Select,
   SelectProps,
-  SelectItemProps,
+  SelectItem,
   // Slider,
   // SliderProps,
   // SliderInterval,
@@ -80,7 +80,7 @@ export {
   TextInputProps,
   MessageInput,
   MessageInputProps,
-  MessageInputSideItemProps,
+  MessageInputSideItem,
   ColorPicker,
   ColorPickerProps,
   DatePicker,

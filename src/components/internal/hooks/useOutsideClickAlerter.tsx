@@ -4,10 +4,10 @@
 
 import { useEffect, RefObject } from 'react';
 
-type Props = {
+interface Props {
   ref: RefObject<HTMLDivElement>;
-  onOutsideClick: Function;
-};
+  onOutsideClick(): void;
+}
 
 /**
  * Hook that detects when a user clicks out a component

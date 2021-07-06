@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Select, DiscordProvider, DiscordProviderProps, SelectProps, SelectItemProps } from 'discord-ui-toolkit';
+import { Select, DiscordProvider, DiscordProviderProps, SelectProps, SelectItem } from 'discord-ui-toolkit';
 
 export default {
   component: Select,
@@ -76,7 +76,7 @@ export default {
 
 export const Template: Story<SelectProps & DiscordProviderProps> = (props) => {
   const { value } = props;
-  const items: SelectItemProps[] = [
+  const items: SelectItem[] = [
     {
       id: '0',
       label: 'First',
@@ -94,7 +94,7 @@ export const Template: Story<SelectProps & DiscordProviderProps> = (props) => {
     },
   ];
 
-  const [selectValue, setSelectValue] = useState<string | number | null | SelectItemProps>('2');
+  const [selectValue, setSelectValue] = useState<string | number | null | SelectItem>('2');
 
   useEffect(() => {
     setSelectValue(value);

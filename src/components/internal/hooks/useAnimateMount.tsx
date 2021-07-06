@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-type Props = {
+interface Props {
   isMounted: boolean;
   timingInMS: number;
-};
+}
 /**
  * Hook that animates the mounting and unmounting of a component
  * @param {boolean} isMounted If the component is mounted

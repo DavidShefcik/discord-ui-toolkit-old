@@ -73,8 +73,6 @@ export default function Role({
           style={{ backgroundColor: color }}
           role="button"
           aria-label="Role Circle"
-          tabIndex={0}
-          onKeyDown={() => {}}
           onClick={() => onClick && onClick(text)}
         >
           {hoverRemoveIcon && hovered && (

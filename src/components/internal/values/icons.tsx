@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 
-type IconsListItem = {
+interface IconsListItem {
   name: Icon;
   icon: ReactElement;
-};
+}
 
 const iconNames: Icon[] = [
   'old_discord',

@@ -18,13 +18,13 @@ type TooltipDirection =
   | 'left-end'
   | 'left'
   | 'left-start';
-type TooltipProps = {
+interface TooltipProps {
   children: ReactNode;
   text: string;
   direction?: TooltipDirection;
   backgroundColor?: string;
   textColor?: string;
-};
+}
 
 const styles = StyleSheet.create({
   tooltipContainer: {

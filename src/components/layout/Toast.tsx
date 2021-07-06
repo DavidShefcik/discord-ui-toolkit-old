@@ -3,7 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 import Button from '@inputs/Button';
 
-type ToastProps = {
+interface ToastProps {
   text: string;
   visible: boolean;
   setVisible(visible: boolean): void;
@@ -13,7 +13,7 @@ type ToastProps = {
   error?: boolean;
   cancelText?: string;
   onCancelClick?(): void;
-};
+}
 
 const styles = StyleSheet.create({
   container: {
