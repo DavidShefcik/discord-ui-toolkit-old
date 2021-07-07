@@ -89,4 +89,52 @@ describe('<ModalBase />', () => {
       expect(screen.queryByText(/modal contents/i)).not.toBeInTheDocument();
     });
   });
+  it('should close if closeOnEscapePressed is true and the escape key is pressed', async () => {
+    let visible = true;
+
+    const mockSetVisible = jest.fn().mockImplementation((value: boolean) => {
+      visible = value;
+    });
+
+    const { rerender } = render(
+      <ModalBase
+        closeOnOutsideClick
+        animated={false}
+        visible={visible}
+        setVisible={mockSetVisible}
+        closeOnEscapeKeyPress
+      >
+        Modal Contents
+      </ModalBase>
+    );
+
+    expect(screen.getByText(/modal contents/i)).toBeInTheDocument();
+    expect(mockSetVisible).toHaveBeenCalledTimes(0);
+
+    userEvent.type(screen.getByText(/modal contents/i), '{escape}');
+    rerender(
+      <ModalBase closeOnOutsideClick animated={false} visible={visible} setVisible={mockSetVisible}>
+        Modal Contents
+      </ModalBase>
+    );
+
+    expect(mockSetVisible).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      expect(screen.queryByText(/modal contents/i)).not.toBeInTheDocument();
+    });
+  });
+  it('should call onEscapePressed when the escape key is pressed', () => {
+    const mockOnEscapeKeyPress = jest.fn();
+
+    render(
+      <ModalBase visible setVisible={jest.fn()} onEscapeKeyPress={mockOnEscapeKeyPress}>
+        Modal Contents
+      </ModalBase>
+    );
+
+    expect(mockOnEscapeKeyPress).toBeCalledTimes(0);
+    userEvent.type(screen.getByText(/modal contents/i), '{escape}');
+
+    expect(mockOnEscapeKeyPress).toBeCalledTimes(1);
+  });
 });

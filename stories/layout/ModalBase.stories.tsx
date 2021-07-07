@@ -49,6 +49,13 @@ export default {
         type: 'boolean',
       },
     },
+    closeOnEscapeKeyPress: {
+      defaultValue: true,
+      description: 'If the modal should close when the escape key is pressed.',
+      control: {
+        type: 'boolean',
+      },
+    },
     animated: {
       defaultValue: true,
       description: 'If the modal transitions should be animated.',

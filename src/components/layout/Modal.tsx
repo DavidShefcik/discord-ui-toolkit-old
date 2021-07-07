@@ -11,12 +11,14 @@ interface ModalProps {
   setVisible(visible: boolean): void;
   title: string;
   children: ReactNode;
+  onSubmitClick(): void;
+  closeOnEscapeKeyPress?: boolean;
+  onEscapeKeyPress?(): void;
   submitText?: string;
   submitColor?: 'blurple' | 'green' | 'red';
   submitButtonFull?: boolean;
   submitButtonLoading?: boolean;
   submitButtonDisabled?: boolean;
-  onSubmitClick(): void;
   cancelText?: string;
   onCancelClick?(): void;
 }
@@ -69,18 +71,25 @@ export default function Modal({
   title,
   submitText = 'Ok',
   children,
+  onSubmitClick,
+  closeOnEscapeKeyPress = true,
+  onEscapeKeyPress,
   submitColor = 'blurple',
   submitButtonFull = false,
   submitButtonLoading = false,
   submitButtonDisabled = false,
-  onSubmitClick,
   cancelText,
   onCancelClick,
 }: ModalProps) {
   const { newMarketingLayout } = useThemeContext();
 
   return (
-    <ModalBase visible={visible} setVisible={setVisible}>
+    <ModalBase
+      visible={visible}
+      setVisible={setVisible}
+      closeOnEscapeKeyPress={closeOnEscapeKeyPress}
+      onEscapeKeyPress={onEscapeKeyPress}
+    >
       <div className={css(styles.container)}>
         <div className={css(styles.titleContainer)}>
           <div className={css([styles.titleBase, newMarketingLayout ? styles.newText : styles.oldText])}>{title}</div>

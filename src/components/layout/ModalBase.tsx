@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef, useEffect } from 'react';
+import React, { ReactNode, useRef, useCallback, useEffect } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import useOutsideClickAlerter from '@internal/hooks/useOutsideClickAlerter';
@@ -11,6 +11,8 @@ interface ModalBaseProps {
   width?: string;
   minHeight?: string;
   closeOnOutsideClick?: boolean;
+  closeOnEscapeKeyPress?: boolean;
+  onEscapeKeyPress?(): void;
   animated?: boolean;
 }
 
@@ -53,6 +55,7 @@ const modalCloseAnimation = {
 
 const animationBase = {
   animationIterationCount: 1,
+  animationFillMode: 'forwards',
 };
 const animatedBase = {
   ...animationBase,
@@ -81,7 +84,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     transform: 'translateZ(0)',
-    opacity: 0.85,
   },
   backgroundAnimated: {
     transition: 'opacity 175ms forwards',
@@ -150,17 +152,37 @@ export default function ModalBase({
   width = '440px',
   minHeight = '200px',
   closeOnOutsideClick = true,
+  closeOnEscapeKeyPress = true,
+  onEscapeKeyPress,
   animated = true,
 }: ModalBaseProps) {
-  const shouldRender = useAnimateMount({ isMounted: visible, timingInMS: animated ? 170 : 0 });
+  const shouldRender = useAnimateMount({ isMounted: visible, timingInMS: animated ? 175 : 0 });
 
   const modalContainerRef = useRef<HTMLDivElement>();
+
+  const handleKeyPress = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeOnEscapeKeyPress && setVisible(false);
+        onEscapeKeyPress && onEscapeKeyPress();
+      }
+    },
+    [closeOnEscapeKeyPress, onEscapeKeyPress]
+  );
+
+  useEffect(() => {
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
 
   useEffect(() => {
     if (visible) {
       document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', handleKeyPress);
     } else {
       document.body.style.overflow = 'unset';
+      document.removeEventListener('keydown', handleKeyPress);
     }
   }, [visible]);
 
