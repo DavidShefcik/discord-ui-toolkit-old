@@ -111,7 +111,7 @@ describe('<ModalBase />', () => {
     expect(screen.getByText(/modal contents/i)).toBeInTheDocument();
     expect(mockSetVisible).toHaveBeenCalledTimes(0);
 
-    userEvent.type(screen.getByText(/modal contents/i), '{escape}');
+    userEvent.type(screen.getByText(/modal contents/i), '{esc}');
     rerender(
       <ModalBase closeOnOutsideClick animated={false} visible={visible} setVisible={mockSetVisible}>
         Modal Contents
@@ -133,7 +133,7 @@ describe('<ModalBase />', () => {
     );
 
     expect(mockOnEscapeKeyPress).toBeCalledTimes(0);
-    userEvent.type(screen.getByText(/modal contents/i), '{escape}');
+    userEvent.type(screen.getByText(/modal contents/i), '{esc}');
 
     expect(mockOnEscapeKeyPress).toBeCalledTimes(1);
   });
