@@ -10,7 +10,9 @@ interface ButtonProps {
   type: ButtonTypes;
   disabled?: boolean;
   loading?: boolean;
-  size?: 'small' | 'normal' | 'large' | 'full';
+  size?: 'small' | 'normal' | 'large' | 'full' | 'custom';
+  width?: string | number;
+  height?: string | number;
 }
 
 const baseNormalStyle: CSSProperties = {
@@ -18,11 +20,6 @@ const baseNormalStyle: CSSProperties = {
   borderStyle: 'none',
   textDecoration: 'none',
   ':hover': {
-    borderWidth: 0,
-    borderStyle: 'none',
-    textDecoration: 'none',
-  },
-  ':focus': {
     borderWidth: 0,
     borderStyle: 'none',
     textDecoration: 'none',
@@ -60,18 +57,12 @@ const styles = StyleSheet.create({
     ':hover': {
       backgroundColor: 'var(--blurple-dark)',
     },
-    ':focus': {
-      backgroundColor: 'var(--blurple-dark)',
-    },
   },
   greyple: {
     ...baseNormalStyle,
     backgroundColor: 'var(--greyple)',
     color: 'white',
     ':hover': {
-      backgroundColor: 'var(--greyple-dark)',
-    },
-    ':focus': {
       backgroundColor: 'var(--greyple-dark)',
     },
   },
@@ -82,18 +73,12 @@ const styles = StyleSheet.create({
     ':hover': {
       backgroundColor: 'var(--green-dark)',
     },
-    ':focus': {
-      backgroundColor: 'var(--green-dark)',
-    },
   },
   redFilled: {
     ...baseNormalStyle,
     backgroundColor: 'var(--red)',
     color: 'white',
     ':hover': {
-      backgroundColor: 'var(--red-dark)',
-    },
-    ':focus': {
       backgroundColor: 'var(--red-dark)',
     },
   },
@@ -104,10 +89,6 @@ const styles = StyleSheet.create({
     color: 'var(--red)',
     backgroundColor: 'transparent',
     ':hover': {
-      borderColor: 'var(--red-dark)',
-      color: 'var(--red-dark)',
-    },
-    ':focus': {
       borderColor: 'var(--red-dark)',
       color: 'var(--red-dark)',
     },
@@ -131,17 +112,22 @@ const styles = StyleSheet.create({
       backgroundColor: 'transparent',
       textDecoration: 'underline',
     },
-    ':focus': {
-      backgroundColor: 'transparent',
-      textDecoration: 'underline',
-    },
   },
   loader: {
     transform: 'scale(0.25)',
   },
 });
 
-export default function Button({ text, onClick, type, disabled, loading, size = 'normal' }: ButtonProps) {
+export default function Button({
+  text,
+  onClick,
+  type,
+  disabled,
+  loading,
+  size = 'normal',
+  width = 'auto',
+  height = 'auto',
+}: ButtonProps) {
   const style =
     size === 'small'
       ? { minWidth: '90px', height: '32px' }
@@ -149,6 +135,11 @@ export default function Button({ text, onClick, type, disabled, loading, size = 
       ? { minWidth: '96px', height: '38px' }
       : size === 'large'
       ? { minWidth: '130px', height: '38px' }
+      : size === 'custom'
+      ? {
+          minWidth: width,
+          height,
+        }
       : { width: '100%', height: '40px' };
 
   let buttonType = null;

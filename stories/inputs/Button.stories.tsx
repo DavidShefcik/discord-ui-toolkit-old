@@ -41,7 +41,7 @@ export default {
       description: 'The size of the button.',
       control: {
         type: 'inline-radio',
-        options: ['small', 'normal', 'large', 'full'],
+        options: ['small', 'normal', 'large', 'full', 'custom'],
       },
     },
     disabled: {
@@ -57,12 +57,14 @@ export default {
       },
     },
     width: {
+      defaultValue: 'auto',
       description: 'Width of the button.',
       control: {
         type: 'text',
       },
     },
     height: {
+      defaultValue: 'auto',
       description: 'Height of the button.',
       control: {
         type: 'text',
