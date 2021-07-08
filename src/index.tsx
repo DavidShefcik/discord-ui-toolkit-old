@@ -40,6 +40,7 @@ import Role, { RoleProps } from '@layout/Role';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
+import Constants from '@values/Constants';
 
 // Images
 import BlueGroupDMIcon from '@assets/images/blue_group_dm_icon.png';
@@ -146,6 +147,7 @@ export {
   icons,
   iconNames,
   IconsListItem,
+  Constants,
   // Images
   BlueGroupDMIcon,
   BlueNewDefaultAvatar,

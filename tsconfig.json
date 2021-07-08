@@ -16,7 +16,8 @@
       "@layout/*": ["./src/components/layout/*"],
       "@lists/*": ["./src/components/lists/*"],
       "@components/*": ["./src/components/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@values/*": ["./src/values/*"]
     },
     "jsx": "react",
     "typeRoots": ["./typings", "./node_modules/@types"]

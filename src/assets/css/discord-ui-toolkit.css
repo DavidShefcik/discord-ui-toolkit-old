@@ -31,8 +31,6 @@
 .discord-base {
   --greyple: #747f8d;
   --greyple-dark: #68727f;
-  --red: #f04747;
-  --red-dark: #d84040;
   --dark-not-black: #2c2f33;
   --not-quite-black: #23272a;
   --info-warning-foreground: #faa81a;
@@ -51,6 +49,8 @@
   --green-dark: #3ca374;
   --blurple: #7289da;
   --blurple-dark: #677bc4;
+  --red: #f04747;
+  --red-dark: #d84040;
 }
 .discord-dark {
   --header-primary: #fff;
