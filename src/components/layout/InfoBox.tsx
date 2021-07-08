@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     lineHeight: '18px',
     padding: '16px 22px',
     boxSizing: 'border-box',
-    borderWidth: '1px',
     borderStyle: 'solid',
     borderRadius: '5px',
     color: 'var(--header-primary)',
@@ -22,18 +21,22 @@ const styles = StyleSheet.create({
   normal: {
     backgroundColor: 'var(--background-secondary)',
     borderColor: 'var(--background-tertiary)',
+    borderWidth: '1px',
   },
   error: {
-    backgroundColor: 'rgba(237, 66, 69, 0.1)',
+    backgroundColor: '#493a40',
     borderColor: 'rgba(237, 66, 69, 0.5)',
+    borderWidth: '2px',
   },
   warning: {
-    backgroundColor: 'rgba(254, 231, 92, 0.1)',
+    backgroundColor: '#4a4b42',
     borderColor: 'rgba(254, 231, 92, 0.5)',
+    borderWidth: '2px',
   },
   notice: {
-    backgroundColor: 'rgba(88, 101, 242, 0.1)',
+    backgroundColor: '#393d52',
     borderColor: 'rgba(88, 101, 242, 0.5)',
+    borderWidth: '2px',
   },
 });
 
