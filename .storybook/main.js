@@ -19,6 +19,7 @@ module.exports = {
       '@lists': path.resolve(__dirname, '../src/components/lists/'),
       '@components': path.resolve(__dirname, '../src/components/'),
       '@assets': path.resolve(__dirname, '../src/assets/'),
+      '@values': path.resolve(__dirname, '../src/values/'),
     };
     config.resolve.extensions.push('.ts', '.tsx');
     return config;
