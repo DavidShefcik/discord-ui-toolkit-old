@@ -35,5 +35,6 @@ module.exports = {
     '^@layout(.*)$': '<rootDir>/src/components/layout$1',
     '^@lists(.*)$': '<rootDir>/src/components/lists$1',
     '^@assets(.*)$': '<rootDir>/src/components/assets$1',
+    '^@values(.*)$': '<rootDir>/src/values$1',
   },
 };
