@@ -3,7 +3,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 interface UserAvatarProps {
   avatarSource: string;
-  size: 'small' | 'large';
+  size: 'small' | 'medium' | 'large';
 }
 
 const styles = StyleSheet.create({
@@ -11,9 +11,13 @@ const styles = StyleSheet.create({
     width: '32px',
     height: '32px',
   },
-  large: {
+  medium: {
     width: '80px',
     height: '80px',
+  },
+  large: {
+    width: '120px',
+    height: '120px',
   },
   avatar: {
     borderRadius: '50%',
@@ -31,7 +35,7 @@ const styles = StyleSheet.create({
 
 export default function UserAvatar({ avatarSource, size = 'small' }: UserAvatarProps) {
   return (
-    <div className={css([size === 'small' ? styles.small : styles.large])}>
+    <div className={css([size === 'small' ? styles.small : size === 'medium' ? styles.medium : styles.large])}>
       <img className={css(styles.avatar)} src={avatarSource} alt="Avatar" />
     </div>
   );

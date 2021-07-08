@@ -34,7 +34,8 @@ import ModalBase, { ModalBaseProps } from '@layout/ModalBase';
 import QuickSwitcher, { QuickSwitcherProps } from '@layout/QuickSwitcher';
 import UserTag, { UserTagProps } from '@layout/UserTag';
 import Modal, { ModalProps } from '@layout/Modal';
-import SmallUserProfile, { SmallUserProfileSection, SmallUserProfileProps } from '@layout/SmallUserProfile';
+import SmallUserProfile, { SmallUserProfileProps } from '@layout/SmallUserProfile';
+import FullUserProfile, { FullUserProfileProps, FullUserProfileTab } from '@layout/FullUserProfile';
 import Role, { RoleProps } from '@layout/Role';
 
 // Values
@@ -58,6 +59,9 @@ import RedGroupDMIcon from '@assets/images/red_group_dm_icon.png';
 import RedNewDefaultAvatar from '@assets/images/red_new_default_avatar.png';
 import RedOldDefaultAvatar from '@assets/images/red_old_default_avatar.jpg';
 import YellowGroupDMIcon from '@assets/images/yellow_group_dm_icon.png';
+
+// Types
+import { ProfileSection } from '@internal/components/ProfileSection';
 
 export {
   // Inputs
@@ -130,9 +134,12 @@ export {
   UserTagProps,
   Modal,
   ModalProps,
+  ProfileSection,
   SmallUserProfile,
-  SmallUserProfileSection,
   SmallUserProfileProps,
+  FullUserProfile,
+  FullUserProfileProps,
+  FullUserProfileTab,
   Role,
   RoleProps,
   // Values

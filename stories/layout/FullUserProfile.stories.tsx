@@ -1,9 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import {
-  SmallUserProfile,
-  SmallUserProfileProps,
+  FullUserProfile,
+  FullUserProfileProps,
+  FullUserProfileTab,
   ProfileSection,
+  ButtonTypes,
   GreenNewDefaultAvatar,
   GreenOldDefaultAvatar,
   DiscordProvider,
@@ -11,8 +13,8 @@ import {
 } from 'discord-ui-toolkit';
 
 export default {
-  component: SmallUserProfile,
-  title: 'Discord UI Toolkit/Layout/SmallUserProfile',
+  component: FullUserProfile,
+  title: 'Discord UI Toolkit/Layout/FullUserProfile',
   argTypes: {
     theme: {
       defaultValue: 'dark',
@@ -32,13 +34,6 @@ export default {
     discriminator: {
       defaultValue: '1234',
       description: 'The username of the user.',
-      control: {
-        type: 'text',
-      },
-    },
-    avatarHoverText: {
-      defaultValue: 'View Profile',
-      description: 'The text to show on top of the avatar upon hover.',
       control: {
         type: 'text',
       },
@@ -92,62 +87,123 @@ export default {
         type: 'boolean',
       },
     },
+    defaultTab: {
+      defaultValue: 0,
+      description: 'The default tab to show.',
+      control: {
+        type: 'number',
+      },
+    },
+    actionButtonText: {
+      defaultValue: 'Action Button',
+      description: 'The text of the action button.',
+      control: {
+        type: 'text',
+      },
+    },
+    actionButtonType: {
+      defaultValue: 'green',
+      description: 'The action button type.',
+      control: {
+        type: 'inline-radio',
+        options: [
+          'blurple',
+          'greyple',
+          'green',
+          'red_filled',
+          'red_empty',
+          'white_empty',
+          'only_text',
+        ] as ButtonTypes[],
+      },
+    },
+    actionButtonDisabled: {
+      defaultValue: false,
+      description: 'Should the action button be disabled.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    actionButtonLoading: {
+      defaultValue: false,
+      description: 'Should the action button be loading.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 } as Meta;
 
-const sections: ProfileSection[] = [
+const tabs: FullUserProfileTab[] = [
   {
+    id: 0,
     label: 'First Section',
     content: <span>First Section Content</span>,
   },
   {
+    id: 1,
     label: 'Second Section',
     content: <span>Second Section Content</span>,
+    sections: [
+      {
+        label: 'Section',
+        content: <span>Section Content</span>,
+      },
+      {
+        label: 'Section Two',
+        content: <span>Section Two Content</span>,
+      },
+    ],
+  },
+  {
+    id: 2,
+    label: 'Third Section',
+    content: <span>Third Section Content</span>,
   },
 ];
 
-export const DefaultNewMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
+export const DefaultNewMarketingLayout: Story<FullUserProfileProps & DiscordProviderProps> = (props) => {
   return (
     <DiscordProvider {...props} newMarketingLayout={true}>
-      <SmallUserProfile username="Username" avatarSource={GreenNewDefaultAvatar} />
+      <FullUserProfile username="Username" avatarSource={GreenNewDefaultAvatar} />
     </DiscordProvider>
   );
 };
 
-export const NewMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
+export const NewMarketingLayout: Story<FullUserProfileProps & DiscordProviderProps> = (props) => {
   return (
     <DiscordProvider {...props} newMarketingLayout={true}>
-      <SmallUserProfile
+      <FullUserProfile
         {...props}
         avatarSource={GreenNewDefaultAvatar}
-        onAvatarClick={(avatarSource) => console.log(avatarSource)}
-        sections={sections}
+        tabs={tabs}
+        actionButtonOnClick={() => console.log('Action button click')}
       >
         <p>New Marketing Layout</p>
-      </SmallUserProfile>
+      </FullUserProfile>
     </DiscordProvider>
   );
 };
 
-export const DefaultOldMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
+export const DefaultOldMarketingLayout: Story<FullUserProfileProps & DiscordProviderProps> = (props) => {
   return (
     <DiscordProvider {...props} newMarketingLayout={false}>
-      <SmallUserProfile username="Username" avatarSource={GreenOldDefaultAvatar} />
+      <FullUserProfile username="Username" avatarSource={GreenOldDefaultAvatar} />
     </DiscordProvider>
   );
 };
 
-export const OldMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
+export const OldMarketingLayout: Story<FullUserProfileProps & DiscordProviderProps> = (props) => {
   return (
     <DiscordProvider {...props} newMarketingLayout={false}>
-      <SmallUserProfile
+      <FullUserProfile
         {...props}
         avatarSource={GreenOldDefaultAvatar}
-        onAvatarClick={(avatarSource) => console.log(avatarSource)}
-        sections={sections}
+        tabs={tabs}
+        actionButtonOnClick={() => console.log('Action button click')}
       >
         <p>Old Marketing Layout</p>
-      </SmallUserProfile>
+      </FullUserProfile>
     </DiscordProvider>
   );
 };

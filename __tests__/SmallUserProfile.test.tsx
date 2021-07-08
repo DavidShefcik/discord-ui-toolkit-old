@@ -1,6 +1,5 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
 import { SmallUserProfile, GreenOldDefaultAvatar } from 'discord-ui-toolkit';
 
@@ -16,7 +15,7 @@ describe('<SmallUserProfile />', () => {
 
     expect(screen.getByText(/username/i)).toBeInTheDocument();
   });
-  it('should display the avatar image', () => {
+  it('should display the username', () => {
     render(
       <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" />

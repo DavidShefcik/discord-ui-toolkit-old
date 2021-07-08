@@ -1,15 +1,12 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import useThemeContext from '@internal/hooks/useThemeContext';
 
-import UserAvatar from './UserAvatar';
 import UserTag from './UserTag';
+import ProfileAvatar from '@internal/components/ProfileAvatar';
+import ProfileSectionComponent, { ProfileSection } from '@internal/components/ProfileSection';
 
-interface SmallUserProfileSection {
-  label: string;
-  content: ReactNode;
-}
 interface SmallUserProfileProps {
   avatarSource: string;
   username: string;
@@ -24,7 +21,7 @@ interface SmallUserProfileProps {
   activityBackgroundColor?: string;
   activityTitle?: string;
   activitySubtitle?: string;
-  sections?: SmallUserProfileSection[];
+  sections?: ProfileSection[];
   children?: ReactNode;
 }
 
@@ -44,57 +41,10 @@ const styles = StyleSheet.create({
   userInfoContainerOld: {
     padding: '15px 0',
   },
-  avatarBase: {
-    position: 'relative',
-    width: '80px',
-    height: '80px',
-    overflow: 'hidden',
-    borderRadius: '50%',
-  },
   newAvatarContainer: {
     position: 'absolute',
     top: '16px',
     left: '16px',
-  },
-  avatarHover: {
-    boxSizing: 'border-box',
-    fontSize: '10px',
-    lineHeight: '12px',
-    fontWeight: 700,
-    height: '80px',
-    width: '80px',
-    borderRadius: '50%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    textTransform: 'uppercase',
-    boxShadow: 'inset 0 0 120px rgba(0, 0, 0, 0.75)',
-    color: 'white',
-    position: 'absolute',
-    zIndex: 20,
-    transition: 'opacity 0.1s ease',
-  },
-  avatarHoverBorder: {
-    top: '6px',
-    left: '6px',
-  },
-  avatarHoverVisible: {
-    opacity: 1,
-  },
-  avatarHoverHidden: {
-    opacity: 0,
-  },
-  avatar: {
-    position: 'absolute',
-    zIndex: 10,
-  },
-  avatarBorder: {
-    border: '6px solid var(--background-floating)',
-    backgroundColor: 'var(--background-floating)',
-    borderRadius: '50%',
   },
   banner: {
     width: '300px',
@@ -175,53 +125,7 @@ const styles = StyleSheet.create({
     boxSizing: 'border-box',
     padding: '16px',
   },
-  fieldLabel: {
-    marginBottom: '8px',
-    fontSize: '12px',
-    color: 'var(--header-secondary)',
-    fontFamily: 'discord-normal',
-    textTransform: 'uppercase',
-  },
-  fieldContent: {
-    marginTop: '12px',
-    marginBottom: '16px',
-  },
 });
-
-function Avatar({
-  avatarSource,
-  avatarHoverText,
-  onAvatarClick,
-  border = false,
-}: Pick<SmallUserProfileProps, 'avatarSource' | 'avatarHoverText' | 'onAvatarClick'> & { border?: boolean }) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <span
-      className={css(styles.avatarBase)}
-      style={{ cursor: onAvatarClick && 'pointer' }}
-      role="button"
-      onClick={() => onAvatarClick && onAvatarClick(avatarSource)}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {avatarHoverText && (
-        <div
-          className={css([
-            styles.avatarHover,
-            hovered ? styles.avatarHoverVisible : styles.avatarHoverHidden,
-            border && styles.avatarHoverBorder,
-          ])}
-        >
-          {avatarHoverText}
-        </div>
-      )}
-      <span className={css([styles.avatar, border && styles.avatarBorder])}>
-        <UserAvatar size="large" avatarSource={avatarSource} />
-      </span>
-    </span>
-  );
-}
 
 function OldUserProfile({
   avatarSource,
@@ -243,7 +147,12 @@ function OldUserProfile({
         style={{ backgroundColor: headerBackgroundColor }}
         className={css([styles.userInfoContainerBase, styles.userInfoContainerOld, styles.userText])}
       >
-        <Avatar avatarSource={avatarSource} avatarHoverText={avatarHoverText} onAvatarClick={onAvatarClick} />
+        <ProfileAvatar
+          avatarSource={avatarSource}
+          avatarHoverText={avatarHoverText}
+          onAvatarClick={onAvatarClick}
+          size="medium"
+        />
         <div className={css([styles.userInfoTextBase, styles.userInfoTextOld])}>
           <span className={css([styles.usernameBase, styles.usernameOld])}>{username}</span>
           {discriminator && <span className={css(styles.discriminatorOld)}>#{discriminator}</span>}
@@ -304,7 +213,13 @@ function NewUserProfile({
         </div>
       </div>
       <div className={css(styles.newAvatarContainer)}>
-        <Avatar avatarSource={avatarSource} avatarHoverText={avatarHoverText} onAvatarClick={onAvatarClick} border />
+        <ProfileAvatar
+          avatarSource={avatarSource}
+          avatarHoverText={avatarHoverText}
+          onAvatarClick={onAvatarClick}
+          size="medium"
+          border
+        />
       </div>
       {(activityTitle || activitySubtitle) && (
         <div className={css([styles.activityContainerBase, styles.activityContainerNew])}>
@@ -332,13 +247,7 @@ export default function SmallUserProfile(props: SmallUserProfileProps) {
       {newMarketingLayout ? <NewUserProfile {...props} /> : <OldUserProfile {...props} />}
       {(sections || children) && (
         <div className={css(styles.contentContainer)}>
-          {sections &&
-            sections.map(({ label, content }) => (
-              <div key={label}>
-                <div className={css(styles.fieldLabel)}>{label}</div>
-                <div className={css(styles.fieldContent)}>{content}</div>
-              </div>
-            ))}
+          {sections && sections.map((section) => <ProfileSectionComponent key={section.label} {...section} />)}
           {children}
         </div>
       )}
@@ -346,4 +255,4 @@ export default function SmallUserProfile(props: SmallUserProfileProps) {
   );
 }
 
-export { SmallUserProfileSection, SmallUserProfileProps };
+export { SmallUserProfileProps };
