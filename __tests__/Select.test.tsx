@@ -2,10 +2,10 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Select, SelectItemProps } from 'discord-ui-toolkit';
+import { Select, SelectItem } from 'discord-ui-toolkit';
 
 describe('<Select />', () => {
-  const items: SelectItemProps[] = [
+  const items: SelectItem[] = [
     {
       id: '0',
       label: 'First Item',
