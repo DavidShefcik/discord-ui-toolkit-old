@@ -9,7 +9,7 @@ interface IconProps {
   icon: IconNamesType;
   iconColor?: string;
   iconHoverColor?: string;
-  size?: number;
+  size?: string | number;
   animated?: boolean;
   onClick?(icon?: IconNamesType): void;
 }
@@ -43,8 +43,8 @@ export default function IconComponent({
       style={{
         color: hovered && hoverable ? iconHoverColor : iconColor,
         cursor: hovered && hoverable ? 'pointer' : 'default',
-        width: `${size}px`,
-        height: `${size}px`,
+        width: size,
+        height: size,
         transition: animated ? 'all .17s ease' : 'all 0s ease',
       }}
       onMouseEnter={() => setHovered(true)}
