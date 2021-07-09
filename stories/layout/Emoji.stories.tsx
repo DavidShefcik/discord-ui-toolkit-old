@@ -21,10 +21,10 @@ export default {
       },
     },
     size: {
-      defaultValue: 72,
+      defaultValue: '72px',
       description: 'The width and height in pixels.',
       control: {
-        type: 'number',
+        type: 'text',
       },
     },
   },

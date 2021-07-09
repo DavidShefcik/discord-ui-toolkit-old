@@ -5,7 +5,7 @@ import Twemoji from 'react-twemoji';
 interface EmojiProps {
   emoji: string;
   color?: boolean;
-  size?: number;
+  size?: string | number;
   onClick?(emoji?: string): void;
 }
 
@@ -26,7 +26,7 @@ export default function Emoji({ emoji, color = true, size = 72, onClick }: Emoji
   return (
     <div
       className={css([styles.container, !color && styles.gray])}
-      style={{ width: `${size}px`, height: `${size}px`, cursor: onClick ? 'pointer' : 'default' }}
+      style={{ width: size, height: size, cursor: onClick ? 'pointer' : 'default' }}
       onClick={() => onClick(emoji)}
       role="button"
     >
