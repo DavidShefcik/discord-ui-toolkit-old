@@ -42,6 +42,13 @@ export default {
         disabled: true,
       },
     },
+    width: {
+      defaultValue: 'auto',
+      description: 'The width of the scroll container.',
+      control: {
+        type: 'text',
+      },
+    },
   },
 } as Meta;
 
