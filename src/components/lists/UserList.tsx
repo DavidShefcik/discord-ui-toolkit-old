@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import Icon from '@layout/Icon';
@@ -262,6 +262,8 @@ function UserListItemComponent({
   );
 }
 
+const MemoizedItemComponent = memo(UserListItemComponent);
+
 function UserListCategoryComponent({
   id,
   label,
@@ -306,20 +308,22 @@ function UserListCategoryComponent({
     </div>
   );
 }
+const MemoizedCategoryComponent = memo(UserListCategoryComponent);
+
 function ListItem({ categoryKey, organizedUserItems, categories = [] }: ListItemProps) {
   const category = categoryKey !== undefined && categories ? categories.find(({ id }) => categoryKey == id) : null;
 
   return (
     <>
       {category && (
-        <UserListCategoryComponent
+        <MemoizedCategoryComponent
           key={`category-${category.id}`}
           itemCount={category ? organizedUserItems[category.id].length : 0}
           {...category}
         />
       )}
       {organizedUserItems[categoryKey].map((item: UserListItem) => (
-        <UserListItemComponent key={`item-${item.id}`} {...item} />
+        <MemoizedItemComponent key={`item-${item.id}`} {...item} />
       ))}
     </>
   );
