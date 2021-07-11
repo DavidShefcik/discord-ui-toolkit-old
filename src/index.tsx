@@ -38,6 +38,9 @@ import SmallUserProfile, { SmallUserProfileProps } from '@layout/SmallUserProfil
 import FullUserProfile, { FullUserProfileProps, FullUserProfileTab } from '@layout/FullUserProfile';
 import Role, { RoleProps } from '@layout/Role';
 
+// Lists
+import UserList, { UserListProps, UserListCategory, UserListItem } from '@lists/UserList';
+
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
 import Constants from '@values/Constants';
@@ -143,6 +146,11 @@ export {
   FullUserProfileTab,
   Role,
   RoleProps,
+  // Lists
+  UserList,
+  UserListProps,
+  UserListCategory,
+  UserListItem,
   // Values
   icons,
   iconNames,
