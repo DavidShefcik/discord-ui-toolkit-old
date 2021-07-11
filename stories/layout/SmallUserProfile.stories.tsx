@@ -87,7 +87,7 @@ export default {
     },
     userTagBlurple: {
       defaultValue: false,
-      description: 'Should the background color be blurple.',
+      description: 'Should the background color of the user tag be blurple.',
       control: {
         type: 'boolean',
       },
