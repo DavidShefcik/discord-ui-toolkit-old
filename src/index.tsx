@@ -37,6 +37,7 @@ import Modal, { ModalProps } from '@layout/Modal';
 import SmallUserProfile, { SmallUserProfileProps } from '@layout/SmallUserProfile';
 import FullUserProfile, { FullUserProfileProps, FullUserProfileTab } from '@layout/FullUserProfile';
 import Role, { RoleProps } from '@layout/Role';
+import MentionBadge, { MentionBadgeProps } from '@layout/MentionBadge';
 
 // Lists
 import UserList, { UserListProps, UserListCategory, UserListItem } from '@lists/UserList';
@@ -146,6 +147,8 @@ export {
   FullUserProfileTab,
   Role,
   RoleProps,
+  MentionBadge,
+  MentionBadgeProps,
   // Lists
   UserList,
   UserListProps,
