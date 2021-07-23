@@ -6,9 +6,11 @@ import Emoji from '@layout/Emoji';
 import UserAvatar from '@layout/UserAvatar';
 import UserTag from '@layout/UserTag';
 
-import { iconNames, IconNamesType } from '@internal/values/icons';
+import { IconNamesType } from '@internal/values/icons';
 
 import groupBy from 'lodash.groupby';
+
+import isPropIconOrEmoji from '@internal/utils/isPropIconOrEmoji';
 
 interface UserListItem {
   id: string | number;
@@ -161,14 +163,6 @@ const styles = StyleSheet.create({
     marginLeft: '4px',
   },
 });
-
-const isPropIconOrEmoji = (value: string): 'icon' | 'emoji' => {
-  if ((iconNames as string[]).includes(value)) {
-    return 'icon';
-  } else {
-    return 'emoji';
-  }
-};
 
 function UserListItemComponent({
   id,

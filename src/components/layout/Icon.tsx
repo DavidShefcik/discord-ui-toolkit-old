@@ -31,7 +31,7 @@ export default function IconComponent({
   const [hovered, setHovered] = useState(false);
 
   const iconSvg = iconsList.find(({ name }) => name === icon)?.icon;
-  const hoverable = iconHoverColor !== undefined || onClick !== undefined;
+  const hoverable = onClick !== undefined;
 
   if (!iconSvg) {
     throw new Error(`Icon "${icon}" not found.`);
@@ -42,7 +42,7 @@ export default function IconComponent({
       className={css(styles.container)}
       style={{
         color: hovered && hoverable ? iconHoverColor : iconColor,
-        cursor: hovered && hoverable ? 'pointer' : 'default',
+        cursor: hovered && hoverable && 'pointer',
         width: size,
         height: size,
         transition: animated ? 'all .17s ease' : 'all 0s ease',
@@ -50,7 +50,11 @@ export default function IconComponent({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       role="button"
-      onClick={() => onClick && onClick(icon)}
+      onClick={(event) => {
+        event.stopPropagation();
+        onClick && onClick(icon);
+      }}
+      aria-label={icon}
     >
       {iconSvg}
     </div>

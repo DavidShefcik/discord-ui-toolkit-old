@@ -26,8 +26,11 @@ export default function Emoji({ emoji, color = true, size = 72, onClick }: Emoji
   return (
     <div
       className={css([styles.container, !color && styles.gray])}
-      style={{ width: size, height: size, cursor: onClick ? 'pointer' : 'default' }}
-      onClick={() => onClick(emoji)}
+      style={{ width: size, height: size, cursor: onClick && 'pointer' }}
+      onClick={(event) => {
+        event.stopPropagation();
+        onClick && onClick(emoji);
+      }}
       role="button"
     >
       <Twemoji
