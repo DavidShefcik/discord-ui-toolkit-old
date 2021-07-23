@@ -119,7 +119,7 @@ export default function Slider({
         renderMark={(props) => {
           const intervalData = intervals?.find(({ value }) => value === props.key);
           return (
-            <>
+            <React.Fragment key={props.key}>
               {intervalData && (
                 <span {...props} className={css(styles.mark)}>
                   <span className={css([styles.markLabel, intervalData.green && styles.markLabelGreen])}>
@@ -129,7 +129,7 @@ export default function Slider({
                   <span className={css(styles.markDash)} />
                 </span>
               )}
-            </>
+            </React.Fragment>
           );
         }}
         renderTrack={(props, state) => (
