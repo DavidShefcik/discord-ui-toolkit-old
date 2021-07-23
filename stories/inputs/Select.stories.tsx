@@ -28,11 +28,12 @@ export default {
         type: 'text',
       },
     },
-    unselectedLabel: {
-      defaultValue: 'Unselected label text goes here',
-      description: 'The label text for the unselected label.',
+    dropdownLocation: {
+      defaultValue: 'bottom',
+      description: 'The location of the select dropdown.',
       control: {
-        type: 'text',
+        type: 'inline-radio',
+        options: ['top', 'bottom'],
       },
     },
     unselectedAsOption: {
@@ -40,6 +41,13 @@ export default {
       description: 'Is the unselected label available as a dropdown option.',
       control: {
         type: 'boolean',
+      },
+    },
+    unselectedLabel: {
+      defaultValue: 'Unselected label text goes here',
+      description: 'The label text for the unselected label.',
+      control: {
+        type: 'text',
       },
     },
     unselectedHelperText: {
@@ -105,7 +113,9 @@ export const Default: Story<SelectProps & DiscordProviderProps> = (props) => {
 
   return (
     <DiscordProvider {...props}>
-      <Select {...props} value={selectValue} onChange={onChange} items={items} />
+      <div style={{ height: '400px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Select {...props} value={selectValue} onChange={onChange} items={items} />
+      </div>
     </DiscordProvider>
   );
 };
@@ -125,7 +135,9 @@ export const Disabled: Story<SelectProps & DiscordProviderProps> = (props) => {
 
   return (
     <DiscordProvider {...props}>
-      <Select {...props} value={selectValue} onChange={onChange} items={items} disabled />
+      <div style={{ height: '400px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Select {...props} value={selectValue} onChange={onChange} items={items} disabled />
+      </div>
     </DiscordProvider>
   );
 };
@@ -145,7 +157,9 @@ export const Error: Story<SelectProps & DiscordProviderProps> = (props) => {
 
   return (
     <DiscordProvider {...props}>
-      <Select {...props} value={selectValue} onChange={onChange} items={items} error />
+      <div style={{ height: '400px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Select {...props} value={selectValue} onChange={onChange} items={items} error />
+      </div>
     </DiscordProvider>
   );
 };

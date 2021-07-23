@@ -24,6 +24,7 @@ interface SelectProps {
   value: SelectItem | string | number | null;
   onChange(value: string | number | null): void;
   items: SelectItem[];
+  dropdownLocation?: 'top' | 'bottom';
   unselectedAsOption?: boolean;
   unselectedLabel?: string;
   unselectedHelperText?: string;
@@ -158,18 +159,24 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   dropdownMenu: {
-    top: '100%',
     backgroundColor: 'var(--background-secondary)',
     borderRadius: '0 0 4px 4px',
     boxShadow: '0px 1px 5px 0px rgb(32 34 37 / 50%)',
-    marginBottom: '-1px',
-    marginTop: '-1px',
     position: 'absolute',
     width: '100%',
     zIndex: 1,
     boxSizing: 'border-box',
     border: '1px solid var(--background-tertiary)',
     color: 'var--text-normal)',
+  },
+  bottomDropdown: {
+    top: '100%',
+    marginBottom: '-1px',
+    marginTop: '-1px',
+  },
+  topDropdown: {
+    bottom: '100%',
+    marginBottom: '-1px',
   },
   dropdownContent: {
     maxHeight: '300px',
@@ -252,6 +259,7 @@ export default function Select({
   value,
   onChange,
   items,
+  dropdownLocation = 'bottom',
   unselectedLabel,
   unselectedAsOption = false,
   unselectedHelperText,
@@ -302,7 +310,12 @@ export default function Select({
         <Chevron />
       </div>
       {open && (
-        <div className={css(styles.dropdownMenu)}>
+        <div
+          className={css([
+            styles.dropdownMenu,
+            dropdownLocation === 'bottom' ? styles.bottomDropdown : styles.topDropdown,
+          ])}
+        >
           <div className={css(styles.dropdownContent)}>
             {unselectedLabel && unselectedAsOption && (
               <DropdownItem selected={currentId === null}>
