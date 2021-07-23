@@ -1,4 +1,4 @@
-import { iconNames } from "@internal/values/icons";
+import { iconNames } from '@internal/values/icons';
 
 const isPropIconOrEmoji = (value: string): 'icon' | 'emoji' => {
   if ((iconNames as string[]).includes(value)) {
