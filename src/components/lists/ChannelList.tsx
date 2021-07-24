@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { ReactChild, useState, memo } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import Icon from '@layout/Icon';
@@ -9,11 +9,11 @@ import { IconNamesType } from '@internal/values/icons';
 
 import groupBy from 'lodash.groupby';
 
-import isPropIconOrEmoji from '@internal/utils/isPropIconOrEmoji';
+import isPropIconEmojiOrComponent from '@internal/utils/isPropIconEmojOrComponent';
 
 interface RightIcons {
   id: string | number;
-  icon: string;
+  icon: ReactChild | string;
   onClick?(id: string | number, icon: string): void;
   showOnlyOnActive?: boolean;
   showOnlyOnHover?: boolean;
@@ -25,7 +25,7 @@ interface ChannelListItem {
   categoryId?: string | number;
   active?: boolean;
   onClick?(id: string | number): void;
-  leftIcon?: string;
+  leftIcon?: ReactChild | string;
   rightIcons?: RightIcons[];
   dull?: boolean;
   disabled?: boolean;
@@ -37,7 +37,7 @@ interface ChannelListCategory {
   id: string | number;
   label: string;
   position: number;
-  rightIcon?: string;
+  rightIcon?: ReactChild | string;
   onRightIconClick?(id: string | number): void;
   collapsible?: boolean;
   defaultCollapsed?: boolean;
@@ -230,14 +230,16 @@ function ChannelListItemComponent({
         <div className={css(styles.listItemText)}>
           {leftIcon && (
             <div className={css(styles.leftIconContainer)} aria-label="list-item-left-icon">
-              {isPropIconOrEmoji(leftIcon) === 'icon' ? (
+              {isPropIconEmojiOrComponent(leftIcon) === 'icon' ? (
                 <Icon
                   icon={leftIcon as IconNamesType}
                   size="20px"
                   iconColor={dull && !active ? 'var(--interactive-muted)' : 'var(--text-muted)'}
                 />
+              ) : isPropIconEmojiOrComponent(leftIcon) === 'emoji' ? (
+                <Emoji emoji={leftIcon as string} size="20px" color={false} />
               ) : (
-                <Emoji emoji={leftIcon} size="20px" color={false} />
+                leftIcon
               )}
             </div>
           )}
@@ -263,7 +265,7 @@ function ChannelListItemComponent({
                 rightIcons.map(({ id: iconId, icon, onClick, showOnlyOnActive, showOnlyOnHover }) => {
                   const component = (
                     <div key={iconId} className={css(styles.rightItemContainer)} aria-label="list-item-right-icon">
-                      {isPropIconOrEmoji(icon) === 'icon' ? (
+                      {isPropIconEmojiOrComponent(icon) === 'icon' ? (
                         <Icon
                           icon={icon as IconNamesType}
                           size="16px"
@@ -271,13 +273,15 @@ function ChannelListItemComponent({
                           iconHoverColor={onClick && 'var(--interactive-hover)'}
                           onClick={onClick && ((icon) => onClick(id, icon))}
                         />
-                      ) : (
+                      ) : isPropIconEmojiOrComponent(leftIcon) === 'emoji' ? (
                         <Emoji
-                          emoji={icon}
+                          emoji={icon as string}
                           size="16px"
                           color={false}
                           onClick={onClick && ((emoji) => onClick(id, emoji))}
                         />
+                      ) : (
+                        icon
                       )}
                     </div>
                   );
@@ -348,7 +352,7 @@ function ChannelListCategoryComponent({
         </div>
         {rightIcon && (
           <div className={css(styles.categoryRightItemsContainer)} aria-label="list-category-right-icon">
-            {isPropIconOrEmoji(rightIcon) === 'icon' ? (
+            {isPropIconEmojiOrComponent(rightIcon) === 'icon' ? (
               <Icon
                 icon={rightIcon as IconNamesType}
                 size="18px"
@@ -356,13 +360,15 @@ function ChannelListCategoryComponent({
                 iconHoverColor={onRightIconClick && 'var(--interactive-hover)'}
                 onClick={onRightIconClick && (() => onRightIconClick(id))}
               />
-            ) : (
+            ) : isPropIconEmojiOrComponent(rightIcon) === 'emoji' ? (
               <Emoji
-                emoji={rightIcon}
+                emoji={rightIcon as string}
                 size="18px"
                 color={false}
                 onClick={onRightIconClick && (() => onRightIconClick(id))}
               />
+            ) : (
+              rightIcon
             )}
           </div>
         )}

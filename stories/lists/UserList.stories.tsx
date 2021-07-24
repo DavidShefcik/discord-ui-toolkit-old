@@ -139,6 +139,12 @@ const items: UserListItem[] = [
     username: 'Username 4',
     userTagText: 'Without Category',
   },
+  {
+    id: 4,
+    avatarSource: GreenNewDefaultAvatar,
+    username: 'Username 4',
+    leftStatusIcon: <span>Left Status Icon</span>,
+  },
 ];
 const categories: UserListCategory[] = [
   {

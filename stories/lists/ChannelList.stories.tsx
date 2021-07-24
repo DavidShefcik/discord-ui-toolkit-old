@@ -145,6 +145,7 @@ const items: ChannelListItem[] = [
     id: 7,
     position: 3,
     text: 'Second Item Without Category',
+    leftIcon: <p>Left Icon</p>,
   },
 ];
 const categories: ChannelListCategory[] = [

@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { ReactChild, useState, memo } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import Icon from '@layout/Icon';
@@ -10,7 +10,7 @@ import { IconNamesType } from '@internal/values/icons';
 
 import groupBy from 'lodash.groupby';
 
-import isPropIconOrEmoji from '@internal/utils/isPropIconOrEmoji';
+import isPropIconEmojiOrComponent from '@internal/utils/isPropIconEmojOrComponent';
 
 interface UserListItem {
   id: string | number;
@@ -21,11 +21,11 @@ interface UserListItem {
   dull?: boolean;
   statusText?: string;
   boldStatusText?: string;
-  leftStatusIcon?: string;
+  leftStatusIcon?: ReactChild | string;
   leftStatusIconColor?: string;
-  rightStatusIcon?: string;
+  rightStatusIcon?: ReactChild | string;
   rightStatusIconColor?: string;
-  rightUserIcon?: string;
+  rightUserIcon?: ReactChild | string;
   rightUserIconColor?: string;
   userTagText?: string;
   userTagCheckmark?: boolean;
@@ -36,7 +36,7 @@ interface UserListCategory {
   id: string | number;
   label: string;
   showItemCount?: boolean;
-  rightIcon?: string;
+  rightIcon?: ReactChild | string;
   onRightIconClick?(id: string | number): void;
 }
 type ListItemKey = string | number | undefined;
@@ -212,10 +212,12 @@ function UserListItemComponent({
             )}
             {rightUserIcon && (
               <div className={css(styles.rightUserIconContainer)} aria-label="Right User Icon">
-                {isPropIconOrEmoji(rightUserIcon) === 'icon' ? (
+                {isPropIconEmojiOrComponent(rightUserIcon) === 'icon' ? (
                   <Icon icon={rightUserIcon as IconNamesType} size="14px" iconColor={rightUserIconColor} />
+                ) : isPropIconEmojiOrComponent(rightUserIcon) === 'emoji' ? (
+                  <Emoji emoji={rightUserIcon as string} size="14px" />
                 ) : (
-                  <Emoji emoji={rightUserIcon} size="14px" />
+                  rightUserIcon
                 )}
               </div>
             )}
@@ -225,10 +227,12 @@ function UserListItemComponent({
               <div className={css(styles.status)}>
                 {leftStatusIcon && (
                   <div className={css(styles.leftStatusIcon)} aria-label="Left Status Icon">
-                    {isPropIconOrEmoji(leftStatusIcon) === 'icon' ? (
+                    {isPropIconEmojiOrComponent(leftStatusIcon) === 'icon' ? (
                       <Icon icon={leftStatusIcon as IconNamesType} size="14px" iconColor={leftStatusIconColor} />
+                    ) : isPropIconEmojiOrComponent(leftStatusIcon) === 'emoji' ? (
+                      <Emoji emoji={leftStatusIcon as string} size="14px" />
                     ) : (
-                      <Emoji emoji={leftStatusIcon} size="14px" />
+                      leftStatusIcon
                     )}
                   </div>
                 )}
@@ -240,10 +244,12 @@ function UserListItemComponent({
                 )}
                 {rightStatusIcon && (
                   <div className={css(styles.rightStatusIcon)} aria-label="Right Status Icon">
-                    {isPropIconOrEmoji(rightStatusIcon) === 'icon' ? (
+                    {isPropIconEmojiOrComponent(rightStatusIcon) === 'icon' ? (
                       <Icon icon={rightStatusIcon as IconNamesType} size="16px" iconColor={rightStatusIconColor} />
+                    ) : isPropIconEmojiOrComponent(rightStatusIcon) === 'emoji' ? (
+                      <Emoji emoji={rightStatusIcon as string} size="16px" />
                     ) : (
-                      <Emoji emoji={rightStatusIcon} size="16px" />
+                      rightStatusIcon
                     )}
                   </div>
                 )}
@@ -286,15 +292,17 @@ function UserListCategoryComponent({
             style={{ cursor: onRightIconClick && 'pointer' }}
             aria-label="Right Category Icon"
           >
-            {isPropIconOrEmoji(rightIcon) === 'icon' ? (
+            {isPropIconEmojiOrComponent(rightIcon) === 'icon' ? (
               <Icon
                 icon={rightIcon as IconNamesType}
                 size="16px"
                 iconColor={hovered ? 'var(--interactive-hover)' : 'var(--channels-default)'}
                 onClick={() => onRightIconClick && onRightIconClick(id)}
               />
+            ) : isPropIconEmojiOrComponent(rightIcon) === 'emoji' ? (
+              <Emoji emoji={rightIcon as string} size="16px" onClick={() => onRightIconClick && onRightIconClick(id)} />
             ) : (
-              <Emoji emoji={rightIcon} size="16px" onClick={() => onRightIconClick && onRightIconClick(id)} />
+              rightIcon
             )}
           </div>
         )}
