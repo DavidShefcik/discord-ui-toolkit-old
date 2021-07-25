@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     width: '4px',
     borderRadius: '0 4px 4px 0',
     top: '50%',
-    left: '0',
+    left: 0,
     marginTop: '-4px',
   },
   leftIconContainer: {

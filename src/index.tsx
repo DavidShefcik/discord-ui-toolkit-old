@@ -42,6 +42,15 @@ import MentionBadge, { MentionBadgeProps } from '@layout/MentionBadge';
 // Lists
 import UserList, { UserListProps, UserListCategory, UserListItem } from '@lists/UserList';
 import ChannelList, { ChannelListProps, ChannelListCategory, ChannelListItem } from '@lists/ChannelList';
+import ImageList, {
+  ImageListImageItem,
+  ImageListDividerItem,
+  ImageListIconItem,
+  ImageListEmojiItem,
+  ImageListCustomItem,
+  ImageListProps,
+  ImageListItem,
+} from '@lists/ImageList';
 
 // Values
 import icons, { iconNames, IconsListItem } from '@internal/values/icons';
@@ -159,6 +168,14 @@ export {
   ChannelListProps,
   ChannelListCategory,
   ChannelListItem,
+  ImageList,
+  ImageListProps,
+  ImageListImageItem,
+  ImageListDividerItem,
+  ImageListIconItem,
+  ImageListEmojiItem,
+  ImageListCustomItem,
+  ImageListItem,
   // Values
   icons,
   iconNames,
