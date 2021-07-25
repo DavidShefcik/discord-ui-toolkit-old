@@ -1,0 +1,15 @@
+name: Deploy Dry Run
+
+on: [workflow_dispatch]
+
+jobs:
+  deploy-dry-run:
+    name: Dry run deploy package to NPM
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        dry-run: true

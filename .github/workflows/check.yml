@@ -3,6 +3,8 @@ name: Check
 on:
   push:
     branches: [master, develop]
+    paths-ignore:
+      - 'docs/**'
   pull_request_review:
     types: [submitted]
 
