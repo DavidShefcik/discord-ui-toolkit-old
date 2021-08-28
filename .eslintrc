@@ -16,6 +16,7 @@
   "plugins": ["@typescript-eslint", "testing-library", "jest-dom"],
   "extends": ["plugin:@typescript-eslint/recommended", "prettier/@typescript-eslint"],
   "rules": {
-    "@typescript-eslint/explicit-module-boundary-types": ["off"]
+    "@typescript-eslint/explicit-module-boundary-types": ["off"],
+    "@typescript-eslint/ban-ts-comment": ["off"]
   }
 }
