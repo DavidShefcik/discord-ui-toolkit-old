@@ -200,7 +200,7 @@ export default function MessageInput({
     }
   };
 
-  const onInputEvent = (event) => {
+  const onInputEvent = (event: any) => {
     onChange(event.target.innerText);
   };
 
@@ -245,6 +245,7 @@ export default function MessageInput({
               contentEditable={!disabled}
               autoCorrect="off"
               spellCheck={spellcheck}
+              // @ts-ignore
               onKeyDown={onKeyDownEvent}
               onInput={onInputEvent}
               suppressContentEditableWarning

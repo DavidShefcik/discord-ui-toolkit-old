@@ -115,6 +115,7 @@ export default function TextInput({
           type={htmlType}
           value={value}
           onChange={(event) => onChange(event.target.value.replace(new RegExp(`^${prefix}$`), ''))}
+          // @ts-ignore
           onKeyDown={onKeyDownEvent}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
