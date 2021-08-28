@@ -13,12 +13,12 @@ export default function useAnimateMount({ isMounted, timingInMS }: Props): boole
   const [shouldRender, setShouldRender] = useState(isMounted);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: number;
 
     if (isMounted && !shouldRender) {
       setShouldRender(true);
     } else if (!isMounted && shouldRender) {
-      timeout = setTimeout(() => {
+      timeout = window.setTimeout(() => {
         setShouldRender(false);
       }, timingInMS);
     }
