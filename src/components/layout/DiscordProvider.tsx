@@ -1,7 +1,7 @@
 import React, { ReactNode, useState, useEffect, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
-import ThemeContext from '@internal/context/ThemeContext';
+import ThemeContext, { Theme } from '@internal/context/ThemeContext';
 
 import '@assets/css/discord-ui-toolkit.css';
 
