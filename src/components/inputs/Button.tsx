@@ -7,7 +7,7 @@ type ButtonTypes = 'blurple' | 'greyple' | 'green' | 'red_filled' | 'red_empty' 
 interface ButtonProps {
   text: string;
   onClick(event: MouseEvent<HTMLButtonElement>): void;
-  type: ButtonTypes;
+  type?: ButtonTypes;
   disabled?: boolean;
   loading?: boolean;
   size?: 'small' | 'normal' | 'large' | 'full' | 'custom';
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
 export default function Button({
   text,
   onClick,
-  type,
+  type = 'blurple',
   disabled,
   loading,
   size = 'normal',
