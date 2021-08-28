@@ -75,6 +75,10 @@ import RedNewDefaultAvatar from '@assets/images/red_new_default_avatar.png';
 import RedOldDefaultAvatar from '@assets/images/red_old_default_avatar.jpg';
 import YellowGroupDMIcon from '@assets/images/yellow_group_dm_icon.png';
 
+// Videos
+import OldLoadingAnimation from '@assets/videos/old_loading_icon.webm';
+import NewLoadingAnimation from '@assets/videos/new_loading_icon.webm';
+
 // Types
 import { ProfileSection } from '@internal/components/ProfileSection';
 
@@ -199,4 +203,6 @@ export {
   RedNewDefaultAvatar,
   RedOldDefaultAvatar,
   YellowGroupDMIcon,
+  OldLoadingAnimation,
+  NewLoadingAnimation,
 };
