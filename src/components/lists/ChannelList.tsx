@@ -54,6 +54,13 @@ interface ChannelListProps {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    display: 'inline-block',
+    overflowX: 'hidden',
+    overflowY: 'auto',
+    boxSizing: 'border-box',
+    padding: '16px 8px 16px 0',
+  },
   listItemContainer: {
     width: '100%',
     overflow: 'hidden',
@@ -61,6 +68,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    boxSizing: 'border-box',
+    marginBottom: '2px',
     // Disable text highlight select
     '-webkit-touch-callout': 'none',
     '-webkit-user-select': 'none',
@@ -422,7 +431,7 @@ export default function ChannelList({
     .sort((a, b) => a.position - b.position);
 
   return (
-    <div style={{ display: 'inline-block', backgroundColor, width, height, overflowX: 'hidden', overflowY: 'auto' }}>
+    <div style={{ backgroundColor, width, height }} className={css(styles.container)}>
       {allItems.map((item) =>
         item.type === 'item' ? (
           <MemoizedItemComponent key={`channel-list-item-${item.id}`} {...item} />

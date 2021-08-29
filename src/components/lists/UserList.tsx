@@ -56,6 +56,13 @@ interface UserListProps {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    display: 'inline-block',
+    overflowX: 'hidden',
+    overflowY: 'auto',
+    boxSizing: 'border-box',
+    padding: '16px 8px 16px 0',
+  },
   categoryContainer: {
     height: '40px',
     padding: '24px 8px 0 16px',
@@ -346,7 +353,7 @@ export default function UserList({
   ) as OrganizedUserItem;
 
   return (
-    <div style={{ display: 'inline-block', backgroundColor, width, height, overflowX: 'hidden', overflowY: 'auto' }}>
+    <div style={{ backgroundColor, width, height }} className={css(styles.container)}>
       {Object.keys(organizedUserItems).map((key: string | number | undefined) => (
         <ListItem
           key={`list-item-${key}`}
