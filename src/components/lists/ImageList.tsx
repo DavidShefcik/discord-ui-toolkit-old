@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     overflow: 'hidden',
-    display: 'flex',
+    display: 'inline-flex',
     boxSizing: 'border-box',
     padding: '4px 0',
     // Disable text highlight select
