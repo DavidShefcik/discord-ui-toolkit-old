@@ -48,6 +48,7 @@ interface ListItemProps {
 }
 interface UserListProps {
   items: UserListItem[];
+  backgroundColor?: string;
   categories?: UserListCategory[];
   showItemsWithoutCategory?: boolean;
   width?: string;
@@ -332,6 +333,7 @@ function ListItem({ categoryKey, organizedUserItems, categories = [] }: ListItem
 }
 export default function UserList({
   items,
+  backgroundColor = 'var(--background-secondary)',
   categories = [],
   showItemsWithoutCategory = true,
   width = '224px',
@@ -342,7 +344,7 @@ export default function UserList({
   ) as OrganizedUserItem;
 
   return (
-    <div style={{ display: 'inline-block', width }}>
+    <div style={{ display: 'inline-block', backgroundColor, width }}>
       {Object.keys(organizedUserItems).map((key: string | number | undefined) => (
         <ListItem
           key={`list-item-${key}`}

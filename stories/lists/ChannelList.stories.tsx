@@ -29,6 +29,13 @@ export default {
         type: 'boolean',
       },
     },
+    backgroundColor: {
+      defaultValue: '#2f3136',
+      description: 'The background color of the list.',
+      control: {
+        type: 'color',
+      },
+    },
     width: {
       defaultValue: '224px',
       description: 'The width of the user list.',

@@ -47,7 +47,8 @@ type OrganizedListItem =
   | (ChannelListCategory & { type: 'category'; items: ChannelListItem[] });
 interface ChannelListProps {
   items: ChannelListItem[];
-  categories: ChannelListCategory[];
+  backgroundColor?: string;
+  categories?: ChannelListCategory[];
   width?: string;
 }
 
@@ -383,7 +384,12 @@ function ChannelListCategoryComponent({
 }
 const MemoizedCategoryComponent = memo(ChannelListCategoryComponent);
 
-export default function ChannelList({ items, categories, width = '240px' }: ChannelListProps) {
+export default function ChannelList({
+  items,
+  backgroundColor = 'var(--background-secondary)',
+  categories = [],
+  width = '240px',
+}: ChannelListProps) {
   const itemsInCategory = items.filter(({ categoryId }) => categoryId !== undefined && categoryId !== null);
   const itemsNotInCategory = items.filter(({ categoryId }) => categoryId === undefined || categoryId === null);
   const categoryItems = groupBy(itemsInCategory, 'categoryId');
@@ -414,7 +420,7 @@ export default function ChannelList({ items, categories, width = '240px' }: Chan
     .sort((a, b) => a.position - b.position);
 
   return (
-    <div style={{ display: 'inline-block', width }}>
+    <div style={{ display: 'inline-block', backgroundColor, width }}>
       {allItems.map((item) =>
         item.type === 'item' ? (
           <MemoizedItemComponent key={`channel-list-item-${item.id}`} {...item} />

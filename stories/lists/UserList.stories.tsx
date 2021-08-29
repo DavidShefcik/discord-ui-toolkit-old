@@ -29,6 +29,13 @@ export default {
         type: 'boolean',
       },
     },
+    backgroundColor: {
+      defaultValue: '#2f3136',
+      description: 'The background color of the list.',
+      control: {
+        type: 'color',
+      },
+    },
     showItemsWithoutCategory: {
       defaultValue: true,
       description: 'Render list items without a category at the end of the list.',
