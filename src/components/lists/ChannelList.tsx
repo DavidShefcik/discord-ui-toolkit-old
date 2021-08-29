@@ -50,6 +50,7 @@ interface ChannelListProps {
   backgroundColor?: string;
   categories?: ChannelListCategory[];
   width?: string;
+  height?: string;
 }
 
 const styles = StyleSheet.create({
@@ -389,6 +390,7 @@ export default function ChannelList({
   backgroundColor = 'var(--background-secondary)',
   categories = [],
   width = '240px',
+  height = '100%',
 }: ChannelListProps) {
   const itemsInCategory = items.filter(({ categoryId }) => categoryId !== undefined && categoryId !== null);
   const itemsNotInCategory = items.filter(({ categoryId }) => categoryId === undefined || categoryId === null);
@@ -420,7 +422,7 @@ export default function ChannelList({
     .sort((a, b) => a.position - b.position);
 
   return (
-    <div style={{ display: 'inline-block', backgroundColor, width }}>
+    <div style={{ display: 'inline-block', backgroundColor, width, height, overflowX: 'hidden', overflowY: 'auto' }}>
       {allItems.map((item) =>
         item.type === 'item' ? (
           <MemoizedItemComponent key={`channel-list-item-${item.id}`} {...item} />

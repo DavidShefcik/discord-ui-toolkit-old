@@ -43,6 +43,13 @@ export default {
         type: 'text',
       },
     },
+    height: {
+      defaultValue: '100%',
+      description: 'The height of the list.',
+      control: {
+        type: 'text',
+      },
+    },
     text: {
       defaultValue: 'Text',
       description: 'The text of the channel list item.',

@@ -52,6 +52,7 @@ interface UserListProps {
   categories?: UserListCategory[];
   showItemsWithoutCategory?: boolean;
   width?: string;
+  height?: string;
 }
 
 const styles = StyleSheet.create({
@@ -337,6 +338,7 @@ export default function UserList({
   categories = [],
   showItemsWithoutCategory = true,
   width = '224px',
+  height = '100%',
 }: UserListProps) {
   const organizedUserItems = groupBy(
     items.filter(({ categoryId }) => categoryId !== undefined && categoryId !== null),
@@ -344,7 +346,7 @@ export default function UserList({
   ) as OrganizedUserItem;
 
   return (
-    <div style={{ display: 'inline-block', backgroundColor, width }}>
+    <div style={{ display: 'inline-block', backgroundColor, width, height, overflowX: 'hidden', overflowY: 'auto' }}>
       {Object.keys(organizedUserItems).map((key: string | number | undefined) => (
         <ListItem
           key={`list-item-${key}`}

@@ -52,12 +52,14 @@ interface ImageListProps {
   items: ImageListItem[];
   backgroundColor?: string;
   direction?: 'vertical' | 'horizontal';
+  height?: string;
 }
 
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    overflow: 'hidden',
+    overflowX: 'hidden',
+    overflowY: 'auto',
     display: 'inline-flex',
     boxSizing: 'border-box',
     padding: '4px 0',
@@ -67,6 +69,12 @@ const styles = StyleSheet.create({
     '-moz-user-select': 'none',
     '-ms-user-select': 'none',
     'user-select': 'none',
+    // Hide scrollbar
+    '::-webkit-scrollbar': {
+      display: 'none',
+      '-ms-overflow-style': 'none',
+      'scrollbar-width': 'none',
+    },
   },
   itemContainer: {
     position: 'relative',
@@ -248,6 +256,7 @@ export default function ImageList({
   items,
   backgroundColor = 'var(--background-tertiary)',
   direction = 'vertical',
+  height = '100%',
 }: ImageListProps) {
   return (
     <div
@@ -257,6 +266,7 @@ export default function ImageList({
         backgroundColor,
         alignItems: direction === 'horizontal' && 'center',
         width: direction === 'vertical' ? '72px' : '100%',
+        height,
       }}
     >
       {items

@@ -50,6 +50,13 @@ export default {
         type: 'text',
       },
     },
+    height: {
+      defaultValue: '100%',
+      description: 'The height of the list.',
+      control: {
+        type: 'text',
+      },
+    },
     username: {
       defaultValue: 'Username',
       description: 'The username of the user item.',

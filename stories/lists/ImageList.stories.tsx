@@ -48,6 +48,13 @@ export default {
         options: ['vertical', 'horizontal'],
       },
     },
+    height: {
+      defaultValue: '100%',
+      description: 'The height of the list.',
+      control: {
+        type: 'text',
+      },
+    },
     type: {
       defaultValue: 'image',
       description: 'The type of the list item.',
