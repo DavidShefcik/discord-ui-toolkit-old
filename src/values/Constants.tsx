@@ -17,6 +17,8 @@ enum Colors {
   NEW_BLURPLE_DARK = '#4752c4',
 }
 
-export default {
+const Constants = {
   Colors,
 };
+
+export default Constants;
