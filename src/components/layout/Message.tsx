@@ -13,8 +13,8 @@ interface MessageContent {
 interface MessageProps {
   username: string;
   avatarSource: string;
-  timeText: string;
   content: MessageContent[];
+  timeText?: string;
   width?: string;
   usernameOnClick?(username: string): void;
   usernameColor?: string;
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     userSelect: 'text',
     flex: '0 0 auto',
     fontFamily: 'discord-normal',
+    marginBottom: '10px',
     // Disable text highlight select
     '-webkit-touch-callout': 'none',
     '-webkit-user-select': 'none',
@@ -205,7 +206,7 @@ export default function Message({
               <UserTag text={userTagText} checkmark={userTagCheckmark} />
             </span>
           )}
-          <span className={css(styles.smallText)}>{timeText}</span>
+          {timeText && <span className={css(styles.smallText)}>{timeText}</span>}
         </div>
         {content.map((contentItem) => (
           <MessageContentComponent key={contentItem.id} {...contentItem} firstItemHasMention={firstItemHasMention} />
