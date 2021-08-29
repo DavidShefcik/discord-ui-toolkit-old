@@ -5,9 +5,9 @@ import IconComponent from '@layout/Icon';
 import { IconNamesType } from '@internal/values/icons';
 
 interface MessageInputSideItem {
-  id: string;
+  id: string | number;
   value: IconNamesType;
-  onClick?(icon: IconNamesType): void;
+  onClick?(id: string | number): void;
 }
 interface MessageInputProps {
   value: string;
@@ -162,13 +162,13 @@ const styles = StyleSheet.create({
   },
 });
 
-function MessageInputSideItemComponent({ value, onClick }: MessageInputSideItem) {
+function MessageInputSideItemComponent({ id, value, onClick }: MessageInputSideItem) {
   return (
     <IconComponent
       icon={value as IconNamesType}
       iconColor="var(--interactive-normal)"
       iconHoverColor="var(--interactive-hover)"
-      onClick={(icon) => onClick(icon)}
+      onClick={() => onClick && (() => onClick(id))}
       size={24}
       animated={false}
     />
@@ -196,7 +196,7 @@ export default function MessageInput({
   const onKeyDownEvent = (event: KeyboardEvent) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      onEnterPress(value);
+      onEnterPress && onEnterPress(value);
     }
   };
 
