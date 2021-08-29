@@ -48,7 +48,7 @@ interface ListItemProps {
 }
 interface UserListProps {
   items: UserListItem[];
-  categories: UserListCategory[];
+  categories?: UserListCategory[];
   showItemsWithoutCategory?: boolean;
   width?: string;
 }
@@ -332,7 +332,7 @@ function ListItem({ categoryKey, organizedUserItems, categories = [] }: ListItem
 }
 export default function UserList({
   items,
-  categories,
+  categories = [],
   showItemsWithoutCategory = true,
   width = '224px',
 }: UserListProps) {
