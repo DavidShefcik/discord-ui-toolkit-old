@@ -42,6 +42,7 @@ interface ContextMenuProps {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'var(--background-primary)',
     '::-webkit-scrollbar': {
       width: '16px',
       height: '16px',
