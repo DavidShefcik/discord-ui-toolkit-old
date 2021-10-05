@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import {
   ImageList,
@@ -157,7 +157,6 @@ const items: ImageListItem[] = [
     type: 'icon',
     source: 'new_discord',
     hoverBackgroundColor: 'var(--blurple)',
-    onClick: (id) => console.log(id),
     mentionBadgeText: '1',
   },
   {
@@ -170,7 +169,6 @@ const items: ImageListItem[] = [
     position: 2,
     type: 'image',
     source: GreenNewDefaultAvatar,
-    onClick: (id) => console.log(id),
     mentionBadgeText: '1',
   },
   {
@@ -178,14 +176,12 @@ const items: ImageListItem[] = [
     position: 3,
     type: 'image',
     source: GreenNewDefaultAvatar,
-    onClick: (id) => console.log(id),
   },
   {
     id: 4,
     position: 4,
     type: 'image',
     source: GreenNewDefaultAvatar,
-    onClick: (id) => console.log(id),
     mentionBadgeText: '5',
   },
   {
@@ -193,7 +189,6 @@ const items: ImageListItem[] = [
     position: 5,
     type: 'image',
     source: GreenNewDefaultAvatar,
-    onClick: (id) => console.log(id),
   },
   {
     id: 6,
@@ -201,7 +196,6 @@ const items: ImageListItem[] = [
     type: 'icon',
     source: 'thin_plus',
     iconColor: 'var(--green)',
-    onClick: (id) => console.log(id),
   },
   {
     id: 7,
@@ -209,7 +203,6 @@ const items: ImageListItem[] = [
     type: 'icon',
     source: 'compass',
     iconColor: 'var(--green)',
-    onClick: (id) => console.log(id),
   },
   {
     id: 8,
@@ -225,109 +218,199 @@ const items: ImageListItem[] = [
   },
 ];
 
-export const WithItems: Story<ImageListProps & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <ImageList {...props} items={items} />
-  </DiscordProvider>
-);
-export const ListItem: Story<ImageListProps & ImageListItem & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <ImageList
-      items={[
-        {
-          id: 0,
-          position: 0,
-          ...props,
-        },
-      ]}
-      {...props}
-    />
-  </DiscordProvider>
-);
-export const ImageItem: Story<ImageListProps & ImageListItem & ImageListImageItem & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <ImageList
-      items={[
-        {
-          ...props,
-          id: 0,
-          position: 0,
-          type: 'image',
-          source: GreenNewDefaultAvatar,
-          onClick: (id) => console.log(id),
-        },
-      ]}
-      {...props}
-    />
-  </DiscordProvider>
-);
+export const WithItems: Story<ImageListProps & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <ImageList
+        {...props}
+        active={active}
+        items={items}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
+export const ListItem: Story<ImageListProps & ImageListItem & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <ImageList
+        {...props}
+        active={active}
+        items={[
+          {
+            id: 0,
+            position: 0,
+            ...props,
+          },
+        ]}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
+export const ImageItem: Story<ImageListProps & ImageListItem & ImageListImageItem & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <ImageList
+        {...props}
+        active={active}
+        items={[
+          {
+            ...props,
+            id: 0,
+            position: 0,
+            type: 'image',
+            source: GreenNewDefaultAvatar,
+          },
+        ]}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
 export const DividerItem: Story<ImageListProps & ImageListItem & ImageListDividerItem & DiscordProviderProps> = (
   props
-) => (
-  <DiscordProvider {...props}>
-    <ImageList
-      items={[
-        {
-          ...props,
-          id: 0,
-          position: 0,
-          type: 'divider',
-        },
-      ]}
-      {...props}
-    />
-  </DiscordProvider>
-);
-export const IconItem: Story<ImageListProps & ImageListItem & ImageListIconItem & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <ImageList
-      items={[
-        {
-          ...props,
-          id: 0,
-          position: 0,
-          type: 'icon',
-          source: 'thin_plus',
-          onClick: (id) => console.log(id),
-        },
-      ]}
-      {...props}
-    />
-  </DiscordProvider>
-);
-export const EmojiItem: Story<ImageListProps & ImageListItem & ImageListEmojiItem & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <ImageList
-      items={[
-        {
-          ...props,
-          id: 0,
-          position: 0,
-          type: 'emoji',
-          source: '😀',
-          onClick: (id) => console.log(id),
-        },
-      ]}
-      {...props}
-    />
-  </DiscordProvider>
-);
+) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <ImageList
+        {...props}
+        active={active}
+        items={[
+          {
+            ...props,
+            id: 0,
+            position: 0,
+            type: 'divider',
+          },
+        ]}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
+export const IconItem: Story<ImageListProps & ImageListItem & ImageListIconItem & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <ImageList
+        {...props}
+        active={active}
+        items={[
+          {
+            ...props,
+            id: 0,
+            position: 0,
+            type: 'icon',
+            source: 'thin_plus',
+          },
+        ]}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
+export const EmojiItem: Story<ImageListProps & ImageListItem & ImageListEmojiItem & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <ImageList
+        {...props}
+        active={active}
+        items={[
+          {
+            ...props,
+            id: 0,
+            position: 0,
+            type: 'emoji',
+            source: '😀',
+          },
+        ]}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
 export const CustomItem: Story<ImageListProps & ImageListItem & ImageListCustomItem & DiscordProviderProps> = (
   props
-) => (
-  <DiscordProvider {...props}>
-    <ImageList
-      items={[
-        {
-          ...props,
-          id: 0,
-          position: 0,
-          type: 'custom',
-          source: <span>Custom Item</span>,
-          onClick: (id) => console.log(id),
-        },
-      ]}
-      {...props}
-    />
-  </DiscordProvider>
-);
+) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <ImageList
+        {...props}
+        active={active}
+        items={[
+          {
+            ...props,
+            id: 0,
+            position: 0,
+            type: 'custom',
+            source: <span>Custom Item</span>,
+          },
+        ]}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};

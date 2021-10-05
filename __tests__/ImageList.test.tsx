@@ -14,7 +14,6 @@ describe('<ImageList />', () => {
       type: 'icon',
       source: 'new_discord',
       hoverBackgroundColor: 'var(--blurple)',
-      onClick: mockItemClick,
       mentionBadgeText: '1',
     },
     {
@@ -27,7 +26,6 @@ describe('<ImageList />', () => {
       position: 2,
       type: 'image',
       source: GreenNewDefaultAvatar,
-      onClick: mockItemClick,
       mentionBadgeText: '2',
     },
     {
@@ -35,14 +33,12 @@ describe('<ImageList />', () => {
       position: 3,
       type: 'image',
       source: GreenNewDefaultAvatar,
-      onClick: mockItemClick,
     },
     {
       id: 4,
       position: 4,
       type: 'image',
       source: GreenNewDefaultAvatar,
-      onClick: mockItemClick,
       mentionBadgeText: '5',
     },
     {
@@ -50,7 +46,6 @@ describe('<ImageList />', () => {
       position: 5,
       type: 'image',
       source: GreenNewDefaultAvatar,
-      onClick: mockItemClick,
     },
     {
       id: 6,
@@ -58,7 +53,6 @@ describe('<ImageList />', () => {
       type: 'icon',
       source: 'thin_plus',
       iconColor: 'var(--green)',
-      onClick: mockItemClick,
     },
     {
       id: 7,
@@ -66,7 +60,6 @@ describe('<ImageList />', () => {
       type: 'icon',
       source: 'compass',
       iconColor: 'var(--green)',
-      onClick: mockItemClick,
     },
     {
       id: 8,
@@ -114,10 +107,10 @@ describe('<ImageList />', () => {
     expect(screen.getByText(/custom/i)).toBeInTheDocument();
   });
   it('should fire onClick when the item is clicked', () => {
-    render(<ImageList items={items} />);
+    render(<ImageList items={items} onItemClick={mockItemClick} />);
 
     expect(mockItemClick).toBeCalledTimes(0);
-    userEvent.click(screen.getByLabelText(/new_discord/i));
+    userEvent.click(screen.getAllByTestId('list-item')[0]);
 
     expect(mockItemClick).toBeCalledTimes(1);
   });

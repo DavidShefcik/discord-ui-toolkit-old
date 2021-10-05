@@ -168,7 +168,7 @@ function MessageInputSideItemComponent({ id, value, onClick }: MessageInputSideI
       icon={value as IconNamesType}
       iconColor="var(--interactive-normal)"
       iconHoverColor="var(--interactive-hover)"
-      onClick={() => onClick && (() => onClick(id))}
+      onClick={onClick && (() => onClick(id))}
       size={24}
       animated={false}
     />

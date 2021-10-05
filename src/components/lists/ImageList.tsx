@@ -1,4 +1,4 @@
-import React, { ReactChild, useState, memo } from 'react';
+import React, { ReactChild, useState, useEffect, memo } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import Icon from '@layout/Icon';
@@ -7,9 +7,8 @@ import MentionBadge from '@layout/MentionBadge';
 
 import { IconNamesType } from '@internal/values/icons';
 
+type ImageItemOnClick = (id: string | number) => void;
 type InteractiveListItem = {
-  onClick?(id: string | number): void;
-  active?: boolean;
   mentionBadgeText?: string;
   hoverBackgroundColor?: string;
   activeBackgroundColor?: string;
@@ -52,6 +51,8 @@ interface ImageListProps {
   items: ImageListItem[];
   backgroundColor?: string;
   direction?: 'vertical' | 'horizontal';
+  active?: Array<string | number | ImageListItem>;
+  onItemClick?: ImageItemOnClick;
   height?: string;
 }
 
@@ -147,7 +148,13 @@ const styles = StyleSheet.create({
   },
 });
 
-function ImageListItemComponent(props: ImageListItem & { listDirection: Pick<ImageListProps, 'direction'> }) {
+function ImageListItemComponent(
+  props: ImageListItem & {
+    listDirection: Pick<ImageListProps, 'direction'>;
+    active: boolean;
+    onClick?: ImageItemOnClick;
+  }
+) {
   const [hovered, setHovered] = useState(false);
 
   if (props.type === 'divider') {
@@ -189,7 +196,6 @@ function ImageListItemComponent(props: ImageListItem & { listDirection: Pick<Ima
           size="26px"
           animated
           iconColor={hovered ? iconHoverColor : active ? iconActiveColor : iconColor}
-          onClick={onClick && (() => onClick(id))}
         />
       );
       break;
@@ -200,7 +206,6 @@ function ImageListItemComponent(props: ImageListItem & { listDirection: Pick<Ima
           emoji={source as string}
           size="26px"
           color={hovered ? emojiHoverColored : active ? emojiActiveColored : emojiColored}
-          onClick={onClick && (() => onClick(id))}
         />
       );
       break;
@@ -215,6 +220,11 @@ function ImageListItemComponent(props: ImageListItem & { listDirection: Pick<Ima
         styles.itemContainer,
         listDirection === 'vertical' ? styles.verticalItemContainer : styles.horizontalItemContainer,
       ])}
+      style={{
+        cursor: onClick && 'pointer',
+      }}
+      onClick={onClick && (() => onClick(id))}
+      data-testid="list-item"
     >
       {(active || hovered || indicateUnread) && (
         <div className={css(styles.pill)}>
@@ -224,7 +234,6 @@ function ImageListItemComponent(props: ImageListItem & { listDirection: Pick<Ima
       <div
         className={css(styles.itemContent)}
         style={{
-          cursor: onClick && 'pointer',
           borderRadius: active || hovered ? '30%' : '50%',
           backgroundColor: active
             ? activeBackgroundColor
@@ -234,7 +243,6 @@ function ImageListItemComponent(props: ImageListItem & { listDirection: Pick<Ima
         }}
         onMouseEnter={() => onClick && setHovered(true)}
         onMouseLeave={() => onClick && setHovered(false)}
-        onClick={() => onClick && onClick(id)}
       >
         {component}
       </div>
@@ -257,6 +265,8 @@ export default function ImageList({
   backgroundColor = 'var(--background-tertiary)',
   direction = 'vertical',
   height = '100%',
+  active,
+  onItemClick,
 }: ImageListProps) {
   return (
     <div
@@ -275,6 +285,8 @@ export default function ImageList({
           <MemoizedItemComponent
             key={item.id}
             {...item}
+            active={active?.includes(typeof item === 'object' ? item.id : item)}
+            onClick={onItemClick}
             listDirection={direction as Pick<ImageListProps, 'direction'>}
           />
         ))}
