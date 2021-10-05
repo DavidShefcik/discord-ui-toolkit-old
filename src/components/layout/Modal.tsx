@@ -81,7 +81,7 @@ export default function Modal({
   cancelText,
   onCancelClick,
 }: ModalProps) {
-  const { newMarketingLayout } = useThemeContext();
+  const { newMarketingColors } = useThemeContext();
 
   return (
     <ModalBase
@@ -92,7 +92,7 @@ export default function Modal({
     >
       <div className={css(styles.container)}>
         <div className={css(styles.titleContainer)}>
-          <div className={css([styles.titleBase, newMarketingLayout ? styles.newText : styles.oldText])}>{title}</div>
+          <div className={css([styles.titleBase, newMarketingColors ? styles.newText : styles.oldText])}>{title}</div>
         </div>
         <div className={css(styles.childrenContainer)}>{children}</div>
         <div className={css(styles.buttonContainer)}>

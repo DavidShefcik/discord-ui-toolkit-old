@@ -3,11 +3,11 @@ import ThemeContext, { Theme } from '@internal/context/ThemeContext';
 
 interface ReturnType {
   theme: Theme;
-  newMarketingLayout: boolean;
+  newMarketingColors: boolean;
 }
 
 export default function useThemeContext(): ReturnType {
-  const { theme, newMarketingLayout } = useContext(ThemeContext);
+  const { theme, newMarketingColors } = useContext(ThemeContext);
 
-  return { theme, newMarketingLayout };
+  return { theme, newMarketingColors };
 }

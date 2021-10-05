@@ -6,7 +6,7 @@ export default {
   component: Button,
   title: 'Discord UI Toolkit/Inputs/Button',
   argTypes: {
-    newMarketingLayout: {
+    newMarketingColors: {
       defaultValue: false,
       description: "Use the new colors from Discord's 2021 rebranding.",
       control: {
@@ -74,36 +74,36 @@ export default {
 } as Meta;
 
 export const Default: Story<ButtonProps & DiscordProviderProps> = (props) => {
-  const { newMarketingLayout } = props;
+  const { newMarketingColors } = props;
 
   const click = () => console.log('Button click');
 
   return (
-    <DiscordProvider newMarketingLayout={newMarketingLayout}>
+    <DiscordProvider newMarketingColors={newMarketingColors}>
       <Button {...props} onClick={click} />
     </DiscordProvider>
   );
 };
 
 export const Disabled: Story<ButtonProps & DiscordProviderProps> = (props) => {
-  const { newMarketingLayout } = props;
+  const { newMarketingColors } = props;
 
   const click = () => console.log('Button click');
 
   return (
-    <DiscordProvider newMarketingLayout={newMarketingLayout}>
+    <DiscordProvider newMarketingColors={newMarketingColors}>
       <Button {...props} onClick={click} disabled />
     </DiscordProvider>
   );
 };
 
 export const Loading: Story<ButtonProps & DiscordProviderProps> = (props) => {
-  const { newMarketingLayout } = props;
+  const { newMarketingColors } = props;
 
   const click = () => console.log('Button click');
 
   return (
-    <DiscordProvider newMarketingLayout={newMarketingLayout}>
+    <DiscordProvider newMarketingColors={newMarketingColors}>
       <Button {...props} onClick={click} loading />
     </DiscordProvider>
   );

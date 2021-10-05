@@ -37,7 +37,7 @@ const tabs: FullUserProfileTab[] = [
 describe('<FullUserProfile />', () => {
   it('should render', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" />
       </ThemeContext.Provider>
     );
@@ -46,7 +46,7 @@ describe('<FullUserProfile />', () => {
   });
   it('should display the username', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" />
       </ThemeContext.Provider>
     );
@@ -55,7 +55,7 @@ describe('<FullUserProfile />', () => {
   });
   it('should render children', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username">
           <p>Children</p>
         </FullUserProfile>
@@ -66,7 +66,7 @@ describe('<FullUserProfile />', () => {
   });
   it('should render the tab list', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" tabs={tabs} defaultTab={0} />
       </ThemeContext.Provider>
     );
@@ -77,7 +77,7 @@ describe('<FullUserProfile />', () => {
   });
   it('should change the selected tab when a tab label is clicked', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" tabs={tabs} defaultTab={0} />
       </ThemeContext.Provider>
     );
@@ -90,7 +90,7 @@ describe('<FullUserProfile />', () => {
   });
   it(`should render the selected tab's children`, () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" tabs={tabs} defaultTab={0} />
       </ThemeContext.Provider>
     );
@@ -99,7 +99,7 @@ describe('<FullUserProfile />', () => {
   });
   it('should render the default tab', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" tabs={tabs} defaultTab={2} />
       </ThemeContext.Provider>
     );
@@ -108,7 +108,7 @@ describe('<FullUserProfile />', () => {
   });
   it(`should render the selected tab's sections`, () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" tabs={tabs} defaultTab={1} />
       </ThemeContext.Provider>
     );
@@ -118,92 +118,92 @@ describe('<FullUserProfile />', () => {
     expect(screen.getByText('Section Title Two')).toBeInTheDocument();
     expect(screen.getByText('Section Content Two')).toBeInTheDocument();
   });
-  // New Marketing Layout
-  it('should render the username on the new marketing layout', () => {
+  // New marketing colors
+  it('should render the username on the new marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/username/i)).toBeInTheDocument();
   });
-  it('should render the discriminator on the new marketing layout', () => {
+  it('should render the discriminator on the new marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" discriminator="1234" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/1234/i)).toBeInTheDocument();
   });
-  it('should render the activity title on the new marketing layout', () => {
+  it('should render the activity title on the new marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" activityTitle="Activity Title" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/activity title/i)).toBeInTheDocument();
   });
-  it('should render the activity subtitle on the new marketing layout', () => {
+  it('should render the activity subtitle on the new marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" activityTitle="Activity Subtitle" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/activity subtitle/i)).toBeInTheDocument();
   });
-  it('should render the user tag on the new marketing layout', () => {
+  it('should render the user tag on the new marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" userTagText="User Tag" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/user tag/i)).toBeInTheDocument();
   });
-  // Old Marketing Layout
-  it('should render the username on the old marketing layout', () => {
+  // Old marketing colors
+  it('should render the username on the old marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: false }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: false }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/username/i)).toBeInTheDocument();
   });
-  it('should render the discriminator on the old marketing layout', () => {
+  it('should render the discriminator on the old marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: false }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: false }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" discriminator="1234" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/1234/i)).toBeInTheDocument();
   });
-  it('should render the activity title on the old marketing layout', () => {
+  it('should render the activity title on the old marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: false }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: false }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" activityTitle="Activity Title" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/activity title/i)).toBeInTheDocument();
   });
-  it('should render the activity subtitle on the old marketing layout', () => {
+  it('should render the activity subtitle on the old marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: false }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: false }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" activityTitle="Activity Subtitle" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/activity subtitle/i)).toBeInTheDocument();
   });
-  it('should render the user tag on the old marketing layout', () => {
+  it('should render the user tag on the old marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: false }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: false }}>
         <FullUserProfile avatarSource={GreenNewDefaultAvatar} username="Username" userTagText="User Tag" />
       </ThemeContext.Provider>
     );

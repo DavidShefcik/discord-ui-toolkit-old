@@ -4,7 +4,6 @@ import {
   FullUserProfile,
   FullUserProfileProps,
   FullUserProfileTab,
-  ProfileSection,
   ButtonTypes,
   GreenNewDefaultAvatar,
   GreenOldDefaultAvatar,
@@ -162,24 +161,24 @@ const tabs: FullUserProfileTab[] = [
   },
 ];
 
-export const DefaultNewMarketingLayout: Story<FullUserProfileProps & DiscordProviderProps> = (props) => {
+export const DefaultnewMarketingColors: Story<FullUserProfileProps & DiscordProviderProps> = (props) => {
   return (
-    <DiscordProvider {...props} newMarketingLayout={true}>
+    <DiscordProvider {...props} newMarketingColors={true}>
       <FullUserProfile username="Username" avatarSource={GreenNewDefaultAvatar} />
     </DiscordProvider>
   );
 };
 
-export const NewMarketingLayout: Story<FullUserProfileProps & DiscordProviderProps> = (props) => {
+export const newMarketingColors: Story<FullUserProfileProps & DiscordProviderProps> = (props) => {
   return (
-    <DiscordProvider {...props} newMarketingLayout={true}>
+    <DiscordProvider {...props} newMarketingColors={true}>
       <FullUserProfile
         {...props}
         avatarSource={GreenNewDefaultAvatar}
         tabs={tabs}
         actionButtonOnClick={() => console.log('Action button click')}
       >
-        <p>New Marketing Layout</p>
+        <p>New marketing colors</p>
       </FullUserProfile>
     </DiscordProvider>
   );
@@ -187,7 +186,7 @@ export const NewMarketingLayout: Story<FullUserProfileProps & DiscordProviderPro
 
 export const DefaultOldMarketingLayout: Story<FullUserProfileProps & DiscordProviderProps> = (props) => {
   return (
-    <DiscordProvider {...props} newMarketingLayout={false}>
+    <DiscordProvider {...props} newMarketingColors={false}>
       <FullUserProfile username="Username" avatarSource={GreenOldDefaultAvatar} />
     </DiscordProvider>
   );
@@ -195,14 +194,14 @@ export const DefaultOldMarketingLayout: Story<FullUserProfileProps & DiscordProv
 
 export const OldMarketingLayout: Story<FullUserProfileProps & DiscordProviderProps> = (props) => {
   return (
-    <DiscordProvider {...props} newMarketingLayout={false}>
+    <DiscordProvider {...props} newMarketingColors={false}>
       <FullUserProfile
         {...props}
         avatarSource={GreenOldDefaultAvatar}
         tabs={tabs}
         actionButtonOnClick={() => console.log('Action button click')}
       >
-        <p>Old Marketing Layout</p>
+        <p>Old marketing colors</p>
       </FullUserProfile>
     </DiscordProvider>
   );

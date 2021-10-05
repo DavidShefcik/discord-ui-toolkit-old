@@ -25,7 +25,7 @@ export default {
         options: ['dark', 'light'],
       },
     },
-    newMarketingLayout: {
+    newMarketingColors: {
       defaultValue: false,
       description: "Use the new colors from Discord's 2021 rebranding.",
       control: {

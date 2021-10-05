@@ -8,7 +8,7 @@ import ThemeContext from '@internal/context/ThemeContext';
 describe('<SmallUserProfile />', () => {
   it('should render', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" />
       </ThemeContext.Provider>
     );
@@ -17,7 +17,7 @@ describe('<SmallUserProfile />', () => {
   });
   it('should display the username', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" />
       </ThemeContext.Provider>
     );
@@ -26,7 +26,7 @@ describe('<SmallUserProfile />', () => {
   });
   it('should fire onAvatarClick', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" />
       </ThemeContext.Provider>
     );
@@ -35,7 +35,7 @@ describe('<SmallUserProfile />', () => {
   });
   it('should render children', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username">
           <p>Children</p>
         </SmallUserProfile>
@@ -46,7 +46,7 @@ describe('<SmallUserProfile />', () => {
   });
   it('should render the sections', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <SmallUserProfile
           avatarSource={GreenOldDefaultAvatar}
           username="Username"
@@ -67,92 +67,92 @@ describe('<SmallUserProfile />', () => {
     expect(screen.getByText(/section label/i)).toBeInTheDocument();
     expect(screen.getByText(/section content/i)).toBeInTheDocument();
   });
-  // New Marketing Layout
-  it('should render the username on the new marketing layout', () => {
+  // New marketing colors
+  it('should render the username on the new marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/username/i)).toBeInTheDocument();
   });
-  it('should render the discriminator on the new marketing layout', () => {
+  it('should render the discriminator on the new marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" discriminator="1234" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/1234/i)).toBeInTheDocument();
   });
-  it('should render the activity title on the new marketing layout', () => {
+  it('should render the activity title on the new marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" activityTitle="Activity Title" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/activity title/i)).toBeInTheDocument();
   });
-  it('should render the activity subtitle on the new marketing layout', () => {
+  it('should render the activity subtitle on the new marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" activityTitle="Activity Subtitle" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/activity subtitle/i)).toBeInTheDocument();
   });
-  it('should render the user tag on the new marketing layout', () => {
+  it('should render the user tag on the new marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: true }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: true }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" userTagText="User Tag" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/user tag/i)).toBeInTheDocument();
   });
-  // Old Marketing Layout
-  it('should render the username on the old marketing layout', () => {
+  // Old marketing colors
+  it('should render the username on the old marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: false }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: false }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/username/i)).toBeInTheDocument();
   });
-  it('should render the discriminator on the old marketing layout', () => {
+  it('should render the discriminator on the old marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: false }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: false }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" discriminator="1234" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/1234/i)).toBeInTheDocument();
   });
-  it('should render the activity title on the old marketing layout', () => {
+  it('should render the activity title on the old marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: false }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: false }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" activityTitle="Activity Title" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/activity title/i)).toBeInTheDocument();
   });
-  it('should render the activity subtitle on the old marketing layout', () => {
+  it('should render the activity subtitle on the old marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: false }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: false }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" activityTitle="Activity Subtitle" />
       </ThemeContext.Provider>
     );
 
     expect(screen.getByText(/activity subtitle/i)).toBeInTheDocument();
   });
-  it('should render the user tag on the old marketing layout', () => {
+  it('should render the user tag on the old marketing colors', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingLayout: false }}>
+      <ThemeContext.Provider value={{ theme: 'dark', setTheme: jest.fn(), newMarketingColors: false }}>
         <SmallUserProfile avatarSource={GreenOldDefaultAvatar} username="Username" userTagText="User Tag" />
       </ThemeContext.Provider>
     );

@@ -106,24 +106,24 @@ const sections: ProfileSection[] = [
   },
 ];
 
-export const DefaultNewMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
+export const DefaultnewMarketingColors: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
   return (
-    <DiscordProvider {...props} newMarketingLayout={true}>
+    <DiscordProvider {...props} newMarketingColors={true}>
       <SmallUserProfile username="Username" avatarSource={GreenNewDefaultAvatar} />
     </DiscordProvider>
   );
 };
 
-export const NewMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
+export const newMarketingColors: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
   return (
-    <DiscordProvider {...props} newMarketingLayout={true}>
+    <DiscordProvider {...props} newMarketingColors={true}>
       <SmallUserProfile
         {...props}
         avatarSource={GreenNewDefaultAvatar}
         onAvatarClick={(avatarSource) => console.log(avatarSource)}
         sections={sections}
       >
-        <p>New Marketing Layout</p>
+        <p>New marketing colors</p>
       </SmallUserProfile>
     </DiscordProvider>
   );
@@ -131,7 +131,7 @@ export const NewMarketingLayout: Story<SmallUserProfileProps & DiscordProviderPr
 
 export const DefaultOldMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
   return (
-    <DiscordProvider {...props} newMarketingLayout={false}>
+    <DiscordProvider {...props} newMarketingColors={false}>
       <SmallUserProfile username="Username" avatarSource={GreenOldDefaultAvatar} />
     </DiscordProvider>
   );
@@ -139,14 +139,14 @@ export const DefaultOldMarketingLayout: Story<SmallUserProfileProps & DiscordPro
 
 export const OldMarketingLayout: Story<SmallUserProfileProps & DiscordProviderProps> = (props) => {
   return (
-    <DiscordProvider {...props} newMarketingLayout={false}>
+    <DiscordProvider {...props} newMarketingColors={false}>
       <SmallUserProfile
         {...props}
         avatarSource={GreenOldDefaultAvatar}
         onAvatarClick={(avatarSource) => console.log(avatarSource)}
         sections={sections}
       >
-        <p>Old Marketing Layout</p>
+        <p>Old marketing colors</p>
       </SmallUserProfile>
     </DiscordProvider>
   );

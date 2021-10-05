@@ -346,7 +346,7 @@ function OldUserProfile({
 }
 
 export default function FullUserProfile(props: FullUserProfileProps) {
-  const { newMarketingLayout } = useThemeContext();
+  const { newMarketingColors } = useThemeContext();
 
   const { children, tabs, defaultTab, activityBackgroundColor } = props;
 
@@ -364,15 +364,15 @@ export default function FullUserProfile(props: FullUserProfileProps) {
   return (
     <div
       style={{
-        backgroundColor: newMarketingLayout ? 'var(--background-floating)' : 'var(--background-secondary)',
+        backgroundColor: newMarketingColors ? 'var(--background-floating)' : 'var(--background-secondary)',
       }}
       className={css(styles.container)}
     >
-      {newMarketingLayout ? <NewUserProfile {...props} /> : <OldUserProfile {...props} />}
+      {newMarketingColors ? <NewUserProfile {...props} /> : <OldUserProfile {...props} />}
       {tabs && (
         <div
           style={{
-            backgroundColor: newMarketingLayout
+            backgroundColor: newMarketingColors
               ? 'transparent'
               : activityBackgroundColor
               ? activityBackgroundColor

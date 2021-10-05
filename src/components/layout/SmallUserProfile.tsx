@@ -232,19 +232,19 @@ function NewUserProfile({
 }
 
 export default function SmallUserProfile(props: SmallUserProfileProps) {
-  const { newMarketingLayout } = useThemeContext();
+  const { newMarketingColors } = useThemeContext();
 
   const { sections, children } = props;
 
   return (
     <div
       style={{
-        width: newMarketingLayout ? '300px' : '225px',
-        backgroundColor: newMarketingLayout ? 'var(--background-floating)' : 'var(--background-secondary)',
+        width: newMarketingColors ? '300px' : '225px',
+        backgroundColor: newMarketingColors ? 'var(--background-floating)' : 'var(--background-secondary)',
       }}
       className={css(styles.container)}
     >
-      {newMarketingLayout ? <NewUserProfile {...props} /> : <OldUserProfile {...props} />}
+      {newMarketingColors ? <NewUserProfile {...props} /> : <OldUserProfile {...props} />}
       {(sections || children) && (
         <div className={css(styles.contentContainer)}>
           {sections && sections.map((section) => <ProfileSectionComponent key={section.label} {...section} />)}

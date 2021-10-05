@@ -16,7 +16,7 @@ describe('<Modal />', () => {
 
   it('should render', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
         <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={jest.fn()}>
           Modal Contents
         </Modal>
@@ -27,7 +27,7 @@ describe('<Modal />', () => {
   });
   it('should render the submit button', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
         <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={jest.fn()} submitText="Submit">
           Modal Contents
         </Modal>
@@ -38,7 +38,7 @@ describe('<Modal />', () => {
   });
   it('should call the onSubmitClick method when the submit button is clicked', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
         <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={mockSubmitClick} submitText="Submit">
           Modal Contents
         </Modal>
@@ -52,7 +52,7 @@ describe('<Modal />', () => {
   });
   it('should make the submit button disabled if submitButtonDisabled is true', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
         <Modal
           visible
           setVisible={jest.fn()}
@@ -70,7 +70,7 @@ describe('<Modal />', () => {
   });
   it('should make the submit button disabled if submitButtonLoading is true', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
         <Modal
           visible
           setVisible={jest.fn()}
@@ -88,7 +88,7 @@ describe('<Modal />', () => {
   });
   it('should render the cancel button if text is passed for cancelText', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
         <Modal visible setVisible={jest.fn()} title="Title" onSubmitClick={jest.fn()} cancelText="Cancel">
           Modal Contents
         </Modal>
@@ -99,7 +99,7 @@ describe('<Modal />', () => {
   });
   it('should call the onCancelClick method when the cancel button is clicked', () => {
     render(
-      <ThemeContext.Provider value={{ theme: 'dark', newMarketingLayout: true, setTheme: jest.fn() }}>
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
         <Modal
           visible
           setVisible={jest.fn()}
