@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import {
   ChannelList,
   ChannelListProps,
   ChannelListCategory,
   ChannelListItem,
-  GreenNewDefaultAvatar,
   DiscordProvider,
   DiscordProviderProps,
 } from 'discord-ui-toolkit';
@@ -123,7 +122,6 @@ const items: ChannelListItem[] = [
     text: 'First Item First Category',
     categoryId: 0,
     leftIcon: 'hashtag',
-    onClick: (id) => console.log(id),
   },
   {
     id: 1,
@@ -176,58 +174,116 @@ const categories: ChannelListCategory[] = [
   },
 ];
 
-export const WithoutCategories: Story<ChannelListProps & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <ChannelList {...props} items={items} />
-  </DiscordProvider>
-);
+export const WithoutCategories: Story<ChannelListProps & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
 
-export const WithCategories: Story<ChannelListProps & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <ChannelList {...props} items={items} categories={categories} />
-  </DiscordProvider>
-);
+  return (
+    <DiscordProvider {...props}>
+      <ChannelList
+        {...props}
+        active={active}
+        items={items}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
 
-export const DefaultChannelItem: Story<ChannelListProps & ChannelListItem & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <ChannelList
-      {...props}
-      items={[
-        {
-          id: 0,
-          position: 0,
-          text: props.text,
-        },
-      ]}
-      categories={[]}
-    />
-  </DiscordProvider>
-);
+export const WithCategories: Story<ChannelListProps & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <ChannelList
+        {...props}
+        active={active}
+        items={items}
+        categories={categories}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
+
+export const DefaultChannelItem: Story<ChannelListProps & ChannelListItem & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <ChannelList
+        {...props}
+        active={active}
+        items={[
+          {
+            id: 0,
+            position: 0,
+            text: props.text,
+          },
+        ]}
+        categories={[]}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
 
 export const DataChannelItem: Story<
   ChannelListProps & ChannelListItem & DiscordProviderProps & { showOnlyOnActive: boolean; showOnlyOnHover: boolean }
-> = (props) => (
-  <DiscordProvider {...props}>
-    <ChannelList
-      {...props}
-      items={[
-        {
-          id: 0,
-          position: 0,
-          onClick: (id) => console.log(id),
-          rightIcons: [
-            {
-              id: 0,
-              icon: 'settings',
-              showOnlyOnActive: props.showOnlyOnActive,
-              showOnlyOnHover: props.showOnlyOnHover,
-              onClick: (id, icon) => console.log(icon),
-            },
-          ],
-          ...props,
-        },
-      ]}
-      categories={[]}
-    />
-  </DiscordProvider>
-);
+> = (props) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <ChannelList
+        {...props}
+        active={active}
+        items={[
+          {
+            id: 0,
+            position: 0,
+            rightIcons: [
+              {
+                id: 0,
+                icon: 'settings',
+                showOnlyOnActive: props.showOnlyOnActive,
+                showOnlyOnHover: props.showOnlyOnHover,
+                onClick: (id, icon) => console.log(icon),
+              },
+            ],
+            ...props,
+          },
+        ]}
+        categories={[]}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};

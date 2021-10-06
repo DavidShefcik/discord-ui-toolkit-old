@@ -16,7 +16,6 @@ describe('<ChannelList />', () => {
       text: 'First Item First Category',
       categoryId: 0,
       leftIcon: 'hashtag',
-      onClick: mockItemClick,
     },
     {
       id: 1,
@@ -37,7 +36,6 @@ describe('<ChannelList />', () => {
       text: 'Second Item Second Category',
       categoryId: 1,
       leftIcon: 'pin',
-      onClick: mockItemClick,
       rightIcons: [
         {
           id: 0,
@@ -94,7 +92,6 @@ describe('<ChannelList />', () => {
       id: 8,
       position: 2,
       text: 'Active Item Third Category',
-      active: true,
       categoryId: 9,
     },
     {
@@ -157,7 +154,7 @@ describe('<ChannelList />', () => {
     expect(screen.getByText('Second Item Without Category')).toBeInTheDocument();
   });
   it('should fire the item on click when the item is clicked', () => {
-    render(<ChannelList items={items} categories={categories} />);
+    render(<ChannelList items={items} categories={categories} onItemClick={mockItemClick} />);
 
     expect(mockItemClick).toBeCalledTimes(0);
     userEvent.click(screen.getByText('First Item First Category'));
@@ -183,7 +180,7 @@ describe('<ChannelList />', () => {
     expect(mockItemIconClick).toBeCalledTimes(1);
   });
   it('should not fire the item onClick when the right icon is clicked', () => {
-    render(<ChannelList items={items} categories={categories} />);
+    render(<ChannelList items={items} categories={categories} onItemClick={mockItemClick} />);
 
     expect(mockItemIconClick).toHaveBeenCalledTimes(0);
     expect(mockItemClick).toHaveBeenCalledTimes(0);

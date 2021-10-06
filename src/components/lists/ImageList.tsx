@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
 
 function ImageListItemComponent(
   props: ImageListItem & {
-    listDirection: Pick<ImageListProps, 'direction'>;
+    listDirection: ImageListProps['direction'];
     active: boolean;
     onClick?: ImageItemOnClick;
   }
@@ -287,7 +287,7 @@ export default function ImageList({
             {...item}
             active={active?.includes(typeof item === 'object' ? item.id : item)}
             onClick={onItemClick}
-            listDirection={direction as Pick<ImageListProps, 'direction'>}
+            listDirection={direction}
           />
         ))}
     </div>

@@ -11,6 +11,7 @@ import groupBy from 'lodash.groupby';
 
 import isPropIconEmojiOrComponent from '@internal/utils/isPropIconEmojOrComponent';
 
+type ChannelItemOnClick = (id: string | number) => void;
 interface RightIcons {
   id: string | number;
   icon: ReactChild | string;
@@ -23,8 +24,6 @@ interface ChannelListItem {
   text: string;
   position: number;
   categoryId?: string | number;
-  active?: boolean;
-  onClick?(id: string | number): void;
   leftIcon?: ReactChild | string;
   rightIcons?: RightIcons[];
   dull?: boolean;
@@ -49,6 +48,8 @@ interface ChannelListProps {
   items: ChannelListItem[];
   backgroundColor?: string;
   categories?: ChannelListCategory[];
+  active?: Array<string | number | ChannelListItem>;
+  onItemClick?: ChannelItemOnClick;
   width?: string;
   height?: string;
 }
@@ -213,15 +214,15 @@ const isCategory = (value: ChannelListItem | ChannelListCategory): value is Chan
 function ChannelListItemComponent({
   id,
   text,
-  active = false,
   disabled = false,
   dull = false,
   indicateUnread = false,
   leftIcon,
   rightIcons,
   mentionBadgeText,
+  active,
   onClick,
-}: ChannelListItem) {
+}: ChannelListItem & { active: boolean; onClick: ChannelItemOnClick }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -236,7 +237,7 @@ function ChannelListItemComponent({
         ])}
         onMouseEnter={() => onClick && setHovered(true)}
         onMouseLeave={() => onClick && setHovered(false)}
-        onClick={() => onClick && onClick(id)}
+        onClick={onClick && (() => onClick(id))}
       >
         <div className={css(styles.listItemText)}>
           {leftIcon && (
@@ -273,7 +274,7 @@ function ChannelListItemComponent({
           {((rightIcons && rightIcons.length > 0) || mentionBadgeText) && (
             <div className={css(styles.rightItemsContainer)}>
               {rightIcons &&
-                rightIcons.map(({ id: iconId, icon, onClick, showOnlyOnActive, showOnlyOnHover }) => {
+                rightIcons.map(({ id: iconId, icon, onClick: onRightIconClick, showOnlyOnActive, showOnlyOnHover }) => {
                   const component = (
                     <div key={iconId} className={css(styles.rightItemContainer)} aria-label="list-item-right-icon">
                       {isPropIconEmojiOrComponent(icon) === 'icon' ? (
@@ -282,14 +283,14 @@ function ChannelListItemComponent({
                           size="16px"
                           iconColor={disabled ? 'var(--interactive-muted)' : 'var(--interactive-normal)'}
                           iconHoverColor={onClick && 'var(--interactive-hover)'}
-                          onClick={onClick && ((icon) => onClick(id, icon))}
+                          onClick={onRightIconClick && ((icon) => onRightIconClick(id, icon))}
                         />
                       ) : isPropIconEmojiOrComponent(leftIcon) === 'emoji' ? (
                         <Emoji
                           emoji={icon as string}
                           size="16px"
                           color={false}
-                          onClick={onClick && ((emoji) => onClick(id, emoji))}
+                          onClick={onRightIconClick && ((emoji) => onRightIconClick(id, emoji))}
                         />
                       ) : (
                         icon
@@ -331,7 +332,13 @@ function ChannelListCategoryComponent({
   onRightIconClick,
   rightIcon,
   items,
-}: ChannelListCategory & { items: ChannelListItem[] }) {
+  activeItems,
+  onItemClick,
+}: ChannelListCategory & {
+  items: ChannelListItem[];
+  activeItems?: ChannelListProps['active'];
+  onItemClick?: ChannelItemOnClick;
+}) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const [hovered, setHovered] = useState(false);
 
@@ -387,8 +394,22 @@ function ChannelListCategoryComponent({
       {collapsed
         ? items
             .filter(({ visibleWhileCategoryCollapsed }) => visibleWhileCategoryCollapsed)
-            .map((item) => <ChannelListItemComponent key={item.id} {...item} />)
-        : items.map((item) => <ChannelListItemComponent key={item.id} {...item} />)}
+            .map((item) => (
+              <MemoizedItemComponent
+                key={item.id}
+                {...item}
+                active={activeItems?.includes(typeof item === 'object' ? item.id : item)}
+                onClick={onItemClick}
+              />
+            ))
+        : items.map((item) => (
+            <MemoizedItemComponent
+              key={item.id}
+              {...item}
+              active={activeItems?.includes(typeof item === 'object' ? item.id : item)}
+              onClick={onItemClick}
+            />
+          ))}
     </div>
   );
 }
@@ -398,6 +419,8 @@ export default function ChannelList({
   items,
   backgroundColor = 'var(--background-secondary)',
   categories = [],
+  active,
+  onItemClick,
   width = '240px',
   height = '100%',
 }: ChannelListProps) {
@@ -434,9 +457,20 @@ export default function ChannelList({
     <div style={{ backgroundColor, width, height }} className={css(styles.container)}>
       {allItems.map((item) =>
         item.type === 'item' ? (
-          <MemoizedItemComponent key={`channel-list-item-${item.id}`} {...item} />
+          <MemoizedItemComponent
+            key={`channel-list-item-${item.id}`}
+            {...item}
+            active={active?.includes(typeof item === 'object' ? item.id : item)}
+            onClick={onItemClick}
+          />
         ) : (
-          <MemoizedCategoryComponent key={`channel-list-category-${item.id}`} items={item.items} {...item} />
+          <MemoizedCategoryComponent
+            key={`channel-list-category-${item.id}`}
+            {...item}
+            items={item.items}
+            activeItems={active}
+            onItemClick={onItemClick}
+          />
         )
       )}
     </div>
