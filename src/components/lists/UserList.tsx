@@ -119,6 +119,12 @@ const styles = StyleSheet.create({
     padding: '0 8px',
     boxSizing: 'border-box',
   },
+  userItemHovered: {
+    backgroundColor: 'var(--background-modifier-hover)',
+  },
+  userItemActive: {
+    backgroundColor: 'var(--background-modifier-selected)',
+  },
   avatarContainer: {
     width: '32px',
     height: '32px',
@@ -213,14 +219,7 @@ function UserListItemComponent({
       onClick={() => onClick && onClick(id)}
     >
       <div
-        className={css(styles.userContent)}
-        style={{
-          backgroundColor: active
-            ? 'var(--background-modifier-selected)'
-            : hovered
-            ? 'var(--background-modifier-hover)'
-            : null,
-        }}
+        className={css([styles.userContent, active ? styles.userItemActive : hovered ? styles.userItemHovered : null])}
       >
         <div className={css(styles.avatarContainer)}>
           <UserAvatar avatarSource={avatarSource} size="small" />
