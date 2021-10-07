@@ -39,7 +39,6 @@ describe('<UserList />', () => {
       statusText: 'Status Text',
       boldStatusText: 'Bold Status Text',
       categoryId: 1,
-      onClick: mockUserItemClick,
       leftStatusIcon: 'old_discord',
       rightStatusIcon: 'old_discord',
       rightUserIcon: 'old_discord',
@@ -139,7 +138,7 @@ describe('<UserList />', () => {
     expect(screen.getByLabelText('Right User Icon')).toBeInTheDocument();
   });
   it('should fire onClick when the list item is clicked', () => {
-    render(<UserList categories={categories} items={items} />);
+    render(<UserList categories={categories} items={items} onItemClick={mockUserItemClick} />);
 
     expect(mockUserItemClick).toHaveBeenCalledTimes(0);
     userEvent.click(screen.getByText('Second Username'));

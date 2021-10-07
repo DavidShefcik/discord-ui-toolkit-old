@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import {
   UserList,
@@ -174,50 +174,108 @@ const categories: UserListCategory[] = [
   },
 ];
 
-export const WithoutCategories: Story<UserListProps & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <UserList {...props} items={items} />
-  </DiscordProvider>
-);
+export const WithoutCategories: Story<UserListProps & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
 
-export const WithCategories: Story<UserListProps & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <UserList {...props} items={items} categories={categories} />
-  </DiscordProvider>
-);
+  return (
+    <DiscordProvider {...props}>
+      <UserList
+        {...props}
+        active={active}
+        items={items}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
 
-export const DefaultUserItem: Story<UserListProps & UserListItem & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <UserList
-      {...props}
-      items={[
-        {
-          id: 0,
-          avatarSource: GreenNewDefaultAvatar,
-          username: props.username,
-        },
-      ]}
-      categories={categories}
-    />
-  </DiscordProvider>
-);
+export const WithCategories: Story<UserListProps & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
 
-export const DataUserItem: Story<UserListProps & UserListItem & DiscordProviderProps> = (props) => (
-  <DiscordProvider {...props}>
-    <UserList
-      {...props}
-      items={[
-        {
-          ...props,
-          id: 0,
-          avatarSource: GreenNewDefaultAvatar,
-          onClick: (id) => console.log(id),
-          leftStatusIcon: '😀',
-          rightStatusIcon: 'new_discord',
-          rightUserIcon: 'boosting_filled',
-        },
-      ]}
-      categories={categories}
-    />
-  </DiscordProvider>
-);
+  return (
+    <DiscordProvider {...props}>
+      <UserList
+        {...props}
+        active={active}
+        items={items}
+        categories={categories}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
+
+export const DefaultUserItem: Story<UserListProps & UserListItem & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <UserList
+        {...props}
+        active={active}
+        items={[
+          {
+            id: 0,
+            avatarSource: GreenNewDefaultAvatar,
+            username: props.username,
+          },
+        ]}
+        categories={categories}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};
+
+export const DataUserItem: Story<UserListProps & UserListItem & DiscordProviderProps> = (props) => {
+  const [active, setActive] = useState([]);
+
+  return (
+    <DiscordProvider {...props}>
+      <UserList
+        {...props}
+        active={active}
+        items={[
+          {
+            ...props,
+            id: 0,
+            avatarSource: GreenNewDefaultAvatar,
+            leftStatusIcon: '😀',
+            rightStatusIcon: 'new_discord',
+            rightUserIcon: 'boosting_filled',
+          },
+        ]}
+        categories={categories}
+        onItemClick={(id) => {
+          if (active.includes(id)) {
+            const activeCopy = active;
+            setActive(activeCopy.filter((activeCopyId) => activeCopyId !== id));
+          } else {
+            setActive([...active, id]);
+          }
+        }}
+      />
+    </DiscordProvider>
+  );
+};

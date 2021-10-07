@@ -12,6 +12,7 @@ import groupBy from 'lodash.groupby';
 
 import isPropIconEmojiOrComponent from '@internal/utils/isPropIconEmojOrComponent';
 
+type UserItemOnClick = (id: string | number) => void;
 interface UserListItem {
   id: string | number;
   avatarSource: string;
@@ -30,7 +31,6 @@ interface UserListItem {
   userTagText?: string;
   userTagCheckmark?: boolean;
   userTagBlurple?: boolean;
-  onClick?(id: string | number): void;
 }
 interface UserListCategory {
   id: string | number;
@@ -45,12 +45,16 @@ interface ListItemProps {
   categoryKey: ListItemKey;
   organizedUserItems: OrganizedUserItem;
   categories?: UserListCategory[];
+  activeItems?: Array<string | number | UserListItem>;
+  onItemClick?: UserItemOnClick;
 }
 interface UserListProps {
   items: UserListItem[];
   backgroundColor?: string;
   categories?: UserListCategory[];
   showItemsWithoutCategory?: boolean;
+  active?: Array<string | number | UserListItem>;
+  onItemClick?: UserItemOnClick;
   width?: string;
   height?: string;
 }
@@ -61,7 +65,13 @@ const styles = StyleSheet.create({
     overflowX: 'hidden',
     overflowY: 'auto',
     boxSizing: 'border-box',
-    padding: '16px 8px 16px 0',
+    padding: '16px 8px 16px 8px',
+    // Disable text highlight select
+    '-webkit-touch-callout': 'none',
+    '-webkit-user-select': 'none',
+    '-moz-user-select': 'none',
+    '-ms-user-select': 'none',
+    'user-select': 'none',
   },
   categoryContainer: {
     height: '40px',
@@ -95,7 +105,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: '100%',
     display: 'block',
-    marginLeft: '8px',
     padding: '1px 0',
     boxSizing: 'border-box',
     borderRadius: '4px',
@@ -190,8 +199,9 @@ function UserListItemComponent({
   userTagText,
   userTagCheckmark = false,
   userTagBlurple = true,
+  active,
   onClick,
-}: UserListItem) {
+}: UserListItem & { active: boolean; onClick: UserItemOnClick }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -204,7 +214,13 @@ function UserListItemComponent({
     >
       <div
         className={css(styles.userContent)}
-        style={{ backgroundColor: hovered && 'var(--background-modifier-hover)' }}
+        style={{
+          backgroundColor: active
+            ? 'var(--background-modifier-selected)'
+            : hovered
+            ? 'var(--background-modifier-hover)'
+            : null,
+        }}
       >
         <div className={css(styles.avatarContainer)}>
           <UserAvatar avatarSource={avatarSource} size="small" />
@@ -321,7 +337,7 @@ function UserListCategoryComponent({
 }
 const MemoizedCategoryComponent = memo(UserListCategoryComponent);
 
-function ListItem({ categoryKey, organizedUserItems, categories = [] }: ListItemProps) {
+function ListItem({ categoryKey, organizedUserItems, categories = [], activeItems, onItemClick }: ListItemProps) {
   const category = categoryKey !== undefined && categories ? categories.find(({ id }) => categoryKey == id) : null;
 
   return (
@@ -334,7 +350,12 @@ function ListItem({ categoryKey, organizedUserItems, categories = [] }: ListItem
         />
       )}
       {organizedUserItems[categoryKey].map((item: UserListItem) => (
-        <MemoizedItemComponent key={`item-${item.id}`} {...item} />
+        <MemoizedItemComponent
+          key={`item-${item.id}`}
+          {...item}
+          active={activeItems?.includes(typeof item === 'object' ? item.id : item)}
+          onClick={onItemClick}
+        />
       ))}
     </>
   );
@@ -344,6 +365,8 @@ export default function UserList({
   backgroundColor = 'var(--background-secondary)',
   categories = [],
   showItemsWithoutCategory = true,
+  active,
+  onItemClick,
   width = '224px',
   height = '100%',
 }: UserListProps) {
@@ -358,6 +381,8 @@ export default function UserList({
         <ListItem
           key={`list-item-${key}`}
           categoryKey={key}
+          activeItems={active}
+          onItemClick={onItemClick}
           organizedUserItems={organizedUserItems}
           categories={categories}
         />
@@ -365,7 +390,14 @@ export default function UserList({
       {showItemsWithoutCategory &&
         items
           .filter(({ categoryId }) => categoryId === undefined || categoryId === null)
-          .map((item) => <UserListItemComponent key={`user-list-item-${item.id}`} {...item} />)}
+          .map((item) => (
+            <MemoizedItemComponent
+              key={`user-list-item-${item.id}`}
+              {...item}
+              active={active?.includes(typeof item === 'object' ? item.id : item)}
+              onClick={onItemClick}
+            />
+          ))}
     </div>
   );
 }
