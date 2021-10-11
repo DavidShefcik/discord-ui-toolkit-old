@@ -32,7 +32,10 @@ export default {
   plugins: [
     image(),
     peerDepsExternal(),
-    resolve(),
+    resolve({
+      browser: true,
+      dedupe: ['react', 'react-dom'],
+    }),
     commonjs(),
     typescriptPaths(),
     url({
