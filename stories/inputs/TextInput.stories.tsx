@@ -97,6 +97,13 @@ export default {
         type: 'boolean',
       },
     },
+    autoFocus: {
+      defaultValue: false,
+      description: 'If the text input should be auto focused.',
+      control: {
+        type: 'boolean',
+      },
+    },
     prefix: {
       defaultValue: '',
       description: 'Text to prefix the text input value with.',

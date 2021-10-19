@@ -14,6 +14,7 @@ interface TextInputProps {
   height?: string;
   fontSize?: string;
   autoComplete?: boolean;
+  autoFocus?: boolean;
   spellcheck?: boolean;
   prefix?: string;
 }
@@ -81,6 +82,7 @@ export default function TextInput({
   fontSize = '16px',
   autoComplete = false,
   spellcheck = false,
+  autoFocus = false,
   prefix,
 }: TextInputProps) {
   const [focused, setFocused] = useState(false);
@@ -124,6 +126,7 @@ export default function TextInput({
           disabled={disabled}
           autoComplete={autoComplete ? 'on' : 'off'}
           spellCheck={spellcheck}
+          autoFocus={autoFocus}
           style={{ fontSize }}
         />
       </div>
