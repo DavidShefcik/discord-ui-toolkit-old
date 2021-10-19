@@ -133,7 +133,7 @@ export default function Text({ text = '', color, variant = 'old_normal', onClick
           : styles.mention,
       ])}
       role="button"
-      onClick={() => onClick(text)}
+      onClick={onClick && (() => onClick(textsssss))}
     >
       {text}
       {children}
