@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     overflowY: 'hidden',
     overflowX: 'auto',
     borderRadius: '5px',
-    margin: '0 auto',
+    margin: '0 8px',
     position: 'relative',
     backgroundColor: 'var(--background-primary)',
     display: 'flex',
