@@ -29,4 +29,9 @@ describe('<Button />', () => {
 
     expect(screen.getByRole('button')).toBeDisabled();
   });
+  it('should render the children', () => {
+    render(<Button>Children</Button>);
+
+    expect(screen.getByText(/children/i)).toBeInTheDocument();
+  });
 });

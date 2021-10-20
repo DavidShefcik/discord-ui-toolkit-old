@@ -70,6 +70,14 @@ export default {
         type: 'text',
       },
     },
+    childrenPosition: {
+      defaultValue: 'left',
+      description: 'The side of the button the children will be on.',
+      control: {
+        type: 'inline-radio',
+        options: ['left', 'right'],
+      },
+    },
   },
 } as Meta;
 
@@ -105,6 +113,34 @@ export const Loading: Story<ButtonProps & DiscordProviderProps> = (props) => {
   return (
     <DiscordProvider newMarketingColors={newMarketingColors}>
       <Button {...props} onClick={click} loading />
+    </DiscordProvider>
+  );
+};
+
+export const Children: Story<ButtonProps & DiscordProviderProps> = (props) => {
+  const { newMarketingColors } = props;
+
+  const click = () => console.log('Button click');
+
+  return (
+    <DiscordProvider newMarketingColors={newMarketingColors}>
+      <Button {...props} text={null} onClick={click}>
+        Children
+      </Button>
+    </DiscordProvider>
+  );
+};
+
+export const TextAndChildren: Story<ButtonProps & DiscordProviderProps> = (props) => {
+  const { newMarketingColors } = props;
+
+  const click = () => console.log('Button click');
+
+  return (
+    <DiscordProvider newMarketingColors={newMarketingColors}>
+      <Button {...props} onClick={click}>
+        Children
+      </Button>
     </DiscordProvider>
   );
 };
