@@ -1,18 +1,20 @@
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, ReactChild } from 'react';
 import { StyleSheet, css, CSSProperties } from 'aphrodite';
 import { Button as ReakitButton } from 'reakit/Button';
 import { PulseLoader } from 'react-spinners';
 
 type ButtonTypes = 'blurple' | 'greyple' | 'green' | 'red_filled' | 'red_empty' | 'white_empty' | 'only_text';
 interface ButtonProps {
-  text: string;
-  onClick(event: MouseEvent<HTMLButtonElement>): void;
+  text?: string;
+  onClick?(event: MouseEvent<HTMLButtonElement>): void;
   type?: ButtonTypes;
   disabled?: boolean;
   loading?: boolean;
   size?: 'small' | 'normal' | 'large' | 'full' | 'custom';
   width?: string | number;
   height?: string | number;
+  childrenPosition?: 'left' | 'right';
+  children?: ReactChild;
 }
 
 const baseNormalStyle: CSSProperties = {
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
     borderRadius: '3px',
     fontSize: '14px',
     fontWeight: 500,
-    padding: '2px 16',
+    padding: '2px 16px',
     outline: 0,
     cursor: 'pointer',
     display: 'flex',
@@ -49,6 +51,12 @@ const styles = StyleSheet.create({
       cursor: 'not-allowed',
       opacity: 0.5,
     },
+  },
+  childrenLeft: {
+    flexDirection: 'row-reverse',
+  },
+  childrenRight: {
+    flexDirection: 'row',
   },
   blurple: {
     ...baseNormalStyle,
@@ -127,6 +135,8 @@ export default function Button({
   size = 'normal',
   width = 'auto',
   height = 'auto',
+  childrenPosition = 'left',
+  children,
 }: ButtonProps) {
   const style =
     size === 'small'
@@ -168,12 +178,23 @@ export default function Button({
 
   return (
     <ReakitButton
-      onClick={onClick}
+      onClick={(event) => onClick && onClick(event)}
       disabled={disabled || loading}
-      className={css([styles.buttonBase, buttonType])}
+      className={css([
+        styles.buttonBase,
+        buttonType,
+        childrenPosition === 'left' ? styles.childrenLeft : styles.childrenRight,
+      ])}
       style={style}
     >
-      {loading ? <PulseLoader loading={loading} color={type === 'red_empty' ? '#f04747' : 'white'} size={8} /> : text}
+      {loading ? (
+        <PulseLoader loading={loading} color={type === 'red_empty' ? '#f04747' : 'white'} size={8} />
+      ) : (
+        <>
+          <span>{text && text}</span>
+          <span>{children && children}</span>
+        </>
+      )}
     </ReakitButton>
   );
 }
