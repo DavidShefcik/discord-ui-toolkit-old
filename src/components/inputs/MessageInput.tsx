@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { ChangeEvent, KeyboardEvent } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import IconComponent from '@layout/Icon';
 
@@ -28,6 +28,10 @@ interface MessageInputProps {
 
 const styles = StyleSheet.create({
   container: {
+    display: 'inline-block',
+    position: 'relative',
+  },
+  inputContainer: {
     width: '100%',
     height: 'auto',
     overflowX: 'hidden',
@@ -103,6 +107,8 @@ const styles = StyleSheet.create({
     'overflow-wrap': 'break-word',
     position: 'relative',
     zIndex: 10,
+    backgroundColor: 'transparent',
+    border: 'none',
   },
   disabled: {
     opacity: 0.5,
@@ -187,26 +193,28 @@ export default function MessageInput({
   leftItems,
   rightItems,
   aboveInputText,
-  aboveInputVariant,
+  aboveInputVariant = 'notice',
   aboveInputOnClick,
   underInputText,
 }: MessageInputProps) {
-  const defaultValue = useRef(value);
+  const aboveInputVisible = aboveInputText && aboveInputText.length > 0 && aboveInputVariant;
 
-  const onKeyDownEvent = (event: KeyboardEvent) => {
+  const onTextAreaChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(event.target.value);
+  };
+
+  const onKeyPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
       onEnterPress && onEnterPress(value);
+    } else if (event.key === 'Enter' && event.shiftKey) {
+      onChange(`${value}\n`);
     }
   };
 
-  const onInputEvent = (event: any) => {
-    onChange(event.target.innerText);
-  };
-
   return (
-    <div style={{ display: 'inline-block', position: 'relative', width }}>
-      {aboveInputText && aboveInputText.length > 0 && aboveInputVariant && (
+    <div className={css(styles.container)} style={{ width, marginTop: aboveInputVisible && '24px' }}>
+      {aboveInputVisible && (
         <div
           className={css([
             styles.aboveInputBase,
@@ -219,7 +227,7 @@ export default function MessageInput({
           <span className={css(styles.aboveInputText)}>{aboveInputText}</span>
         </div>
       )}
-      <div className={css(styles.container)}>
+      <div className={css(styles.inputContainer)}>
         <div className={css(styles.inner)}>
           {leftItems && leftItems.length > 0 && (
             <div className={css(styles.iconWrapper)} style={{ padding: '0 16px', marginLeft: '-16px' }}>
@@ -234,7 +242,7 @@ export default function MessageInput({
             {!value || value.length === 0 ? (
               <span className={css([styles.textAreaBase, styles.placeholder])}>{placeholder}</span>
             ) : null}
-            <div
+            {/* <div
               className={css([styles.textAreaBase, styles.input])}
               role="textbox"
               aria-multiline="true"
@@ -245,13 +253,21 @@ export default function MessageInput({
               contentEditable={!disabled}
               autoCorrect="off"
               spellCheck={spellcheck}
-              // @ts-ignore
-              onKeyDown={onKeyDownEvent}
               onInput={onInputEvent}
               suppressContentEditableWarning
-            >
-              {defaultValue.current}
-            </div>
+              onSubmit={(event) => {
+                event.preventDefault();
+                onEnterPress && onEnterPress(value);
+              }}
+            /> */}
+            <textarea
+              className={css([styles.textAreaBase, styles.input])}
+              value={value}
+              onChange={onTextAreaChange}
+              onKeyPress={onKeyPress}
+              autoComplete={autoComplete ? 'list' : 'none'}
+              spellCheck={spellcheck}
+            />
           </div>
           {rightItems && rightItems.length > 0 && (
             <div className={css(styles.iconWrapper)} style={{ paddingRight: '12px' }}>
