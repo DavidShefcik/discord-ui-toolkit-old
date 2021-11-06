@@ -63,6 +63,23 @@ describe('<TextInput />', () => {
 
     expect(screen.getByText(/prefix/i)).toBeInTheDocument();
   });
+  it('should prevent the prefix from being added to the value', () => {
+    let value = '';
+    const lockMockChange = jest.fn().mockImplementation((val: string) => {
+      value += val;
+    });
+
+    const { rerender } = render(
+      <TextInput value={value} onChange={lockMockChange} placeholder="Placeholder" prefix="#" />
+    );
+
+    expect(screen.getByPlaceholderText(/placeholder/i)).toHaveValue('');
+
+    userEvent.type(screen.getByPlaceholderText(/placeholder/i), '#test');
+    rerender(<TextInput value={value} onChange={mockChange} placeholder="Placeholder" prefix="#" />);
+
+    expect(screen.getByPlaceholderText(/placeholder/i)).toHaveValue('test');
+  });
   it('should remove the first letter if it is the same as the prefix', () => {
     let value = '';
     const lockMockChange = jest.fn().mockImplementation((val: string) => {
