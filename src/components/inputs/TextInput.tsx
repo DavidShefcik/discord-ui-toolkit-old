@@ -91,6 +91,8 @@ export default function TextInput({
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
       onEnterPress && onEnterPress(value);
+    } else if (prefix && event.key.toLowerCase() === prefix.toLowerCase()) {
+      event.preventDefault();
     }
   };
 
@@ -116,7 +118,7 @@ export default function TextInput({
           className={css([styles.inputBase, styles.input])}
           type={htmlType}
           value={value}
-          onChange={(event) => onChange(event.target.value.replace(new RegExp(`^${prefix}$`), ''))}
+          onChange={(event) => onChange(event.target.value)}
           // @ts-ignore
           onKeyDown={onKeyDownEvent}
           onFocus={() => setFocused(true)}
