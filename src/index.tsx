@@ -82,6 +82,9 @@ import NewLoadingAnimation from '@assets/videos/new_loading_icon.webm';
 // Types
 import { ProfileSection } from '@internal/components/ProfileSection';
 
+// Context
+import ThemeContext, { Theme, ThemeContextValues } from '@components/internal/context/ThemeContext';
+
 export {
   // Inputs
   Button,
@@ -203,6 +206,11 @@ export {
   RedNewDefaultAvatar,
   RedOldDefaultAvatar,
   YellowGroupDMIcon,
+  // Videos
   OldLoadingAnimation,
   NewLoadingAnimation,
+  // Context
+  ThemeContext,
+  Theme,
+  ThemeContextValues,
 };
