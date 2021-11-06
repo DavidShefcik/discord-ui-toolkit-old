@@ -13,16 +13,16 @@ describe('<MessageInput />', () => {
   it('should change value upon typing', () => {
     let value = '';
     const mockChange = jest.fn().mockImplementation((val: string) => {
-      value += val;
+      value = val;
     });
     const { rerender } = render(<MessageInput value={value} onChange={mockChange} />);
 
-    expect(screen.getByRole('textbox').innerHTML).toBe('');
+    expect(screen.getByTestId('message-input').innerHTML).toBe('');
 
-    userEvent.type(screen.getByRole('textbox'), 'hello world');
+    userEvent.type(screen.getByTestId('message-input'), 'hello world');
     rerender(<MessageInput value={value} onChange={mockChange} />);
 
-    expect(screen.getByRole('textbox').innerHTML).toBe('hello world');
+    expect(screen.getByTestId('message-input').innerHTML).toBe('hello world');
   });
   it('should not change value upon typing when disabled is true', () => {
     let value = '';
@@ -31,27 +31,27 @@ describe('<MessageInput />', () => {
     });
     const { rerender } = render(<MessageInput value={value} onChange={mockChange} disabled />);
 
-    expect(screen.getByRole('textbox').innerHTML).toBe('');
+    expect(screen.getByTestId('message-input').innerHTML).toBe('');
     expect(mockChange).toBeCalledTimes(0);
 
-    userEvent.type(screen.getByRole('textbox'), 'hello world');
+    userEvent.type(screen.getByTestId('message-input'), 'hello world');
     rerender(<MessageInput value={value} onChange={mockChange} />);
 
     expect(mockChange).toBeCalledTimes(0);
-    expect(screen.getByRole('textbox').innerHTML).toBe('');
+    expect(screen.getByTestId('message-input').innerHTML).toBe('');
   });
   it('should display the placeholder if the value is an empty string', () => {
     render(<MessageInput value="" onChange={jest.fn()} placeholder="Placeholder" />);
 
-    expect(screen.getByText(/placeholder/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/placeholder/i)).toBeInTheDocument();
   });
-  it('should fire onEnterPressed when the enter key is pressed', () => {
+  it('should fire onEnterPressed when the enter key is pressed', async () => {
     const mockEnterPressed = jest.fn();
 
     render(<MessageInput value="" onChange={jest.fn()} onEnterPress={mockEnterPressed} />);
 
     expect(mockEnterPressed).toBeCalledTimes(0);
-    userEvent.type(screen.getByRole('textbox'), '{enter}');
+    userEvent.type(screen.getByTestId('message-input'), '{enter}');
 
     expect(mockEnterPressed).toBeCalledTimes(1);
   });

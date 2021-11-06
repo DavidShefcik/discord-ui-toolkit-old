@@ -98,6 +98,7 @@ export const Template: Story<MessageInputProps & DiscordProviderProps> = (props)
   const { value } = props;
 
   const [messageInputValue, setMessageInputValue] = useState('');
+
   useEffect(() => {
     setMessageInputValue(value);
   }, [value]);
@@ -129,7 +130,10 @@ export const Template: Story<MessageInputProps & DiscordProviderProps> = (props)
         <MessageInput
           {...props}
           value={messageInputValue}
-          onEnterPress={(val) => console.log(val)}
+          onEnterPress={(val) => {
+            console.log(val);
+            setMessageInputValue('');
+          }}
           onChange={(val) => setMessageInputValue(val)}
           leftItems={leftItems}
           rightItems={rightItems}

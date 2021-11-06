@@ -217,6 +217,19 @@
   border-radius: 8px;
 }
 
+/* MessageInput placeholder */
+[contenteditable='true']:empty:before {
+  content: attr(placeholder);
+  display: block;
+  overflowx: hidden;
+  whitespace: nowrap;
+  textoverflow: ellipsis;
+  boxsizing: border-box;
+  color: var(--text-muted);
+  zindex: 0;
+  position: absolute;
+}
+
 /* Overwrite react-datepicker calendar styling */
 .react-datepicker {
   background-color: var(--background-primary);
