@@ -90,7 +90,7 @@ export default function TextInput({
   const onKeyDownEvent = (event: KeyboardEvent) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      onEnterPress(value);
+      onEnterPress && onEnterPress(value);
     }
   };
 
