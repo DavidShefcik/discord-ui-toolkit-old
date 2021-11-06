@@ -29,7 +29,7 @@ import UserAvatar, { UserAvatarProps } from '@layout/UserAvatar';
 import Toast, { ToastProps } from '@layout/Toast';
 import InfoBox, { InfoBoxProps } from '@layout/InfoBox';
 import Message, { MessageContent, MessageProps } from '@layout/Message';
-import ScrollContainer, { ScrollContainerProps } from '@layout/ScrollContainer';
+import ScrollContainer, { ScrollContainerRef, ScrollContainerProps } from '@layout/ScrollContainer';
 import ModalBase, { ModalBaseProps } from '@layout/ModalBase';
 import QuickSwitcher, { QuickSwitcherProps } from '@layout/QuickSwitcher';
 import UserTag, { UserTagProps } from '@layout/UserTag';
@@ -147,6 +147,7 @@ export {
   MessageContent,
   MessageProps,
   ScrollContainer,
+  ScrollContainerRef,
   ScrollContainerProps,
   ModalBase,
   ModalBaseProps,

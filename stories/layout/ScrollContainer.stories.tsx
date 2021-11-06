@@ -1,14 +1,15 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, createRef } from 'react';
 import { Story, Meta } from '@storybook/react';
 import {
   ScrollContainer,
+  ScrollContainerRef,
   ScrollContainerProps,
-  Text,
   Message,
   MessageProps,
   DiscordProvider,
   DiscordProviderProps,
   BlueNewDefaultAvatar,
+  Button,
 } from 'discord-ui-toolkit';
 
 export default {
@@ -47,6 +48,14 @@ export default {
       description: 'The width of the scroll container.',
       control: {
         type: 'text',
+      },
+    },
+    autoScrollBehavior: {
+      defaultValue: 'smooth',
+      description: 'The behavior of the scroll animation when programmatically scrolling.',
+      control: {
+        type: 'inline-radio',
+        options: ['smooth', 'instant'],
       },
     },
   },
@@ -99,3 +108,29 @@ export const XAndYScroll: Story<ScrollContainerProps & DiscordProviderProps> = (
     </div>
   </DiscordProvider>
 );
+
+export const ScrollTo: Story<ScrollContainerProps & DiscordProviderProps> = (props) => {
+  const scrollRef = createRef<ScrollContainerRef>();
+
+  const scrollToBottom = () => {
+    scrollRef.current.scrollToBottom();
+  };
+
+  const scrollToTop = () => {
+    scrollRef.current.scrollToTop();
+  };
+
+  return (
+    <DiscordProvider {...props}>
+      <div style={{ height: '350px', width: '100%' }}>
+        <ScrollContainer {...props} ref={scrollRef} allowYOverflow allowXOverflow>
+          {messages.map((message) => message)}
+        </ScrollContainer>
+      </div>
+      <div style={{ margin: '10px 0' }}>
+        <Button text="Scroll to Top" onClick={scrollToTop} />
+      </div>
+      <Button text="Scroll to Bottom" onClick={scrollToBottom} />
+    </DiscordProvider>
+  );
+};
