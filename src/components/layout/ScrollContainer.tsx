@@ -1,4 +1,4 @@
-import React, { ReactNode, forwardRef, LegacyRef, useEffect } from 'react';
+import React, { ReactNode, forwardRef, useEffect } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 type ScrollContainerRef = HTMLDivElement & {
