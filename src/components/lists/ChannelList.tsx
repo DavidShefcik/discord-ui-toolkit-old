@@ -1,4 +1,4 @@
-import React, { ReactChild, useState, memo } from 'react';
+import React, { MouseEvent, ReactChild, useState, memo } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import Icon from '@layout/Icon';
@@ -11,11 +11,11 @@ import groupBy from 'lodash.groupby';
 
 import isPropIconEmojiOrComponent from '@internal/utils/isPropIconEmojOrComponent';
 
-type ChannelItemOnClick = (id: string | number) => void;
+type ChannelItemOnClick = (id: string | number, event: MouseEvent<HTMLDivElement>) => void;
 interface RightIcons {
   id: string | number;
   icon: ReactChild | string;
-  onClick?(id: string | number, icon: string): void;
+  onClick?(id: string | number, icon: string, event: MouseEvent<HTMLDivElement>): void;
   showOnlyOnActive?: boolean;
   showOnlyOnHover?: boolean;
 }
@@ -37,7 +37,7 @@ interface ChannelListCategory {
   label: string;
   position: number;
   rightIcon?: ReactChild | string;
-  onRightIconClick?(id: string | number): void;
+  onRightIconClick?(id: string | number, event: MouseEvent<HTMLDivElement>): void;
   collapsible?: boolean;
   defaultCollapsed?: boolean;
 }
@@ -237,7 +237,7 @@ function ChannelListItemComponent({
         ])}
         onMouseEnter={() => onClick && setHovered(true)}
         onMouseLeave={() => onClick && setHovered(false)}
-        onClick={onClick && (() => onClick(id))}
+        onClick={(event) => onClick && onClick(id, event)}
       >
         <div className={css(styles.listItemText)}>
           {leftIcon && (
@@ -283,14 +283,14 @@ function ChannelListItemComponent({
                           size="16px"
                           iconColor={disabled ? 'var(--interactive-muted)' : 'var(--interactive-normal)'}
                           iconHoverColor={onClick && 'var(--interactive-hover)'}
-                          onClick={onRightIconClick && ((icon) => onRightIconClick(id, icon))}
+                          onClick={onRightIconClick && ((icon, event) => onRightIconClick(id, icon, event))}
                         />
                       ) : isPropIconEmojiOrComponent(leftIcon) === 'emoji' ? (
                         <Emoji
                           emoji={icon as string}
                           size="16px"
                           color={false}
-                          onClick={onRightIconClick && ((emoji) => onRightIconClick(id, emoji))}
+                          onClick={onRightIconClick && ((emoji, event) => onRightIconClick(id, emoji, event))}
                         />
                       ) : (
                         icon
@@ -376,14 +376,14 @@ function ChannelListCategoryComponent({
                 size="18px"
                 iconColor="var(--channels-default)"
                 iconHoverColor={onRightIconClick && 'var(--interactive-hover)'}
-                onClick={onRightIconClick && (() => onRightIconClick(id))}
+                onClick={onRightIconClick && ((icon, event) => onRightIconClick(id, event))}
               />
             ) : isPropIconEmojiOrComponent(rightIcon) === 'emoji' ? (
               <Emoji
                 emoji={rightIcon as string}
                 size="18px"
                 color={false}
-                onClick={onRightIconClick && (() => onRightIconClick(id))}
+                onClick={onRightIconClick && ((icon, event) => onRightIconClick(id, event))}
               />
             ) : (
               rightIcon

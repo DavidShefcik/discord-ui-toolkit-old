@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import iconsList from '@internal/values/icons';
@@ -11,7 +11,7 @@ interface IconProps {
   iconHoverColor?: string;
   size?: string | number;
   animated?: boolean;
-  onClick?(icon?: IconNamesType): void;
+  onClick?(icon: IconNamesType, event: MouseEvent<HTMLDivElement>): void;
 }
 
 const styles = StyleSheet.create({
@@ -52,7 +52,7 @@ export default function IconComponent({
       role="button"
       onClick={(event) => {
         event.stopPropagation();
-        onClick && onClick(icon);
+        onClick && onClick(icon, event);
       }}
       aria-label={icon}
     >

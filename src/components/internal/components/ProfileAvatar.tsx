@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import UserAvatar from '@layout/UserAvatar';
@@ -7,7 +7,7 @@ interface ProfileAvatarProps {
   avatarSource: string;
   size?: 'medium' | 'large';
   avatarHoverText?: string;
-  onAvatarClick?(avatarSource: string): void;
+  onAvatarClick?(avatarSource: string, event: MouseEvent<HTMLSpanElement>): void;
   border?: boolean;
 }
 
@@ -92,7 +92,7 @@ export default function ProfileAvatar({
       className={css([styles.avatarBase, size === 'medium' ? styles.medium : styles.large])}
       style={{ cursor: onAvatarClick && 'pointer' }}
       role="button"
-      onClick={() => onAvatarClick && onAvatarClick(avatarSource)}
+      onClick={(event) => onAvatarClick && onAvatarClick(avatarSource, event)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

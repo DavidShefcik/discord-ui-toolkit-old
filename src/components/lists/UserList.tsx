@@ -1,4 +1,4 @@
-import React, { ReactChild, useState, memo } from 'react';
+import React, { MouseEvent, ReactChild, useState, memo } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import Icon from '@layout/Icon';
@@ -12,7 +12,7 @@ import groupBy from 'lodash.groupby';
 
 import isPropIconEmojiOrComponent from '@internal/utils/isPropIconEmojOrComponent';
 
-type UserItemOnClick = (id: string | number) => void;
+type UserItemOnClick = (id: string | number, event: MouseEvent<HTMLDivElement>) => void;
 interface UserListItem {
   id: string | number;
   avatarSource: string;
@@ -37,7 +37,7 @@ interface UserListCategory {
   label: string;
   showItemCount?: boolean;
   rightIcon?: ReactChild | string;
-  onRightIconClick?(id: string | number): void;
+  onRightIconClick?(id: string | number, event: MouseEvent<HTMLDivElement>): void;
 }
 type ListItemKey = string | number | undefined;
 type OrganizedUserItem = Record<ListItemKey, UserListItem[]>;
@@ -216,7 +216,7 @@ function UserListItemComponent({
       style={{ cursor: onClick && 'pointer', opacity: dull && !hovered ? 0.3 : 1 }}
       onMouseEnter={() => onClick && setHovered(true)}
       onMouseLeave={() => onClick && setHovered(false)}
-      onClick={() => onClick && onClick(id)}
+      onClick={(event) => onClick && onClick(id, event)}
     >
       <div
         className={css([styles.userContent, active ? styles.userItemActive : hovered ? styles.userItemHovered : null])}
@@ -321,10 +321,14 @@ function UserListCategoryComponent({
                 icon={rightIcon as IconNamesType}
                 size="16px"
                 iconColor={hovered ? 'var(--interactive-hover)' : 'var(--channels-default)'}
-                onClick={() => onRightIconClick && onRightIconClick(id)}
+                onClick={(icon, event) => onRightIconClick && onRightIconClick(id, event)}
               />
             ) : isPropIconEmojiOrComponent(rightIcon) === 'emoji' ? (
-              <Emoji emoji={rightIcon as string} size="16px" onClick={() => onRightIconClick && onRightIconClick(id)} />
+              <Emoji
+                emoji={rightIcon as string}
+                size="16px"
+                onClick={(emoji, event) => onRightIconClick && onRightIconClick(id, event)}
+              />
             ) : (
               rightIcon
             )}
