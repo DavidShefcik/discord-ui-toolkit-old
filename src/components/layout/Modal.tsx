@@ -12,6 +12,7 @@ interface ModalProps {
   title: string;
   children: ReactNode;
   onSubmitClick(event: MouseEvent<HTMLButtonElement>): void;
+  alwaysCloseOnButtonPress?: boolean;
   closeOnEscapeKeyPress?: boolean;
   onEscapeKeyPress?(event: KeyboardEvent): void;
   submitText?: string;
@@ -69,11 +70,12 @@ export default function Modal({
   visible,
   setVisible,
   title,
-  submitText = 'Ok',
   children,
   onSubmitClick,
+  alwaysCloseOnButtonPress = true,
   closeOnEscapeKeyPress = true,
   onEscapeKeyPress,
+  submitText = 'Ok',
   submitColor = 'blurple',
   submitButtonFull = false,
   submitButtonLoading = false,
@@ -82,6 +84,21 @@ export default function Modal({
   onCancelClick,
 }: ModalProps) {
   const { newMarketingColors } = useThemeContext();
+
+  const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
+    onSubmitClick(event);
+    if (alwaysCloseOnButtonPress) {
+      setVisible(false);
+    }
+  };
+  const handleClose = (event: MouseEvent<HTMLButtonElement>) => {
+    if (onCancelClick) {
+      onCancelClick(event);
+    }
+    if (alwaysCloseOnButtonPress) {
+      setVisible(false);
+    }
+  };
 
   return (
     <ModalBase
@@ -102,23 +119,10 @@ export default function Modal({
             text={submitText}
             loading={submitButtonLoading}
             disabled={submitButtonDisabled}
-            onClick={(event) => {
-              onSubmitClick(event);
-              setVisible(false);
-            }}
+            onClick={handleSubmit}
           />
           {cancelText && cancelText.length > 0 && (
-            <Button
-              type="only_text"
-              size="normal"
-              text={cancelText}
-              onClick={(event) => {
-                if (onCancelClick) {
-                  onCancelClick(event);
-                }
-                setVisible(false);
-              }}
-            />
+            <Button type="only_text" size="normal" text={cancelText} onClick={handleClose} />
           )}
         </div>
       </div>

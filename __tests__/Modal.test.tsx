@@ -119,4 +119,102 @@ describe('<Modal />', () => {
 
     expect(mockCancelClick).toHaveBeenCalledTimes(1);
   });
+  it('should not hide the modal when alwaysCloseOnButtonPress is false and the submit button is clicked', () => {
+    const mockSetVisible = jest.fn();
+
+    render(
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
+        <Modal
+          visible
+          setVisible={mockSetVisible}
+          title="Title"
+          onSubmitClick={jest.fn()}
+          alwaysCloseOnButtonPress={false}
+          submitText="Submit"
+          cancelText="Cancel"
+          onCancelClick={mockCancelClick}
+        >
+          Modal Contents
+        </Modal>
+      </ThemeContext.Provider>
+    );
+
+    expect(mockSetVisible).toHaveBeenCalledTimes(0);
+    userEvent.click(screen.getByText(/submit/i));
+
+    expect(mockSetVisible).toHaveBeenCalledTimes(0);
+  });
+  it('should not hide the modal when alwaysCloseOnButtonPress is false and the cancel button is clicked', () => {
+    const mockSetVisible = jest.fn();
+
+    render(
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
+        <Modal
+          visible
+          setVisible={mockSetVisible}
+          title="Title"
+          onSubmitClick={jest.fn()}
+          alwaysCloseOnButtonPress={false}
+          submitText="Submit"
+          cancelText="Cancel"
+          onCancelClick={mockCancelClick}
+        >
+          Modal Contents
+        </Modal>
+      </ThemeContext.Provider>
+    );
+
+    expect(mockSetVisible).toHaveBeenCalledTimes(0);
+    userEvent.click(screen.getByText(/cancel/i));
+
+    expect(mockSetVisible).toHaveBeenCalledTimes(0);
+  });
+  it('should hide the modal when alwaysCloseOnButtonPress is false and the submit button is clicked', () => {
+    const mockSetVisible = jest.fn();
+
+    render(
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
+        <Modal
+          visible
+          setVisible={mockSetVisible}
+          title="Title"
+          onSubmitClick={jest.fn()}
+          submitText="Submit"
+          cancelText="Cancel"
+          onCancelClick={mockCancelClick}
+        >
+          Modal Contents
+        </Modal>
+      </ThemeContext.Provider>
+    );
+
+    expect(mockSetVisible).toHaveBeenCalledTimes(0);
+    userEvent.click(screen.getByText(/submit/i));
+
+    expect(mockSetVisible).toHaveBeenCalledTimes(1);
+  });
+  it('should hide the modal when alwaysCloseOnButtonPress is false and the cancel button is clicked', () => {
+    const mockSetVisible = jest.fn();
+
+    render(
+      <ThemeContext.Provider value={{ theme: 'dark', newMarketingColors: true, setTheme: jest.fn() }}>
+        <Modal
+          visible
+          setVisible={mockSetVisible}
+          title="Title"
+          onSubmitClick={jest.fn()}
+          submitText="Submit"
+          cancelText="Cancel"
+          onCancelClick={mockCancelClick}
+        >
+          Modal Contents
+        </Modal>
+      </ThemeContext.Provider>
+    );
+
+    expect(mockSetVisible).toHaveBeenCalledTimes(0);
+    userEvent.click(screen.getByText(/cancel/i));
+
+    expect(mockSetVisible).toHaveBeenCalledTimes(1);
+  });
 });
