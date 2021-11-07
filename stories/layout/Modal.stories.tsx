@@ -30,9 +30,23 @@ export default {
     },
     title: {
       defaultValue: 'Title',
-      description: 'The title of the modal',
+      description: 'The title of the modal.',
       control: {
         type: 'text',
+      },
+    },
+    alwaysCloseOnButtonPress: {
+      defaultValue: true,
+      description: 'Should the modal automatically close when the cancel or submit button is clicked.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    closeOnEscapeKeyPress: {
+      defaultValue: true,
+      description: 'Should the modal automatically close when the escape key is pressed.',
+      control: {
+        type: 'boolean',
       },
     },
     submitText: {
@@ -42,33 +56,33 @@ export default {
         type: 'text',
       },
     },
-    submitButtonFull: {
-      defaultValue: false,
-      description: 'If the width of the submit button should 100%',
-      control: {
-        type: 'boolean',
-      },
-    },
-    submitButtonLoading: {
-      defaultValue: false,
-      description: 'If the submit button is loading',
-      control: {
-        type: 'boolean',
-      },
-    },
-    submitButtonDisabled: {
-      defaultValue: false,
-      description: 'If the submit button is disabled',
-      control: {
-        type: 'boolean',
-      },
-    },
     submitColor: {
       defaultValue: 'blurple',
       description: 'The color of the submit button.',
       control: {
         type: 'inline-radio',
         values: ['blurple', 'green', 'red'],
+      },
+    },
+    submitButtonFull: {
+      defaultValue: false,
+      description: 'If the width of the submit button should 100%.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    submitButtonLoading: {
+      defaultValue: false,
+      description: 'If the submit button is loading.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    submitButtonDisabled: {
+      defaultValue: false,
+      description: 'If the submit button is disabled.',
+      control: {
+        type: 'boolean',
       },
     },
     cancelText: {
