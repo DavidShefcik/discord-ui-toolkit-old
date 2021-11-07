@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default forwardRef<ScrollContainerRef, ScrollContainerProps>(
+const ScrollContainer = forwardRef<ScrollContainerRef, ScrollContainerProps>(
   ({ children, width = '100%', allowXOverflow = false, allowYOverflow = true, autoScrollBehavior = 'smooth' }, ref) => {
     useEffect(() => {
       if (ref) {
@@ -69,3 +69,5 @@ export default forwardRef<ScrollContainerRef, ScrollContainerProps>(
 );
 
 export { ScrollContainerRef, ScrollContainerProps };
+
+export default ScrollContainer;
