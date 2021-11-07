@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactNode } from 'react';
+import React, { MouseEvent, useState, useEffect, useRef, ReactNode } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import useOutsideClickAlerter from '@internal/hooks/useOutsideClickAlerter';
 import Emoji from '@layout/Emoji';
@@ -14,7 +14,7 @@ interface SelectItem {
   emoji?: string;
 }
 interface InternalSelectItemProps {
-  onClick?(clickedId: string | number | null): void;
+  onClick?(clickedId: string | number | null, event: MouseEvent<HTMLDivElement>): void;
 }
 interface DropdownItemProps {
   children: ReactNode;
@@ -229,7 +229,7 @@ function SelectItemComponent({ id, label, heplerText, icon, emoji, onClick }: Se
   }
 
   return (
-    <div className={css(styles.selectItem)} onClick={() => onClick && onClick(id)}>
+    <div className={css(styles.selectItem)} onClick={(event) => onClick && onClick(id, event)}>
       <div className={css(styles.selectItemContent)}>
         <div className={css(styles.labelContainer)}>
           {icon ? (

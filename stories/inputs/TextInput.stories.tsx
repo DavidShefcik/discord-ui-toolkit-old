@@ -36,10 +36,23 @@ export default {
         options: ['text', 'password', 'email', 'phone', 'email'],
       },
     },
+    label: {
+      defaultValue: 'Label',
+      description: 'The label to show above the text input.',
+      control: {
+        type: 'text',
+      },
+    },
     error: {
       description: 'Does the input have an error.',
-      table: {
-        disable: true,
+      control: {
+        type: 'boolean',
+      },
+    },
+    errorText: {
+      description: 'The error message to show in the label',
+      control: {
+        type: 'text',
       },
     },
     placeholder: {
@@ -58,8 +71,8 @@ export default {
     },
     disabled: {
       description: 'If the text input is disabled.',
-      table: {
-        disable: true,
+      control: {
+        type: 'boolean',
       },
     },
     width: {
@@ -93,6 +106,13 @@ export default {
     spellcheck: {
       defaultValue: false,
       description: 'If the text input allows spellchecker.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    autoFocus: {
+      defaultValue: false,
+      description: 'If the text input should be auto focused.',
       control: {
         type: 'boolean',
       },
@@ -150,7 +170,7 @@ export const Error: Story<TextInputProps & DiscordProviderProps> = (props) => {
 
   return (
     <DiscordProvider {...props}>
-      <TextInput {...props} value={inputValue} onChange={(val) => setInputValue(val)} error />
+      <TextInput {...props} value={inputValue} onChange={(val) => setInputValue(val)} error errorText="Error" />
     </DiscordProvider>
   );
 };

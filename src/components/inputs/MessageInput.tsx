@@ -1,5 +1,7 @@
-import React, { useRef } from 'react';
+import React, { MouseEvent, Component, ChangeEvent, KeyboardEvent } from 'react';
 import { StyleSheet, css } from 'aphrodite';
+import ContentEditable from 'react-contenteditable';
+
 import IconComponent from '@layout/Icon';
 
 import { IconNamesType } from '@internal/values/icons';
@@ -7,7 +9,7 @@ import { IconNamesType } from '@internal/values/icons';
 interface MessageInputSideItem {
   id: string | number;
   value: IconNamesType;
-  onClick?(id: string | number): void;
+  onClick?(id: string | number, event: MouseEvent<HTMLDivElement>): void;
 }
 interface MessageInputProps {
   value: string;
@@ -16,18 +18,162 @@ interface MessageInputProps {
   placeholder?: string;
   disabled?: boolean;
   width?: string;
-  autoComplete?: boolean;
   spellcheck?: boolean;
   leftItems?: MessageInputSideItem[];
   rightItems?: MessageInputSideItem[];
   underInputText?: string;
   aboveInputVariant?: 'error' | 'notice';
   aboveInputText?: string;
-  aboveInputOnClick?(): void;
+  aboveInputOnClick?(event: MouseEvent<HTMLDivElement>): void;
+}
+
+function MessageInputSideItemComponent({ id, value, onClick }: MessageInputSideItem) {
+  return (
+    <IconComponent
+      icon={value as IconNamesType}
+      iconColor="var(--interactive-normal)"
+      iconHoverColor="var(--interactive-hover)"
+      onClick={onClick && ((icon, event) => onClick(id, event))}
+      size={24}
+      animated={false}
+    />
+  );
+}
+
+interface MessageInputState {
+  internalValue: string;
+}
+
+/**
+ * We have to use a class component due to issues with react-contenteditable
+ * and hooks. See: https://github.com/lovasoa/react-contenteditable/issues/161
+ */
+export default class MessageInput extends Component<MessageInputProps, MessageInputState> {
+  constructor(props: MessageInputProps) {
+    super(props);
+
+    this.state = {
+      internalValue: this.props.value,
+    };
+  }
+
+  componentDidUpdate(prevProps: MessageInputProps) {
+    if (prevProps.value !== this.props.value && this.props.value !== this.state.internalValue) {
+      this.setState({
+        internalValue: this.props.value,
+      });
+    }
+  }
+
+  handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = event.target;
+    let newValue = value;
+
+    // Prevent a single newline due to a bug where the placeholder would
+    // not be visible even if it looked like the input was empty
+    if (newValue === '\n') {
+      newValue = '';
+    }
+
+    this.setState(
+      {
+        internalValue: newValue,
+      },
+      () => {
+        this.props.onChange(this.state.internalValue);
+      }
+    );
+  };
+
+  handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    const { onEnterPress } = this.props;
+    const { internalValue } = this.state;
+
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      onEnterPress && onEnterPress(internalValue);
+    }
+  };
+
+  render() {
+    const {
+      width = '100%',
+      aboveInputText,
+      aboveInputVariant = 'notice',
+      aboveInputOnClick,
+      underInputText,
+      placeholder,
+      disabled,
+      spellcheck,
+      leftItems,
+      rightItems,
+    } = this.props;
+    const { internalValue } = this.state;
+
+    const aboveInputVisible = aboveInputText && aboveInputText.length > 0 && aboveInputVariant;
+
+    return (
+      <div className={css(styles.container)} style={{ width, marginTop: aboveInputVisible && '24px' }}>
+        {aboveInputVisible && (
+          <div
+            className={css([
+              styles.aboveInputBase,
+              aboveInputVariant === 'notice' ? styles.aboveInputNotice : styles.aboveInputError,
+            ])}
+            style={{ cursor: aboveInputOnClick && 'pointer' }}
+            role="button"
+            onClick={(event) => aboveInputOnClick(event)}
+          >
+            <span className={css(styles.aboveInputText)}>{aboveInputText}</span>
+          </div>
+        )}
+        <div className={css(styles.inputContainer)}>
+          <div className={css(styles.inner)}>
+            {leftItems && leftItems.length > 0 && (
+              <div className={css(styles.iconWrapper)} style={{ padding: '0 16px', marginLeft: '-16px' }}>
+                {leftItems.map((item, index) => (
+                  <span key={item.id} style={{ paddingRight: leftItems.length - 1 !== index && '8px' }}>
+                    <MessageInputSideItemComponent {...item} />
+                  </span>
+                ))}
+              </div>
+            )}
+            <div className={css([styles.textArea, disabled && styles.disabled])}>
+              <ContentEditable
+                className={css([styles.textAreaBase, styles.input])}
+                placeholder={placeholder}
+                spellCheck={!!spellcheck}
+                disabled={!!disabled}
+                html={internalValue}
+                onChange={this.handleChange}
+                // @ts-ignore
+                onKeyDown={this.handleKeyDown}
+                data-testid="message-input"
+              />
+            </div>
+            {rightItems && rightItems.length > 0 && (
+              <div className={css(styles.iconWrapper)} style={{ paddingRight: '12px' }}>
+                {rightItems.map((item, index) => (
+                  <span key={item.id} style={{ paddingRight: rightItems.length - 1 !== index && '8px' }}>
+                    <MessageInputSideItemComponent {...item} />
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+        {underInputText && underInputText.length > 0 && <div className={css(styles.underInput)}>{underInputText}</div>}
+      </div>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
+    display: 'inline-block',
+    position: 'relative',
+  },
+  inputContainer: {
     width: '100%',
     height: 'auto',
     overflowX: 'hidden',
@@ -103,6 +249,8 @@ const styles = StyleSheet.create({
     'overflow-wrap': 'break-word',
     position: 'relative',
     zIndex: 10,
+    backgroundColor: 'transparent',
+    border: 'none',
   },
   disabled: {
     opacity: 0.5,
@@ -161,112 +309,5 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
 });
-
-function MessageInputSideItemComponent({ id, value, onClick }: MessageInputSideItem) {
-  return (
-    <IconComponent
-      icon={value as IconNamesType}
-      iconColor="var(--interactive-normal)"
-      iconHoverColor="var(--interactive-hover)"
-      onClick={onClick && (() => onClick(id))}
-      size={24}
-      animated={false}
-    />
-  );
-}
-
-export default function MessageInput({
-  value,
-  onChange,
-  onEnterPress,
-  placeholder,
-  disabled = false,
-  width = '100%',
-  autoComplete = false,
-  spellcheck = false,
-  leftItems,
-  rightItems,
-  aboveInputText,
-  aboveInputVariant,
-  aboveInputOnClick,
-  underInputText,
-}: MessageInputProps) {
-  const defaultValue = useRef(value);
-
-  const onKeyDownEvent = (event: KeyboardEvent) => {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault();
-      onEnterPress && onEnterPress(value);
-    }
-  };
-
-  const onInputEvent = (event: any) => {
-    onChange(event.target.innerText);
-  };
-
-  return (
-    <div style={{ display: 'inline-block', position: 'relative', width }}>
-      {aboveInputText && aboveInputText.length > 0 && aboveInputVariant && (
-        <div
-          className={css([
-            styles.aboveInputBase,
-            aboveInputVariant === 'notice' ? styles.aboveInputNotice : styles.aboveInputError,
-          ])}
-          style={{ cursor: aboveInputOnClick && 'pointer' }}
-          role="button"
-          onClick={aboveInputOnClick}
-        >
-          <span className={css(styles.aboveInputText)}>{aboveInputText}</span>
-        </div>
-      )}
-      <div className={css(styles.container)}>
-        <div className={css(styles.inner)}>
-          {leftItems && leftItems.length > 0 && (
-            <div className={css(styles.iconWrapper)} style={{ padding: '0 16px', marginLeft: '-16px' }}>
-              {leftItems.map((item, index) => (
-                <span key={item.id} style={{ paddingRight: leftItems.length - 1 !== index && '8px' }}>
-                  <MessageInputSideItemComponent {...item} />
-                </span>
-              ))}
-            </div>
-          )}
-          <div className={css([styles.textArea, disabled && styles.disabled])}>
-            {!value || value.length === 0 ? (
-              <span className={css([styles.textAreaBase, styles.placeholder])}>{placeholder}</span>
-            ) : null}
-            <div
-              className={css([styles.textAreaBase, styles.input])}
-              role="textbox"
-              aria-multiline="true"
-              data-can-focus={!disabled}
-              aria-disabled={disabled}
-              aria-autocomplete={autoComplete ? 'list' : 'none'}
-              aria-label={placeholder}
-              contentEditable={!disabled}
-              autoCorrect="off"
-              spellCheck={spellcheck}
-              // @ts-ignore
-              onKeyDown={onKeyDownEvent}
-              onInput={onInputEvent}
-              suppressContentEditableWarning
-            >
-              {defaultValue.current}
-            </div>
-          </div>
-          {rightItems && rightItems.length > 0 && (
-            <div className={css(styles.iconWrapper)} style={{ paddingRight: '12px' }}>
-              {rightItems.map((item, index) => (
-                <span key={item.id} style={{ paddingRight: rightItems.length - 1 !== index && '8px' }}>
-                  <MessageInputSideItemComponent {...item} />
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-      {underInputText && underInputText.length > 0 && <div className={css(styles.underInput)}>{underInputText}</div>}
-    </div>
-  );
-}
 
 export { MessageInputProps, MessageInputSideItem };

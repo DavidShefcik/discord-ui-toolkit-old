@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 interface RoleProps {
@@ -6,7 +6,7 @@ interface RoleProps {
   color?: string;
   hoverRemoveIcon?: boolean;
   hoverRemoveIconColor?: string;
-  onClick?(text: string): void;
+  onClick?(text: string, event: MouseEvent<HTMLDivElement>): void;
 }
 
 const styles = StyleSheet.create({
@@ -73,7 +73,7 @@ export default function Role({
           style={{ backgroundColor: color }}
           role="button"
           aria-label="Role Circle"
-          onClick={() => onClick && onClick(text)}
+          onClick={(event) => onClick && onClick(text, event)}
         >
           {hoverRemoveIcon && hovered && (
             <svg

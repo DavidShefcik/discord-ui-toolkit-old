@@ -1,4 +1,4 @@
-import React, { ReactChild, useState, useEffect, memo } from 'react';
+import React, { MouseEvent, ReactChild, useState, memo } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import Icon from '@layout/Icon';
@@ -7,7 +7,7 @@ import MentionBadge from '@layout/MentionBadge';
 
 import { IconNamesType } from '@internal/values/icons';
 
-type ImageItemOnClick = (id: string | number) => void;
+type ImageItemOnClick = (id: string | number, event: MouseEvent<HTMLDivElement>) => void;
 type InteractiveListItem = {
   mentionBadgeText?: string;
   hoverBackgroundColor?: string;
@@ -223,7 +223,7 @@ function ImageListItemComponent(
       style={{
         cursor: onClick && 'pointer',
       }}
-      onClick={onClick && (() => onClick(id))}
+      onClick={(event) => onClick && onClick(id, event)}
       data-testid="list-item"
     >
       {(active || hovered || indicateUnread) && (

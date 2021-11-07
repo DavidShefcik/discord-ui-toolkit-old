@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import Twemoji from 'react-twemoji';
 
@@ -6,7 +6,7 @@ interface EmojiProps {
   emoji: string;
   color?: boolean;
   size?: string | number;
-  onClick?(emoji?: string): void;
+  onClick?(emoji: string, event: MouseEvent<HTMLDivElement>): void;
 }
 
 const styles = StyleSheet.create({
@@ -29,7 +29,7 @@ export default function Emoji({ emoji, color = true, size = 72, onClick }: Emoji
       style={{ width: size, height: size, cursor: onClick && 'pointer' }}
       onClick={(event) => {
         event.stopPropagation();
-        onClick && onClick(emoji);
+        onClick && onClick(emoji, event);
       }}
       role="button"
     >

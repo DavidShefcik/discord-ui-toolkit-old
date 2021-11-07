@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import React, { ReactNode, MouseEvent, useState, useEffect } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import useThemeContext from '@internal/hooks/useThemeContext';
@@ -33,7 +33,7 @@ interface FullUserProfileProps {
   actionButtonType?: ButtonTypes;
   actionButtonDisabled?: boolean;
   actionButtonLoading?: boolean;
-  actionButtonOnClick?(): void;
+  actionButtonOnClick?(event: MouseEvent<HTMLButtonElement>): void;
 }
 
 const styles = StyleSheet.create({
@@ -243,7 +243,7 @@ function NewUserProfile({
               type={actionButtonType}
               disabled={actionButtonDisabled}
               loading={actionButtonLoading}
-              onClick={() => actionButtonOnClick && actionButtonOnClick()}
+              onClick={(event) => actionButtonOnClick && actionButtonOnClick(event)}
               size="custom"
               height="32px"
               width="100px"
@@ -325,7 +325,7 @@ function OldUserProfile({
             type={actionButtonType}
             disabled={actionButtonDisabled}
             loading={actionButtonLoading}
-            onClick={() => actionButtonOnClick && actionButtonOnClick()}
+            onClick={(event) => actionButtonOnClick && actionButtonOnClick(event)}
             size="custom"
             height="32px"
             width="100px"

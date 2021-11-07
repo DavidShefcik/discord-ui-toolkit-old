@@ -12,7 +12,7 @@ interface ModalBaseProps {
   minHeight?: string;
   closeOnOutsideClick?: boolean;
   closeOnEscapeKeyPress?: boolean;
-  onEscapeKeyPress?(): void;
+  onEscapeKeyPress?(event: KeyboardEvent): void;
   animated?: boolean;
 }
 
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     overflowY: 'hidden',
     overflowX: 'auto',
     borderRadius: '5px',
-    margin: '0 auto',
+    margin: '0 8px',
     position: 'relative',
     backgroundColor: 'var(--background-primary)',
     display: 'flex',
@@ -164,7 +164,7 @@ export default function ModalBase({
     (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         closeOnEscapeKeyPress && setVisible(false);
-        onEscapeKeyPress && onEscapeKeyPress();
+        onEscapeKeyPress && onEscapeKeyPress(event);
       }
     },
     [closeOnEscapeKeyPress, onEscapeKeyPress]

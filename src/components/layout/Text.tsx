@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { MouseEvent, ReactNode } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 type TextVariants =
@@ -19,7 +19,7 @@ interface TextProps {
   text?: string;
   variant?: TextVariants;
   color?: string;
-  onClick?(text: string): void;
+  onClick?(text: string, event: MouseEvent<HTMLSpanElement>): void;
   children?: ReactNode;
 }
 
@@ -133,7 +133,7 @@ export default function Text({ text = '', color, variant = 'old_normal', onClick
           : styles.mention,
       ])}
       role="button"
-      onClick={() => onClick(text)}
+      onClick={(event) => onClick && onClick(text, event)}
     >
       {text}
       {children}

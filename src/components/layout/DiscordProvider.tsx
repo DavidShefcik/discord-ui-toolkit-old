@@ -19,8 +19,8 @@ type ContextMenuItem = { id: number } & (
       hoverTextColor?: string;
       backgroundColor?: string;
       hoverBackgroundColor?: string;
-      onClick?(item: ContextMenuItem): void;
-      onShiftClick?(item: ContextMenuItem): void;
+      onClick?(item: ContextMenuItem, event: React.MouseEvent<HTMLDivElement>): void;
+      onShiftClick?(item: ContextMenuItem, event: React.MouseEvent<HTMLDivElement>): void;
     }
 );
 type OnClickContextMenuItem = Extract<ContextMenuItem, { type: 'item' }>;
@@ -141,10 +141,10 @@ function ContextMenuButton({
     if (item.type === 'item') {
       if (event.shiftKey) {
         if (onShiftClick) {
-          onShiftClick(item);
+          onShiftClick(item, event);
         }
       } else if (onClick) {
-        onClick(item);
+        onClick(item, event);
       }
       setVisible(false);
     }
