@@ -1,4 +1,4 @@
-import React, { Component, ChangeEvent, KeyboardEvent } from 'react';
+import React, { MouseEvent, Component, ChangeEvent, KeyboardEvent } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import ContentEditable from 'react-contenteditable';
 
@@ -9,7 +9,7 @@ import { IconNamesType } from '@internal/values/icons';
 interface MessageInputSideItem {
   id: string | number;
   value: IconNamesType;
-  onClick?(id: string | number): void;
+  onClick?(id: string | number, event: MouseEvent<HTMLDivElement>): void;
 }
 interface MessageInputProps {
   value: string;
@@ -24,7 +24,7 @@ interface MessageInputProps {
   underInputText?: string;
   aboveInputVariant?: 'error' | 'notice';
   aboveInputText?: string;
-  aboveInputOnClick?(): void;
+  aboveInputOnClick?(event: MouseEvent<HTMLDivElement>): void;
 }
 
 function MessageInputSideItemComponent({ id, value, onClick }: MessageInputSideItem) {
@@ -33,7 +33,7 @@ function MessageInputSideItemComponent({ id, value, onClick }: MessageInputSideI
       icon={value as IconNamesType}
       iconColor="var(--interactive-normal)"
       iconHoverColor="var(--interactive-hover)"
-      onClick={onClick && (() => onClick(id))}
+      onClick={onClick && ((icon, event) => onClick(id, event))}
       size={24}
       animated={false}
     />
@@ -122,7 +122,7 @@ export default class MessageInput extends Component<MessageInputProps, MessageIn
             ])}
             style={{ cursor: aboveInputOnClick && 'pointer' }}
             role="button"
-            onClick={aboveInputOnClick}
+            onClick={(event) => aboveInputOnClick(event)}
           >
             <span className={css(styles.aboveInputText)}>{aboveInputText}</span>
           </div>

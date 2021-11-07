@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import Button from '@inputs/Button';
@@ -9,10 +9,10 @@ interface ToastProps {
   setVisible(visible: boolean): void;
   width?: string;
   okText?: string;
-  onOkClick?(): void;
+  onOkClick?(event: MouseEvent<HTMLButtonElement>): void;
   error?: boolean;
   cancelText?: string;
-  onCancelClick?(): void;
+  onCancelClick?(event: MouseEvent<HTMLButtonElement>): void;
 }
 
 const styles = StyleSheet.create({
@@ -85,10 +85,10 @@ export default function Toast({
                 text={cancelText}
                 type="only_text"
                 size="small"
-                onClick={() => {
+                onClick={(event) => {
                   setVisible(false);
                   if (onCancelClick) {
-                    onCancelClick();
+                    onCancelClick(event);
                   }
                 }}
               />
@@ -98,10 +98,10 @@ export default function Toast({
                 text={okText}
                 type="green"
                 size="small"
-                onClick={() => {
+                onClick={(event) => {
                   setVisible(false);
                   if (onOkClick) {
-                    onOkClick();
+                    onOkClick(event);
                   }
                 }}
               />

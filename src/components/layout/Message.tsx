@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import React, { ReactNode, MouseEvent, useState, useEffect } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import Text from './Text';
@@ -16,7 +16,7 @@ interface MessageProps {
   content: MessageContent[];
   timeText?: string;
   width?: string;
-  usernameOnClick?(username: string): void;
+  usernameOnClick?(username: string, event: MouseEvent<HTMLSpanElement>): void;
   usernameColor?: string;
   avatarOnClick?(avatarSource: string): void;
   userTagText?: string;
@@ -196,7 +196,7 @@ export default function Message({
               style={{ color: usernameColor, cursor: usernameOnClick ? 'pointer' : 'default' }}
               className={css([styles.username, usernameOnClick && styles.usernameHover])}
               role="button"
-              onClick={() => usernameOnClick && usernameOnClick(username)}
+              onClick={(event) => usernameOnClick && usernameOnClick(username, event)}
             >
               {username}
             </span>

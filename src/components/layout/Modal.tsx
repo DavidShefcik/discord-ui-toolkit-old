@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import useThemeContext from '@internal/hooks/useThemeContext';
@@ -11,16 +11,16 @@ interface ModalProps {
   setVisible(visible: boolean): void;
   title: string;
   children: ReactNode;
-  onSubmitClick(): void;
+  onSubmitClick(event: MouseEvent<HTMLButtonElement>): void;
   closeOnEscapeKeyPress?: boolean;
-  onEscapeKeyPress?(): void;
+  onEscapeKeyPress?(event: KeyboardEvent): void;
   submitText?: string;
   submitColor?: 'blurple' | 'green' | 'red';
   submitButtonFull?: boolean;
   submitButtonLoading?: boolean;
   submitButtonDisabled?: boolean;
   cancelText?: string;
-  onCancelClick?(): void;
+  onCancelClick?(event: MouseEvent<HTMLButtonElement>): void;
 }
 
 const styles = StyleSheet.create({
@@ -102,8 +102,8 @@ export default function Modal({
             text={submitText}
             loading={submitButtonLoading}
             disabled={submitButtonDisabled}
-            onClick={() => {
-              onSubmitClick();
+            onClick={(event) => {
+              onSubmitClick(event);
               setVisible(false);
             }}
           />
@@ -112,9 +112,9 @@ export default function Modal({
               type="only_text"
               size="normal"
               text={cancelText}
-              onClick={() => {
+              onClick={(event) => {
                 if (onCancelClick) {
-                  onCancelClick();
+                  onCancelClick(event);
                 }
                 setVisible(false);
               }}

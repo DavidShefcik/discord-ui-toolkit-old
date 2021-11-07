@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { MouseEvent, ReactNode } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 import useThemeContext from '@internal/hooks/useThemeContext';
@@ -15,7 +15,7 @@ interface SmallUserProfileProps {
   userTagCheckmark?: boolean;
   userTagBlurple?: boolean;
   avatarHoverText?: string;
-  onAvatarClick?(avatarSource: string): void;
+  onAvatarClick?(avatarSource: string, event: MouseEvent<HTMLSpanElement>): void;
   headerBackgroundColor?: string;
   headerImageSource?: string;
   activityBackgroundColor?: string;
