@@ -18,7 +18,7 @@ interface MessageProps {
   width?: string;
   usernameOnClick?(username: string, event: MouseEvent<HTMLSpanElement>): void;
   usernameColor?: string;
-  avatarOnClick?(avatarSource: string): void;
+  avatarOnClick?(avatarSource: string, event: MouseEvent<HTMLImageElement>): void;
   userTagText?: string;
   userTagCheckmark?: boolean;
 }
@@ -188,7 +188,7 @@ export default function Message({
           src={avatarSource}
           alt="Avatar"
           role="button"
-          onClick={() => avatarOnClick(avatarSource)}
+          onClick={(event) => avatarOnClick && avatarOnClick(avatarSource, event)}
         />
         <div className={css([styles.header])}>
           <span className={css(styles.headerText)}>
