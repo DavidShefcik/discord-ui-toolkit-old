@@ -113,7 +113,7 @@ export default class MessageInput extends Component<MessageInputProps, MessageIn
     const aboveInputVisible = aboveInputText && aboveInputText.length > 0 && aboveInputVariant;
 
     return (
-      <div className={css(styles.container)} style={{ width, marginTop: aboveInputVisible && '24px' }}>
+      <div className={css(styles.container)} style={{ width }}>
         {aboveInputVisible && (
           <div
             className={css([
