@@ -1,0 +1,396 @@
+@font-face {
+  font-family: 'discord-thin';
+  src: url('../fonts/thin.woff');
+}
+@font-face {
+  font-family: 'discord-normal';
+  src: url('../fonts/normal.woff');
+}
+@font-face {
+  font-family: 'discord-bold';
+  src: url('../fonts/bold.woff');
+}
+@font-face {
+  font-family: 'discord-fun-thin';
+  src: url('../fonts/fun_thin.woff');
+}
+@font-face {
+  font-family: 'discord-fun-normal';
+  src: url('../fonts/fun_normal.woff');
+}
+@font-face {
+  font-family: 'discord-fun-bold';
+  src: url('../fonts/fun_bold.woff');
+}
+.discord-container {
+  width: 100%;
+  height: 100%;
+  font-family: Arial;
+  position: relative;
+}
+.discord-base {
+  --greyple: #747f8d;
+  --greyple-dark: #68727f;
+  --dark-not-black: #2c2f33;
+  --not-quite-black: #23272a;
+  --info-warning-foreground: #faa81a;
+  --boost-purple: #ff73fa;
+  --saturation-factor: 1;
+}
+.discord-new-colors {
+  --green: #3ba55c;
+  --green-dark: #359553;
+  --blurple: #5865f2;
+  --blurple-dark: #4752c4;
+  --red: #ed4245;
+  --red-dark: #d53b3e;
+}
+.discord-old-colors {
+  --green: #43b581;
+  --green-dark: #3ca374;
+  --blurple: #7289da;
+  --blurple-dark: #677bc4;
+  --red: #f04747;
+  --red-dark: #d84040;
+}
+.discord-dark {
+  --header-primary: #fff;
+  --header-secondary: #b9bbbe;
+  --text-normal: #dcddde;
+  --text-muted: #72767d;
+  --text-link: #00b0f4;
+  --channels-default: #8e9297;
+  --interactive-normal: #b9bbbe;
+  --interactive-hover: #dcddde;
+  --interactive-active: #fff;
+  --interactive-muted: #4f545c;
+  --background-primary: #36393f;
+  --background-secondary: #2f3136;
+  --background-secondary-alt: #292b2f;
+  --background-tertiary: #202225;
+  --background-accent: #4f545c;
+  --background-floating: #18191c;
+  --background-mobile-primary: #36393f;
+  --background-mobile-secondary: #2f3136;
+  --background-modifier-hover: rgba(79, 84, 92, 0.16);
+  --background-modifier-active: rgba(79, 84, 92, 0.24);
+  --background-modifier-selected: rgba(79, 84, 92, 0.32);
+  --background-modifier-accent: hsla(0, 0%, 100%, 0.06);
+  --background-mentioned: rgba(250, 166, 26, 0.05);
+  --background-mentioned-hover: rgba(250, 166, 26, 0.08);
+  --background-message-hover: rgba(4, 4, 5, 0.07);
+  --background-help-warning: rgba(250, 166, 26, 0.1);
+  --background-help-info: rgba(0, 176, 244, 0.1);
+  --scrollbar-thin-thumb: #202225;
+  --scrollbar-thin-track: transparent;
+  --scrollbar-auto-thumb: #202225;
+  --scrollbar-auto-track: #2e3338;
+  --scrollbar-auto-scrollbar-color-thumb: #202225;
+  --scrollbar-auto-scrollbar-color-track: #2f3136;
+  --elevation-stroke: 0 0 0 1px rgba(4, 4, 5, 0.15);
+  --elevation-low: 0 1px 0 rgba(4, 4, 5, 0.2), 0 1.5px 0 rgba(6, 6, 7, 0.05), 0 2px 0 rgba(4, 4, 5, 0.05);
+  --elevation-medium: 0 4px 4px rgba(0, 0, 0, 0.16);
+  --elevation-high: 0 8px 16px rgba(0, 0, 0, 0.24);
+  --logo-primary: #fff;
+  --focus-primary: #00b0f4;
+  --radio-group-dot-foreground: #8ea1e1;
+  --guild-header-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  --channeltextarea-background: #40444b;
+  --activity-card-background: #202225;
+  --textbox-markdown-syntax: #8e9297;
+  --deprecated-card-bg: #232427;
+  --deprecated-card-editable-bg: rgba(32, 34, 37, 0.3);
+  --deprecated-store-bg: #36393f;
+  --deprecated-quickswitcher-input-background: #72767d;
+  --deprecated-quickswitcher-input-placeholder: hsla(0, 0%, 100%, 0.3);
+  --deprecated-text-input-bg: rgba(0, 0, 0, 0.1);
+  --deprecated-text-input-border: rgba(0, 0, 0, 0.3);
+  --deprecated-text-input-border-hover: #040405;
+  --deprecated-text-input-border-disabled: #202225;
+  --deprecated-text-input-prefix: #dcddde;
+  --checkbox-border: #72767d;
+  --checkbox-hover: #3b3d44;
+  --select-background: #313339;
+  --select-border: #292a2e;
+  --select-border-hover: #141517;
+  --select-chevron: #b9bbbe;
+  --select-item-hover: #26272b;
+  --slider-bar-background: #4f545c;
+  --slider-label-color: #72767d;
+  --text-input-background: #323339;
+  --datepicker-text-color: #f6f6f7;
+  --datepicker-disabled-background-color: #2f3136;
+  --datepicker-disabled-text-color: rgba(246, 246, 247, 0.3);
+  --datepicker-day-name-text-color: rgba(246, 246, 247, 0.6);
+  --toast-text-color: #ffffff;
+}
+.discord-light {
+  --header-primary: #060607;
+  --header-secondary: #4f5660;
+  --text-normal: #2e3338;
+  --text-muted: #747f8d;
+  --text-link: #0067e0;
+  --channels-default: #6a7480;
+  --interactive-normal: #4f5660;
+  --interactive-hover: #2e3338;
+  --interactive-active: #060607;
+  --interactive-muted: #c7ccd1;
+  --background-primary: #fff;
+  --background-secondary: #f2f3f5;
+  --background-secondary-alt: #ebedef;
+  --background-tertiary: #e3e5e8;
+  --background-accent: #747f8d;
+  --background-floating: #fff;
+  --background-mobile-primary: #f8f9f9;
+  --background-mobile-secondary: #fff;
+  --background-modifier-hover: rgba(116, 127, 141, 0.08);
+  --background-modifier-active: rgba(116, 127, 141, 0.16);
+  --background-modifier-selected: rgba(116, 127, 141, 0.24);
+  --background-modifier-accent: rgba(6, 6, 7, 0.08);
+  --background-mentioned: rgba(250, 166, 26, 0.1);
+  --background-mentioned-hover: rgba(250, 166, 26, 0.2);
+  --background-message-hover: rgba(6, 6, 7, 0.02);
+  --background-help-warning: rgba(250, 166, 26, 0.1);
+  --background-help-info: rgba(0, 103, 224, 0.1);
+  --scrollbar-thin-thumb: rgba(79, 84, 92, 0.3);
+  --scrollbar-thin-track: transparent;
+  --scrollbar-auto-thumb: #ccc;
+  --scrollbar-auto-track: #f2f2f2;
+  --scrollbar-auto-scrollbar-color-thumb: #e3e5e8;
+  --scrollbar-auto-scrollbar-color-track: #f2f3f5;
+  --elevation-stroke: 0 0 0 1px rgba(6, 6, 7, 0.08);
+  --elevation-low: 0 1px 0 rgba(6, 6, 7, 0.1), 0 1.5px 0 rgba(6, 6, 7, 0.025), 0 2px 0 rgba(6, 6, 7, 0.025);
+  --elevation-medium: 0 4px 4px rgba(0, 0, 0, 0.08);
+  --elevation-high: 0 8px 16px rgba(0, 0, 0, 0.16);
+  --logo-primary: #7289da;
+  --focus-primary: #00b0f4;
+  --radio-group-dot-foreground: #4e5d94;
+  --guild-header-text-shadow: 0 1px 1px hsla(0, 0%, 100%, 0.4);
+  --channeltextarea-background: #ebedef;
+  --activity-card-background: #fff;
+  --textbox-markdown-syntax: #6a7480;
+  --deprecated-card-bg: #f8f9f9;
+  --deprecated-card-editable-bg: rgba(246, 246, 247, 0.6);
+  --deprecated-store-bg: #f8f9f9;
+  --deprecated-quickswitcher-input-background: #fff;
+  --deprecated-quickswitcher-input-placeholder: rgba(79, 84, 92, 0.3);
+  --deprecated-text-input-bg: rgba(79, 84, 92, 0.02);
+  --deprecated-text-input-border: rgba(79, 84, 92, 0.3);
+  --deprecated-text-input-border-hover: #b9bbbe;
+  --deprecated-text-input-border-disabled: #dcddde;
+  --deprecated-text-input-prefix: #b9bbbe;
+  --checkbox-border: #b9bbbe;
+  --checkbox-hover: #f4f5f6;
+  --select-background: #fcfcfc;
+  --select-border: #c8c9cc;
+  --select-border-hover: #c8c9cc;
+  --select-chevron: #4f5660;
+  --select-chevron-hover: #2e3338;
+  --select-item-hover: #c2c2c4;
+  --slider-bar-background: #dcddde;
+  --slider-label-color: #b9bbbe;
+  --text-input-background: #fcfcfc;
+  --datepicker-text-color: #4f545c;
+  --datepicker-disabled-background-color: rgba(0, 0, 0, 0.05);
+  --datepicker-disabled-text-color: rgba(0, 0, 0, 0.2);
+  --datepicker-day-name-text-color: rgba(79, 84, 92, 0.6);
+  --toast-text-color: #4f545c;
+}
+*::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+*::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+*::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-auto-track);
+  border: 4px solid transparent;
+  background-clip: padding-box;
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-auto-thumb);
+  min-height: 40px;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+  border-radius: 8px;
+}
+
+/* MessageInput placeholder */
+[contenteditable='true']:empty:before {
+  content: attr(placeholder);
+  display: block;
+  overflowx: hidden;
+  whitespace: nowrap;
+  textoverflow: ellipsis;
+  boxsizing: border-box;
+  color: var(--text-muted);
+  zindex: 0;
+  position: absolute;
+}
+
+/* Overwrite react-datepicker calendar styling */
+.react-datepicker {
+  background-color: var(--background-primary);
+  border: none;
+  padding: 20px;
+  font-size: 0.8rem;
+  border-radius: 0.3rem;
+  display: 'inline-block';
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.react-datepicker__triangle {
+  position: absolute;
+  left: 50px;
+}
+.react-datepicker__current-month-container {
+  display: inline;
+  float: left;
+}
+.react-datepicker__header {
+  background-color: var(--background-primary);
+  border-color: rgba(24, 25, 28, 0.2);
+  padding-top: 0;
+  border-bottom: 0;
+  text-align: center;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  position: relative;
+}
+.react-datepicker__current-month {
+  color: var(--datepicker-text-color);
+  border-bottom-color: rgba(24, 25, 28, 0.3) !important;
+  margin: 0 0 10px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: 'discord-bold';
+}
+.react-datepicker__day-names {
+  margin-bottom: 10px;
+}
+.react-datepicker__day-name {
+  color: var(--datepicker-day-name-text-color);
+  width: 40px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1em;
+  text-transform: uppercase;
+  margin: 0;
+  font-family: 'discord-bold';
+  display: inline-block;
+  text-align: center;
+}
+.react-datepicker__month {
+  margin: 0;
+  text-align: center;
+}
+.react-datepicker__week:first-of-type > .react-datepicker__day:first-of-type {
+  border-radius: 3px 0 0;
+}
+.react-datepicker__week:first-of-type > .react-datepicker__day:last-of-type {
+  border-radius: 0 3px 0 0;
+}
+.react-datepicker__week .react-datepicker__day:last-of-type {
+  border-right: 1px solid var(--background-floating);
+}
+.react-datepicker__week:last-of-type > .react-datepicker__day {
+  border-bottom: 1px solid var(--background-floating);
+}
+.react-datepicker__week:last-of-type > .react-datepicker__day:first-of-type {
+  border-bottom-left-radius: 3px;
+}
+.react-datepicker__week:last-of-type > .react-datepicker__day:last-of-type {
+  border-bottom-right-radius: 3px;
+}
+.react-datepicker__day--disabled,
+.react-datepicker__day--outside-month {
+  background-color: var(--datepicker-disabled-background-color) !important;
+  color: var(--datepicker-disabled-text-color) !important;
+}
+.react-datepicker__day--outside-month {
+  font-weight: 500 !important;
+}
+.react-datepicker__day {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-top-color: var(--background-floating);
+  border-left-color: var(--background-floating);
+  cursor: pointer;
+  font-family: 'discord-normal';
+  color: var(--datepicker-text-color);
+  outline: 0;
+}
+.react-datepicker__day:hover,
+.react-datepicker__day--keyboard-selected {
+  color: #fff;
+  background-color: var(--blurple);
+  border-radius: 0;
+}
+.react-datepicker__day--today {
+  font-weight: 700;
+  font-family: 'discord-bold';
+}
+.react-datepicker__day--selected {
+  background-color: transparent;
+  border-radius: 0;
+}
+.react-datepicker__day--selected::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--blurple);
+}
+.react-datepicker__navigation,
+.react-datepicker__navigation:hover,
+.react-datepicker__navigation:focus {
+  border-color: var(--background-floating);
+  background-image: url('../svg/date_picker_arrow.svg');
+  outline: 0;
+}
+.react-datepicker__navigation--previous {
+  top: 20px;
+  left: 20px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid;
+  border-radius: 2px;
+  background-repeat: no-repeat;
+  background-size: 6px 12px;
+  background-position: 50%;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.react-datepicker__navigation--next {
+  top: 20px;
+  left: auto;
+  right: 20px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid;
+  border-radius: 2px;
+  background-repeat: no-repeat;
+  background-size: 6px 12px;
+  background-position: 50%;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
